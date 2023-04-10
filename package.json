@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --cache .",
+    "format": "prettier --check --cache .",
     "eslint": "eslint --cache .",
     "postinstall": "husky install"
   },
