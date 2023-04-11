@@ -20,10 +20,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'yarn' 
+        cache: 'pnpm' 
 
-    - run: yarn install --frozen-lockfile
-    - run: yarn build
+    - run: pnpm i --frozen-lockfile
+    - run: pnpm build
 
     - name: Success notification to discord
       uses: sarisia/actions-status-discord@v1.11.0
