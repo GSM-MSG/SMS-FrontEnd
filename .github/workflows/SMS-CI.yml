@@ -9,21 +9,15 @@ on:
 jobs:
   SMS-CI:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [18.x]
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: pnpm/action-setup@v2
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn' 
+        version: 8.2.0
 
-    - run: yarn install --frozen-lockfile
-    - run: yarn build
+    - run: pnpm i --frozen-lockfile
+    - run: pnpm build
 
     - name: Success notification to discord
       uses: sarisia/actions-status-discord@v1.11.0

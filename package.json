@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "commonjs",
+  "packageManager": "pnpm@8.2.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --check --cache .",
-    "eslint": "eslint --cache .",
+    "format": "prettier --check --cache **/*.{tsx,ts}",
+    "eslint": "eslint --cache **/*.{tsx,ts}",
     "postinstall": "husky install"
   },
   "dependencies": {
