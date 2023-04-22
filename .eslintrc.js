@@ -17,6 +17,11 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'import'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'react-hooks/exhaustive-deps': 'off',
