@@ -8,13 +8,6 @@ on:
     branches:
       - 'develop'
       - 'master'
-  push:
-    paths:
-      - '.github/workflows/**'
-      - 'packages/app/**'
-    branches:
-      - 'develop'
-      - 'master'
 
 jobs:
   SMS-CI:
