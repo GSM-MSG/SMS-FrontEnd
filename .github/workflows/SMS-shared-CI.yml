@@ -3,6 +3,14 @@ name: SMS-CI
 on:
   pull_request:
     paths:
+      - '.github/workflows/**'
+      - 'packages/shared/**'
+    branches:
+      - 'develop'
+      - 'master'
+  push:
+    paths:
+      - '.github/workflows/**'
       - 'packages/shared/**'
     branches:
       - 'develop'
