@@ -9,11 +9,11 @@ type Typestyle =
   | 'caption1'
   | 'caption2'
 
-export type Theme = {
+export type Typograpy = {
   [key in Typestyle]: string
 }
 
-const theme: Theme = {
+const typograpy: Typograpy = {
   headline1: 'font-weight: bold; font-size: 2.5rem; line-height: 3rem;',
   headline2: 'font-weight: bold; font-size: 2rem; line-height: 2.375rem;',
   headline3: 'font-weight: bold; font-size: 1.75rem; line-height: 2.125rem;',
@@ -25,4 +25,4 @@ const theme: Theme = {
   caption2: 'font-weight: normal; font-size: 0.75rem; line-height: 1.06rem;',
 }
 
-export default theme
+export default typograpy

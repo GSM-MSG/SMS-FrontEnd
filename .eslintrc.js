@@ -24,6 +24,7 @@ module.exports = {
   },
   rules: {
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+    '@typescript-eslint/no-empty-interface': 'off',
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-empty-function': 'off',
