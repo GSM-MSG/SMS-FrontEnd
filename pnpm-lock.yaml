@@ -74,7 +74,7 @@ importers:
         specifier: ^8.0.5
         version: 8.0.5(@types/react-dom@18.0.11)(@types/react@18.0.33)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
       shared:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../shared
     devDependencies:
       '@types/node':

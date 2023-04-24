@@ -5,6 +5,7 @@ const config = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
   ],
+  staticDirs: ['../public'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},

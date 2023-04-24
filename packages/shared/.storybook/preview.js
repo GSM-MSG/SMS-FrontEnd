@@ -1,4 +1,5 @@
 import StyleProvider from '../src/style'
+import '../public/font.css'
 
 const preview = {
   parameters: {
