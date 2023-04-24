@@ -9,4 +9,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   external: ['react'],
   inject: ['./src/react-import.ts'],
+  publicDir: './public',
 })
