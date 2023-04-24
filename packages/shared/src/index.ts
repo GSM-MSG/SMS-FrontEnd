@@ -1,2 +1,3 @@
-export { default as theme } from './theme'
-export type { Theme } from './theme'
+import '@/style/global.css'
+
+export * from '@/style/typography'
