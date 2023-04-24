@@ -9,9 +9,12 @@
     "eslint": "eslint --cache **/*.{tsx,ts}",
     "postinstall": "husky install",
     "build:app": "pnpm --filter app build",
-    "build:shared": "pnpm --filter shared build",
+    "build:shared": "pnpm --filter shared build && pnpm --filter app i",
     "dev": "pnpm --filter app dev"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",

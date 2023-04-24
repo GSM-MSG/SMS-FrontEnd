@@ -1,7 +1,12 @@
-// import { typograpy } from 'shared'
+import { typography } from 'shared'
+import { ThemeProvider } from '@emotion/react'
+import 'shared/dist/index.css'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
-  //   console.log(typograpy)
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider theme={typography}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }

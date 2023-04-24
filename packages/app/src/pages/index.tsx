@@ -5,5 +5,5 @@ const Main = styled.main`
 `
 
 export default function Home() {
-  return <Main style={{ background: 'var(--P1)' }}>Hello</Main>
+  return <Main style={{ background: 'var(--P1)' }}>Hello world</Main>
 }

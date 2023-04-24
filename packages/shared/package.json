@@ -1,37 +1,21 @@
 {
   "name": "shared",
-  "private": true,
   "version": "1.0.0",
-  "type": "module",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
+  "private": true,
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc && vite build",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build": "tsup"
   },
-  "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.6",
-    "@storybook/addon-interactions": "^7.0.6",
-    "@storybook/addon-links": "^7.0.6",
-    "@storybook/blocks": "^7.0.6",
-    "@storybook/react": "^7.0.6",
-    "@storybook/react-vite": "^7.0.6",
-    "@storybook/testing-library": "^0.0.14-next.2",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^4.0.0-beta.0",
-    "prop-types": "^15.8.1",
-    "storybook": "^7.0.6",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.0",
-    "vite-plugin-dts": "^2.3.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
   }
 }
