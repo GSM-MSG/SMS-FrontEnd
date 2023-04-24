@@ -1,3 +1,3 @@
-import '@/style/global.css'
+import './style/global.css'
 
-export * from '@/style/typography'
+export * from './style/typography'
