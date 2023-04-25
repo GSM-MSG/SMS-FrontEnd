@@ -4,28 +4,25 @@ import Headline from './index'
 const config: Meta<typeof Headline> = {
   title: 'Headline',
   component: Headline,
+  args: {
+    children: 'STUDENT\nMANAGEMENT SERVICE',
+  },
 }
 
 export default config
 
 type Story = StoryObj<typeof Headline>
 
-export const Headline1: Story = {
-  args: {
-    children: 'STUDENT\nMANAGEMENT SERVICE',
-  },
-}
+export const Headline1: Story = {}
 
 export const Headline2: Story = {
   args: {
-    children: 'STUDENT\nMANAGEMENT SERVICE',
     type: 'headline2',
   },
 }
 
 export const Headline3: Story = {
   args: {
-    children: 'STUDENT\nMANAGEMENT SERVICE',
     type: 'headline3',
   },
 }
