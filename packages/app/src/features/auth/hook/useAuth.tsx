@@ -1,8 +1,20 @@
 import { useRouter } from 'next/router'
 import env from '@lib/env'
+import { useEffect } from 'react'
+import login from '@features/auth/service/login'
 
 const useAuth = () => {
   const router = useRouter()
+
+  useEffect(() => {
+    const code = router.query.code?.toString() || ''
+
+    if (!code) return
+    ;(async () => {
+      await login(code)
+      router.push('/')
+    })()
+  }, [])
 
   const onClick = () => {
     router.replace(
