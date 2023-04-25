@@ -18,7 +18,7 @@ const useAuth = () => {
 
   const onClick = () => {
     router.replace(
-      `https://gauth.co.kr/login?client_id=${env.GAUTH_CLIENT_ID}&redirect_uri=${env.GAUTH_REDIRECT_URI}`
+      `https://gauth.co.kr/login?client_id=${env.NEXT_PUBLIC_GAUTH_CLIENT_ID}&redirect_uri=${env.NEXT_PUBLIC_GAUTH_REDIRECT_URI}`
     )
   }
 
