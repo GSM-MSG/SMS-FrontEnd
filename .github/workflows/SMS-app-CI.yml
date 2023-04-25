@@ -10,7 +10,7 @@ on:
       - 'master'
 
 jobs:
-  SMS-CI:
+  SMS-app-CI:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,7 @@ jobs:
           version: 8.2.0
 
       - run: pnpm i --frozen-lockfile
+      - run: pnpm build:shared
       - run: pnpm build:app
 
       - name: Success notification to discord
