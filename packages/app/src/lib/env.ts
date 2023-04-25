@@ -1,8 +1,16 @@
-const { GAUTH_REDIRECT_URI, GAUTH_CLIENT_ID, SERVER_URL } = process.env
-
-if (!(GAUTH_CLIENT_ID || GAUTH_REDIRECT_URI || SERVER_URL))
+if (
+  !(
+    process.env.NEXT_PUBLIC_GAUTH_REDIRECT_URI ||
+    process.env.NEXT_PUBLIC_GAUTH_CLIENT_ID ||
+    process.env.NEXT_PUBLIC_SERVER_URL
+  )
+)
   throw new Error('missing environment value')
 
-const env = { GAUTH_REDIRECT_URI, GAUTH_CLIENT_ID, SERVER_URL } as const
+const env = {
+  NEXT_PUBLIC_GAUTH_REDIRECT_URI: process.env.NEXT_PUBLIC_GAUTH_REDIRECT_URI,
+  NEXT_PUBLIC_GAUTH_CLIENT_ID: process.env.NEXT_PUBLIC_GAUTH_CLIENT_ID,
+  NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
+} as const
 
 export default env
