@@ -1,8 +1,12 @@
 import styled from '@emotion/styled'
 
-const GauthLoginButton = () => {
+interface Props {
+  onClick: () => void
+}
+
+const GauthLoginButton = ({ onClick }: Props) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <img src='/svg/GauthLogo.svg' />
       Sign in with GAuth
     </Button>
