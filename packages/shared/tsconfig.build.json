@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "incremental": true
+  },
+  "exclude": [
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.mdx",
+    ".storybook/**"
+  ]
+}

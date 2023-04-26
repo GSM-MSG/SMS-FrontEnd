@@ -19,6 +19,10 @@ jobs:
         with:
           version: 8.2.0
 
+      - run: |
+          touch packages/app/.env.local
+          echo "${{secrets.ENV}}" >> packages/app/.env.local
+
       - run: pnpm i --frozen-lockfile
       - run: pnpm build:shared
       - run: pnpm build:app
