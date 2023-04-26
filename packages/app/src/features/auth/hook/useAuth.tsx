@@ -5,16 +5,15 @@ import login from '@features/auth/service/login'
 
 const useAuth = () => {
   const router = useRouter()
+  const code = router.query.code?.toString() || ''
 
   useEffect(() => {
-    const code = router.query.code?.toString() || ''
-
     if (!code) return
     ;(async () => {
       await login(code)
       router.push('/')
     })()
-  }, [])
+  }, [code])
 
   const onClick = () => {
     router.replace(
