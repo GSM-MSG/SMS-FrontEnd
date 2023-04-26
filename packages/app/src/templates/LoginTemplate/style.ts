@@ -27,29 +27,3 @@ export const Video = styled.video`
   object-fit: cover;
   z-index: -1;
 `
-
-const opacity = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(3rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
-
-export const Text1 = styled.div`
-  animation-name: ${opacity};
-  animation-duration: 1s;
-`
-
-export const Text2 = styled.div`
-  animation-name: ${opacity};
-  animation-duration: 1.3s;
-`
-
-export const Text3 = styled.div`
-  animation-name: ${opacity};
-  animation-duration: 1.6s;
-`

@@ -1,4 +1,4 @@
-import { GauthLoginButton, Headline, Title } from 'shared'
+import { FadeinAnimation, GauthLoginButton, Headline, Title } from 'shared'
 import useAuth from '@features/auth/hook/useAuth'
 import * as S from './style'
 
@@ -17,15 +17,15 @@ const LoginTemplate = () => {
           type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'
         />
       </S.Video>
-      <S.Text1>
+      <FadeinAnimation>
         <Headline type='headline1'>{'STUDENT\nMANAGEMENT SERVICE'}</Headline>
-      </S.Text1>
-      <S.Text2>
+      </FadeinAnimation>
+      <FadeinAnimation duration={1.3}>
         <Title type='title2'>학생 정보 통합관리 서비스</Title>
-      </S.Text2>
-      <S.Text3>
+      </FadeinAnimation>
+      <FadeinAnimation duration={1.6}>
         <GauthLoginButton onClick={onClick} />
-      </S.Text3>
+      </FadeinAnimation>
     </S.Wrapper>
   )
 }
