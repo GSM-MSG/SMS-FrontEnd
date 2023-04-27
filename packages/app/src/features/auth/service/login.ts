@@ -1,12 +1,12 @@
 import { serverApi } from '@api'
-import { isAxiosError } from 'axios'
+import ErrorMapper from '@lib/ErrorMapper'
+import errors from '@features/auth/errors'
 
 const login = async (code: string) => {
   try {
     await serverApi.post('/auth', { code })
   } catch (e) {
-    if (!isAxiosError(e)) alert('알 수 없는 에러 발생')
-    alert('관리자 문의 ㄱㄱ')
+    alert(ErrorMapper(e, errors))
   }
 }
 
