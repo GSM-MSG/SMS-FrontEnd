@@ -12,10 +12,11 @@ interface Props
 
 const Button = ({ theme = 'default', ...props }: Props) => {
   switch (theme) {
-    case 'default':
-      return <Wrapper {...props} />
     case 'white':
       return <WhiteButton {...props} />
+    case 'default':
+    default:
+      return <Wrapper {...props} />
   }
 }
 
@@ -26,7 +27,7 @@ const Wrapper = styled.button`
   cursor: pointer;
   min-width: 12.5rem;
   outline: none;
-  transition: 0.4s;
+  transition: 0.2s;
   border: none;
   ${(props) => props.theme.title2}
   background: var(--P2);
@@ -36,7 +37,7 @@ const Wrapper = styled.button`
     background: var(--P1);
   }
 
-  &:focus {
+  &:active {
     background: var(--P3);
   }
 
@@ -59,7 +60,7 @@ const WhiteButton = styled.button`
   color: var(--BLACK);
   ${(props) => props.theme.title2}
 
-  &:hover {
+  &:active {
     border: 1px solid var(--N30);
     background: var(--N10);
   }
