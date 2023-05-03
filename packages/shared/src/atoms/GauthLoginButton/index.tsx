@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import * as SVG from '../../assets/svg'
 
 interface Props {
   onClick: () => void
@@ -7,7 +8,7 @@ interface Props {
 const GauthLoginButton = ({ onClick }: Props) => {
   return (
     <Button onClick={onClick}>
-      <img src='/svg/GauthLogo.svg' />
+      <SVG.GauthLogo />
       Sign in with GAuth
     </Button>
   )

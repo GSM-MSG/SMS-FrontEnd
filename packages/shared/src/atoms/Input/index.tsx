@@ -1,11 +1,12 @@
 import {
+  ChangeEvent,
   DetailedHTMLProps,
   InputHTMLAttributes,
   forwardRef,
   useRef,
   useState,
 } from 'react'
-import SmallXmark from '../../assets/svg/SmallXmark.svg'
+import * as SVG from '../../assets/svg'
 import * as S from './style'
 
 interface Props
@@ -18,33 +19,40 @@ interface Props
 
 const Input = forwardRef<HTMLInputElement, Props>(
   ({ error, ...props }, ref) => {
+    const [value, setValue] = useState<string>('')
     const [isFocused, setIsFocused] = useState<boolean>(false)
     const inputRef = useRef<HTMLInputElement>(null)
-
-    const onClick = () => {
-      if (ref && 'current' in ref && ref.current?.value) {
-        ref.current?.focus()
-        ref.current.value = ''
-      }
-
-      inputRef.current?.focus()
-      if (inputRef.current?.value) inputRef.current.value = ''
-    }
 
     const onFocus = () => setIsFocused(true)
     const onBlur = () => setIsFocused(false)
 
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value)
+      if (props.onChange) props.onChange(e)
+    }
+
+    const onReset = () => {
+      if (props.value) return (props.value = '')
+      setValue('')
+    }
+
     return (
       <S.Wrapper>
-        <S.InputWrapper isFocused={isFocused} onClick={onClick}>
+        <S.InputWrapper isFocused={isFocused}>
           <S.TextFiled
+            value={props.value ? props.value : value}
+            onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
             ref={ref ? ref : inputRef}
             {...props}
           />
-          <S.ResetButton type='reset'>
-            <img src={SmallXmark} />
+          <S.ResetButton
+            style={{ opacity: props.value || value ? 1 : 0 }}
+            type='reset'
+            onClick={onReset}
+          >
+            <SVG.SmallXmark />
           </S.ResetButton>
         </S.InputWrapper>
         <S.Error>{error}</S.Error>
