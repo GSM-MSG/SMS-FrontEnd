@@ -2,7 +2,6 @@ import {
   ChangeEvent,
   DetailedHTMLProps,
   InputHTMLAttributes,
-  MouseEvent,
   forwardRef,
   useRef,
   useState,
