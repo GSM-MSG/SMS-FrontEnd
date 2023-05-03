@@ -28,9 +28,14 @@ export const TextFiled = styled.input`
   border: none;
   margin-right: 0.5rem;
   background: transparent;
+
+  :focus ~ button {
+    display: block;
+  }
 `
 
 export const ResetButton = styled.button`
+  display: none;
   border: none;
   border-radius: 0.3rem;
   background: var(--N20);
