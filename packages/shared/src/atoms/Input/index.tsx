@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import SmallXmark from '../../assets/svg/SmallXmark.svg'
+import * as SVG from '../../assets/svg'
 import * as S from './style'
 
 interface Props
@@ -52,7 +52,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
             type='reset'
             onClick={onReset}
           >
-            <img src={SmallXmark} />
+            <SVG.SmallXmark />
           </S.ResetButton>
         </S.InputWrapper>
         <S.Error>{error}</S.Error>
