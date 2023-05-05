@@ -8,6 +8,7 @@ interface Props {
   cancelText: string
   confirmText: string
   emitter: Emitter
+  onClose(): void
 }
 
 const Dialog = ({
@@ -16,10 +17,14 @@ const Dialog = ({
   cancelText,
   confirmText,
   emitter,
+  onClose,
 }: Props) => {
   const eventName = 'dialog'
 
-  const onClick = (data: boolean) => emitter.emit(eventName, data)
+  const onClick = (data: boolean) => {
+    emitter.emit(eventName, data)
+    onClose()
+  }
 
   return (
     <S.Wrapper>
