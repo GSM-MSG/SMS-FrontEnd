@@ -20,9 +20,10 @@ const dialogSlice = createSlice({
     },
     setLogInfo: (state, { payload }: PayloadAction<SetLogInfoType>) => {
       state = {
-        ...payload,
         ...state,
+        ...payload,
       }
+      return state
     },
   },
 })

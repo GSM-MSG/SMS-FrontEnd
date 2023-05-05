@@ -21,6 +21,7 @@ const GlobalLayout = ({ children }: Props) => {
           content={dialog.content}
           cancelText={dialog.cancelText}
           confirmText={dialog.confirmText}
+          emitter={dialog.emitter}
         />
       )}
       <ThemeProvider theme={typography}>{children}</ThemeProvider>
