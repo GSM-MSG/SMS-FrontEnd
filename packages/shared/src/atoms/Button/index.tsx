@@ -25,7 +25,7 @@ const Wrapper = styled.button`
   padding: 0.75rem;
   outline: none;
   cursor: pointer;
-  min-width: 12.5rem;
+  width: 100%;
   outline: none;
   transition: 0.2s;
   border: none;
@@ -52,7 +52,7 @@ const WhiteButton = styled.button`
   padding: 0.75rem;
   outline: none;
   cursor: pointer;
-  min-width: 12.5rem;
+  width: 100%;
   outline: none;
   transition: 0.4s;
   border: 1px solid var(--N20);

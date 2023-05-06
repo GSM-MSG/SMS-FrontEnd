@@ -1,7 +1,10 @@
 import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
+import dialogSlice from './dialogSlice'
 
-const reducers = combineReducers({})
+const reducers = combineReducers({
+  dialog: dialogSlice.reducer,
+})
 
 export type RootState = ReturnType<typeof reducers>
 
