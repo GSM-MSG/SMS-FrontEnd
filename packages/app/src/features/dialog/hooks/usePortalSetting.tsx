@@ -1,19 +1,6 @@
-import {
-  cloneElement,
-  useEffect,
-  useState,
-  MouseEvent,
-  ReactElement,
-} from 'react'
-import ReactDOM from 'react-dom'
-import * as S from './style'
+import { useEffect, useState, MouseEvent } from 'react'
 
-interface Props {
-  children: ReactElement
-  onClose?: (e: MouseEvent<HTMLDivElement>) => void
-}
-
-const Portal = ({ children, onClose }: Props) => {
+const usePortalSetting = () => {
   const [isCSR, setIsCSR] = useState(false)
 
   useEffect(() => {
@@ -32,8 +19,7 @@ const Portal = ({ children, onClose }: Props) => {
     }
   }, [])
 
-  if (typeof window === 'undefined') return <></>
-  if (!isCSR) return <></>
+  if (typeof window === 'undefined' || !isCSR) return null
 
   const portal = document.getElementById('modal')
   if (!portal) throw new Error('Not found modal')
@@ -42,12 +28,7 @@ const Portal = ({ children, onClose }: Props) => {
     e.stopPropagation()
   }
 
-  return ReactDOM.createPortal(
-    <S.Wrapper onClick={onClose}>
-      {cloneElement(children, { onClick })}
-    </S.Wrapper>,
-    portal
-  )
+  return { portal, onClick }
 }
 
-export default Portal
+export default usePortalSetting

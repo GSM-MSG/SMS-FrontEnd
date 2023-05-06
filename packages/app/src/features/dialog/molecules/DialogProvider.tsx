@@ -2,7 +2,7 @@ import { Dialog } from 'shared'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store'
 import { setIsShow } from '@store/dialogSlice'
-import { Portal } from '@components'
+import Portal from '@features/dialog/atoms/Portal'
 
 const DialogProvider = () => {
   const dispatch = useDispatch()

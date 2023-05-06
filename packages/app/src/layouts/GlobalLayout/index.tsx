@@ -1,7 +1,7 @@
 import { typography } from 'shared'
 import { ThemeProvider } from '@emotion/react'
 import { ReactNode } from 'react'
-import { DialogProvider } from '@providers'
+import DialogProvider from '@features/dialog/molecules/DialogProvider'
 
 interface Props {
   children: ReactNode
