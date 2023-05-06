@@ -27,7 +27,7 @@ const Dialog = ({
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={(e) => e.stopPropagation()}>
       <div>
         <S.Title>{title}</S.Title>
         <S.Content>{content}</S.Content>
