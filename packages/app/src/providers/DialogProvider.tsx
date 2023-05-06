@@ -15,20 +15,18 @@ const DialogProvider = () => {
     dispatch(setIsShow())
   }
 
-  return (
-    dialog.isShow && (
-      <Portal onClose={onClose}>
-        <Dialog
-          title={dialog.title}
-          content={dialog.content}
-          cancelText={dialog.cancelText}
-          confirmText={dialog.confirmText}
-          emitter={dialog.emitter}
-          onClose={() => dispatch(setIsShow())}
-        />
-      </Portal>
-    )
-  )
+  return dialog.isShow ? (
+    <Portal onClose={onClose}>
+      <Dialog
+        title={dialog.title}
+        content={dialog.content}
+        cancelText={dialog.cancelText}
+        confirmText={dialog.confirmText}
+        emitter={dialog.emitter}
+        onClose={() => dispatch(setIsShow())}
+      />
+    </Portal>
+  ) : null
 }
 
 export default DialogProvider
