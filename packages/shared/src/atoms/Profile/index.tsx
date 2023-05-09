@@ -39,14 +39,14 @@ const Profile = forwardRef<HTMLInputElement, Props>(
 
     return (
       <>
-        <S.ImageInput
-          {...props}
-          type='file'
-          ref={ref || inputRef}
-          accept='image/*'
-          onChange={onChange}
-        />
         <S.Wrapper>
+          <S.ImageInput
+            {...props}
+            type='file'
+            ref={ref || inputRef}
+            accept='image/*'
+            onChange={onChange}
+          />
           <S.ProfileWrapper onClick={onClick}>
             {tempImg ? (
               <S.UserTempImg src={tempImg} alt='temp img' />
