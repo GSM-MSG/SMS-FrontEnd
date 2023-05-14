@@ -3,15 +3,17 @@ import { ArrowDown } from '../../icons'
 import * as S from './style'
 
 interface Props {
-  optionList: string[]
+  options: string[]
+  onChange?(value: string): void
 }
 
-const Select = ({ optionList }: Props) => {
+const Select = ({ options, onChange }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
-  const [value, setValue] = useState<string>(optionList[0])
+  const [value, setValue] = useState<string>(options[0])
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (onChange) onChange(options[0])
     const clickHandler = (e: Event) => {
       if (
         ref.current &&
@@ -28,18 +30,23 @@ const Select = ({ optionList }: Props) => {
     return () => document.removeEventListener('click', clickHandler)
   }, [])
 
-  const onClick = (e: MouseEvent<HTMLDivElement>) => {
+  const onShow = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()
     setIsShow(false)
+  }
+
+  const onClick = (option: string) => {
+    setValue(option)
+    if (onChange) onChange(option)
   }
 
   return (
     <S.Wrapper ref={ref} onClick={() => setIsShow(!isShow)}>
       <S.SelectedOption>{value}</S.SelectedOption>
       <ArrowDown />
-      <S.Options isShow={isShow} onClick={onClick}>
-        {optionList?.map((option) => (
-          <S.Option onClick={() => setValue(option)} key={option}>
+      <S.Options isShow={isShow} onClick={onShow}>
+        {options?.map((option) => (
+          <S.Option onClick={() => onClick(option)} key={option}>
             {option}
           </S.Option>
         ))}
