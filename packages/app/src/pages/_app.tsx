@@ -3,7 +3,7 @@ import GlobalLayout from '@layouts/GlobalLayout'
 import wrapper from '@store'
 import type { AppProps } from 'next/app'
 
-import 'shared/dist/index.css'
+import '@sms/shared/src/style/index'
 import '@styles/font.css'
 
 export default function App({ Component, ...rest }: AppProps) {

@@ -1,4 +1,4 @@
-import { Dialog } from 'shared'
+import { Dialog } from '@sms/shared'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store'
 import { setIsShow } from '@store/dialogSlice'
