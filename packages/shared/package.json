@@ -1,13 +1,10 @@
 {
-  "name": "shared",
+  "name": "@sms/shared",
   "version": "1.0.0",
   "private": true,
   "description": "",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
   "scripts": {
-    "build": "tsup",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -29,7 +26,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "storybook": "^7.0.7",
-    "tsup": "^6.7.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {

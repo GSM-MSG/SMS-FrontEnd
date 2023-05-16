@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Emitter } from 'shared'
+import { Emitter } from '@sms/shared'
 import { DialogInitialState, SetLogInfoType } from '@/types/store/dialogSlice'
 
 const initialState: DialogInitialState = {

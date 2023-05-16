@@ -1,4 +1,4 @@
-import { FadeinAnimation, GauthLoginButton, Headline, Title } from 'shared'
+import { FadeinAnimation, GauthLoginButton, Headline, Title } from '@sms/shared'
 import useAuth from '@features/auth/hook/useAuth'
 import * as S from './style'
 

@@ -9,5 +9,13 @@
       "@/*": ["./*"]
     }
   },
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.mdx",
+    ".storybook/**"
+  ]
 }
