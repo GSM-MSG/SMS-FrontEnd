@@ -12,7 +12,7 @@ interface Props {
 const Select = ({ options, name, register }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const optionKeys = Object.keys(options)
-  const [value, setValue] = useState<string>(options[optionKeys[0]])
+  const [value, setValue] = useState<string>(optionKeys[0])
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Select = ({ options, name, register }: Props) => {
         {optionKeys.map((key, idx) => (
           <S.Option
             htmlFor={`${name}-${idx}`}
-            onClick={() => onClick(options[key])}
+            onClick={() => onClick(key)}
             key={key}
           >
             <S.CheckButton
@@ -60,7 +60,7 @@ const Select = ({ options, name, register }: Props) => {
               defaultChecked={value === options[key]}
               type='radio'
             />
-            {options[key]}
+            {key}
           </S.Option>
         ))}
       </S.Options>
