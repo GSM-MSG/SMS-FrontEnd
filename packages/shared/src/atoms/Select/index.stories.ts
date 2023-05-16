@@ -1,5 +1,23 @@
 import { Meta, StoryObj } from '@storybook/react'
 import Select from './index'
+import type { OptionsType } from './type'
+
+const options = [
+  'hi',
+  'hello',
+  'woeijfwoiefjweoijf',
+  'jfowejfowiejfowjgoh',
+  'not',
+  'ur',
+  'wefoijoi',
+  'friends',
+  'wefohijof',
+  'fwowefjw',
+  'woefjweoijf',
+].reduce((pre, cur) => {
+  pre[cur] = cur
+  return pre
+}, {} as OptionsType)
 
 const config: Meta<typeof Select> = {
   title: 'Select',
@@ -7,19 +25,7 @@ const config: Meta<typeof Select> = {
   args: {
     name: 'hi',
     register: () => {},
-    options: [
-      'hi',
-      'hello',
-      'woeijfwoiefjweoijf',
-      'jfowejfowiejfowjgoh',
-      'not',
-      'ur',
-      'wefoijoi',
-      'friends',
-      'wefohijof',
-      'fwowefjw',
-      'woefjweoijf',
-    ],
+    options,
   },
 }
 

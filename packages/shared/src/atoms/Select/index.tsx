@@ -1,16 +1,18 @@
 import { MouseEvent, useEffect, useRef, useState } from 'react'
 import { ArrowDown } from '../../icons'
 import * as S from './style'
+import { OptionsType } from './type'
 
 interface Props {
-  options: string[]
+  options: OptionsType
   register: any
   name: string
 }
 
 const Select = ({ options, name, register }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
-  const [value, setValue] = useState<string>(options[0])
+  const optionKeys = Object.keys(options)
+  const [value, setValue] = useState<string>(options[optionKeys[0]])
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -44,21 +46,21 @@ const Select = ({ options, name, register }: Props) => {
       <S.SelectedOption>{value}</S.SelectedOption>
       <ArrowDown />
       <S.Options isShow={isShow} onClick={onShow}>
-        {options?.map((option, idx) => (
+        {optionKeys.map((key, idx) => (
           <S.Option
             htmlFor={`${name}-${idx}`}
-            onClick={() => onClick(option)}
-            key={option}
+            onClick={() => onClick(options[key])}
+            key={key}
           >
             <S.CheckButton
               {...register(name)}
               id={`${name}-${idx}`}
               name={name}
-              value={option}
-              defaultChecked={value === option}
+              value={options[key]}
+              defaultChecked={value === options[key]}
               type='radio'
             />
-            {option}
+            {options[key]}
           </S.Option>
         ))}
       </S.Options>
