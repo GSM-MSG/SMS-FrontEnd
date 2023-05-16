@@ -6,6 +6,7 @@ const config: Meta<typeof Select> = {
   component: Select,
   args: {
     name: 'hi',
+    register: () => {},
     options: [
       'hi',
       'hello',
