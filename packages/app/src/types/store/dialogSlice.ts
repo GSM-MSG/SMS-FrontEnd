@@ -1,4 +1,4 @@
-import { Emitter } from 'shared'
+import { Emitter } from '@sms/shared'
 
 export interface DialogInitialState {
   title: string
