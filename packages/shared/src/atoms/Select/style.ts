@@ -17,12 +17,16 @@ export const Wrapper = styled.div`
 
   :hover {
     border: 1px solid var(--P1);
+
+    div {
+      color: var(--N30);
+    }
   }
 `
 
 export const SelectedOption = styled.div`
   ${({ theme }) => theme.body1}
-  color: var(--N30);
+  color: var(--BLACK);
 `
 export const Options = styled.div<OptionsProps>`
   width: 100%;
@@ -57,6 +61,7 @@ export const Option = styled.label`
   align-items: center;
   border-radius: 0.5rem;
   transition: 0.2s;
+  color: var(--BLACK);
 
   :hover {
     background: var(--N10);
