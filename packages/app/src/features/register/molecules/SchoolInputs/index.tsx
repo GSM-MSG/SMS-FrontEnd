@@ -1,5 +1,5 @@
 import { Input, FileInput } from '@sms/shared'
-import { InputColumn, FormWrapper } from '@features/user/atoms'
+import { InputColumn, FormWrapper } from '@features/register/atoms'
 
 const SchoolInputs = () => {
   return (

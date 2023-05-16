@@ -1,6 +1,6 @@
 import { FileInput, Input, Select } from '@sms/shared'
-import { InputColumn, FormWrapper } from '@features/user/atoms'
-import { WorkType } from '@features/user/data'
+import { InputColumn, FormWrapper } from '@features/register/atoms'
+import { WorkType } from '@features/register/data'
 
 const WorkingInputs = () => {
   return (

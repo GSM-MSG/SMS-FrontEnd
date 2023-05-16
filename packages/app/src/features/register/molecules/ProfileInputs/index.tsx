@@ -1,6 +1,6 @@
 import { Input, Profile, Select } from '@sms/shared'
-import { InputColumn, FormWrapper } from '@features/user/atoms'
-import { MajorList } from '@features/user/data'
+import { InputColumn, FormWrapper } from '@features/register/atoms'
+import { MajorList } from '@features/register/data'
 
 const ProfileInputs = () => {
   return (
