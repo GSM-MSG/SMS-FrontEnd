@@ -1,3 +1,5 @@
+import { OptionsType } from '@sms/shared'
+
 const MajorList = [
   'Frontend',
   'Backend',
@@ -8,6 +10,9 @@ const MajorList = [
   'Design',
   'AI',
   'IoT',
-]
+].reduce((pre, cur) => {
+  pre[cur] = cur
+  return pre
+}, {} as OptionsType)
 
 export default MajorList
