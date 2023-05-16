@@ -1,6 +1,6 @@
 import { setIsShow, setLogInfo } from '@store/dialogSlice'
 import { useDispatch } from 'react-redux'
-import { Emitter } from 'shared'
+import { Emitter } from '@sms/shared'
 import { SetLogInfoType } from '@/types/store/dialogSlice'
 
 const useDialog = () => {
