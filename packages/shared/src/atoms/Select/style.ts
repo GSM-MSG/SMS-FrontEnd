@@ -47,7 +47,7 @@ export const Options = styled.div<OptionsProps>`
   }
 `
 
-export const Option = styled.div`
+export const Option = styled.label`
   ${({ theme }) => theme.body1}
   width: 100%;
   height: 3rem;
@@ -61,4 +61,9 @@ export const Option = styled.div`
   :hover {
     background: var(--N10);
   }
+`
+
+export const CheckButton = styled.input`
+  position: absolute;
+  opacity: 0;
 `

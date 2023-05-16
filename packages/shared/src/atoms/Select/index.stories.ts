@@ -5,7 +5,8 @@ const config: Meta<typeof Select> = {
   title: 'Select',
   component: Select,
   args: {
-    optionList: [
+    name: 'hi',
+    options: [
       'hi',
       'hello',
       'woeijfwoiefjweoijf',

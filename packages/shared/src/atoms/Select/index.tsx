@@ -4,16 +4,16 @@ import * as S from './style'
 
 interface Props {
   options: string[]
-  onChange?(value: string): void
+  register: any
+  name: string
 }
 
-const Select = ({ options, onChange }: Props) => {
+const Select = ({ options, name, register }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const [value, setValue] = useState<string>(options[0])
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (onChange) onChange(options[0])
     const clickHandler = (e: Event) => {
       if (
         ref.current &&
@@ -36,8 +36,7 @@ const Select = ({ options, onChange }: Props) => {
   }
 
   const onClick = (option: string) => {
-    setValue(option)
-    if (onChange) onChange(option)
+    setValue(() => option)
   }
 
   return (
@@ -45,8 +44,20 @@ const Select = ({ options, onChange }: Props) => {
       <S.SelectedOption>{value}</S.SelectedOption>
       <ArrowDown />
       <S.Options isShow={isShow} onClick={onShow}>
-        {options?.map((option) => (
-          <S.Option onClick={() => onClick(option)} key={option}>
+        {options?.map((option, idx) => (
+          <S.Option
+            htmlFor={`${name}-${idx}`}
+            onClick={() => onClick(option)}
+            key={option}
+          >
+            <S.CheckButton
+              {...register(name)}
+              id={`${name}-${idx}`}
+              name={name}
+              value={option}
+              defaultChecked={value === option}
+              type='radio'
+            />
             {option}
           </S.Option>
         ))}
