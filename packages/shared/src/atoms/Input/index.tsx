@@ -40,12 +40,12 @@ const Input = forwardRef<HTMLInputElement, Props>(
       <S.Wrapper>
         <S.InputWrapper isFocused={isFocused}>
           <S.TextFiled
+            {...props}
             value={props.value ? props.value : value}
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
             ref={ref ? ref : inputRef}
-            {...props}
           />
           <S.ResetButton
             style={{ opacity: props.value || value ? 1 : 0 }}

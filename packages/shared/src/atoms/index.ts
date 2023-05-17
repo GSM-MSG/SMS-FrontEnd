@@ -9,5 +9,6 @@ export { default as Chip } from './Chip'
 export { default as Profile } from './Profile'
 export { default as Select } from './Select'
 export { default as FileInput } from './FileInput'
+export { default as Input } from './Input'
 
 export type { OptionsType } from './Select/type'

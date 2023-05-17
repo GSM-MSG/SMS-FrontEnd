@@ -9,7 +9,7 @@ interface Props
 
 const Chip = ({ children, ...props }: Props) => {
   return (
-    <S.Wrapper {...props}>
+    <S.Wrapper {...props} type='button'>
       <span>+</span>
       <span>{children}</span>
     </S.Wrapper>
