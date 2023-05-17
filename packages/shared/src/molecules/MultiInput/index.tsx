@@ -13,9 +13,10 @@ interface Props {
   name: string
   control: Control<any>
   register: UseFormRegister<any>
+  placeholder?: string
 }
 
-const MultiInput = ({ name, control, register }: Props) => {
+const MultiInput = ({ name, control, register, placeholder }: Props) => {
   const { fields, append, remove } = useFieldArray<FieldValues>({
     name,
     control,
@@ -32,7 +33,7 @@ const MultiInput = ({ name, control, register }: Props) => {
           <S.InputWrapper key={field.id}>
             <Input
               {...register(`${name}[${index}]`)}
-              placeholder='예)정보처리산업기사'
+              placeholder={placeholder}
             />
             {fields.length > 1 && (
               <S.RemoveBtn type='button' onClick={() => remove(index)}>
