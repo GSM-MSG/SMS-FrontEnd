@@ -1,7 +1,9 @@
 import styled from '@emotion/styled'
 import { InputWrapperProps } from './type'
 
-export const Wrapper = styled.div``
+export const Wrapper = styled.div`
+  width: 100%;
+`
 
 export const InputWrapper = styled.form<InputWrapperProps>`
   min-width: 12.5rem;
