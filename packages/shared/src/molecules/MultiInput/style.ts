@@ -11,6 +11,11 @@ export const InputWrapper = styled.div`
   gap: 1rem;
 `
 
+export const InputsWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 0.5rem;
+`
+
 export const RemoveBtn = styled.button`
   background: transparent;
   border: none;

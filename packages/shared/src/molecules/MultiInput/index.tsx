@@ -27,17 +27,22 @@ const MultiInput = ({ name, control, register }: Props) => {
 
   return (
     <S.Wrapper>
-      {fields.map((field, index) => (
-        <S.InputWrapper key={field.id}>
-          <Input {...register(`${name}[${index}]`)} />
-          {fields.length > 1 && (
-            <S.RemoveBtn type='button' onClick={() => remove(index)}>
-              <Trash />
-            </S.RemoveBtn>
-          )}
-        </S.InputWrapper>
-      ))}
-      <Chip onClick={() => append('')}>Hello world</Chip>
+      <S.InputsWrapper>
+        {fields.map((field, index) => (
+          <S.InputWrapper key={field.id}>
+            <Input
+              {...register(`${name}[${index}]`)}
+              placeholder='예)정보처리산업기사'
+            />
+            {fields.length > 1 && (
+              <S.RemoveBtn type='button' onClick={() => remove(index)}>
+                <Trash />
+              </S.RemoveBtn>
+            )}
+          </S.InputWrapper>
+        ))}
+      </S.InputsWrapper>
+      <Chip onClick={() => append('')}>추가</Chip>
     </S.Wrapper>
   )
 }
