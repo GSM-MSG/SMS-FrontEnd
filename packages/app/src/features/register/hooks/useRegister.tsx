@@ -3,8 +3,13 @@ import { ChangeEvent } from 'react'
 import { useForm } from 'react-hook-form'
 
 const useRegister = () => {
-  const { register, control, handleSubmit, setValue } =
-    useForm<RegisterFormType>()
+  const {
+    register,
+    control,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<RegisterFormType>()
 
   const imageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || !e.target.files[0]) return ''
@@ -21,7 +26,7 @@ const useRegister = () => {
 
   const onSubmit = handleSubmit(() => {})
 
-  return { register, control, onSubmit, imageUpload, fileUpload }
+  return { register, control, onSubmit, imageUpload, fileUpload, errors }
 }
 
 export default useRegister
