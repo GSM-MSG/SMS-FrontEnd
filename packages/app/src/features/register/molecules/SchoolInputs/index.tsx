@@ -2,12 +2,14 @@ import { Input, FileInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { RegisterFormType } from '@features/register/type'
 import { UseFormRegister } from 'react-hook-form'
+import { ChangeEvent } from 'react'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
+  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
 }
 
-const SchoolInputs = ({ register }: Props) => {
+const SchoolInputs = ({ register, onUpload }: Props) => {
   return (
     <FormWrapper title='학교 생활'>
       <InputColumn comment='인증제 점수'>
@@ -18,7 +20,7 @@ const SchoolInputs = ({ register }: Props) => {
         />
       </InputColumn>
       <InputColumn comment='드림북'>
-        <FileInput type='file' placeholder='+ hwp 파일 추가' />
+        <FileInput onUpload={onUpload} />
       </InputColumn>
     </FormWrapper>
   )

@@ -57,7 +57,7 @@ const Select = ({ options, name, register }: Props) => {
               id={`${name}-${idx}`}
               name={name}
               value={options[key]}
-              defaultChecked={value === options[key]}
+              defaultChecked={idx === 0}
               type='radio'
             />
             {key}

@@ -1,19 +1,21 @@
 import { Input, Profile, Select, MultiInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { MajorList } from '@features/register/data'
-import { Control, UseFormRegister } from 'react-hook-form'
 import { RegisterFormType } from '@features/register/type'
+import { Control, UseFormRegister } from 'react-hook-form'
+import { ChangeEvent } from 'react'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   control: Control<RegisterFormType>
+  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
 }
 
-const ProfileInputs = ({ register, control }: Props) => {
+const ProfileInputs = ({ register, control, onUpload }: Props) => {
   return (
     <FormWrapper title='프로필'>
       <InputColumn comment='사진'>
-        <Profile error='' />
+        <Profile onUpload={onUpload} />
       </InputColumn>
       <InputColumn comment='자기 소개'>
         <Input {...register('introduce')} placeholder='1줄 자기소개 입력' />

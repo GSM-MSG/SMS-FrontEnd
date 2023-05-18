@@ -1,14 +1,15 @@
-import { FileInput, Input, Select } from '@sms/shared'
+import { Input, MultiInput, Select } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { WorkType } from '@features/register/data'
 import { RegisterFormType } from '@features/register/type'
-import { UseFormRegister } from 'react-hook-form'
+import { Control, UseFormRegister } from 'react-hook-form'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
+  control: Control<RegisterFormType>
 }
 
-const WorkingInputs = ({ register }: Props) => {
+const WorkingInputs = ({ register, control }: Props) => {
   return (
     <FormWrapper title='근무 조건'>
       <InputColumn comment='희망 고용 형태'>
@@ -18,13 +19,18 @@ const WorkingInputs = ({ register }: Props) => {
           name='formOfEmployment'
         />
       </InputColumn>
-      <InputColumn comment='드림북'>
-        <FileInput type='file' placeholder='+ hwp 파일 추가' />
-      </InputColumn>
       <InputColumn comment='희망 연봉'>
         <Input
           {...register('salary')}
           placeholder='희망 연봉 (10,000원 단위)'
+        />
+      </InputColumn>
+      <InputColumn comment='근무 지역'>
+        <MultiInput
+          placeholder='근무 희망 지역입력'
+          name='region'
+          register={register}
+          control={control}
         />
       </InputColumn>
     </FormWrapper>
