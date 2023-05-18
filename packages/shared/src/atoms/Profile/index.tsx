@@ -2,8 +2,6 @@ import {
   ChangeEvent,
   DetailedHTMLProps,
   InputHTMLAttributes,
-  forwardRef,
-  useRef,
   useState,
 } from 'react'
 import { Plus } from '../../icons'
@@ -15,54 +13,36 @@ interface Props
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  error: string
+  error?: string
+  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
 }
 
-const Profile = forwardRef<HTMLInputElement, Props>(
-  ({ error, ...props }, ref) => {
-    const inputRef = useRef<HTMLInputElement>(null)
-    const [tempImg, setTempImg] = useState<string>('')
+const Profile = ({ error, onUpload, ...props }: Props) => {
+  const [imgUrl, setImgUrl] = useState<string>('')
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const files = e.target.files
-      if (!files || !files[0]) return
+  const onChange = async (e: ChangeEvent<HTMLInputElement>) =>
+    setImgUrl(await onUpload(e))
 
-      setTempImg(URL.createObjectURL(files[0]))
-
-      if (props.onChange) props.onChange(e)
-    }
-
-    const onClick = () => {
-      if (ref && 'current' in ref) ref.current?.click()
-      inputRef.current?.click()
-    }
-
-    return (
-      <>
-        <S.Wrapper>
-          <S.ImageInput
-            {...props}
-            type='file'
-            ref={ref || inputRef}
-            accept='image/*'
-            onChange={onChange}
-          />
-          <S.ProfileWrapper onClick={onClick}>
-            {tempImg ? (
-              <S.UserTempImg src={tempImg} alt='temp img' />
-            ) : (
-              <SVG.Person />
-            )}
-            <S.DarkBackground>
-              <Plus />
-            </S.DarkBackground>
-          </S.ProfileWrapper>
-          <S.ErrorMessage>{error}</S.ErrorMessage>
-        </S.Wrapper>
-      </>
-    )
-  }
-)
+  return (
+    <>
+      <S.TextInput {...props} value={imgUrl} />
+      <S.Wrapper>
+        <S.ProfileWrapper>
+          <S.ImageInput type='file' accept='image/*' onChange={onChange} />
+          {imgUrl ? (
+            <S.UserTempImg src={imgUrl} alt='temp img' />
+          ) : (
+            <SVG.Person />
+          )}
+          <S.DarkBackground>
+            <Plus />
+          </S.DarkBackground>
+        </S.ProfileWrapper>
+        <S.ErrorMessage>{error}</S.ErrorMessage>
+      </S.Wrapper>
+    </>
+  )
+}
 
 Profile.displayName = 'Profile'
 
