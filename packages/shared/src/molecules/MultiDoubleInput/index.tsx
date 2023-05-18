@@ -21,7 +21,7 @@ const MultiDoubleInput = ({ name, control, register }: Props) => {
   })
 
   useEffect(() => {
-    append({})
+    append('')
   }, [])
 
   return (
