@@ -1,9 +1,5 @@
 import styled from '@emotion/styled'
 
-export const TextInput = styled.input`
-  display: none;
-`
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

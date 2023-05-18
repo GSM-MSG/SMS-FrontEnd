@@ -1,9 +1,5 @@
 import styled from '@emotion/styled'
 
-export const TextInput = styled.input`
-  display: block;
-`
-
 export const Wrapper = styled.label`
   min-width: 12.5rem;
   padding: 0.8rem 0.75rem;
