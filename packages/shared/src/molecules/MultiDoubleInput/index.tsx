@@ -12,17 +12,16 @@ interface Props {
   name: string
   control: Control<any>
   register: UseFormRegister<any>
-  placeholder?: string
 }
 
-const MultiInput = ({ name, control, register, placeholder }: Props) => {
+const MultiDoubleInput = ({ name, control, register }: Props) => {
   const { fields, append, remove } = useFieldArray<FieldValues>({
     name,
     control,
   })
 
   useEffect(() => {
-    append('')
+    append({})
   }, [])
 
   return (
@@ -30,10 +29,17 @@ const MultiInput = ({ name, control, register, placeholder }: Props) => {
       <S.InputsWrapper>
         {fields.map((field, index) => (
           <S.InputWrapper key={field.id}>
-            <Input
-              {...register(`${name}[${index}]`)}
-              placeholder={placeholder}
-            />
+            <S.DoubleInputWrapper>
+              <Input
+                {...register(`${name}[${index}].languageCertificateName`)}
+                placeholder='예) 토익'
+              />
+              <Input
+                {...register(`${name}[${index}].score`)}
+                placeholder='990'
+              />
+            </S.DoubleInputWrapper>
+
             {fields.length > 1 && (
               <DeleteButton type='button' onClick={() => remove(index)} />
             )}
@@ -45,4 +51,4 @@ const MultiInput = ({ name, control, register, placeholder }: Props) => {
   )
 }
 
-export default MultiInput
+export default MultiDoubleInput
