@@ -15,10 +15,11 @@ interface Props
     HTMLInputElement
   > {
   error?: string
+  isReset?: boolean
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ error, ...props }, ref) => {
+  ({ error, isReset, ...props }, ref) => {
     const [value, setValue] = useState<string>('')
     const [isFocused, setIsFocused] = useState<boolean>(false)
     const inputRef = useRef<HTMLInputElement>(null)
@@ -48,7 +49,9 @@ const Input = forwardRef<HTMLInputElement, Props>(
             ref={ref ? ref : inputRef}
           />
           <S.ResetButton
-            style={{ opacity: props.value || value ? 1 : 0 }}
+            style={{
+              display: isReset && (props.value || value) ? 'block' : 'none',
+            }}
             onClick={onReset}
           >
             <Xmark />
