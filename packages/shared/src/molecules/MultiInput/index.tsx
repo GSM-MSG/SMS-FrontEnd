@@ -5,8 +5,7 @@ import {
   UseFormRegister,
   useFieldArray,
 } from 'react-hook-form'
-import { Trash } from '../../icons'
-import { Chip, Input } from '../../atoms'
+import { Chip, DeleteButton, Input } from '../../atoms'
 import * as S from './style'
 
 interface Props {
@@ -35,9 +34,7 @@ const MultiInput = ({ name, control, register }: Props) => {
               placeholder='예)정보처리산업기사'
             />
             {fields.length > 1 && (
-              <S.RemoveBtn type='button' onClick={() => remove(index)}>
-                <Trash />
-              </S.RemoveBtn>
+              <DeleteButton type='button' onClick={() => remove(index)} />
             )}
           </S.InputWrapper>
         ))}

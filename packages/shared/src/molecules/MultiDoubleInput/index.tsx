@@ -5,8 +5,7 @@ import {
   UseFormRegister,
   useFieldArray,
 } from 'react-hook-form'
-import { Trash } from '../../icons'
-import { Chip, Input } from '../../atoms'
+import { Chip, DeleteButton, Input } from '../../atoms'
 import * as S from './style'
 
 interface Props {
@@ -42,9 +41,7 @@ const MultiDoubleInput = ({ name, control, register }: Props) => {
             </S.DoubleInputWrapper>
 
             {fields.length > 1 && (
-              <S.RemoveBtn type='button' onClick={() => remove(index)}>
-                <Trash />
-              </S.RemoveBtn>
+              <DeleteButton type='button' onClick={() => remove(index)} />
             )}
           </S.InputWrapper>
         ))}
