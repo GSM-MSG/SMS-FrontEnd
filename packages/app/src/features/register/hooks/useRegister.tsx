@@ -4,9 +4,7 @@ import { useForm } from 'react-hook-form'
 const useRegister = () => {
   const { register, control, handleSubmit } = useForm<RegisterFormType>()
 
-  const onSubmit = handleSubmit((form: RegisterFormType) => {
-    console.log(form)
-  })
+  const onSubmit = handleSubmit(() => {})
 
   return { register, control, onSubmit }
 }
