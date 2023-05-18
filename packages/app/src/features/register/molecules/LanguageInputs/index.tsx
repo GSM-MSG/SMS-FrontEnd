@@ -12,7 +12,7 @@ const LanguageInputs = <FormType extends FieldValues>({
   register,
 }: Props<FormType>) => {
   return (
-    <FormWrapper title='외국어'>
+    <FormWrapper required={false} title='외국어'>
       <InputColumn comment='외국어'>
         <MultiDoubleInput
           register={register}

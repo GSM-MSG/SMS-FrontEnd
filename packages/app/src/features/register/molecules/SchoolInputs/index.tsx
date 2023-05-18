@@ -1,11 +1,21 @@
 import { Input, FileInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
+import { RegisterFormType } from '@features/register/type'
+import { UseFormRegister } from 'react-hook-form'
 
-const SchoolInputs = () => {
+interface Props {
+  register: UseFormRegister<RegisterFormType>
+}
+
+const SchoolInputs = ({ register }: Props) => {
   return (
     <FormWrapper title='학교 생활'>
       <InputColumn comment='인증제 점수'>
-        <Input placeholder='인증 점수 입력' type='number' />
+        <Input
+          {...register('gsmAuthenticationScore')}
+          placeholder='인증 점수 입력'
+          type='number'
+        />
       </InputColumn>
       <InputColumn comment='드림북'>
         <FileInput type='file' placeholder='+ hwp 파일 추가' />

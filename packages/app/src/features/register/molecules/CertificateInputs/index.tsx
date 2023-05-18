@@ -12,7 +12,7 @@ const CertificateInputs = <FormType extends FieldValues>({
   register,
 }: Props<FormType>) => {
   return (
-    <FormWrapper title='자격증'>
+    <FormWrapper required={false} title='자격증'>
       <InputColumn comment='자격증'>
         <MultiInput
           register={register}
