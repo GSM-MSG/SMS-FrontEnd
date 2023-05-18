@@ -1,30 +1,25 @@
-import { ChangeEvent, InputHTMLAttributes, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import * as S from './style'
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {}
+interface Props {
+  placeholder?: string
+  onUpload(e: ChangeEvent<HTMLInputElement>): Promise<void>
+}
 
-const FileInput = ({ placeholder = '＋hwp 파일 추가', ...props }: Props) => {
+const FileInput = ({ placeholder = '＋hwp 파일 추가', onUpload }: Props) => {
   const [fileName, setFileName] = useState<string>('')
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    await onUpload(e)
     const files = e.target.files
     if (files && files[0]) setFileName(files[0].name)
-
-    if (props.onChange) props.onChange(e)
   }
 
   return (
-    <>
-      <S.Wrapper>
-        {fileName === '' ? placeholder : fileName}
-        <S.Input
-          {...props}
-          onChange={onChange}
-          type='file'
-          accept='.hwp,.hwpx'
-        />
-      </S.Wrapper>
-    </>
+    <S.Wrapper>
+      {fileName === '' ? placeholder : fileName}
+      <S.Input onChange={onChange} type='file' accept='.hwp,.hwpx' />
+    </S.Wrapper>
   )
 }
 

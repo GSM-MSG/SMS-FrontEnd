@@ -11,7 +11,7 @@ export const ImageInput = styled.input`
   display: none;
 `
 
-export const ProfileWrapper = styled.div`
+export const ProfileWrapper = styled.label`
   width: 10.5rem;
   height: 10.5rem;
   display: inline-flex;
