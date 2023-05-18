@@ -49,7 +49,6 @@ const Input = forwardRef<HTMLInputElement, Props>(
           />
           <S.ResetButton
             style={{ opacity: props.value || value ? 1 : 0 }}
-            type='reset'
             onClick={onReset}
           >
             <Xmark />
