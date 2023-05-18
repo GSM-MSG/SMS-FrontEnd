@@ -6,6 +6,12 @@ export const Wrapper = styled.form`
   margin: 0 auto;
 `
 
+export const LogoWrapper = styled.div`
+  width: 12.5rem;
+  height: 5rem;
+  margin: 0 auto 2rem;
+`
+
 export const SubmitBtn = styled(Button)`
   max-width: 11.75rem;
 `
