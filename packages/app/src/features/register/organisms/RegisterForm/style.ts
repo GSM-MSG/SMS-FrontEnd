@@ -12,6 +12,19 @@ export const LogoWrapper = styled.div`
   margin: 0 auto 2rem;
 `
 
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+
+  @media (max-width: 44rem) {
+    justify-content: center;
+
+    button {
+      max-width: 90%;
+    }
+  }
+`
+
 export const SubmitBtn = styled(Button)`
   max-width: 11.75rem;
 `

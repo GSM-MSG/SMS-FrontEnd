@@ -28,7 +28,9 @@ const RegisterForm = () => {
       <MilitaryInputs register={register} />
       <CertificateInputs register={register} control={control} />
       <LanguageInputs register={register} control={control} />
-      <S.SubmitBtn type='submit'>확인</S.SubmitBtn>
+      <S.ButtonWrapper>
+        <S.SubmitBtn type='submit'>확인</S.SubmitBtn>
+      </S.ButtonWrapper>
     </S.Wrapper>
   )
 }
