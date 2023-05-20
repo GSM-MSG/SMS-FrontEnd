@@ -14,11 +14,16 @@ interface FormType {
   item: {
     languageCertificateName: string
     score: string
-  }
+  }[]
 }
 
 export const Primary = () => {
-  const { register, control, handleSubmit } = useForm<FormType>()
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormType>()
 
   const onSubmit = (_form: FormType) => {}
 
@@ -28,6 +33,7 @@ export const Primary = () => {
         name={'item' as const}
         register={register}
         control={control}
+        errors={errors.item}
       />
       <button type='submit'>submit</button>
     </form>
