@@ -15,13 +15,23 @@ interface FormType {
 }
 
 export const Primary = () => {
-  const { register, control, handleSubmit } = useForm<FormType>()
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormType>()
 
   const onSubmit = (_form: FormType) => {}
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <MultiInput name='item' register={register} control={control} />
+      <MultiInput
+        name='item'
+        register={register}
+        errors={errors.item}
+        control={control}
+      />
       <button type='submit'>submit</button>
     </form>
   )
