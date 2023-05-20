@@ -25,11 +25,15 @@ const RegisterForm = () => {
         register={register}
         errors={errors}
       />
-      <SchoolInputs onUpload={fileUpload} register={register} />
-      <WorkingInputs control={control} register={register} />
+      <SchoolInputs onUpload={fileUpload} register={register} errors={errors} />
+      <WorkingInputs control={control} register={register} errors={errors} />
       <MilitaryInputs register={register} />
-      <CertificateInputs register={register} control={control} />
-      <LanguageInputs register={register} control={control} />
+      <CertificateInputs
+        register={register}
+        control={control}
+        errors={errors}
+      />
+      <LanguageInputs register={register} control={control} errors={errors} />
       <S.ButtonWrapper>
         <S.SubmitBtn type='submit'>확인</S.SubmitBtn>
       </S.ButtonWrapper>

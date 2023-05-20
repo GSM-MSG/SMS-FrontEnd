@@ -33,6 +33,7 @@ const WorkingInputs = ({ register, control, errors }: Props) => {
           name='region'
           register={register}
           control={control}
+          errors={errors.region}
         />
       </InputColumn>
     </FormWrapper>

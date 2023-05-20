@@ -22,7 +22,10 @@ const SchoolInputs = ({ register, onUpload, errors }: Props) => {
         />
       </InputColumn>
       <InputColumn comment='드림북'>
-        <FileInput onUpload={onUpload} />
+        <FileInput
+          onUpload={onUpload}
+          errors={!!errors.dreamBookFileUrl?.type}
+        />
       </InputColumn>
     </FormWrapper>
   )

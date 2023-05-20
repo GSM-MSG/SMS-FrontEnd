@@ -1,16 +1,15 @@
 import { MultiInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
-import { Control, FieldValues, UseFormRegister } from 'react-hook-form'
+import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
+import { RegisterFormType } from '@features/register/type'
 
-interface Props<FormType extends FieldValues> {
-  register: UseFormRegister<FormType>
-  control: Control<FormType>
+interface Props {
+  register: UseFormRegister<RegisterFormType>
+  control: Control<RegisterFormType>
+  errors: FieldErrors<RegisterFormType>
 }
 
-const CertificateInputs = <FormType extends FieldValues>({
-  control,
-  register,
-}: Props<FormType>) => {
+const CertificateInputs = ({ control, register, errors }: Props) => {
   return (
     <FormWrapper required={false} title='자격증'>
       <InputColumn comment='자격증'>
@@ -19,6 +18,7 @@ const CertificateInputs = <FormType extends FieldValues>({
           control={control}
           name='certificate'
           placeholder='예)정보처리산업기사'
+          errors={errors.certificate}
         />
       </InputColumn>
     </FormWrapper>

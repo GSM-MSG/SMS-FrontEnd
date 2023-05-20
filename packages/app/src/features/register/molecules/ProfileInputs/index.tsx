@@ -48,6 +48,7 @@ const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
           control={control}
           name='techStack'
           placeholder='예시)HTML, CSS, C#'
+          errors={errors.techStack}
         />
       </InputColumn>
     </FormWrapper>

@@ -13,7 +13,7 @@ interface Props {
   name: string
   control: Control<any>
   register: UseFormRegister<any>
-  errors: ErrorsType
+  errors?: ErrorsType
 }
 
 /**

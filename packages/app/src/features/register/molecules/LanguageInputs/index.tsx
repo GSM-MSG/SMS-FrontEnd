@@ -1,16 +1,15 @@
 import { MultiDoubleInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
-import { Control, FieldValues, UseFormRegister } from 'react-hook-form'
+import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
+import { RegisterFormType } from '@features/register/type'
 
-interface Props<FormType extends FieldValues> {
-  register: UseFormRegister<FormType>
-  control: Control<FormType>
+interface Props {
+  register: UseFormRegister<RegisterFormType>
+  control: Control<RegisterFormType>
+  errors: FieldErrors<RegisterFormType>
 }
 
-const LanguageInputs = <FormType extends FieldValues>({
-  control,
-  register,
-}: Props<FormType>) => {
+const LanguageInputs = ({ control, register, errors }: Props) => {
   return (
     <FormWrapper required={false} title='외국어'>
       <InputColumn comment='외국어'>
@@ -18,6 +17,7 @@ const LanguageInputs = <FormType extends FieldValues>({
           register={register}
           control={control}
           name='languageCertificate'
+          errors={errors.languageCertificate}
         />
       </InputColumn>
     </FormWrapper>
