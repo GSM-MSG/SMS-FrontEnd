@@ -4,9 +4,14 @@ import * as S from './style'
 interface Props {
   placeholder?: string
   onUpload(e: ChangeEvent<HTMLInputElement>): Promise<void>
+  errors?: boolean
 }
 
-const FileInput = ({ placeholder = '＋hwp 파일 추가', onUpload }: Props) => {
+const FileInput = ({
+  placeholder = '＋hwp 파일 추가',
+  onUpload,
+  errors,
+}: Props) => {
   const [fileName, setFileName] = useState<string>('')
 
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +22,11 @@ const FileInput = ({ placeholder = '＋hwp 파일 추가', onUpload }: Props) =>
 
   return (
     <S.Wrapper>
-      {fileName === '' ? placeholder : fileName}
-      <S.Input onChange={onChange} type='file' accept='.hwp,.hwpx' />
+      <S.InputWrapper>
+        {fileName === '' ? placeholder : fileName}
+        <S.Input onChange={onChange} type='file' accept='.hwp,.hwpx' />
+      </S.InputWrapper>
+      {errors && <S.Error>파일 업로드에 실패했습니다</S.Error>}
     </S.Wrapper>
   )
 }
