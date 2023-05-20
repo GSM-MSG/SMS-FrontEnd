@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 
-export const Wrapper = styled.label`
+export const Wrapper = styled.div`
+  width: 100%;
+`
+
+export const InputWrapper = styled.label`
   min-width: 12.5rem;
   padding: 0.8rem 0.75rem;
   border-radius: 0.5rem;
@@ -19,4 +23,9 @@ export const Wrapper = styled.label`
 
 export const Input = styled.input`
   display: none;
+`
+
+export const Error = styled.div`
+  ${({ theme }) => theme.caption1}
+  color: var(--ERROR);
 `

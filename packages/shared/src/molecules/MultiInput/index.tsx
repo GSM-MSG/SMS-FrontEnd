@@ -3,6 +3,8 @@ import {
   Control,
   FieldValues,
   UseFormRegister,
+  FieldError,
+  Merge,
   useFieldArray,
 } from 'react-hook-form'
 import { Chip, DeleteButton, Input } from '../../atoms'
@@ -12,10 +14,17 @@ interface Props {
   name: string
   control: Control<any>
   register: UseFormRegister<any>
+  errors?: Merge<FieldError, (FieldError | undefined)[]> | undefined
   placeholder?: string
 }
 
-const MultiInput = ({ name, control, register, placeholder }: Props) => {
+const MultiInput = ({
+  name,
+  control,
+  register,
+  errors,
+  placeholder,
+}: Props) => {
   const { fields, append, remove } = useFieldArray<FieldValues>({
     name,
     control,
@@ -31,8 +40,11 @@ const MultiInput = ({ name, control, register, placeholder }: Props) => {
         {fields.map((field, index) => (
           <S.InputWrapper key={field.id}>
             <Input
-              {...register(`${name}[${index}]`)}
               placeholder={placeholder}
+              {...register(`${name}[${index}]`, {
+                required: { value: true, message: '필수 값입니다' },
+              })}
+              error={errors?.[index]?.message}
             />
             {fields.length > 1 && (
               <DeleteButton type='button' onClick={() => remove(index)} />

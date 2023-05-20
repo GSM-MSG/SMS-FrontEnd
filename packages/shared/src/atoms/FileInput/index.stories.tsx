@@ -15,17 +15,30 @@ interface FormType {
 }
 
 export const Primary = () => {
-  const { register, handleSubmit, setValue } = useForm<FormType>()
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    setError,
+    formState: { errors },
+  } = useForm<FormType>()
 
   const onUpload = async () => {
     setValue('file', 'https://hello.com')
+    setError('file', {})
   }
 
-  const onSubmit = () => {}
+  const onSubmit = () => {
+    setError('file', { type: 'required' })
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FileInput {...register('file')} onUpload={onUpload} />
+      <FileInput
+        errors={!!errors.file?.type}
+        {...register('file')}
+        onUpload={onUpload}
+      />
       <button>submit</button>
     </form>
   )
