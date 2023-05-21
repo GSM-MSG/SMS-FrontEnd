@@ -20,14 +20,18 @@ const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
       </InputColumn>
       <InputColumn comment='자기 소개'>
         <Input
-          {...register('introduce')}
+          {...register('introduce', {
+            required: { value: true, message: '필수 값입니다' },
+          })}
           error={errors.introduce?.message}
           placeholder='1줄 자기소개 입력'
         />
       </InputColumn>
       <InputColumn comment='이메일'>
         <Input
-          {...register('contactEmail')}
+          {...register('contactEmail', {
+            required: { value: true, message: '필수 값입니다' },
+          })}
           error={errors.contactEmail?.message}
           placeholder='공개 이메일 입력'
         />
@@ -37,7 +41,9 @@ const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
       </InputColumn>
       <InputColumn comment='포트폴리오'>
         <Input
-          {...register('portfolioUrl')}
+          {...register('portfolioUrl', {
+            required: { value: true, message: '필수 값입니다' },
+          })}
           error={errors.portfolioUrl?.message}
           placeholder='https://'
         />

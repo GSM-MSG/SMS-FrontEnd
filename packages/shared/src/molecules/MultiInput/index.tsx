@@ -42,7 +42,10 @@ const MultiInput = ({
             <Input
               placeholder={placeholder}
               {...register(`${name}[${index}]`, {
-                required: { value: true, message: '필수 값입니다' },
+                required: {
+                  value: fields.length > 1,
+                  message: '필수 값입니다',
+                },
               })}
               error={errors?.[index]?.message}
             />

@@ -15,7 +15,9 @@ const SchoolInputs = ({ register, onUpload, errors }: Props) => {
     <FormWrapper title='학교 생활'>
       <InputColumn comment='인증제 점수'>
         <Input
-          {...register('gsmAuthenticationScore')}
+          {...register('gsmAuthenticationScore', {
+            required: { value: true, message: '필수 값입니다' },
+          })}
           placeholder='인증 점수 입력'
           type='number'
           error={errors.gsmAuthenticationScore?.message}

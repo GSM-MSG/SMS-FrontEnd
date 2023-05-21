@@ -39,14 +39,20 @@ const MultiDoubleInput = ({ name, control, register, errors }: Props) => {
             <S.DoubleInputWrapper>
               <Input
                 {...register(`${name}[${index}].languageCertificateName`, {
-                  required: { value: true, message: '필수 값입니다' },
+                  required: {
+                    value: fields.length > 1,
+                    message: '필수 값입니다',
+                  },
                 })}
                 placeholder='예) 토익'
                 error={errors?.[index]?.languageCertificateName?.message}
               />
               <Input
                 {...register(`${name}[${index}].score`, {
-                  required: { value: true, message: '필수 값입니다' },
+                  required: {
+                    value: fields.length > 1,
+                    message: '필수 값입니다',
+                  },
                 })}
                 placeholder='990'
                 error={errors?.[index]?.score?.message}
