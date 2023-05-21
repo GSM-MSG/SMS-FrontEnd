@@ -19,6 +19,7 @@ const SchoolInputs = ({ register, onUpload, errors }: Props) => {
             required: { value: true, message: '필수 값입니다' },
           })}
           placeholder='인증 점수 입력'
+          isReset
           type='number'
           error={errors.gsmAuthenticationScore?.message}
         />

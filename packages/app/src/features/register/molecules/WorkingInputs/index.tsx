@@ -26,6 +26,7 @@ const WorkingInputs = ({ register, control, errors }: Props) => {
             required: { value: true, message: '필수 값입니다' },
           })}
           error={errors.salary?.message}
+          isReset
           placeholder='희망 연봉 (10,000원 단위)'
         />
       </InputColumn>

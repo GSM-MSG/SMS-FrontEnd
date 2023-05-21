@@ -1,18 +1,17 @@
-import { Input, Profile, Select, MultiInput } from '@sms/shared'
+import { Input, Profile, Select } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { MajorList } from '@features/register/data'
 import { RegisterFormType } from '@features/register/type'
-import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
+import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { ChangeEvent } from 'react'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
-  control: Control<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
   onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
 }
 
-const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
+const ProfileInputs = ({ register, onUpload, errors }: Props) => {
   return (
     <FormWrapper title='프로필'>
       <InputColumn comment='사진'>
@@ -24,6 +23,7 @@ const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
             required: { value: true, message: '필수 값입니다' },
           })}
           error={errors.introduce?.message}
+          isReset
           placeholder='1줄 자기소개 입력'
         />
       </InputColumn>
@@ -32,7 +32,9 @@ const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
           {...register('contactEmail', {
             required: { value: true, message: '필수 값입니다' },
           })}
+          type='email'
           error={errors.contactEmail?.message}
+          isReset
           placeholder='공개 이메일 입력'
         />
       </InputColumn>
@@ -43,14 +45,20 @@ const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
         <Input
           {...register('portfolioUrl', {
             required: { value: true, message: '필수 값입니다' },
+            pattern: {
+              value: /^(https?:\/\/)/,
+              message: 'url 형식이 올바르지 않습니다',
+            },
           })}
           error={errors.portfolioUrl?.message}
+          isReset
           placeholder='https://'
         />
       </InputColumn>
       <InputColumn comment='세부스택'>
         <Input
           placeholder='예시)HTML, CSS, C#'
+          isReset
           error={errors.techStack?.message}
           {...register('techStack', {
             required: {
