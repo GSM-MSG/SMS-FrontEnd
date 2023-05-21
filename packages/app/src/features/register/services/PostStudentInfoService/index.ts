@@ -3,7 +3,9 @@ import { RegisterFormType } from '@features/register/type'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/register/services/errors'
 
-const PostStudentInfo = async (form: RegisterFormType): Promise<boolean> => {
+const PostStudentInfoService = async (
+  form: RegisterFormType
+): Promise<boolean> => {
   try {
     await serverApi.post('/student', {
       ...form,
@@ -20,4 +22,4 @@ const PostStudentInfo = async (form: RegisterFormType): Promise<boolean> => {
   }
 }
 
-export default PostStudentInfo
+export default PostStudentInfoService
