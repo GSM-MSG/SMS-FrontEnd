@@ -13,6 +13,7 @@ import * as S from './style'
 interface Props {
   name: string
   control: Control<any>
+  firstRequired?: boolean
   register: UseFormRegister<any>
   errors?: Merge<FieldError, (FieldError | undefined)[]> | undefined
   placeholder?: string
@@ -24,6 +25,7 @@ const MultiInput = ({
   register,
   errors,
   placeholder,
+  firstRequired,
 }: Props) => {
   const { fields, append, remove } = useFieldArray<FieldValues>({
     name,
@@ -43,7 +45,7 @@ const MultiInput = ({
               placeholder={placeholder}
               {...register(`${name}[${index}]`, {
                 required: {
-                  value: fields.length > 1,
+                  value: firstRequired || fields.length > 1,
                   message: '필수 값입니다',
                 },
               })}
