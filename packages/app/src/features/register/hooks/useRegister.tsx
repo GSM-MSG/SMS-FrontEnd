@@ -1,13 +1,17 @@
 import { RegisterFormType } from '@features/register/type'
 import { ChangeEvent } from 'react'
 import { useForm } from 'react-hook-form'
+import { PostStudentInfoService } from '@features/register/services'
+import { useRouter } from 'next/router'
 
 const useRegister = () => {
+  const router = useRouter()
   const {
     register,
     control,
     handleSubmit,
     setValue,
+    setError,
     formState: { errors },
   } = useForm<RegisterFormType>()
 
@@ -24,7 +28,16 @@ const useRegister = () => {
     setValue('dreamBookFileUrl', 'https://hello.com')
   }
 
-  const onSubmit = handleSubmit(() => {})
+  const onSubmit = handleSubmit(async (form: RegisterFormType) => {
+    if (!form.profileImgUrl)
+      return setError('profileImgUrl', { message: '필수 값입니다' })
+    if (!form.portfolioUrl)
+      return setError('portfolioUrl', { message: '필수 값입니다' })
+
+    if (!(await PostStudentInfoService(form))) return
+
+    router.push('/')
+  })
 
   return { register, control, onSubmit, imageUpload, fileUpload, errors }
 }
