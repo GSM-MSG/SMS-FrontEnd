@@ -49,12 +49,15 @@ const ProfileInputs = ({ register, control, onUpload, errors }: Props) => {
         />
       </InputColumn>
       <InputColumn comment='세부스택'>
-        <MultiInput
-          register={register}
-          control={control}
-          name='techStack'
+        <Input
           placeholder='예시)HTML, CSS, C#'
-          errors={errors.techStack}
+          error={errors.techStack?.message}
+          {...register('techStack', {
+            required: {
+              value: true,
+              message: '필수 값입니다',
+            },
+          })}
         />
       </InputColumn>
     </FormWrapper>
