@@ -3,7 +3,7 @@ import * as S from './style'
 
 interface Props {
   placeholder?: string
-  onUpload(e: ChangeEvent<HTMLInputElement>): Promise<void>
+  onUpload(e: ChangeEvent<HTMLInputElement>): Promise<string>
   errors?: boolean
 }
 
@@ -15,7 +15,7 @@ const FileInput = ({
   const [fileName, setFileName] = useState<string>('')
 
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    await onUpload(e)
+    if (!(await onUpload(e))) return
     const files = e.target.files
     if (files && files[0]) setFileName(files[0].name)
   }
