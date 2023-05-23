@@ -14,14 +14,14 @@ interface Props
   > {
   placeholder?: string
   onUpload(e: ChangeEvent<HTMLInputElement>): Promise<string>
-  errors?: string
+  error?: string
 }
 
 /**
  * 파일을 입력 받지만 값이 변경이 안돼서 setValue를 통해 직접 수정해야함
  */
 const FileInput = forwardRef<HTMLInputElement, Props>(
-  ({ placeholder = '＋hwp 파일 추가', onUpload, errors, ...props }, ref) => {
+  ({ placeholder = '＋hwp 파일 추가', onUpload, error, ...props }, ref) => {
     const [fileName, setFileName] = useState<string>('')
 
     const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +40,7 @@ const FileInput = forwardRef<HTMLInputElement, Props>(
             {fileName === '' ? placeholder : fileName}
             <S.Input onChange={onChange} type='file' accept='.hwp,.hwpx' />
           </S.InputWrapper>
-          <S.Error>{errors}</S.Error>
+          <S.Error>{error}</S.Error>
         </S.Wrapper>
       </>
     )
