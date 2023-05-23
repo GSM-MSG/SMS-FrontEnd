@@ -18,25 +18,24 @@ export const Primary = () => {
   const {
     register,
     handleSubmit,
-    setValue,
-    setError,
     formState: { errors },
+    setValue,
   } = useForm<FormType>()
 
   const onUpload = async () => {
-    setValue('file', 'https://hello.com')
-    setError('file', {})
+    setValue('file', 'owiejf')
+    return 'owiejf'
   }
 
-  const onSubmit = () => {
-    setError('file', { type: 'required' })
-  }
+  const onSubmit = () => {}
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FileInput
-        errors={!!errors.file?.type}
-        {...register('file')}
+        {...register('file', {
+          required: { value: true, message: '필수 값입니다' },
+        })}
+        errors={errors.file?.message}
         onUpload={onUpload}
       />
       <button>submit</button>
