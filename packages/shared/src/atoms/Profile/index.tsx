@@ -20,8 +20,11 @@ interface Props
 const Profile = ({ error, onUpload }: Props) => {
   const [imgUrl, setImgUrl] = useState<string>('')
 
-  const onChange = async (e: ChangeEvent<HTMLInputElement>) =>
-    setImgUrl(await onUpload(e))
+  const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const url = await onUpload(e)
+    if (!url) return (e.target.value = '')
+    setImgUrl(url)
+  }
 
   return (
     <S.Wrapper>
