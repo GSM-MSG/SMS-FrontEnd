@@ -37,12 +37,12 @@ const useRegister = () => {
   const fileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     // TODO 리팩토링
     if (!e.target.files || !e.target.files[0]) {
-      setError('dreamBookFileUrl', { type: 'required' })
+      setError('dreamBookFileUrl', { message: '업로드에 실패했습니다' })
       return ''
     }
     const fileUrl = await PostFileService(e.target.files[0], false)
     if (!fileUrl) {
-      setError('dreamBookFileUrl', { type: 'required' })
+      setError('dreamBookFileUrl', { message: '업로드에 실패했습니다' })
       return ''
     }
     setValue('dreamBookFileUrl', fileUrl)
@@ -51,11 +51,6 @@ const useRegister = () => {
   }
 
   const onSubmit = handleSubmit(async (form: RegisterFormType) => {
-    if (!form.profileImgUrl)
-      return setError('profileImgUrl', { message: '필수 값입니다' })
-    if (!form.portfolioUrl)
-      return setError('portfolioUrl', { message: '필수 값입니다' })
-
     if (!(await PostStudentInfoService(form))) return
 
     router.push('/')

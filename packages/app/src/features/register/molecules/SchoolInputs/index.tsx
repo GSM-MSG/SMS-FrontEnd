@@ -6,7 +6,7 @@ import { ChangeEvent } from 'react'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
-  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
+  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
   errors: FieldErrors<RegisterFormType>
 }
 
@@ -26,8 +26,11 @@ const SchoolInputs = ({ register, onUpload, errors }: Props) => {
       </InputColumn>
       <InputColumn comment='드림북'>
         <FileInput
+          {...register('dreamBookFileUrl', {
+            required: { value: true, message: '필수 값입니다' },
+          })}
           onUpload={onUpload}
-          errors={!!errors.dreamBookFileUrl?.type}
+          error={errors.dreamBookFileUrl?.message}
         />
       </InputColumn>
     </FormWrapper>

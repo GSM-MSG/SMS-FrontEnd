@@ -15,7 +15,13 @@ const ProfileInputs = ({ register, onUpload, errors }: Props) => {
   return (
     <FormWrapper title='프로필'>
       <InputColumn comment='사진'>
-        <Profile error={errors.profileImgUrl?.message} onUpload={onUpload} />
+        <Profile
+          {...register('profileImgUrl', {
+            required: { value: true, message: '필수 값입니다' },
+          })}
+          error={errors.profileImgUrl?.message}
+          onUpload={onUpload}
+        />
       </InputColumn>
       <InputColumn comment='자기 소개'>
         <Input
