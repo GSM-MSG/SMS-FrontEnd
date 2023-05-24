@@ -1,11 +1,11 @@
 import { Meta } from '@storybook/react'
-import React from 'react'
 import { useForm } from 'react-hook-form'
-import FileInput from './index'
+import React, { ChangeEvent } from 'react'
+import Profile from './index'
 
-const config: Meta<typeof FileInput> = {
-  title: 'FileInput',
-  component: FileInput,
+const config: Meta<typeof Profile> = {
+  title: 'Profile',
+  component: Profile,
 }
 
 export default config
@@ -22,23 +22,27 @@ export const Primary = () => {
     setValue,
   } = useForm<FormType>()
 
-  const onUpload = async () => {
-    setValue('file', 'owiejf')
-    return 'owiejf'
+  const onUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    let url = ''
+    if (e.target.files && e.target.files[0])
+      url = URL.createObjectURL(e.target.files[0])
+
+    setValue('file', url)
+    return url
   }
 
   const onSubmit = () => {}
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FileInput
+      <Profile
         {...register('file', {
           required: { value: true, message: '필수 값입니다' },
         })}
         error={errors.file?.message}
         onUpload={onUpload}
       />
-      <button>submit</button>
+      <button>submit </button>
     </form>
   )
 }
