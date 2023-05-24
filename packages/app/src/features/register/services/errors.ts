@@ -9,6 +9,8 @@ const errors: Errors = {
         409: '이미 회원가입을 한 유저입니다',
       },
     },
+    '/file': { POST: { 400: 'hwp 또는 hwpx 형식만 가능합니다' } },
+    '/file/image': { POST: { 400: '이미지 형식이 올바르지 않습니다' } },
   },
 }
 

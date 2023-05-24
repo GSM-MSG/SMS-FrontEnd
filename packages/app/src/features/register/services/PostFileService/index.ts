@@ -1,4 +1,6 @@
 import { serverApi } from '@api'
+import ErrorMapper from '@lib/ErrorMapper'
+import errors from '@features/register/services/errors'
 import { Response } from './response'
 
 const PostFileService = async (
@@ -6,7 +8,7 @@ const PostFileService = async (
   isImage: boolean
 ): Promise<string | undefined> => {
   const formData = new FormData()
-  formData.append('file', file)
+  formData.append('file', 'hello')
 
   try {
     const { data } = await serverApi.post<Response>(
@@ -19,6 +21,7 @@ const PostFileService = async (
 
     return data.fileUrl
   } catch (e) {
+    alert(ErrorMapper(e, errors))
     return
   }
 }
