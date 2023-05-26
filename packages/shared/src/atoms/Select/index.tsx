@@ -16,7 +16,7 @@ interface Props {
 const Select = ({ options, name, register, control, directInput }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const optionKeys = Object.keys(options)
-  const [value, setValue] = useState<string>(options[optionKeys[0]])
+  const [value, setValue] = useState<string>(optionKeys[0])
   const ref = useRef<HTMLDivElement>(null)
   const [directIsChecked, setDirectIsChecked] = useState<boolean>(false)
 
@@ -60,7 +60,7 @@ const Select = ({ options, name, register, control, directInput }: Props) => {
               name={name}
               control={control}
               render={({ field }) => (
-                <S.Option onClick={() => onClick(options[key])}>
+                <S.Option onClick={() => onClick(key)}>
                   <S.CheckButton
                     {...field}
                     name={name}
@@ -69,7 +69,7 @@ const Select = ({ options, name, register, control, directInput }: Props) => {
                     type='radio'
                     onClick={() => setDirectIsChecked(false)}
                   />
-                  {options[key]}
+                  {key}
                 </S.Option>
               )}
             />
