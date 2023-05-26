@@ -91,8 +91,14 @@ const Select = ({ options, name, register, control }: Props) => {
         <Controller
           name={name}
           control={control}
-          render={({ field }) => (
-            <Input isReset placeholder='직접 입력' {...field} />
+          rules={{ required: { value: true, message: '필수 값입니다' } }}
+          render={({ field, formState: { errors } }) => (
+            <Input
+              error={errors[name]?.message && `${errors[name]?.message}`}
+              isReset
+              placeholder='직접 입력'
+              {...field}
+            />
           )}
         />
       )}
