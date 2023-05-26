@@ -10,9 +10,10 @@ interface Props {
   register: any
   control: Control<any>
   name: string
+  directInput?: boolean
 }
 
-const Select = ({ options, name, register, control }: Props) => {
+const Select = ({ options, name, register, control, directInput }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const optionKeys = Object.keys(options)
   const [value, setValue] = useState<string>(optionKeys[0])
@@ -74,16 +75,18 @@ const Select = ({ options, name, register, control }: Props) => {
             />
           ))}
 
-          <S.Option>
-            <S.CheckButton
-              onClick={() => setDirectIsChecked(true)}
-              {...register(name)}
-              name={name}
-              value={''}
-              type='radio'
-            />
-            직접 입력
-          </S.Option>
+          {directInput && (
+            <S.Option>
+              <S.CheckButton
+                onClick={() => setDirectIsChecked(true)}
+                {...register(name)}
+                name={name}
+                value={''}
+                type='radio'
+              />
+              직접 입력
+            </S.Option>
+          )}
         </S.Options>
       </S.SelectWrapper>
 

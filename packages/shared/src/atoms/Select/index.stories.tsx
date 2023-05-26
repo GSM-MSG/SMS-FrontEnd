@@ -49,6 +49,7 @@ export const Primary = () => {
         register={register}
         options={options}
         control={control}
+        directInput
       />
       <button type='submit'>submit</button>
     </form>
