@@ -4,22 +4,11 @@ import { useForm } from 'react-hook-form'
 import Select from './index'
 import type { OptionsType } from './type'
 
-const options = [
-  'hi',
-  'hello',
-  'woeijfwoiefjweoijf',
-  'jfowejfowiejfowjgoh',
-  'not',
-  'ur',
-  'wefoijoi',
-  'friends',
-  'wefohijof',
-  'fwowefjw',
-  'woefjweoijf',
-].reduce((pre, cur) => {
-  pre[cur] = cur
-  return pre
-}, {} as OptionsType)
+const options: OptionsType = {
+  안녕: 'hello',
+  세상: 'world',
+  하이: 'hi',
+}
 
 const config: Meta<typeof Select> = {
   title: 'Select',

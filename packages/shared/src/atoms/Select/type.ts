@@ -1,5 +1,5 @@
 export interface OptionsType {
-  [key: string]: string
+  [label: string]: string
 }
 
 export interface OptionsProps {
