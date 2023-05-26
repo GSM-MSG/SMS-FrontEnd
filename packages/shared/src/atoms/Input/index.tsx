@@ -3,7 +3,6 @@ import {
   DetailedHTMLProps,
   InputHTMLAttributes,
   forwardRef,
-  useRef,
   useState,
 } from 'react'
 import { Xmark } from '../../icons'
@@ -22,7 +21,6 @@ const Input = forwardRef<HTMLInputElement, Props>(
   ({ error, isReset, ...props }, ref) => {
     const [value, setValue] = useState<string>('')
     const [isFocused, setIsFocused] = useState<boolean>(false)
-    const inputRef = useRef<HTMLInputElement>(null)
 
     const onFocus = () => setIsFocused(true)
     const onBlur = () => setIsFocused(false)
@@ -33,7 +31,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     }
 
     const onReset = () => {
-      if (props.value) return (props.value = '')
+      if (props.value) props.value = ''
       setValue('')
     }
 
@@ -42,13 +40,14 @@ const Input = forwardRef<HTMLInputElement, Props>(
         <S.InputWrapper isFocused={isFocused}>
           <S.TextFiled
             {...props}
-            value={props.value ? props.value : value}
+            value={value}
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
-            ref={ref ? ref : inputRef}
+            ref={ref}
           />
           <S.ResetButton
+            type='button'
             style={{
               display: isReset && (props.value || value) ? 'block' : 'none',
             }}
