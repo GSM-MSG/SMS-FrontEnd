@@ -16,7 +16,7 @@ interface Props {
 const Select = ({ options, name, register, control, directInput }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const optionKeys = Object.keys(options)
-  const [value, setValue] = useState<string>(optionKeys[0])
+  const [label, setLabel] = useState<string>(optionKeys[0])
   const ref = useRef<HTMLDivElement>(null)
   const [directIsChecked, setDirectIsChecked] = useState<boolean>(false)
 
@@ -43,14 +43,14 @@ const Select = ({ options, name, register, control, directInput }: Props) => {
   }
 
   const onClick = (option: string) => {
-    setValue(() => option)
+    setLabel(() => option)
   }
 
   return (
     <S.Wrapper>
       <S.SelectWrapper ref={ref} onClick={() => setIsShow(!isShow)}>
         <S.SelectedOption>
-          {directIsChecked ? '직접 입력' : value}
+          {directIsChecked ? '직접 입력' : label}
         </S.SelectedOption>
         <ArrowDown />
         <S.Options isShow={isShow} onClick={onShow}>
@@ -60,16 +60,16 @@ const Select = ({ options, name, register, control, directInput }: Props) => {
               name={name}
               control={control}
               render={({ field }) => (
-                <S.Option onClick={() => onClick(options[key])}>
+                <S.Option onClick={() => onClick(key)}>
                   <S.CheckButton
                     {...field}
                     name={name}
                     value={options[key]}
-                    defaultChecked={value === options[key]}
+                    defaultChecked={options[label] === options[key]}
                     type='radio'
                     onClick={() => setDirectIsChecked(false)}
                   />
-                  {options[key]}
+                  {key}
                 </S.Option>
               )}
             />
