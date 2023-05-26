@@ -1,19 +1,23 @@
 import { MouseEvent, useEffect, useRef, useState } from 'react'
+import { Control, Controller } from 'react-hook-form'
 import { ArrowDown } from '../../icons'
+import Input from '../Input'
 import * as S from './style'
 import { OptionsType } from './type'
 
 interface Props {
   options: OptionsType
   register: any
+  control: Control<any>
   name: string
 }
 
-const Select = ({ options, name, register }: Props) => {
+const Select = ({ options, name, register, control }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const optionKeys = Object.keys(options)
   const [value, setValue] = useState<string>(options[optionKeys[0]])
   const ref = useRef<HTMLDivElement>(null)
+  const [directIsChecked, setDirectIsChecked] = useState<boolean>(false)
 
   useEffect(() => {
     const clickHandler = (e: Event) => {
@@ -42,28 +46,56 @@ const Select = ({ options, name, register }: Props) => {
   }
 
   return (
-    <S.Wrapper ref={ref} onClick={() => setIsShow(!isShow)}>
-      <S.SelectedOption>{value}</S.SelectedOption>
-      <ArrowDown />
-      <S.Options isShow={isShow} onClick={onShow}>
-        {optionKeys.map((key, idx) => (
-          <S.Option
-            htmlFor={`${name}-${idx}`}
-            onClick={() => onClick(options[key])}
-            key={key}
-          >
-            <S.CheckButton
-              {...register(name)}
-              id={`${name}-${idx}`}
+    <S.Wrapper>
+      <S.SelectWrapper ref={ref} onClick={() => setIsShow(!isShow)}>
+        <S.SelectedOption>
+          {directIsChecked ? '직접 입력' : value}
+        </S.SelectedOption>
+        <ArrowDown />
+        <S.Options isShow={isShow} onClick={onShow}>
+          {optionKeys.map((key) => (
+            <Controller
+              key={key}
               name={name}
-              value={options[key]}
-              defaultChecked={value === options[key]}
+              control={control}
+              render={({ field }) => (
+                <S.Option onClick={() => onClick(options[key])}>
+                  <S.CheckButton
+                    {...field}
+                    name={name}
+                    value={options[key]}
+                    defaultChecked={value === options[key]}
+                    type='radio'
+                    onClick={() => setDirectIsChecked(false)}
+                  />
+                  {options[key]}
+                </S.Option>
+              )}
+            />
+          ))}
+
+          <S.Option>
+            <S.CheckButton
+              onClick={() => setDirectIsChecked(true)}
+              {...register(name)}
+              name={name}
+              value={''}
               type='radio'
             />
-            {options[key]}
+            직접 입력
           </S.Option>
-        ))}
-      </S.Options>
+        </S.Options>
+      </S.SelectWrapper>
+
+      {directIsChecked && (
+        <Controller
+          name={name}
+          control={control}
+          render={({ field }) => (
+            <Input isReset placeholder='직접 입력' {...field} />
+          )}
+        />
+      )}
     </S.Wrapper>
   )
 }

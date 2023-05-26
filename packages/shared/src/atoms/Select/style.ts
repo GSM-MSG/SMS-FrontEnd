@@ -2,6 +2,12 @@ import styled from '@emotion/styled'
 import { OptionsProps } from './type'
 
 export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`
+
+export const SelectWrapper = styled.div`
   width: 100%;
   height: 3rem;
   padding: 0 1.25rem;
@@ -28,27 +34,24 @@ export const SelectedOption = styled.div`
   ${({ theme }) => theme.body1}
   color: var(--BLACK);
 `
+
+export const OptionWrapper = styled.div``
+
 export const Options = styled.div<OptionsProps>`
-  width: 100%;
-  max-height: 31.25rem;
-  padding: 0.75rem;
-  background: var(--WHITE);
   position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
+  width: 100%;
+  max-height: 15.5rem;
+  padding: 0.75rem;
+  background: var(--WHITE);
   border-radius: 0.5rem;
   transition: 0.2s;
   overflow-y: scroll;
-  box-shadow: 0px 2px 24px rgba(76, 75, 91, 0.04);
+  box-shadow: 0px 4px 24px rgba(76, 75, 91, 0.12);
 
   opacity: ${({ isShow }) => (isShow ? 1 : 0)};
   ${({ isShow }) => !isShow && 'pointer-events: none;'}
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 export const Option = styled.label`
