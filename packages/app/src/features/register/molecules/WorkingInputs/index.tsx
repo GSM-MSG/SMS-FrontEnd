@@ -15,6 +15,7 @@ const WorkingInputs = ({ register, control, errors }: Props) => {
     <FormWrapper title='근무 조건'>
       <InputColumn comment='희망 고용 형태'>
         <Select
+          control={control}
           register={register}
           options={WorkType}
           name='formOfEmployment'

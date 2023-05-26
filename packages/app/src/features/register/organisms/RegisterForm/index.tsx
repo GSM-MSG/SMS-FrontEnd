@@ -27,7 +27,7 @@ const RegisterForm = () => {
       />
       <SchoolInputs onUpload={fileUpload} register={register} errors={errors} />
       <WorkingInputs control={control} register={register} errors={errors} />
-      <MilitaryInputs register={register} />
+      <MilitaryInputs control={control} register={register} />
       <CertificateInputs
         register={register}
         control={control}

@@ -2,16 +2,17 @@ import { Input, Profile, Select } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { MajorList } from '@features/register/data'
 import { RegisterFormType } from '@features/register/type'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
 import { ChangeEvent } from 'react'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
   onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
+  control: Control<RegisterFormType>
 }
 
-const ProfileInputs = ({ register, onUpload, errors }: Props) => {
+const ProfileInputs = ({ register, onUpload, errors, control }: Props) => {
   return (
     <FormWrapper title='프로필'>
       <InputColumn comment='사진'>
@@ -45,7 +46,13 @@ const ProfileInputs = ({ register, onUpload, errors }: Props) => {
         />
       </InputColumn>
       <InputColumn comment='분야'>
-        <Select register={register} options={MajorList} name='major' />
+        <Select
+          control={control}
+          register={register}
+          options={MajorList}
+          name='major'
+          directInput
+        />
       </InputColumn>
       <InputColumn comment='포트폴리오'>
         <Input
