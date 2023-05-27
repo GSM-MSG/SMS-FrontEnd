@@ -8,7 +8,7 @@ const PostFileService = async (
   isImage: boolean
 ): Promise<string | undefined> => {
   const formData = new FormData()
-  formData.append('file', 'hello')
+  formData.append('file', file)
 
   try {
     const { data } = await serverApi.post<Response>(
