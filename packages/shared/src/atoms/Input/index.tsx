@@ -2,6 +2,7 @@ import {
   ChangeEvent,
   DetailedHTMLProps,
   InputHTMLAttributes,
+  ReactNode,
   forwardRef,
   useState,
 } from 'react'
@@ -13,12 +14,13 @@ interface Props
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
+  icon?: ReactNode
   error?: string
   isReset?: boolean
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ error, isReset, ...props }, ref) => {
+  ({ error, icon, isReset, ...props }, ref) => {
     const [value, setValue] = useState<string>('')
     const [isFocused, setIsFocused] = useState<boolean>(false)
 
@@ -38,6 +40,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     return (
       <S.Wrapper>
         <S.InputWrapper isFocused={isFocused}>
+          {icon}
           <S.TextFiled
             {...props}
             value={value}
