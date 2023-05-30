@@ -10,7 +10,7 @@ const Item = styled.label`
   align-items: center;
   border-radius: 0.5rem;
   transition: 0.2s;
-  color: var(--BLACK);
+  color: var(--N50);
   cursor: pointer;
 
   :hover {

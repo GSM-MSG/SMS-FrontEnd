@@ -29,7 +29,7 @@ interface FormType {
 export const Primary = () => {
   const { register, handleSubmit, control } = useForm<FormType>()
 
-  const onSubmit = handleSubmit(console.log)
+  const onSubmit = handleSubmit(() => {})
 
   return (
     <form onSubmit={onSubmit}>

@@ -30,7 +30,7 @@ export const SelectWrapper = styled.div`
 
 export const SelectedOption = styled.div`
   ${({ theme }) => theme.body1}
-  color: var(--BLACK);
+  color: var(--N30);
 `
 
 export const OptionWrapper = styled.div``
@@ -70,6 +70,6 @@ export const Option = styled.label`
 `
 
 export const CheckButton = styled.input`
-  // position: absolute;
-  // opacity: 0;
+  position: absolute;
+  opacity: 0;
 `
