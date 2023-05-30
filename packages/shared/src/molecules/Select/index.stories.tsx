@@ -11,7 +11,7 @@ const options: OptionsType = {
 }
 
 const config: Meta<typeof Select> = {
-  title: 'Select',
+  title: 'Select2',
   component: Select,
   args: {
     name: 'hi',
@@ -29,7 +29,7 @@ interface FormType {
 export const Primary = () => {
   const { register, handleSubmit, control } = useForm<FormType>()
 
-  const onSubmit = handleSubmit(() => {})
+  const onSubmit = handleSubmit(console.log)
 
   return (
     <form onSubmit={onSubmit}>

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const Item = styled.div`
+const Item = styled.label`
   ${({ theme }) => theme.body1}
   width: 100%;
   height: 3rem;

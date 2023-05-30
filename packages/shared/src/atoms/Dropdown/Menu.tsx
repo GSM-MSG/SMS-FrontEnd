@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState, MouseEvent } from 'react'
 import styled from '@emotion/styled'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isShow: boolean }>`
   position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
@@ -13,10 +13,13 @@ const Wrapper = styled.div`
   transition: 0.2s;
   overflow-y: scroll;
   box-shadow: 0px 4px 24px rgba(76, 75, 91, 0.12);
+
+  opacity: ${({ isShow }) => (isShow ? 1 : 0)};
+  ${({ isShow }) => !isShow && 'pointer-events: none;'}
 `
 
 interface Props {
-  isShow?: boolean
+  isShow: boolean
   children: ReactNode
   onClose(): void
 }
@@ -40,8 +43,17 @@ const Menu = ({ isShow, children, onClose }: Props) => {
     return () => document.removeEventListener('click', clickHandler)
   }, [isShow, isReady])
 
-  if (!isShow) return null
-  return <Wrapper ref={ref}>{children}</Wrapper>
+  const onClick = (e: MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation()
+    setIsReady(false)
+    onClose()
+  }
+
+  return (
+    <Wrapper isShow={isShow} onClick={onClick} ref={ref}>
+      {children}
+    </Wrapper>
+  )
 }
 
 export default Menu

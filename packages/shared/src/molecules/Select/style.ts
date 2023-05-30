@@ -24,9 +24,7 @@ export const SelectWrapper = styled.div`
   :hover {
     border: 1px solid var(--P1);
 
-    div {
-      color: var(--N30);
-    }
+    color: var(--N30);
   }
 `
 
@@ -72,6 +70,6 @@ export const Option = styled.label`
 `
 
 export const CheckButton = styled.input`
-  position: absolute;
-  opacity: 0;
+  // position: absolute;
+  // opacity: 0;
 `
