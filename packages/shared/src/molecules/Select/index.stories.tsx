@@ -11,7 +11,7 @@ const options: OptionsType = {
 }
 
 const config: Meta<typeof Select> = {
-  title: 'Select2',
+  title: 'Select',
   component: Select,
   args: {
     name: 'hi',
