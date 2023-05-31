@@ -1,18 +1,33 @@
-import { Input, Profile, Select } from '@sms/shared'
+import { Input, Profile, Select, SearchInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { MajorList } from '@features/register/data'
 import { RegisterFormType } from '@features/register/type'
-import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
+import {
+  Control,
+  FieldErrors,
+  UseFormRegister,
+  UseFormSetValue,
+} from 'react-hook-form'
 import { ChangeEvent } from 'react'
+import { useAutocomplete } from '@features/register/hooks'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
   onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
   control: Control<RegisterFormType>
+  setValue: UseFormSetValue<RegisterFormType>
 }
 
-const ProfileInputs = ({ register, onUpload, errors, control }: Props) => {
+const ProfileInputs = ({
+  register,
+  onUpload,
+  errors,
+  control,
+  setValue,
+}: Props) => {
+  const { dropdownList, onChange } = useAutocomplete()
+
   return (
     <FormWrapper title='프로필'>
       <InputColumn comment='사진'>
@@ -69,16 +84,11 @@ const ProfileInputs = ({ register, onUpload, errors, control }: Props) => {
         />
       </InputColumn>
       <InputColumn comment='세부스택'>
-        <Input
-          placeholder='예시)HTML, CSS, C#'
-          isReset
-          error={errors.techStack?.message}
-          {...register('techStack', {
-            required: {
-              value: true,
-              message: '필수 값입니다',
-            },
-          })}
+        <SearchInput
+          name='techStack'
+          onChange={onChange}
+          dropdownList={dropdownList}
+          setValue={setValue}
         />
       </InputColumn>
     </FormWrapper>

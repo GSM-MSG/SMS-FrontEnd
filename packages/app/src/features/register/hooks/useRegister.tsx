@@ -56,7 +56,15 @@ const useRegister = () => {
     router.push('/')
   })
 
-  return { register, control, onSubmit, imageUpload, fileUpload, errors }
+  return {
+    register,
+    control,
+    onSubmit,
+    imageUpload,
+    fileUpload,
+    errors,
+    setValue,
+  }
 }
 
 export default useRegister

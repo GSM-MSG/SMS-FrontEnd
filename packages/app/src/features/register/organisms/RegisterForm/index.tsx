@@ -11,8 +11,15 @@ import { SMSLogo } from '@sms/shared'
 import * as S from './style'
 
 const RegisterForm = () => {
-  const { control, register, onSubmit, imageUpload, fileUpload, errors } =
-    useRegister()
+  const {
+    control,
+    register,
+    onSubmit,
+    imageUpload,
+    fileUpload,
+    errors,
+    setValue,
+  } = useRegister()
 
   return (
     <S.Wrapper onSubmit={onSubmit}>
@@ -24,6 +31,7 @@ const RegisterForm = () => {
         control={control}
         register={register}
         errors={errors}
+        setValue={setValue}
       />
       <SchoolInputs onUpload={fileUpload} register={register} errors={errors} />
       <WorkingInputs control={control} register={register} errors={errors} />
