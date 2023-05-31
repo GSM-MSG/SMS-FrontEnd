@@ -1,4 +1,6 @@
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import Search from '../../icons/Search'
 import Input from './index'
 
 const config: Meta<typeof Input> = {
@@ -11,4 +13,8 @@ export default config
 
 type Story = StoryObj<typeof Input>
 
-export const Primary: Story = {}
+export const Primary: Story = {
+  args: {
+    icon: <Search />,
+  },
+}

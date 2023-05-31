@@ -8,8 +8,8 @@ export const Wrapper = styled.div`
 export const InputWrapper = styled.label<InputWrapperProps>`
   padding: 0.8rem 0.75rem;
   border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
   display: flex;
+  gap: 0.5rem;
   background: var(--N10);
   transition: 0.2s;
   cursor: text;
@@ -28,7 +28,6 @@ export const TextFiled = styled.input`
   width: 100%;
   outline: none;
   border: none;
-  margin-right: 0.5rem;
   background: transparent;
 `
 
@@ -44,4 +43,5 @@ export const ResetButton = styled.button`
 export const Error = styled.div`
   ${({ theme }) => theme.caption1}
   color: var(--ERROR);
+  margin-top: 0.5rem;
 `
