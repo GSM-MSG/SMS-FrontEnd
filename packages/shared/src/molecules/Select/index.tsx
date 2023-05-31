@@ -1,7 +1,8 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { Control, Controller } from 'react-hook-form'
 import { ArrowDown } from '../../icons'
-import Input from '../Input'
+import Input from '../../atoms/Input'
+import Dropdown from '../../atoms/Dropdown'
 import * as S from './style'
 import { OptionsType } from './type'
 
@@ -17,50 +18,27 @@ const Select = ({ options, name, register, control, directInput }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const optionKeys = Object.keys(options)
   const [label, setLabel] = useState<string>(optionKeys[0])
-  const ref = useRef<HTMLDivElement>(null)
   const [directIsChecked, setDirectIsChecked] = useState<boolean>(false)
 
-  useEffect(() => {
-    const clickHandler = (e: Event) => {
-      if (
-        ref.current &&
-        e.target instanceof Node &&
-        ref.current.contains(e.target)
-      )
-        return
+  const onClose = () => setIsShow(false)
 
-      setIsShow(false)
-    }
-
-    document.addEventListener('click', clickHandler)
-
-    return () => document.removeEventListener('click', clickHandler)
-  }, [])
-
-  const onShow = (e: MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation()
-    setIsShow(false)
-  }
-
-  const onClick = (option: string) => {
-    setLabel(() => option)
-  }
+  const onClick = (option: string) => setLabel(() => option)
 
   return (
     <S.Wrapper>
-      <S.SelectWrapper ref={ref} onClick={() => setIsShow(!isShow)}>
+      <S.SelectWrapper onClick={() => setIsShow(!isShow)}>
         <S.SelectedOption>
           {directIsChecked ? '직접 입력' : label}
         </S.SelectedOption>
         <ArrowDown />
-        <S.Options isShow={isShow} onClick={onShow}>
+        <Dropdown.Menu isShow={isShow} onClose={onClose}>
           {optionKeys.map((key) => (
             <Controller
               key={key}
               name={name}
               control={control}
               render={({ field }) => (
-                <S.Option onClick={() => onClick(key)}>
+                <Dropdown.Item onClick={() => onClick(key)}>
                   <S.CheckButton
                     {...field}
                     name={name}
@@ -70,13 +48,13 @@ const Select = ({ options, name, register, control, directInput }: Props) => {
                     onClick={() => setDirectIsChecked(false)}
                   />
                   {key}
-                </S.Option>
+                </Dropdown.Item>
               )}
             />
           ))}
 
           {directInput && (
-            <S.Option>
+            <Dropdown.Item>
               <S.CheckButton
                 onClick={() => setDirectIsChecked(true)}
                 {...register(name)}
@@ -85,9 +63,9 @@ const Select = ({ options, name, register, control, directInput }: Props) => {
                 type='radio'
               />
               직접 입력
-            </S.Option>
+            </Dropdown.Item>
           )}
-        </S.Options>
+        </Dropdown.Menu>
       </S.SelectWrapper>
 
       {directIsChecked && (
