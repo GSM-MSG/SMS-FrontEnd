@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import SearchInput from './index'
 
@@ -17,15 +17,26 @@ interface FormType {
 
 export const Primary = () => {
   const { setValue, handleSubmit } = useForm<FormType>()
+  const [dropdownInput, setDropdownInput] = useState<string>('')
+  const [dropdownList, setDropdownList] = useState<string[]>([])
 
-  const onSubmit = handleSubmit(console.log)
+  useEffect(() => {
+    const delayFetch = setTimeout(() => {
+      setDropdownList([...dropdownList, 'world'])
+    }, 300)
+
+    return () => clearTimeout(delayFetch)
+  }, [dropdownInput])
+
+  const onSubmit = handleSubmit(() => {})
 
   return (
     <form onSubmit={onSubmit}>
       <SearchInput
         name='search'
         setValue={setValue}
-        dropdownList={['hello', 'hi']}
+        dropdownList={dropdownList}
+        onChange={(e) => setDropdownInput(e.target.value)}
       />
       <button type='submit'>submit</button>
     </form>
