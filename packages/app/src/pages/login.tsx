@@ -1,7 +1,13 @@
+import { SEO } from '@components'
 import LoginTemplate from '@templates/LoginTemplate'
 
 const Login = () => {
-  return <LoginTemplate />
+  return (
+    <>
+      <SEO title='login' />
+      <LoginTemplate />
+    </>
+  )
 }
 
 export default Login
