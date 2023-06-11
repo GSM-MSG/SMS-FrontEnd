@@ -12,7 +12,7 @@ const SEO = ({
   title,
   description = '광주소프트웨어마이스터고등학교에 재학중인 학생들의 이력을 관리하는 서비스입니다',
   link = env.NEXT_PUBLIC_CLIENT_URL,
-  image = '',
+  image = '/png/twitter-card.png',
 }: Props) => {
   return (
     <Head>
