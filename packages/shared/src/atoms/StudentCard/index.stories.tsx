@@ -10,4 +10,11 @@ export default config
 
 type Story = StoryObj<typeof StudentCard>
 
-export const Primary: Story = {}
+export const Primary: Story = {
+  args: {
+    name: '최형우',
+    profileImgUrl: 'https://t.ly/WvpI1',
+    major: 'Jsp Developer',
+    techStack: ['jsp', 'java'],
+  },
+}

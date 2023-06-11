@@ -4,11 +4,6 @@ export const Wrapper = styled.div`
   width: 17rem;
   height: 27rem;
   max-height: 27rem;
-`
-
-export const Content = styled.div`
-  width: 100%;
-  height: 100%;
   background: var(--WHITE);
   border-radius: 1.5rem;
   padding: 1.5rem;
@@ -21,6 +16,13 @@ export const ProfileBackground = styled.div`
   background: var(--N10);
   display: flex;
   align-items: end;
+  border-radius: 0.68rem;
+  overflow: hidden;
+`
+
+export const ProfileImg = styled.img`
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 0.68rem;
   overflow: hidden;
 `

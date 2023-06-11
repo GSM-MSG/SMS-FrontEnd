@@ -1,24 +1,44 @@
 import * as SVG from '../../assets/svg'
 import * as S from './style'
 
-const StudentCard = () => {
+interface Props {
+  id: string
+  major: string
+  name: string
+  profileImgUrl?: string
+  techStack: string[]
+  onClick(id: string): void
+  opacity?: number
+}
+
+const StudentCard = ({
+  id,
+  name,
+  major,
+  techStack,
+  profileImgUrl,
+  onClick,
+  opacity = 1,
+}: Props) => {
   return (
-    <S.Wrapper>
-      <S.Content>
+    <S.Wrapper style={{ opacity }} onClick={() => onClick(id)}>
+      {profileImgUrl ? (
+        <S.ProfileImg src={profileImgUrl} />
+      ) : (
         <S.ProfileBackground>
           <SVG.Person />
         </S.ProfileBackground>
+      )}
 
-        <S.Name>최형우</S.Name>
-        <S.Stack>iOS Dev</S.Stack>
+      <S.Name>{name}</S.Name>
+      <S.Stack>{major}</S.Stack>
 
-        <S.Tags>
-          <S.Tag>Figma</S.Tag>
-          <S.Tag>Adobe Photoshop</S.Tag>
-          <S.Tag>Adobe Illustrator</S.Tag>
-          <S.Tag>...</S.Tag>
-        </S.Tags>
-      </S.Content>
+      <S.Tags>
+        {techStack?.map((stack) => (
+          <S.Tag key={stack}>{stack}</S.Tag>
+        ))}
+        <S.Tag>...</S.Tag>
+      </S.Tags>
     </S.Wrapper>
   )
 }

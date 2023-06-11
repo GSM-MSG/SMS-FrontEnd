@@ -1,6 +1,7 @@
 import StyleProvider from '../src/style'
 import '../public/font.css'
 import '../src/style/global.css'
+import '../src/style/devStyle.css'
 
 const preview = {
   parameters: {
