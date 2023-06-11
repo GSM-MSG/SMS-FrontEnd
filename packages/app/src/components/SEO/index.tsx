@@ -16,7 +16,7 @@ const SEO = ({
 }: Props) => {
   return (
     <Head>
-      <title>SMS{title && ` | ${title}`}</title>
+      <title>{`SMS${title && ` | ${title}`}`}</title>
 
       <meta
         name='keywords'
