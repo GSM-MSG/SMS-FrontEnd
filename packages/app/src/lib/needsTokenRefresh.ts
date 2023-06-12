@@ -14,7 +14,7 @@ const needsTokenRefresh = (url?: string, method?: string): boolean => {
 
   return !needsTokenRefreshData.filter(
     (data) => url.includes(data.url) && method.toUpperCase() === data.method
-  )
+  )[0]
 }
 
 export default needsTokenRefresh
