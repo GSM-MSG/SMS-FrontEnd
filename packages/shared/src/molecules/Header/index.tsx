@@ -20,7 +20,7 @@ const Header = ({ onExit, onLogout, onFilter }: Props) => {
       <S.InfoWrapper>
         <S.Filter onClick={onFilter}>
           <Icon.Filter />
-          필터
+          <p>필터</p>
         </S.Filter>
         <S.UserCircle onClick={() => setIsShow(true)}>
           <SVG.Person />
