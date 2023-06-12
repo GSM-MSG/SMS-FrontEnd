@@ -1,4 +1,5 @@
 import { ReissueResponse } from '@features/auth/type/TokenResponse'
+import env from '@lib/env'
 import axios from 'axios'
 
 const reissue = async (refreshToken: string) => {
@@ -10,6 +11,7 @@ const reissue = async (refreshToken: string) => {
         headers: {
           'Refresh-Token': refreshToken,
         },
+        baseURL: env.NEXT_PUBLIC_SERVER_URL,
       }
     )
 
