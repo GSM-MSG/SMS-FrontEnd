@@ -9,7 +9,6 @@ const useStudent = () => {
 
   useEffect(() => {
     if (!isError) return
-    console.log(error)
   }, [error])
 
   return { data }
