@@ -1,4 +1,11 @@
-import { ReactNode, useEffect, useRef, useState, MouseEvent } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+  MouseEvent,
+  DetailedHTMLProps,
+  HTMLAttributes,
+} from 'react'
 import styled from '@emotion/styled'
 
 const Wrapper = styled.div<{ isShow: boolean }>`
@@ -18,13 +25,13 @@ const Wrapper = styled.div<{ isShow: boolean }>`
   ${({ isShow }) => !isShow && 'pointer-events: none;'}
 `
 
-interface Props {
+interface Props
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   isShow: boolean
-  children: ReactNode
   onClose(): void
 }
 
-const Menu = ({ isShow, children, onClose }: Props) => {
+const Menu = ({ isShow, children, onClose, ...props }: Props) => {
   const [isReady, setIsReady] = useState<boolean>(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -50,7 +57,7 @@ const Menu = ({ isShow, children, onClose }: Props) => {
   }
 
   return (
-    <Wrapper isShow={isShow} onClick={onClick} ref={ref}>
+    <Wrapper {...props} isShow={isShow} onClick={onClick} ref={ref}>
       {children}
     </Wrapper>
   )
