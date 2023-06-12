@@ -5,7 +5,7 @@ interface Props {
   id: string
   major: string
   name: string
-  profileImgUrl?: string
+  profileImg?: string
   techStack: string[]
   onClick(id: string): void
   opacity?: number
@@ -16,14 +16,14 @@ const StudentCard = ({
   name,
   major,
   techStack,
-  profileImgUrl,
+  profileImg,
   onClick,
   opacity = 1,
 }: Props) => {
   return (
     <S.Wrapper style={{ opacity }} onClick={() => onClick(id)}>
-      {profileImgUrl ? (
-        <S.ProfileImg src={profileImgUrl} />
+      {profileImg ? (
+        <S.ProfileImg src={profileImg} />
       ) : (
         <S.ProfileBackground>
           <SVG.Person />

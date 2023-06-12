@@ -1,7 +1,11 @@
-import { useStudent } from '@features/student'
+import { StudentList, useStudent } from '@features/student'
 
 export default function Home() {
-  useStudent()
+  const { data } = useStudent()
 
-  return <main>Hello world</main>
+  return (
+    <main>
+      <StudentList students={data?.content} />
+    </main>
+  )
 }
