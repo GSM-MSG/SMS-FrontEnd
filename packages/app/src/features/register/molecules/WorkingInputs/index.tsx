@@ -23,8 +23,10 @@ const WorkingInputs = ({ register, control, errors }: Props) => {
       </InputColumn>
       <InputColumn comment='희망 연봉'>
         <Input
+          type='number'
           {...register('salary', {
             required: { value: true, message: '필수 값입니다' },
+            valueAsNumber: true,
           })}
           error={errors.salary?.message}
           isReset

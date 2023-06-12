@@ -41,16 +41,20 @@ class TokenManager {
   }
 
   async reissueToken(): Promise<boolean> {
-    const oneMinuteLater = this.getOneMinuteLater()
     if (
       !this.accessToken ||
       !this.refreshToken ||
       !this.accessTokenExp ||
-      !this.refreshTokenExp ||
-      this.accessTokenExp <= oneMinuteLater ||
-      this.refreshTokenExp <= oneMinuteLater
+      !this.refreshTokenExp
     )
       return false
+
+    const oneMinuteLater = this.getOneMinuteLater()
+    if (
+      this.accessTokenExp > oneMinuteLater ||
+      this.refreshTokenExp <= oneMinuteLater
+    )
+      return true
 
     if (observable.observers.length) {
       return new Promise<boolean>((resolve) => {
@@ -68,6 +72,8 @@ class TokenManager {
 
     TokenManager.setToken(data)
     observable.notifyAll(true)
+
+    this.setTokenFromLocalStorage()
 
     return true
   }
