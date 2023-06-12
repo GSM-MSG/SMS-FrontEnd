@@ -1,6 +1,7 @@
 import reissue from '@features/auth/service/reissue'
 import { ReissueResponse } from '@features/auth/type/TokenResponse'
 import Token from './Token'
+import observable from './Observable'
 
 class TokenManager {
   accessToken: string | null = null
@@ -51,10 +52,22 @@ class TokenManager {
     )
       return false
 
+    if (!observable.observers.length) {
+      return new Promise<boolean>((resolve) => {
+        observable.setOvserver(resolve)
+      })
+    }
+
+    observable.setOvserver((_value) => {})
     const data = await reissue(this.refreshToken)
-    if (!data) return false
+
+    if (!data) {
+      observable.notifyAll(false)
+      return false
+    }
 
     TokenManager.setToken(data)
+    observable.notifyAll(true)
 
     return true
   }
