@@ -1,10 +1,13 @@
 import { axiosApi } from '@api'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/auth/errors'
+import { TokenResponse } from '@features/auth/type/TokenResponse'
+import TokenManager from '@lib/TokenManager'
 
 const login = async (code: string) => {
   try {
-    await axiosApi.post('/auth', { code })
+    const { data } = await axiosApi.post<TokenResponse>('/auth', { code })
+    TokenManager.setToken(data)
   } catch (e) {
     alert(ErrorMapper(e, errors))
   }

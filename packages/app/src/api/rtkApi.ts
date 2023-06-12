@@ -1,8 +1,8 @@
-import env from '@lib/env'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
+import CutomBaseQuery from './CustomBaseQuery'
 
 const rtkApi = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: env.NEXT_PUBLIC_SERVER_URL }),
+  baseQuery: CutomBaseQuery,
   endpoints: () => ({}),
 })
 
