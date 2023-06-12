@@ -15,7 +15,9 @@ axiosApi.interceptors.request.use(async (config) => {
 
   if (!isSuccessed) return { ...config, signal: AbortSignal.abort() }
 
-  config.headers['Authorization'] = `Bearer ${tokenManager.accessToken}`
+  config.headers['Authorization'] = tokenManager.accessToken
+    ? `Bearer ${tokenManager.accessToken}`
+    : undefined
 
   return config
 })
