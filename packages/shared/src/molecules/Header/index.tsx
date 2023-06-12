@@ -3,7 +3,13 @@ import * as SVG from '../../assets/svg'
 import * as Icon from '../../icons'
 import * as S from './style'
 
-const Header = () => {
+interface Props {
+  onLogout?: () => void
+  onExit?: () => void
+  onFilter?: () => void
+}
+
+const Header = ({ onExit, onLogout, onFilter }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
 
   return (
@@ -12,7 +18,7 @@ const Header = () => {
         <SVG.SMSLogo />
       </S.LogoWrapper>
       <S.InfoWrapper>
-        <S.Filter>
+        <S.Filter onClick={onFilter}>
           <Icon.Filter />
           필터
         </S.Filter>
@@ -20,13 +26,13 @@ const Header = () => {
           <SVG.Person />
         </S.UserCircle>
         <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
-          <S.DropdownItem>
+          <S.DropdownItem onClick={onLogout}>
             <Icon.Out color='var(--ERROR)' /> 로그아웃
           </S.DropdownItem>
 
           <S.Line />
 
-          <S.DropdownItem>
+          <S.DropdownItem onClick={onExit}>
             <Icon.Person color='var(--ERROR)' /> 회원 탈퇴
           </S.DropdownItem>
         </S.DropdownMenu>
