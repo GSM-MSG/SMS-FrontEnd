@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import { Dropdown } from '../../atoms'
 
 export const Wrapper = styled.div`
   max-width: 45.5rem;
@@ -27,6 +28,7 @@ export const LogoWrapper = styled(Link)`
 export const InfoWrapper = styled.div`
   display: flex;
   gap: 1rem;
+  position: relative;
 `
 
 export const Filter = styled.div`
@@ -47,4 +49,25 @@ export const UserCircle = styled.div`
   overflow: hidden;
   background: var(--N10);
   cursor: pointer;
+`
+
+export const DropdownMenu = styled(Dropdown.Menu)`
+  width: 15rem;
+  border-radius: 1rem;
+  left: auto;
+  right: 0;
+`
+
+export const DropdownItem = styled(Dropdown.Item)`
+  display: flex;
+  gap: 0.75rem;
+  color: var(--ERROR);
+`
+
+export const Line = styled.hr`
+  width: 80%;
+  height: 1px;
+  background: var(--N10);
+  border: none;
+  margin: 0 auto;
 `
