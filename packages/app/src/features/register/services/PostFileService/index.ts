@@ -1,4 +1,4 @@
-import { serverApi } from '@api'
+import { axiosApi } from '@api'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/register/services/errors'
 import { Response } from './response'
@@ -11,7 +11,7 @@ const PostFileService = async (
   formData.append('file', file)
 
   try {
-    const { data } = await serverApi.post<Response>(
+    const { data } = await axiosApi.post<Response>(
       `/file${isImage ? '/image' : ''}`,
       formData,
       {

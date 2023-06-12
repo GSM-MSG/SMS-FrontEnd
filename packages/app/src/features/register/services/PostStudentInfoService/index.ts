@@ -1,4 +1,4 @@
-import { serverApi } from '@api'
+import { axiosApi } from '@api'
 import { RegisterFormType } from '@features/register/type'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/register/services/errors'
@@ -7,7 +7,7 @@ const PostStudentInfoService = async (
   form: RegisterFormType
 ): Promise<boolean> => {
   try {
-    await serverApi.post('/student', {
+    await axiosApi.post('/student', {
       ...form,
       techStack: form.techStack
         .split(',')
