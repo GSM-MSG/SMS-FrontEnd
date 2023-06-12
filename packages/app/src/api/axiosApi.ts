@@ -9,15 +9,16 @@ axiosApi.interceptors.request.use(async (config) => {
   const tokenManager = new TokenManager()
 
   let isSuccessed = true
+  const needsRefresh = needsTokenRefresh(config.url, config.method)
 
-  if (needsTokenRefresh(config.url, config.method))
-    isSuccessed = await tokenManager.reissueToken()
+  if (needsRefresh) isSuccessed = await tokenManager.reissueToken()
 
   if (!isSuccessed) return { ...config, signal: AbortSignal.abort() }
 
-  config.headers['Authorization'] = tokenManager.accessToken
-    ? `Bearer ${tokenManager.accessToken}`
-    : undefined
+  config.headers['Authorization'] =
+    tokenManager.accessToken && needsRefresh
+      ? `Bearer ${tokenManager.accessToken}`
+      : undefined
 
   return config
 })

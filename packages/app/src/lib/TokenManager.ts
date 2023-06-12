@@ -47,12 +47,12 @@ class TokenManager {
       !this.refreshToken ||
       !this.accessTokenExp ||
       !this.refreshTokenExp ||
-      this.accessTokenExp > oneMinuteLater ||
+      this.accessTokenExp <= oneMinuteLater ||
       this.refreshTokenExp <= oneMinuteLater
     )
       return false
 
-    if (!observable.observers.length) {
+    if (observable.observers.length) {
       return new Promise<boolean>((resolve) => {
         observable.setOvserver(resolve)
       })
