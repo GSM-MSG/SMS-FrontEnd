@@ -18,6 +18,7 @@ export const Content = styled.div`
   width: min-content;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   margin: 0 auto;
 
   @media (max-width: 41.5rem) {
@@ -31,7 +32,7 @@ export const Students = styled.div`
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
 
-  @media (max-width: 91rem) {
+  @media (max-width: 97rem) {
     grid-template-columns: repeat(4, 1fr);
   }
 
