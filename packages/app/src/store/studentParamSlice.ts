@@ -9,7 +9,7 @@ interface InitialState {
 const initialState: InitialState = {
   param: {
     page: 1,
-    size: 10,
+    size: 20,
   },
   isLoading: false,
   nextStop: false,
