@@ -121,7 +121,7 @@ const StudentDetail = ({ student }: Props) => {
                   )
                 )}
 
-                <S.TableLine />
+                {student.languageCertificates?.length ? <S.TableLine /> : null}
 
                 <S.TableColumn>
                   <S.TableTitle>자격증</S.TableTitle>

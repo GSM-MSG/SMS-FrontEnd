@@ -23,7 +23,7 @@ const studentApi = rtkApi.injectEndpoints({
     }),
     studentDetail: build.mutation<StudentDetail, string>({
       query: (studentId) => ({
-        url: `/student/${studentId}`,
+        url: `/student/teacher/${studentId}`,
       }),
     }),
   }),

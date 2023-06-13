@@ -36,6 +36,10 @@ export const LeftImage = styled.img`
   border-radius: 1.5rem;
   top: 0;
   z-index: -1;
+
+  @media (max-width: 30rem) {
+    border-radius: 0;
+  }
 `
 
 export const RightContent = styled.div`
