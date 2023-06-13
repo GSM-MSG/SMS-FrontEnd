@@ -2,7 +2,7 @@ type Department = 'SW_DEVELOPMENT' | 'SMART_IOT_DEVELOPMENT' | 'AI_DEVELOPMENT'
 type FormOfEmployment = 'FULL_TIME' | 'TEMPORARY' | 'CONTRACT' | 'INTERN'
 type Sort = 'ASCENDING' | 'DESCENDING'
 
-type Request = {
+interface StudentParam {
   page: number
   size: number
   majors?: string[] // 게스트 | 학생 | 선생님
@@ -19,5 +19,3 @@ type Request = {
   gsmAuthenticationScoreSort?: Sort // ASCENDING 오름차순 DESCENDING 내림차순 | 선생님
   salarySort?: Sort // ASCENDING 오름차순 DESCENDING 내림차순 | 선생님
 }
-
-export default Request

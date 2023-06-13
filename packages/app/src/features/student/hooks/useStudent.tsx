@@ -1,15 +1,19 @@
 import { studentApi } from '@features/student'
+import { RootState } from '@store'
+import { nextStop } from '@store/studentParamSlice'
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const useStudent = () => {
-  const { data, error, isError } = studentApi.useStudentQuery({
-    page: 1,
-    size: 20,
-  })
+  const dispatch = useDispatch()
+  const { studentParam } = useSelector((state: RootState) => ({
+    studentParam: state.studentParam,
+  }))
+  const { data } = studentApi.useStudentQuery(studentParam.param)
 
   useEffect(() => {
-    if (!isError) return
-  }, [error])
+    if (data?.last) dispatch(nextStop())
+  }, [data])
 
   return { data }
 }

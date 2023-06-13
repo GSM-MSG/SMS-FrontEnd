@@ -2,10 +2,12 @@ import { rtkApi } from '@api'
 import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import dialogSlice from './dialogSlice'
+import studentParamSlice from './studentParamSlice'
 
 const reducers = combineReducers({
   dialog: dialogSlice.reducer,
   api: rtkApi.reducer,
+  studentParam: studentParamSlice.reducer,
 })
 
 export type RootState = ReturnType<typeof reducers>
