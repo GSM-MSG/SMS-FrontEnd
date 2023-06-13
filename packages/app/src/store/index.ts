@@ -4,12 +4,14 @@ import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import dialogSlice from './dialogSlice'
 import studentParamSlice from './studentParamSlice'
 import modalSlice from './modalSlice'
+import studentDetailSlice from './studentDetailSlice'
 
 const reducers = combineReducers({
   dialog: dialogSlice.reducer,
   api: rtkApi.reducer,
   studentParam: studentParamSlice.reducer,
   modal: modalSlice.reducer,
+  studentDetail: studentDetailSlice.reducer,
 })
 
 export type RootState = ReturnType<typeof reducers>

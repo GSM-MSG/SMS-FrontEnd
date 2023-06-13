@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import * as S from './style'
 
 interface Props {
-  student: StudentDetail
+  student: Partial<StudentDetail>
 }
 
 const StudentDetail = ({ student }: Props) => {
@@ -40,7 +40,7 @@ const StudentDetail = ({ student }: Props) => {
                   {student.department}
                 </S.SchoolInfo>
               )}
-            {student.techStacks.length && (
+            {student.techStacks?.length && (
               <S.Tags>
                 {student.techStacks.map((stack, idx) => (
                   <S.Tag key={idx}>{stack}</S.Tag>

@@ -21,7 +21,7 @@ const StudentList = ({ students, max }: Props) => {
 
       <S.Students>
         {students?.map((i) => (
-          <StudentCard key={i.id} {...i} onClick={onShow} />
+          <StudentCard key={i.id} {...i} onClick={() => onShow(i.id)} />
         ))}
       </S.Students>
 
