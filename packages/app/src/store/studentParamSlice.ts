@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 interface InitialState {
   param: StudentParam
   nextStop: boolean
+  isLoading: boolean
 }
 
 const initialState: InitialState = {
@@ -10,6 +11,7 @@ const initialState: InitialState = {
     page: 1,
     size: 10,
   },
+  isLoading: false,
   nextStop: false,
 }
 
@@ -24,6 +26,9 @@ const studentParamSlice = createSlice({
     nextStop: (state) => {
       state.nextStop = true
     },
+    setLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.isLoading = payload
+    },
     setParam: (
       state,
       { payload }: PayloadAction<Omit<StudentParam, 'page' | 'size'>>
@@ -37,6 +42,7 @@ const studentParamSlice = createSlice({
   },
 })
 
-export const { nextPage, setParam, nextStop } = studentParamSlice.actions
+export const { nextPage, setParam, nextStop, setLoading } =
+  studentParamSlice.actions
 
 export default studentParamSlice

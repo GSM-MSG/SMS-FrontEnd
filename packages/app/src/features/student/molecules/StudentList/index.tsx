@@ -1,5 +1,6 @@
 import StudentType from '@features/student/types/StudentType'
 import { StudentCard } from '@sms/shared'
+import useScrollObserver from '@features/student/hooks/useScrollObserver'
 import * as S from './style'
 
 interface Props {
@@ -8,6 +9,8 @@ interface Props {
 }
 
 const StudentList = ({ students, max }: Props) => {
+  const { observe } = useScrollObserver()
+
   return (
     <S.Content>
       <S.MaxCount>
@@ -19,6 +22,8 @@ const StudentList = ({ students, max }: Props) => {
           <StudentCard key={i.id} {...i} onClick={() => {}} />
         ))}
       </S.Students>
+
+      <div ref={observe} />
     </S.Content>
   )
 }
