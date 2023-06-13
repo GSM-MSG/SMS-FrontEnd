@@ -1,3 +1,8 @@
+import {
+  DepartmentData,
+  FormOfEmploymentData,
+  MilitaryServiceData,
+} from '@features/student/data/StudentDetailData'
 import ModalPortal from '@components/ModalPortal'
 import { Button } from '@sms/shared'
 import { Xmark } from '@sms/shared/src/icons'
@@ -16,7 +21,10 @@ const StudentDetail = ({ student }: Props) => {
     student.contactEmail &&
     student.gsmAuthenticationScore &&
     student.militaryService &&
-    student.regions
+    student.regions &&
+    student.militaryService &&
+    student.formOfEmployment &&
+    student.salary
 
   return (
     <ModalPortal onClose={onClose}>
@@ -37,7 +45,7 @@ const StudentDetail = ({ student }: Props) => {
               student.department && (
                 <S.SchoolInfo>
                   {student.grade}학년 {student.classNum}반 {student.number}번 •{' '}
-                  {student.department}
+                  {DepartmentData[student.department]}
                 </S.SchoolInfo>
               )}
             {student.techStacks?.length && (
@@ -70,7 +78,31 @@ const StudentDetail = ({ student }: Props) => {
 
                 <S.TableColumn>
                   <S.TableTitle>병특 희망 여부</S.TableTitle>
-                  <S.TableValue>{student.militaryService}</S.TableValue>
+                  <S.TableValue>
+                    {
+                      MilitaryServiceData[
+                        student.militaryService as MilitaryService
+                      ]
+                    }
+                  </S.TableValue>
+                </S.TableColumn>
+
+                <S.TableLine />
+
+                <S.TableColumn>
+                  <S.TableTitle>희망 고용 형태</S.TableTitle>
+                  <S.TableValue>
+                    {
+                      FormOfEmploymentData[
+                        student.formOfEmployment as FormOfEmployment
+                      ]
+                    }
+                  </S.TableValue>
+                </S.TableColumn>
+
+                <S.TableColumn>
+                  <S.TableTitle>희망 연봉</S.TableTitle>
+                  <S.TableValue>{student.salary} 만원</S.TableValue>
                 </S.TableColumn>
 
                 <S.TableColumn>

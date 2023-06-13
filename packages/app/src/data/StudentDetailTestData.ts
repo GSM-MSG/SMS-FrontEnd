@@ -1,4 +1,4 @@
-const StudentDetailData: StudentDetail = {
+const StudentDetailTestData: StudentDetail = {
   name: '전승원',
   introduce: '한줄 자기소개',
   dreamBookFileUrl: 'https://',
@@ -29,4 +29,4 @@ const StudentDetailData: StudentDetail = {
   techStacks: ['Spring', 'Mysql'],
 }
 
-export default StudentDetailData
+export default StudentDetailTestData
