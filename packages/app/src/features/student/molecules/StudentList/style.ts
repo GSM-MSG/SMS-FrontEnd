@@ -31,41 +31,20 @@ export const Students = styled.div`
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
 
-  & > p:nth-of-type(1) {
-    grid-column: 1 / 6;
-    grid-row: 1 / 2;
-  }
-
   @media (max-width: 91rem) {
     grid-template-columns: repeat(4, 1fr);
-
-    & > p:nth-of-type(1) {
-      grid-column: 1 / 5;
-    }
   }
 
   @media (max-width: 78.5rem) {
     grid-template-columns: repeat(3, 1fr);
-
-    & > p:nth-of-type(1) {
-      grid-column: 1 / 4;
-    }
   }
 
   @media (max-width: 60rem) {
     grid-template-columns: repeat(2, 1fr);
-
-    & > p:nth-of-type(1) {
-      grid-column: 1 / 3;
-    }
   }
 
   @media (max-width: 41.5rem) {
     width: 100%;
     grid-template-columns: repeat(1, 1fr);
-
-    & > p:nth-of-type(1) {
-      grid-column: 1 / 2;
-    }
   }
 `
