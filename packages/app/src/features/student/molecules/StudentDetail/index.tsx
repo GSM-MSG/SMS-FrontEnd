@@ -7,6 +7,7 @@ import ModalPortal from '@components/ModalPortal'
 import { Button } from '@sms/shared'
 import { Xmark } from '@sms/shared/src/icons'
 import useModal from '@features/student/hooks/useModal'
+import * as Icon from '@sms/shared/src/icons'
 import { useRouter } from 'next/router'
 import * as S from './style'
 
@@ -29,14 +30,17 @@ const StudentDetail = ({ student }: Props) => {
   return (
     <ModalPortal onClose={onClose}>
       <S.Wrapper>
+        <S.CloseButton onClick={onClose}>
+          <Xmark />
+        </S.CloseButton>
         <S.Content>
           {student.profileImg && (
             <S.LeftImage src={student.profileImg} alt='profile image' />
           )}
           <S.RightContent>
-            <S.CloseButton onClick={onClose}>
-              <Xmark />
-            </S.CloseButton>
+            <S.DreamBook>
+              <Icon.Book />
+            </S.DreamBook>
             <S.Major>{student.major}</S.Major>
             <S.Name>{student.name}</S.Name>
             {student.grade &&

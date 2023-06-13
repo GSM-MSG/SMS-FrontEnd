@@ -1,17 +1,24 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  width: 26.875rem;
+  width: 30rem;
   height: 90vh;
   position: relative;
   background: var(--WHITE);
   z-index: -2;
   border-radius: 1.5rem;
 
-  @media (max-width: 30rem) {
+  @media (max-width: 34rem) {
     width: 100%;
     height: 100vh;
   }
+`
+
+export const CloseButton = styled.span`
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  cursor: pointer;
 `
 
 export const Content = styled.div`
@@ -33,7 +40,8 @@ export const LeftImage = styled.img`
   width: 100%;
   height: 100%;
   position: sticky;
-  border-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
   top: 0;
   z-index: -1;
 
@@ -46,16 +54,17 @@ export const RightContent = styled.div`
   padding: 1.25rem;
   background: var(--WHITE);
   border-radius: 1.5rem;
+  position: relative;
 
   @media (max-width: 30rem) {
     border-radius: 1.5rem;
   }
 `
 
-export const CloseButton = styled.span`
+export const DreamBook = styled.span`
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: 1.5rem;
+  right: 1.5rem;
   cursor: pointer;
 `
 
