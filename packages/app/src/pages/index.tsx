@@ -5,7 +5,7 @@ export default function Home() {
 
   return (
     <main>
-      <StudentList students={data?.content} />
+      <StudentList students={data?.content} max={data?.totalSize || 0} />
     </main>
   )
 }

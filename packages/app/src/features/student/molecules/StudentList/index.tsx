@@ -4,15 +4,22 @@ import * as S from './style'
 
 interface Props {
   students?: StudentType[]
+  max: number
 }
 
-const StudentList = ({ students }: Props) => {
+const StudentList = ({ students, max }: Props) => {
   return (
-    <S.Wrapper>
-      {students?.map((i) => (
-        <StudentCard key={i.id} {...i} onClick={() => {}} />
-      ))}
-    </S.Wrapper>
+    <S.Content>
+      <S.MaxCount>
+        <S.Count>{max}</S.Count>명
+      </S.MaxCount>
+
+      <S.Students>
+        {students?.map((i) => (
+          <StudentCard key={i.id} {...i} onClick={() => {}} />
+        ))}
+      </S.Students>
+    </S.Content>
   )
 }
 
