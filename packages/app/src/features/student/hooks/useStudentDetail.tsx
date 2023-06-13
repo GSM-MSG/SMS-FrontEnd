@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const useStudentDetail = () => {
   const [mutation] = studentApi.useStudentDetailMutation()
   const dispatch = useDispatch()
-  const { studentDetail, id } = useSelector((state: RootState) => ({
-    studentDetail: state.studentDetail,
+  const { id } = useSelector((state: RootState) => ({
     id: state.studentDetail.id,
   }))
 
@@ -20,7 +19,7 @@ const useStudentDetail = () => {
 
       dispatch(setStudent(data.data))
     })()
-  }, [studentDetail])
+  }, [id])
 }
 
 export default useStudentDetail
