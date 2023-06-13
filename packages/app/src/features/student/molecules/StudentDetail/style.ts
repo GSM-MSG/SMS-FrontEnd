@@ -4,12 +4,13 @@ export const Wrapper = styled.div`
   width: 26.875rem;
   height: 90vh;
   position: relative;
+  background: var(--WHITE);
+  z-index: -2;
+  border-radius: 1.5rem;
 
   @media (max-width: 30rem) {
     width: 100%;
     height: 100vh;
-    background: var(--WHITE);
-    z-index: -2;
   }
 `
 
@@ -19,8 +20,8 @@ export const Content = styled.div`
   height: 100%;
   grid-template-rows: 1fr 1fr;
   border: 0.5rem solid var(--N10);
-  border-radius: 1.5rem;
   overflow: scroll;
+  border-radius: 1.5rem;
 
   @media (max-width: 30rem) {
     border-radius: 0;
@@ -29,10 +30,10 @@ export const Content = styled.div`
 `
 
 export const LeftImage = styled.img`
-  background: var(--WHITE);
   width: 100%;
   height: 100%;
   position: sticky;
+  border-radius: 1.5rem;
   top: 0;
   z-index: -1;
 `
@@ -40,6 +41,7 @@ export const LeftImage = styled.img`
 export const RightContent = styled.div`
   padding: 1.25rem;
   background: var(--WHITE);
+  border-radius: 1.5rem;
 
   @media (max-width: 30rem) {
     border-radius: 1.5rem;
