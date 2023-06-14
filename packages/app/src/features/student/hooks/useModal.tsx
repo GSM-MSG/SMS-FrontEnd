@@ -15,8 +15,11 @@ const useModal = (name: string) => {
       dispatch(clearStudent())
       dispatch(onClose())
     },
-    onShow: (id: string) => {
+    onShowAndSetId: (id: string) => {
       dispatch(setStudentId(id))
+      dispatch(onShow(name))
+    },
+    onShow: () => {
       dispatch(onShow(name))
     },
   }

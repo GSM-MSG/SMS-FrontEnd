@@ -11,7 +11,7 @@ interface Props {
 
 const StudentList = ({ students, max }: Props) => {
   const { observe } = useScrollObserver()
-  const { onShow } = useModal('detail')
+  const { onShowAndSetId } = useModal('detail')
 
   return (
     <S.Content>
@@ -21,7 +21,7 @@ const StudentList = ({ students, max }: Props) => {
 
       <S.Students>
         {students?.map((i) => (
-          <StudentCard key={i.id} {...i} onClick={() => onShow(i.id)} />
+          <StudentCard key={i.id} {...i} onClick={() => onShowAndSetId(i.id)} />
         ))}
       </S.Students>
 
