@@ -47,7 +47,7 @@ class TokenManager {
       !this.accessTokenExp ||
       !this.refreshTokenExp
     )
-      return false
+      return true
 
     const oneMinuteLater = this.getOneMinuteLater()
     if (
