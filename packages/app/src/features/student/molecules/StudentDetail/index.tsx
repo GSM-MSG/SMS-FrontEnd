@@ -8,6 +8,7 @@ import { Button } from '@sms/shared'
 import { Xmark } from '@sms/shared/src/icons'
 import useModal from '@features/student/hooks/useModal'
 import * as Icon from '@sms/shared/src/icons'
+import useFileDownloader from '@features/student/hooks/useFileDownloader'
 import { useRouter } from 'next/router'
 import * as S from './style'
 
@@ -17,6 +18,7 @@ interface Props {
 
 const StudentDetail = ({ student }: Props) => {
   const { onClose } = useModal()
+  const { onChange } = useFileDownloader()
   const router = useRouter()
   const isExistDetailData =
     student.contactEmail &&
@@ -38,9 +40,18 @@ const StudentDetail = ({ student }: Props) => {
             <S.LeftImage src={student.profileImg} alt='profile image' />
           )}
           <S.RightContent>
-            <S.DreamBook>
-              <Icon.Book />
-            </S.DreamBook>
+            {student.dreamBookFileUrl && (
+              <S.DreamBook
+                onClick={() =>
+                  onChange(
+                    student.dreamBookFileUrl as string,
+                    student.name as string
+                  )
+                }
+              >
+                <Icon.Book />
+              </S.DreamBook>
+            )}
             <S.Major>{student.major}</S.Major>
             <S.Name>{student.name}</S.Name>
             {student.grade &&
