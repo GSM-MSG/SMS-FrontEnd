@@ -57,3 +57,7 @@ export const Checkbox = styled.label`
     transition: 0.2s;
   }
 `
+
+export const Label = styled.span`
+  ${({ theme }) => theme.body2}
+`

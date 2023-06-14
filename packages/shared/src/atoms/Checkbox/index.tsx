@@ -28,7 +28,7 @@ const Checkbox = forwardRef<HTMLInputElement | null, Props>(
           </svg>
         </S.Checkbox>
 
-        {children && <span>{children}</span>}
+        {children && <S.Label>{children}</S.Label>}
       </S.Wrapper>
     )
   }
