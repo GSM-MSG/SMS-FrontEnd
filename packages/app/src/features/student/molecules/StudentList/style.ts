@@ -1,5 +1,17 @@
 import styled from '@emotion/styled'
 
+export const Content = styled.div`
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+
+  @media (max-width: 41.5rem) {
+    width: 100%;
+  }
+`
+
 export const MaxCount = styled.p`
   width: 100%;
   ${({ theme }) => theme.title2}
@@ -12,18 +24,6 @@ export const MaxCount = styled.p`
 export const Count = styled.span`
   ${({ theme }) => theme.title1}
   color: var(--BLACK);
-`
-
-export const Content = styled.div`
-  width: min-content;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 0 auto;
-
-  @media (max-width: 41.5rem) {
-    width: 100%;
-  }
 `
 
 export const Students = styled.div`
