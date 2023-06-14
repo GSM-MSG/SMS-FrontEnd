@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Wrapper = styled.div``
-
-export const SelectContent = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

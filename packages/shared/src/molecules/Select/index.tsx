@@ -35,8 +35,8 @@ const Select = ({
   const onClick = (option: string) => setLabel(() => option)
 
   return (
-    <S.Wrapper>
-      <S.SelectContent>
+    <div>
+      <S.Wrapper>
         <S.SelectWrapper onClick={() => setIsShow(!isShow)}>
           <S.SelectedOption>
             {directIsChecked ? '직접 입력' : label}
@@ -93,9 +93,9 @@ const Select = ({
             )}
           />
         )}
-      </S.SelectContent>
+      </S.Wrapper>
       {error && !directIsChecked && <S.Error>{error}</S.Error>}
-    </S.Wrapper>
+    </div>
   )
 }
 
