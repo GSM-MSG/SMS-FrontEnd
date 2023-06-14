@@ -11,6 +11,7 @@ export default function Home() {
   const { data } = useStudent()
   const { isShow } = useModal()
   useStudentDetail()
+
   const { studentDetail } = useSelector((state: RootState) => ({
     studentDetail: state.studentDetail,
   }))

@@ -72,6 +72,15 @@ export const UserCircle = styled.div`
   cursor: pointer;
 `
 
+export const UserCircleLink = styled(Link)`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  overflow: hidden;
+  background: var(--N10);
+  cursor: pointer;
+`
+
 export const DropdownMenu = styled(Dropdown.Menu)`
   width: 15rem;
   border-radius: 1rem;
