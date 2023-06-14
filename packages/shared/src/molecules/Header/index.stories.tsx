@@ -10,4 +10,6 @@ export default config
 
 type Story = StoryObj<typeof Header>
 
-export const Primary: Story = {}
+export const Primary: Story = {
+  args: { isLoggedIn: false },
+}
