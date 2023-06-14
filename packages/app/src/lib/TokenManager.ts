@@ -47,7 +47,7 @@ class TokenManager {
       !this.accessTokenExp ||
       !this.refreshTokenExp
     )
-      return false
+      return true
 
     const oneMinuteLater = this.getOneMinuteLater()
     if (
@@ -70,8 +70,9 @@ class TokenManager {
       return false
     }
 
-    TokenManager.setToken(data)
     observable.notifyAll(true)
+    TokenManager.setToken(data)
+    this.setTokenFromLocalStorage()
 
     this.setTokenFromLocalStorage()
 

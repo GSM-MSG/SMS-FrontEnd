@@ -27,7 +27,12 @@ interface FormType {
 }
 
 export const Primary = () => {
-  const { register, handleSubmit, control } = useForm<FormType>()
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FormType>()
 
   const onSubmit = handleSubmit(() => {})
 
@@ -39,6 +44,7 @@ export const Primary = () => {
         options={options}
         control={control}
         directInput
+        error={errors.select?.message}
       />
       <button type='submit'>submit</button>
     </form>
