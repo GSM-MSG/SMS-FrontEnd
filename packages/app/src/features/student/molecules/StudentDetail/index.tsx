@@ -18,7 +18,7 @@ interface Props {
 }
 
 const StudentDetail = ({ student }: Props) => {
-  const { onClose } = useModal()
+  const { onClose } = useModal('detail')
   const { onChange } = useFileDownloader()
   const router = useRouter()
   const isExistDetailData =

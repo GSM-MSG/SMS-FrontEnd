@@ -3,21 +3,21 @@ import { onClose, onShow } from '@store/modalSlice'
 import { clearStudent, setStudentId } from '@store/studentDetailSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-const useModal = () => {
+const useModal = (name: string) => {
   const dispatch = useDispatch()
-  const { isShow } = useSelector((state: RootState) => ({
-    isShow: state.modal,
+  const { modal } = useSelector((state: RootState) => ({
+    modal: state.modal,
   }))
 
   return {
-    isShow,
+    isShow: modal.value && name === modal.name,
     onClose: () => {
       dispatch(clearStudent())
       dispatch(onClose())
     },
     onShow: (id: string) => {
       dispatch(setStudentId(id))
-      dispatch(onShow())
+      dispatch(onShow(name))
     },
   }
 }

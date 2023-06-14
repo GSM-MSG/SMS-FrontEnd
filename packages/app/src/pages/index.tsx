@@ -9,7 +9,7 @@ import useStudentDetail from '@features/student/hooks/useStudentDetail'
 
 export default function Home() {
   const { data } = useStudent()
-  const { isShow } = useModal()
+  const { isShow } = useModal('detail')
   useStudentDetail()
   const { studentDetail } = useSelector((state: RootState) => ({
     studentDetail: state.studentDetail,

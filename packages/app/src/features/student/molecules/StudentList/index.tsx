@@ -11,7 +11,7 @@ interface Props {
 
 const StudentList = ({ students, max }: Props) => {
   const { observe } = useScrollObserver()
-  const { onShow } = useModal()
+  const { onShow } = useModal('detail')
 
   return (
     <S.Content>
