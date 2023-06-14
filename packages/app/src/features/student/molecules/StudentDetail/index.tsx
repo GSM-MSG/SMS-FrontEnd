@@ -8,6 +8,7 @@ import { Button } from '@sms/shared'
 import { Xmark } from '@sms/shared/src/icons'
 import useModal from '@features/student/hooks/useModal'
 import * as Icon from '@sms/shared/src/icons'
+import * as SVG from '@sms/shared/src/assets/svg'
 import useFileDownloader from '@features/student/hooks/useFileDownloader'
 import { useRouter } from 'next/router'
 import * as S from './style'
@@ -36,8 +37,12 @@ const StudentDetail = ({ student }: Props) => {
           <Xmark />
         </S.CloseButton>
         <S.Content>
-          {student.profileImg && (
+          {student.profileImg ? (
             <S.LeftImage src={student.profileImg} alt='profile image' />
+          ) : (
+            <S.TemeporaryImage>
+              <SVG.Person />
+            </S.TemeporaryImage>
           )}
           <S.RightContent>
             {student.dreamBookFileUrl && (

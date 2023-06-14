@@ -22,10 +22,10 @@ export const CloseButton = styled.span`
 `
 
 export const Content = styled.div`
-  display: grid;
   width: 100%;
   height: 100%;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   border: 0.5rem solid var(--N10);
   overflow: scroll;
   border-radius: 1.5rem;
@@ -48,6 +48,18 @@ export const LeftImage = styled.img`
   @media (max-width: 30rem) {
     border-radius: 0;
   }
+`
+
+export const TemeporaryImage = styled.div`
+  width: 100%;
+  padding: 0 2rem;
+  background: var(--N10);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  overflow: hidden;
 `
 
 export const RightContent = styled.div`
