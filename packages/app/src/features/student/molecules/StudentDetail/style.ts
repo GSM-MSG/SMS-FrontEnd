@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  width: 30rem;
+  width: 31rem;
   height: 90vh;
   position: relative;
   background: var(--WHITE);
@@ -30,28 +30,30 @@ export const Content = styled.div`
   overflow: scroll;
   border-radius: 1.5rem;
 
-  @media (max-width: 30rem) {
-    border-radius: 0;
+  @media (max-width: 34rem) {
     border: none;
+    border-radius: 0;
   }
 `
 
 export const LeftImage = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 30rem;
+  height: 30rem;
   position: sticky;
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
+  object-fit: cover;
   top: 0;
   z-index: -1;
 
-  @media (max-width: 30rem) {
-    border-radius: 0;
+  @media (max-width: 34rem) {
+    width: 100%;
   }
 `
 
 export const TemeporaryImage = styled.div`
-  width: 100%;
+  width: 30rem;
+  height: 30rem;
   padding: 0 2rem;
   background: var(--N10);
   display: flex;
@@ -68,7 +70,7 @@ export const RightContent = styled.div`
   border-radius: 1.5rem;
   position: relative;
 
-  @media (max-width: 30rem) {
+  @media (max-width: 34rem) {
     border-radius: 1.5rem;
   }
 `
