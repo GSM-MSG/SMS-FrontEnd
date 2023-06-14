@@ -87,7 +87,6 @@ const Select = ({
             render={({ field, formState: { errors } }) => (
               <Input
                 error={errors[name]?.message && `${errors[name]?.message}`}
-                isReset
                 placeholder='직접 입력'
                 {...field}
               />
