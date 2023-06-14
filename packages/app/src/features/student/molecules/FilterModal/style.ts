@@ -6,6 +6,12 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 90vh;
   background: var(--WHITE);
-  padding 0 1.5rem;
   border-radius: 1.5rem;
+
+  @media (max-width: 39rem) {
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
 `
