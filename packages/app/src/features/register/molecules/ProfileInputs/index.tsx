@@ -1,6 +1,5 @@
 import { Input, Profile, Select, SearchInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
-import { MajorList } from '@features/register/data'
 import { RegisterFormType } from '@features/register/type'
 import {
   Control,
@@ -11,6 +10,7 @@ import {
 } from 'react-hook-form'
 import { ChangeEvent } from 'react'
 import { useAutocomplete } from '@features/register/hooks'
+import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
@@ -29,6 +29,7 @@ const ProfileInputs = ({
   setValue,
   resetField,
 }: Props) => {
+  const { major } = useMajorAutoComplete()
   const { dropdownList, onChange } = useAutocomplete()
 
   return (
@@ -67,7 +68,7 @@ const ProfileInputs = ({
         <Select
           control={control}
           register={register}
-          options={MajorList}
+          options={major || {}}
           name='major'
           directInput
           error={errors.techStack?.message}
