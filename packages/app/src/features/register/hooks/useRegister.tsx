@@ -15,6 +15,7 @@ const useRegister = () => {
     handleSubmit,
     setValue,
     setError,
+    resetField,
     formState: { errors },
   } = useForm<RegisterFormType>()
 
@@ -62,6 +63,7 @@ const useRegister = () => {
     onSubmit,
     imageUpload,
     fileUpload,
+    resetField,
     errors,
     setValue,
   }

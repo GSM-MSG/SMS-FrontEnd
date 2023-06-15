@@ -6,6 +6,7 @@ import {
   Control,
   FieldErrors,
   UseFormRegister,
+  UseFormResetField,
   UseFormSetValue,
 } from 'react-hook-form'
 import { ChangeEvent } from 'react'
@@ -17,6 +18,7 @@ interface Props {
   onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
   control: Control<RegisterFormType>
   setValue: UseFormSetValue<RegisterFormType>
+  resetField: UseFormResetField<RegisterFormType>
 }
 
 const ProfileInputs = ({
@@ -25,6 +27,7 @@ const ProfileInputs = ({
   errors,
   control,
   setValue,
+  resetField,
 }: Props) => {
   const { dropdownList, onChange } = useAutocomplete()
 
@@ -45,7 +48,7 @@ const ProfileInputs = ({
             required: { value: true, message: '필수 값입니다' },
           })}
           error={errors.introduce?.message}
-          isReset
+          onReset={() => resetField('introduce')}
           placeholder='1줄 자기소개 입력'
         />
       </InputColumn>
@@ -56,7 +59,7 @@ const ProfileInputs = ({
           })}
           type='email'
           error={errors.contactEmail?.message}
-          isReset
+          onReset={() => resetField('contactEmail')}
           placeholder='공개 이메일 입력'
         />
       </InputColumn>
@@ -80,7 +83,7 @@ const ProfileInputs = ({
             },
           })}
           error={errors.portfolioUrl?.message}
-          isReset
+          onReset={() => resetField('portfolioUrl')}
           placeholder='https://'
         />
       </InputColumn>

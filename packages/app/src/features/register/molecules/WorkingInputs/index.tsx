@@ -2,15 +2,21 @@ import { Input, MultiInput, Select } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { WorkType } from '@features/register/data'
 import { RegisterFormType } from '@features/register/type'
-import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
+import {
+  Control,
+  FieldErrors,
+  UseFormRegister,
+  UseFormResetField,
+} from 'react-hook-form'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   control: Control<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
+  resetField: UseFormResetField<RegisterFormType>
 }
 
-const WorkingInputs = ({ register, control, errors }: Props) => {
+const WorkingInputs = ({ register, control, errors, resetField }: Props) => {
   return (
     <FormWrapper title='근무 조건'>
       <InputColumn comment='희망 고용 형태'>
@@ -30,7 +36,7 @@ const WorkingInputs = ({ register, control, errors }: Props) => {
             valueAsNumber: true,
           })}
           error={errors.salary?.message}
-          isReset
+          onReset={() => resetField('salary')}
           placeholder='희망 연봉 (10,000원 단위)'
         />
       </InputColumn>

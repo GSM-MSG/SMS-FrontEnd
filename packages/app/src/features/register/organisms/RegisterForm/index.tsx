@@ -19,6 +19,7 @@ const RegisterForm = () => {
     fileUpload,
     errors,
     setValue,
+    resetField,
   } = useRegister()
 
   return (
@@ -32,10 +33,21 @@ const RegisterForm = () => {
         register={register}
         errors={errors}
         setValue={setValue}
+        resetField={resetField}
       />
-      <SchoolInputs onUpload={fileUpload} register={register} errors={errors} />
-      <WorkingInputs control={control} register={register} errors={errors} />
-      <MilitaryInputs control={control} register={register} />
+      <SchoolInputs
+        onUpload={fileUpload}
+        resetField={resetField}
+        register={register}
+        errors={errors}
+      />
+      <WorkingInputs
+        control={control}
+        register={register}
+        errors={errors}
+        resetField={resetField}
+      />
+      <MilitaryInputs control={control} register={register} errors={errors} />
       <CertificateInputs
         register={register}
         control={control}

@@ -1,16 +1,21 @@
 import { Input, FileInput } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { RegisterFormType } from '@features/register/type'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import {
+  FieldErrors,
+  UseFormRegister,
+  UseFormResetField,
+} from 'react-hook-form'
 import { ChangeEvent } from 'react'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
   errors: FieldErrors<RegisterFormType>
+  resetField: UseFormResetField<RegisterFormType>
 }
 
-const SchoolInputs = ({ register, onUpload, errors }: Props) => {
+const SchoolInputs = ({ register, onUpload, errors, resetField }: Props) => {
   return (
     <FormWrapper title='학교 생활'>
       <InputColumn comment='인증제 점수'>
@@ -20,7 +25,7 @@ const SchoolInputs = ({ register, onUpload, errors }: Props) => {
             valueAsNumber: true,
           })}
           placeholder='인증 점수 입력'
-          isReset
+          onReset={() => resetField('gsmAuthenticationScore')}
           type='number'
           error={errors.gsmAuthenticationScore?.message}
         />
