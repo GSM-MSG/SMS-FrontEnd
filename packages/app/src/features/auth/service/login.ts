@@ -8,8 +8,11 @@ const login = async (code: string) => {
   try {
     const { data } = await axiosApi.post<TokenResponse>('/auth', { code })
     TokenManager.setToken(data)
+
+    return data
   } catch (e) {
     alert(ErrorMapper(e, errors))
+    return
   }
 }
 
