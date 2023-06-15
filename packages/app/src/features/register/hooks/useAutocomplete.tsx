@@ -13,6 +13,7 @@ const useAutocomplete = () => {
     setStack(e.target.value)
 
   useEffect(() => {
+    setDropdownList([])
     if (!stack) return
 
     const delayFetch = setTimeout(async () => {
@@ -20,7 +21,7 @@ const useAutocomplete = () => {
       if ('error' in res) return
 
       setDropdownList([...res.data.techStack])
-    }, 300)
+    }, 400)
 
     return () => clearTimeout(delayFetch)
   }, [stack])

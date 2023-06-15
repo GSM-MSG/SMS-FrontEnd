@@ -17,7 +17,7 @@ const SearchInput = ({ dropdownList, name, setValue, onChange }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
 
   useEffect(() => {
-    if (!dropdownList || !dropdownList.length) return
+    if (!dropdownList) return
 
     setIsShow(true)
   }, [dropdownList])
@@ -44,6 +44,9 @@ const SearchInput = ({ dropdownList, name, setValue, onChange }: Props) => {
     if (onChange) onChange(e)
   }
 
+  const includesValue = () =>
+    dropdownList.filter((i) => i.toLowerCase() === searchValue.toLowerCase())[0]
+
   return (
     <div>
       <S.Wrapper>
@@ -60,9 +63,11 @@ const SearchInput = ({ dropdownList, name, setValue, onChange }: Props) => {
               {i}
             </Dropdown.Item>
           ))}
-          <Dropdown.Item onClick={() => onClick(searchValue)}>
-            {`+ "${searchValue}" 직접 추가하기`}
-          </Dropdown.Item>
+          {!includesValue() && (
+            <Dropdown.Item onClick={() => onClick(searchValue)}>
+              {`+ "${searchValue}" 직접 추가하기`}
+            </Dropdown.Item>
+          )}
         </Dropdown.Menu>
       </S.Wrapper>
 
