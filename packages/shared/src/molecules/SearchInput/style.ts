@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
 export const Tags = styled.div`
   display: flex;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 `
