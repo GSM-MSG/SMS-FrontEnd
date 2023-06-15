@@ -19,6 +19,7 @@ export const CloseButton = styled.span`
   top: 1.25rem;
   right: 1.25rem;
   cursor: pointer;
+  z-index: 10;
 `
 
 export const Content = styled.div`
