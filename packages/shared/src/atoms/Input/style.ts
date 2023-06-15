@@ -14,13 +14,13 @@ export const InputWrapper = styled.label<InputWrapperProps>`
   transition: 0.2s;
   cursor: text;
 
-  border: 1px solid
-    ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'transparent')};
-
   :hover {
     border: 1px solid
       ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'var(--P1)')};
   }
+
+  border: 1px solid
+    ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'transparent')};
 `
 
 export const TextFiled = styled.input`
