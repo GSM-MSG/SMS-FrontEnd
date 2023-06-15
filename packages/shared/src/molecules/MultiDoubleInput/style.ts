@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
 export const InputsWrapper = styled.div`
   width: 100%;
   margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `
 
 export const InputWrapper = styled.div`
