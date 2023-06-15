@@ -20,8 +20,8 @@ const DialogProvider = () => {
       <Dialog
         title={dialog.title}
         content={dialog.content}
-        cancelText={dialog.cancelText}
-        confirmText={dialog.confirmText}
+        cancelText={dialog.cancelText || '취소'}
+        confirmText={dialog.confirmText || '확인'}
         emitter={dialog.emitter}
         onClose={() => dispatch(setIsShow())}
       />
