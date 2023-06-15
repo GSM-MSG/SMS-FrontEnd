@@ -10,8 +10,11 @@ const useAuth = () => {
   useEffect(() => {
     if (!code) return
     ;(async () => {
-      await login(code)
-      router.push('/')
+      const res = await login(code)
+
+      if (!res) return
+
+      router.push(res.isExist ? '/' : '/register')
     })()
   }, [code])
 

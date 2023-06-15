@@ -12,6 +12,7 @@ const useStudent = () => {
   const { data, isLoading } = studentApi.useStudentQuery(studentParam.param)
 
   useEffect(() => {
+    if (isLoading) return
     dispatch(setLoading(isLoading))
   }, [isLoading])
 

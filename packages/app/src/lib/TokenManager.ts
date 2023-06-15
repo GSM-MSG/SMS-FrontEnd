@@ -74,6 +74,8 @@ class TokenManager {
     TokenManager.setToken(data)
     this.setTokenFromLocalStorage()
 
+    this.setTokenFromLocalStorage()
+
     return true
   }
 

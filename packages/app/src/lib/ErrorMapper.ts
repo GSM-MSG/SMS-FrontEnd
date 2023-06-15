@@ -11,7 +11,7 @@ const ErrorMapper = (e: unknown, errors: Errors) => {
     !e.config.baseURL ||
     !e.config.url ||
     !e.config.method ||
-    !e.status
+    !e.response?.status
   )
     return unknownMessage
 
@@ -19,9 +19,9 @@ const ErrorMapper = (e: unknown, errors: Errors) => {
     const message =
       errors[e.config.baseURL][e.config.url][e.config.method.toUpperCase()]
 
-    if (!message[e.status] && !message['*']) return unknownMessage
+    if (!message[e.response.status] && !message['*']) return unknownMessage
 
-    return message[e.status] ?? message['*']
+    return message[e.response.status] ?? message['*']
   } catch {
     return unknownMessage
   }
