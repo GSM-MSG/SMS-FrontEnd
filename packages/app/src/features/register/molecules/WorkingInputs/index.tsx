@@ -19,6 +19,7 @@ const WorkingInputs = ({ register, control, errors }: Props) => {
           register={register}
           options={WorkType}
           name='formOfEmployment'
+          error={errors.formOfEmployment?.message}
         />
       </InputColumn>
       <InputColumn comment='희망 연봉'>

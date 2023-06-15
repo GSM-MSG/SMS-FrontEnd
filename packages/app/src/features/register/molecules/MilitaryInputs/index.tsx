@@ -1,15 +1,16 @@
 import { Select } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { MilitaryList } from '@features/register/data'
-import { Control, UseFormRegister } from 'react-hook-form'
+import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
 import { RegisterFormType } from '@features/register/type'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   control: Control<RegisterFormType>
+  errors: FieldErrors<RegisterFormType>
 }
 
-const MilitaryInputs = ({ register, control }: Props) => {
+const MilitaryInputs = ({ register, control, errors }: Props) => {
   return (
     <FormWrapper title='병역'>
       <InputColumn comment='병특 희망 여부'>
@@ -18,6 +19,7 @@ const MilitaryInputs = ({ register, control }: Props) => {
           control={control}
           register={register}
           options={MilitaryList}
+          error={errors?.militaryService?.message}
         />
       </InputColumn>
     </FormWrapper>

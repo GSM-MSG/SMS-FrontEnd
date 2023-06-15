@@ -67,6 +67,7 @@ const ProfileInputs = ({
           options={MajorList}
           name='major'
           directInput
+          error={errors.techStack?.message}
         />
       </InputColumn>
       <InputColumn comment='포트폴리오'>
