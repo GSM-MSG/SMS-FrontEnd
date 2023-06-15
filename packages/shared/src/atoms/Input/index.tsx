@@ -59,7 +59,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
             <Xmark />
           </S.ResetButton>
         </S.InputWrapper>
-        <S.Error>{error}</S.Error>
+        {error && <S.Error>{error}</S.Error>}
       </S.Wrapper>
     )
   }

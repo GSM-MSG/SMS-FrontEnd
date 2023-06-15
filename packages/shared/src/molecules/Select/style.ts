@@ -36,3 +36,9 @@ export const CheckButton = styled.input`
   position: absolute;
   opacity: 0;
 `
+
+export const Error = styled.div`
+  ${({ theme }) => theme.caption1}
+  color: var(--ERROR);
+  margin-top: 0.5rem;
+`
