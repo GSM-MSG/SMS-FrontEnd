@@ -38,6 +38,7 @@ const ProfileInputs = ({
         <Profile
           {...register('profileImgUrl', {
             required: { value: true, message: '필수 값입니다' },
+            maxLength: { value: 50, message: '최대 50자 까지 가능합니다' },
           })}
           error={errors.profileImgUrl?.message}
           onUpload={onUpload}
