@@ -19,7 +19,7 @@ const useStudentDetail = () => {
     if (!studentId) return
     let studentRole = ''
 
-    if (!isSuccess) studentRole = 'anonymous/'
+    if (!isSuccess || !role) studentRole = 'anonymous/'
     else if (role === 'ROLE_TEACHER') studentRole = 'teacher/'
     ;(async () => {
       const data = await mutation({ studentId, role: studentRole })
