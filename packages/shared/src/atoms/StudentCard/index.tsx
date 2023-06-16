@@ -30,14 +30,15 @@ const StudentCard = ({
         </S.ProfileBackground>
       )}
 
-      <S.Name>{name}</S.Name>
-      <S.Stack>{major}</S.Stack>
+      <div>
+        <S.Name>{name}</S.Name>
+        <S.Stack>{major}</S.Stack>
+      </div>
 
       <S.Tags>
         {techStack?.map((stack) => (
           <S.Tag key={stack}>{stack}</S.Tag>
         ))}
-        <S.Tag>...</S.Tag>
       </S.Tags>
     </S.Wrapper>
   )
