@@ -1,6 +1,11 @@
 import { rtkApi } from '@api'
 import Response from './Response'
 
+interface StudentDetailRequest {
+  studentId: string
+  role: string
+}
+
 const studentApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     student: build.query<Response, StudentParam>({
@@ -21,9 +26,9 @@ const studentApi = rtkApi.injectEndpoints({
         return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
       },
     }),
-    studentDetail: build.mutation<StudentDetail, string>({
-      query: (studentId) => ({
-        url: `/student/teacher/${studentId}`,
+    studentDetail: build.mutation<StudentDetail, StudentDetailRequest>({
+      query: ({ studentId, role }) => ({
+        url: `/student/${role}${studentId}`,
       }),
     }),
   }),

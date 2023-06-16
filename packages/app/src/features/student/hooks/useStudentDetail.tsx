@@ -3,25 +3,31 @@ import { RootState } from '@store'
 import { setStudent } from '@store/studentDetailSlice'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import useModal from './useModal'
 
 const useStudentDetail = () => {
   const [mutation] = studentApi.useStudentDetailMutation()
   const dispatch = useDispatch()
   const { onClose } = useModal()
-  const { id } = useSelector((state: RootState) => ({
+  const { role, isSuccess } = useLoggedIn()
+  const { id: studentId } = useSelector((state: RootState) => ({
     id: state.studentDetail.id,
   }))
 
   useEffect(() => {
-    if (!id) return
+    if (!studentId) return
+    let studentRole = ''
+
+    if (!isSuccess) studentRole = 'anonymous/'
+    else if (role === 'ROLE_TEACHER') studentRole = 'teacher/'
     ;(async () => {
-      const data = await mutation(id)
+      const data = await mutation({ studentId, role: studentRole })
       if ('error' in data) return onClose()
 
       dispatch(setStudent(data.data))
     })()
-  }, [id])
+  }, [studentId])
 }
 
 export default useStudentDetail

@@ -1,0 +1,1 @@
+type Role = 'ROLE_STUDENT' | 'ROLE_TEACHER'

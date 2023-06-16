@@ -19,7 +19,7 @@ const useLoggedIn = () => {
   }, [isSuccess])
 
   return {
-    isExist: data?.isExist,
+    ...data,
     isSuccess,
   }
 }

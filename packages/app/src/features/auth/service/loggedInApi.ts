@@ -2,6 +2,7 @@ import { rtkApi } from '@api'
 
 interface Response {
   isExist: boolean
+  role: Role
 }
 
 const loggedInApi = rtkApi.injectEndpoints({
