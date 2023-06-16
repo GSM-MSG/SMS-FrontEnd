@@ -63,6 +63,10 @@ export const TemeporaryImage = styled.div`
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
   overflow: hidden;
+
+  @media (max-width: 34rem) {
+    width: 100%;
+  }
 `
 
 export const RightContent = styled.div`
