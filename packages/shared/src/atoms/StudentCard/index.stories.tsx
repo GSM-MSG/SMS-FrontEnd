@@ -15,6 +15,14 @@ export const Primary: Story = {
     name: '최형우',
     profileImg: 'https://t.ly/WvpI1',
     major: 'Jsp Developer',
-    techStack: ['jsp', 'java'],
+    techStack: [
+      'jsp',
+      'java',
+      'sfasfd',
+      'asfsaf',
+      'asdfasf',
+      'asdfaf',
+      'sadfasfsadfasfsf',
+    ],
   },
 }
