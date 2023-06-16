@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
 
+  &:nth-of-type(n + 2) {
+    border-top: 1px solid var(--N10);
+  }
+
   @media (max-width: 41.5rem) {
     width: 100vw;
     height: auto;
