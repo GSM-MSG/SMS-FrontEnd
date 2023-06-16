@@ -94,6 +94,7 @@ const ProfileInputs = ({
           onChange={onChange}
           dropdownList={dropdownList}
           setValue={setValue}
+          limit={5}
         />
       </InputColumn>
     </FormWrapper>

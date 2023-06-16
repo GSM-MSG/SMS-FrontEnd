@@ -9,9 +9,16 @@ interface Props {
   dropdownList: string[]
   setValue: UseFormSetValue<any>
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  limit?: number
 }
 
-const SearchInput = ({ dropdownList, name, setValue, onChange }: Props) => {
+const SearchInput = ({
+  dropdownList,
+  name,
+  setValue,
+  onChange,
+  limit,
+}: Props) => {
   const [searchValue, setSearchValue] = useState<string>('')
   const [stacks, setStacks] = useState<string>('')
   const [isShow, setIsShow] = useState<boolean>(false)
@@ -56,6 +63,7 @@ const SearchInput = ({ dropdownList, name, setValue, onChange }: Props) => {
           onChange={changeHandler}
           value={searchValue}
           onReset={() => setSearchValue('')}
+          disabled={limit ? stacks.split(',').length >= limit : false}
         />
         <Dropdown.Menu isShow={isShow && !!searchValue} onClose={onClose}>
           {dropdownList?.map((i, idx) => (
