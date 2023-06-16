@@ -34,7 +34,10 @@ export const ProfileBackground = styled.div`
   border-radius: 0.68rem;
 
   @media (max-width: 41.5rem) {
-    overflow: scroll;
+    min-width: 6.25rem;
+    min-height: 6.25rem;
+    width: 6.25rem;
+    height: 6.25rem;
   }
 `
 
