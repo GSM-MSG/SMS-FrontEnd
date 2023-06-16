@@ -15,6 +15,8 @@ axiosApi.interceptors.request.use(async (config) => {
 
   if (!isSuccessed) return { ...config, signal: AbortSignal.abort() }
 
+  tokenManager.setTokenFromLocalStorage()
+
   config.headers['Authorization'] =
     tokenManager.accessToken && needsRefresh
       ? `Bearer ${tokenManager.accessToken}`

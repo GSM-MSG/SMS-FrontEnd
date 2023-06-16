@@ -72,9 +72,6 @@ class TokenManager {
 
     observable.notifyAll(true)
     TokenManager.setToken(data)
-    this.setTokenFromLocalStorage()
-
-    this.setTokenFromLocalStorage()
 
     return true
   }

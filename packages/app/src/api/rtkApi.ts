@@ -3,6 +3,7 @@ import CutomBaseQuery from './CustomBaseQuery'
 
 const rtkApi = createApi({
   baseQuery: CutomBaseQuery,
+  tagTypes: ['Student'],
   endpoints: () => ({}),
 })
 
