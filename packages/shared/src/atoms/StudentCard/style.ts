@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
 
+  &:nth-of-type(n + 2) {
+    border-top: 1px solid var(--N10);
+  }
+
   @media (max-width: 41.5rem) {
     width: 100vw;
     height: auto;
@@ -21,6 +25,7 @@ export const Wrapper = styled.div`
     align-items: flex-start;
     gap: 0.75rem;
     border-radius: 0;
+    padding: 1rem 1.25rem;
   }
 `
 
@@ -33,7 +38,10 @@ export const ProfileBackground = styled.div`
   border-radius: 0.68rem;
 
   @media (max-width: 41.5rem) {
-    overflow: scroll;
+    min-width: 6.25rem;
+    min-height: 6.25rem;
+    width: 6.25rem;
+    height: 6.25rem;
   }
 `
 

@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   position: sticky;
   top: 2.5rem;
 
-  @media (max-width: 30rem) {
+  @media (max-width: 41.5rem) {
     max-width: 100%;
     width: 100%;
     top: 0;
@@ -28,6 +28,7 @@ export const Wrapper = styled.div`
 
 export const LogoWrapper = styled(Link)`
   margin-left: 1rem;
+  width: 5rem;
   height: 2rem;
   cursor: pointer;
 
@@ -41,6 +42,10 @@ export const InfoWrapper = styled.div`
   display: flex;
   gap: 1rem;
   position: relative;
+
+  @media (max-width: 41.5rem) {
+    gap: 1.25rem;
+  }
 `
 
 export const Filter = styled.div`
@@ -53,7 +58,7 @@ export const Filter = styled.div`
   gap: 0.25rem;
   cursor: pointer;
 
-  @media (max-width: 30rem) {
+  @media (max-width: 41.5rem) {
     background: transparent;
     padding: 0;
 
@@ -70,6 +75,11 @@ export const UserCircle = styled.div`
   overflow: hidden;
   background: var(--N10);
   cursor: pointer;
+
+  @media (max-width: 41.5rem) {
+    width: 2rem;
+    height: 2rem;
+  }
 `
 
 export const UserCircleLink = styled(Link)`
