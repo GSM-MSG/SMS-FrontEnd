@@ -13,13 +13,14 @@ export const Wrapper = styled.div`
   gap: 1rem;
 
   @media (max-width: 41.5rem) {
-    width: 100%;
+    width: 100vw;
     height: auto;
     min-height: 8.4rem;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 0.75rem;
+    border-radius: 0;
   }
 `
 
