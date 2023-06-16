@@ -8,6 +8,19 @@ export const Wrapper = styled.div`
   border-radius: 1.5rem;
   padding: 1.5rem;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+  ::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1.5rem;
+    left: 0px;
+    bottom: 0px;
+    background: var(--WHITE);
+    pointer-events: none;
+  }
 `
 
 export const ProfileBackground = styled.div`
