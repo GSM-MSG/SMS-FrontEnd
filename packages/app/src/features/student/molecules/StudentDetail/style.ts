@@ -19,6 +19,7 @@ export const CloseButton = styled.span`
   top: 1.25rem;
   right: 1.25rem;
   cursor: pointer;
+  z-index: 10;
 `
 
 export const Content = styled.div`
@@ -103,7 +104,8 @@ export const SchoolInfo = styled.p`
 export const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
 `
 
 export const Tag = styled.span`
@@ -112,7 +114,6 @@ export const Tag = styled.span`
   color: var(--N40);
   padding: 0.35rem 0.75rem;
   border-radius: 0.5rem;
-  margin-bottom: 1rem;
 `
 
 export const Introduce = styled.div`

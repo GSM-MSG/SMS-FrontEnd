@@ -8,6 +8,9 @@ export const Wrapper = styled.div`
   border-radius: 1.5rem;
   padding: 1.5rem;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 export const ProfileBackground = styled.div`
@@ -25,11 +28,11 @@ export const ProfileImg = styled.img`
   aspect-ratio: 1 / 1;
   border-radius: 0.68rem;
   overflow: hidden;
+  object-fit: cover;
 `
 
 export const Name = styled.h2`
   ${({ theme }) => theme.title1}
-  margin-top: 1rem;
 `
 
 export const Stack = styled.p`
@@ -38,10 +41,13 @@ export const Stack = styled.p`
 `
 
 export const Tags = styled.div`
-  margin-top: 1rem;
+  max-height: 4.5rem;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 0.5rem;
+  overflow: hidden;
 `
 
 export const Tag = styled.span`
