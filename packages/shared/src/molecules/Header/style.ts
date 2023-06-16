@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   position: sticky;
   top: 2.5rem;
 
-  @media (max-width: 30rem) {
+  @media (max-width: 41.5rem) {
     max-width: 100%;
     width: 100%;
     top: 0;

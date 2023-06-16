@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
     align-items: flex-start;
     gap: 0.75rem;
     border-radius: 0;
+    padding: 1rem 1.25rem;
   }
 `
 

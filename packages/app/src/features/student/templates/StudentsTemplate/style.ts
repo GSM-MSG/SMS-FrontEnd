@@ -9,7 +9,9 @@ export const Wrapper = styled.main`
   gap: 3rem;
   background: var(--N10);
 
-  @media (max-width: 30rem) {
+  @media (max-width: 41.5rem) {
     padding-top: 0;
+    background: var(--WHITE);
+    gap: 2rem;
   }
 `

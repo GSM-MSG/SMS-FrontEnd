@@ -9,6 +9,7 @@ export const Content = styled.div`
 
   @media (max-width: 41.5rem) {
     width: 100%;
+    gap: 0;
   }
 `
 
@@ -19,6 +20,10 @@ export const MaxCount = styled.p`
   display: flex;
   align-items: center;
   gap: 0.25rem;
+
+  @media (max-width: 41.5rem) {
+    padding: 0 1.25rem;
+  }
 `
 
 export const Count = styled.span`
@@ -47,5 +52,6 @@ export const Students = styled.div`
   @media (max-width: 41.5rem) {
     width: 100%;
     grid-template-columns: repeat(1, 1fr);
+    gap: 0;
   }
 `
