@@ -3,15 +3,22 @@ import { RootState } from '@store'
 import { ToastType } from '@store/toastSlice'
 import { useSelector } from 'react-redux'
 
+import * as S from './style'
+
 const ToastContainer = () => {
   const { toast } = useSelector((state: RootState) => ({ toast: state.toast }))
 
   return (
-    <>
+    <S.Wrapper>
       {toast.map((i: ToastType, idx) => (
-        <Toast key={idx} comment={i.comment} type={i.type} />
+        <Toast
+          isHidden={i.isHidden}
+          key={idx}
+          comment={i.comment}
+          type={i.type}
+        />
       ))}
-    </>
+    </S.Wrapper>
   )
 }
 

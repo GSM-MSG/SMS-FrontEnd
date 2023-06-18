@@ -6,11 +6,13 @@ import useModal from '@features/student/hooks/useModal'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store'
 import useStudentDetail from '@features/student/hooks/useStudentDetail'
+import { useToast } from '@features/toast'
 
 export default function Home() {
   const { data } = useStudent()
   const { isShow } = useModal()
   useStudentDetail()
+  const { addToast } = useToast()
 
   const { studentDetail } = useSelector((state: RootState) => ({
     studentDetail: state.studentDetail,
@@ -21,6 +23,7 @@ export default function Home() {
       <SEO />
       <StudentsTemplate students={data?.content} max={data?.totalSize || 0} />
       {isShow && <StudentDetail student={studentDetail} />}
+      <button onClick={() => addToast('error', 'hello world')}>toast</button>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { addToast, removeToast } from '@store/toastSlice'
+import { addToast, hideToast, removeToast } from '@store/toastSlice'
 import { useDispatch } from 'react-redux'
 
 const useToast = () => {
@@ -9,8 +9,12 @@ const useToast = () => {
     dispatch(addToast({ id, type, comment, milliseconds: 3000 }))
 
     setTimeout(() => {
-      dispatch(removeToast(id))
+      dispatch(hideToast(id))
     }, 3000)
+
+    setTimeout(() => {
+      dispatch(removeToast(id))
+    }, 3400)
   }
 
   return { addToast: createToast }

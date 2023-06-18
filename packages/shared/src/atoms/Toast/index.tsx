@@ -4,11 +4,12 @@ import * as S from './style'
 interface Props {
   comment: string
   type: 'error' | 'success'
+  isHidden: boolean
 }
 
-const Toast = ({ comment, type }: Props) => {
+const Toast = ({ comment, type, isHidden }: Props) => {
   return (
-    <S.Wrapper type={type}>
+    <S.Wrapper type={type} isHidden={isHidden}>
       {type === 'success' ? (
         <Icon.Check color='var(--POSITIVE)' background='var(--WHITE)' />
       ) : (

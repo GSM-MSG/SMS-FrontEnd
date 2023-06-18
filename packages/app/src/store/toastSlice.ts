@@ -5,6 +5,7 @@ export interface ToastType {
   comment: string
   type: 'success' | 'error'
   milliseconds: number
+  isHidden: boolean
 }
 
 const initialState: ToastType[] = []
@@ -13,16 +14,24 @@ const toastSlice = createSlice({
   name: 'toast',
   initialState,
   reducers: {
-    addToast: (state, { payload }: PayloadAction<ToastType>) => {
-      state.push(payload)
+    addToast: (
+      state,
+      { payload }: PayloadAction<Omit<ToastType, 'isHidden'>>
+    ) => {
+      state.push({ ...payload, isHidden: false })
+    },
+    hideToast: (state, { payload }: PayloadAction<symbol>) => {
+      return state.map((i) => {
+        if (i.id === payload) return { ...i, isHidden: true }
+        return i
+      })
     },
     removeToast: (state, { payload }: PayloadAction<symbol>) => {
-      state = state.filter((i) => i.id !== payload)
-      return state
+      return state.filter((i) => i.id !== payload)
     },
   },
 })
 
-export const { addToast, removeToast } = toastSlice.actions
+export const { addToast, removeToast, hideToast } = toastSlice.actions
 
 export default toastSlice
