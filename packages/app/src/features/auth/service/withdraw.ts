@@ -1,12 +1,14 @@
 import { axiosApi } from '@api'
+import ErrorMapper from '@lib/ErrorMapper'
+import errors from '@features/auth/errors'
 
 const withdraw = async () => {
   try {
     await axiosApi.delete('/auth/withdrawal')
 
-    return true
+    return
   } catch (e) {
-    return false
+    return ErrorMapper(e, errors)
   }
 }
 
