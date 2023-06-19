@@ -13,26 +13,18 @@ class TokenManager {
     this.setTokenFromLocalStorage()
   }
 
-  setToken(tokens: ReissueResponse) {
+  static setToken(tokens: ReissueResponse) {
     localStorage.setItem(Token.ACCESS_TOKEN, tokens.accessToken)
     localStorage.setItem(Token.REFRESH_TOKEN, tokens.refreshToken)
     localStorage.setItem(Token.ACCESS_TOKEN_EXP, tokens.accessTokenExp)
     localStorage.setItem(Token.REFRESH_TOKEN_EXP, tokens.refreshTokenExp)
-    this.accessTokenExp = new Date(tokens.accessTokenExp)
-    this.refreshTokenExp = new Date(tokens.refreshTokenExp)
-    this.accessToken = tokens.accessToken
-    this.refreshToken = tokens.refreshToken
   }
 
-  clearToken() {
+  static clearToken() {
     localStorage.removeItem(Token.ACCESS_TOKEN)
     localStorage.removeItem(Token.REFRESH_TOKEN)
     localStorage.removeItem(Token.ACCESS_TOKEN_EXP)
     localStorage.removeItem(Token.REFRESH_TOKEN_EXP)
-    this.accessTokenExp = null
-    this.refreshTokenExp = null
-    this.accessToken = null
-    this.refreshToken = null
   }
 
   setTokenFromLocalStorage() {
@@ -64,7 +56,7 @@ class TokenManager {
       this.accessTokenExp <= oneMinuteLater &&
       this.refreshTokenExp <= oneMinuteLater
     ) {
-      this.clearToken()
+      TokenManager.clearToken()
       return true
     }
 
@@ -89,7 +81,7 @@ class TokenManager {
     }
 
     observable.notifyAll(true)
-    this.setToken(data)
+    TokenManager.setToken(data)
 
     return true
   }
@@ -101,6 +93,4 @@ class TokenManager {
   }
 }
 
-const tokenManager = new TokenManager()
-
-export default tokenManager
+export default TokenManager

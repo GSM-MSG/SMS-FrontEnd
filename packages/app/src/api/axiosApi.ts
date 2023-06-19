@@ -1,11 +1,12 @@
 import axios, { isAxiosError } from 'axios'
 import env from '@lib/env'
-import tokenManager from '@lib/TokenManager'
+import TokenManager from '@lib/TokenManager'
 import needsTokenRefresh from '@lib/needsTokenRefresh'
 
 const axiosApi = axios.create({ baseURL: env.NEXT_PUBLIC_SERVER_URL })
 
 axiosApi.interceptors.request.use(async (config) => {
+  const tokenManager = new TokenManager()
   let isSuccessed = true
   const needsRefresh = needsTokenRefresh(config.url, config.method)
 
@@ -35,7 +36,7 @@ axiosApi.interceptors.response.use(
     )
       return Promise.reject(config)
 
-    tokenManager.clearToken()
+    TokenManager.clearToken()
 
     return axiosApi({
       url: config.config?.url,
