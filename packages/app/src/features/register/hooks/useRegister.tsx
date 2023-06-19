@@ -65,7 +65,7 @@ const useRegister = () => {
     const res = await PostStudentInfoService(form)
     if (res) return addToast('error', ErrorMapper(res, apiErrors))
 
-    addToast('error', '학생 정보 기입에 성공했습니다')
+    addToast('success', '학생 정보 기입에 성공했습니다')
     router.push('/')
   })
 
