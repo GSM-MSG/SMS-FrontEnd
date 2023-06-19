@@ -13,18 +13,26 @@ class TokenManager {
     this.setTokenFromLocalStorage()
   }
 
-  static setToken(tokens: ReissueResponse) {
+  setToken(tokens: ReissueResponse) {
     localStorage.setItem(Token.ACCESS_TOKEN, tokens.accessToken)
     localStorage.setItem(Token.REFRESH_TOKEN, tokens.refreshToken)
     localStorage.setItem(Token.ACCESS_TOKEN_EXP, tokens.accessTokenExp)
     localStorage.setItem(Token.REFRESH_TOKEN_EXP, tokens.refreshTokenExp)
+    this.accessTokenExp = new Date(tokens.accessTokenExp)
+    this.refreshTokenExp = new Date(tokens.refreshTokenExp)
+    this.accessToken = tokens.accessToken
+    this.refreshToken = tokens.refreshToken
   }
 
-  static clearToken() {
+  clearToken() {
     localStorage.removeItem(Token.ACCESS_TOKEN)
     localStorage.removeItem(Token.REFRESH_TOKEN)
     localStorage.removeItem(Token.ACCESS_TOKEN_EXP)
     localStorage.removeItem(Token.REFRESH_TOKEN_EXP)
+    this.accessTokenExp = null
+    this.refreshTokenExp = null
+    this.accessToken = null
+    this.refreshToken = null
   }
 
   setTokenFromLocalStorage() {
@@ -46,10 +54,20 @@ class TokenManager {
       !this.refreshToken ||
       !this.accessTokenExp ||
       !this.refreshTokenExp
-    )
+    ) {
+      this.setTokenFromLocalStorage()
       return true
+    }
 
     const oneMinuteLater = this.getOneMinuteLater()
+    if (
+      this.accessTokenExp <= oneMinuteLater &&
+      this.refreshTokenExp <= oneMinuteLater
+    ) {
+      this.clearToken()
+      return true
+    }
+
     if (
       this.accessTokenExp > oneMinuteLater ||
       this.refreshTokenExp <= oneMinuteLater
@@ -71,7 +89,7 @@ class TokenManager {
     }
 
     observable.notifyAll(true)
-    TokenManager.setToken(data)
+    this.setToken(data)
 
     return true
   }
@@ -83,4 +101,6 @@ class TokenManager {
   }
 }
 
-export default TokenManager
+const tokenManager = new TokenManager()
+
+export default tokenManager
