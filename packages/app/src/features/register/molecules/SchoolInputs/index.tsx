@@ -22,6 +22,7 @@ const SchoolInputs = ({ register, onUpload, errors, resetField }: Props) => {
         <Input
           {...register('gsmAuthenticationScore', {
             required: { value: true, message: '필수 값입니다' },
+            max: { value: 3000, message: '최대 3000점 까지 가능합니다' },
             valueAsNumber: true,
           })}
           placeholder='인증 점수 입력'

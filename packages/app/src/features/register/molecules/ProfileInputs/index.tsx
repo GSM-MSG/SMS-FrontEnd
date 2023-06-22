@@ -47,6 +47,7 @@ const ProfileInputs = ({
         <Input
           {...register('introduce', {
             required: { value: true, message: '필수 값입니다' },
+            maxLength: { value: 50, message: '최대 50자 까지 가능합니다' },
           })}
           error={errors.introduce?.message}
           onReset={() => resetField('introduce')}
@@ -94,6 +95,7 @@ const ProfileInputs = ({
           onChange={onChange}
           dropdownList={dropdownList}
           setValue={setValue}
+          limit={5}
         />
       </InputColumn>
     </FormWrapper>

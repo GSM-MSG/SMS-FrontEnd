@@ -33,6 +33,7 @@ const WorkingInputs = ({ register, control, errors, resetField }: Props) => {
           type='number'
           {...register('salary', {
             required: { value: true, message: '필수 값입니다' },
+            max: { value: 9999, message: '희망 연봉은 최대 9999까지 됩니다' },
             valueAsNumber: true,
           })}
           error={errors.salary?.message}
