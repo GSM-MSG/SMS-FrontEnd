@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router'
 import logout from '@features/auth/service/logout'
 import TokenManager from '@lib/TokenManager'
 import { useDialog } from '@hooks'
 import { useToast } from '@features/toast'
+import { studentApi } from '@features/student'
 
 const useLogout = () => {
   const { dialog } = useDialog()
-  const router = useRouter()
   const { addToast } = useToast()
+  const [mutation] = studentApi.useRefetchStudentMutation()
 
   const onLogout = async () => {
     if (
@@ -24,7 +24,7 @@ const useLogout = () => {
     TokenManager.clearToken()
 
     addToast('success', '로그아웃에 성공했습니다')
-    router.reload()
+    mutation()
   }
 
   return { onLogout }
