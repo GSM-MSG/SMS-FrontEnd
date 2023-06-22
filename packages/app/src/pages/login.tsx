@@ -3,7 +3,7 @@ import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import LoginTemplate from '@templates/LoginTemplate'
 
 const Login = () => {
-  useLoggedIn()
+  useLoggedIn({ redirectToIfFound: '/' })
 
   return (
     <>

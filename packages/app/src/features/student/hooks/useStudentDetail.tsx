@@ -10,7 +10,7 @@ const useStudentDetail = () => {
   const [mutation] = studentApi.useStudentDetailMutation()
   const dispatch = useDispatch()
   const { onClose } = useModal()
-  const { role, isSuccess } = useLoggedIn()
+  const { role, isSuccess } = useLoggedIn({})
   const { id: studentId } = useSelector((state: RootState) => ({
     id: state.studentDetail.id,
   }))

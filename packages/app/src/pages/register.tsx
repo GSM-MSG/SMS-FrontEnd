@@ -3,7 +3,8 @@ import { RegisterForm } from '@features/register/organisms'
 import RegisterLayout from '@layouts/RegisterLayout'
 
 const Register = () => {
-  useLoggedIn()
+  useLoggedIn({ redirectTo: '/', redirectToIfFound: '/' })
+
   return (
     <RegisterLayout>
       <RegisterForm />

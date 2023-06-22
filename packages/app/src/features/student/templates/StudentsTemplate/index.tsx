@@ -13,7 +13,7 @@ interface Props {
 }
 
 const StudentsTemplate = ({ students, max }: Props) => {
-  const { isSuccess } = useLoggedIn()
+  const { isSuccess } = useLoggedIn({})
   const { onLogout } = useLogout()
   const { onWithdraw } = useWithdraw()
 

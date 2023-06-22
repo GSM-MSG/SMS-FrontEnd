@@ -3,11 +3,13 @@ import TokenManager from '@lib/TokenManager'
 import { useDialog } from '@hooks'
 import { useToast } from '@features/toast'
 import { studentApi } from '@features/student'
+import useLoggedIn from './useLoggedIn'
 
 const useLogout = () => {
   const { dialog } = useDialog()
   const { addToast } = useToast()
   const [mutation] = studentApi.useRefetchStudentMutation()
+  const { refetchLoggedIn } = useLoggedIn({})
 
   const onLogout = async () => {
     if (
@@ -25,6 +27,7 @@ const useLogout = () => {
 
     addToast('success', '로그아웃에 성공했습니다')
     mutation()
+    refetchLoggedIn()
   }
 
   return { onLogout }

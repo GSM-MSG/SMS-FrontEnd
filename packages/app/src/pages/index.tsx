@@ -6,10 +6,12 @@ import useModal from '@features/student/hooks/useModal'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store'
 import useStudentDetail from '@features/student/hooks/useStudentDetail'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
 export default function Home() {
   const { data } = useStudent()
   const { isShow } = useModal()
+  useLoggedIn({})
   useStudentDetail()
 
   const { studentDetail } = useSelector((state: RootState) => ({
