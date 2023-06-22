@@ -1,5 +1,7 @@
 import { axiosApi } from '@api'
+import ErrorMapper from '@lib/ErrorMapper'
 import TokenManager from '@lib/TokenManager'
+import errors from '@features/auth/errors'
 
 const logout = async () => {
   try {
@@ -10,9 +12,9 @@ const logout = async () => {
       },
     })
 
-    return true
+    return
   } catch (e) {
-    return false
+    return ErrorMapper(e, errors)
   }
 }
 

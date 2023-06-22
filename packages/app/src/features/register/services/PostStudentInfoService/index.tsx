@@ -1,11 +1,7 @@
 import { axiosApi } from '@api'
 import { RegisterFormType } from '@features/register/type'
-import ErrorMapper from '@lib/ErrorMapper'
-import errors from '@features/register/services/errors'
 
-const PostStudentInfoService = async (
-  form: RegisterFormType
-): Promise<boolean> => {
+const PostStudentInfoService = async (form: RegisterFormType) => {
   try {
     await axiosApi.post('/student', {
       ...form,
@@ -15,10 +11,9 @@ const PostStudentInfoService = async (
         .filter((i) => !!i),
     })
 
-    return true
+    return
   } catch (e) {
-    alert(ErrorMapper(e, errors))
-    return false
+    return e
   }
 }
 

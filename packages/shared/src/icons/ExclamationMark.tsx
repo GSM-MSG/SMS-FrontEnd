@@ -3,7 +3,10 @@ interface Props {
   background?: string
 }
 
-const Check = ({ color = '#62636A', background = '#E1E2E4' }: Props) => (
+const ExclamationMark = ({
+  color = '#62636A',
+  background = '#e1e2e4',
+}: Props) => (
   <svg
     width='24'
     height='24'
@@ -13,7 +16,14 @@ const Check = ({ color = '#62636A', background = '#E1E2E4' }: Props) => (
   >
     <circle cx='12' cy='12' r='10' fill={background} />
     <path
-      d='M8.5 12.5L11 15L15.5 10'
+      d='M12 12.5V7.5'
+      stroke={color}
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M12 16.5L12 16'
       stroke={color}
       strokeWidth='2'
       strokeLinecap='round'
@@ -22,4 +32,4 @@ const Check = ({ color = '#62636A', background = '#E1E2E4' }: Props) => (
   </svg>
 )
 
-export default Check
+export default ExclamationMark

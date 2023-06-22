@@ -46,10 +46,20 @@ class TokenManager {
       !this.refreshToken ||
       !this.accessTokenExp ||
       !this.refreshTokenExp
-    )
+    ) {
+      this.setTokenFromLocalStorage()
       return true
+    }
 
     const oneMinuteLater = this.getOneMinuteLater()
+    if (
+      this.accessTokenExp <= oneMinuteLater &&
+      this.refreshTokenExp <= oneMinuteLater
+    ) {
+      TokenManager.clearToken()
+      return true
+    }
+
     if (
       this.accessTokenExp > oneMinuteLater ||
       this.refreshTokenExp <= oneMinuteLater
