@@ -1,7 +1,7 @@
 import { axiosApi } from '@api'
+import { TokenResponse } from '@features/auth/type/TokenResponse'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/auth/errors'
-import { TokenResponse } from '@features/auth/type/TokenResponse'
 import TokenManager from '@lib/TokenManager'
 
 const login = async (code: string) => {
@@ -11,8 +11,7 @@ const login = async (code: string) => {
 
     return data
   } catch (e) {
-    alert(ErrorMapper(e, errors))
-    return
+    return ErrorMapper(e, errors)
   }
 }
 

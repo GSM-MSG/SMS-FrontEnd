@@ -1,11 +1,13 @@
 import withdraw from '@features/auth/service/withdraw'
+import { studentApi } from '@features/student'
+import { useToast } from '@features/toast'
 import { useDialog } from '@hooks'
 import TokenManager from '@lib/TokenManager'
-import { useRouter } from 'next/router'
 
 const useWithdraw = () => {
   const { dialog } = useDialog()
-  const router = useRouter()
+  const { addToast } = useToast()
+  const [mutation] = studentApi.useRefetchStudentMutation()
 
   const onWithdraw = async () => {
     if (
@@ -15,10 +17,13 @@ const useWithdraw = () => {
       }))
     )
       return
-    if (!(await withdraw())) return
+
+    const res = await withdraw()
+    if (res) return addToast('error', res)
 
     TokenManager.clearToken()
-    router.reload()
+    addToast('success', '회원탈퇴에 성공했습니다')
+    mutation()
   }
 
   return { onWithdraw }

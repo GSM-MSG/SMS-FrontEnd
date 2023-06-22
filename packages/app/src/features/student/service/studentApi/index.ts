@@ -13,7 +13,9 @@ const studentApi = rtkApi.injectEndpoints({
         url: `/student`,
         params,
       }),
-      merge: (current, newData) => {
+      providesTags: [{ type: 'Student' }],
+      merge: (current, newData, { arg }) => {
+        if (arg.page === 1) return newData
         return {
           ...newData,
           content: [...current.content, ...newData.content],
@@ -26,6 +28,18 @@ const studentApi = rtkApi.injectEndpoints({
         return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
       },
     }),
+
+    refetchStudent: build.mutation<Response, void>({
+      query: () => ({
+        url: '/student',
+        params: {
+          page: 1,
+          size: 20,
+        },
+      }),
+      invalidatesTags: [{ type: 'Student' }],
+    }),
+
     studentDetail: build.mutation<StudentDetail, StudentDetailRequest>({
       query: ({ studentId, role }) => ({
         url: `/student/${role}${studentId}`,
