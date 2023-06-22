@@ -27,24 +27,11 @@ axiosApi.interceptors.response.use(
     return config
   },
   async (config) => {
-    if (!isAxiosError(config)) return config
+    if (!isAxiosError(config)) return Promise.reject(config)
 
-    if (
-      (config.response?.config.url === '/auth/verify/access' &&
-        config.response.config.method?.toUpperCase() === 'GET') ||
-      config.response?.status !== 401
-    )
-      return Promise.reject(config)
+    if (config.response?.status === 401) TokenManager.clearToken()
 
-    TokenManager.clearToken()
-
-    return axiosApi({
-      url: config.config?.url,
-      method: config.config?.method,
-      headers: config.config?.headers,
-      params: config.config?.params,
-      data: config.config?.data,
-    })
+    return Promise.reject(config)
   }
 )
 
