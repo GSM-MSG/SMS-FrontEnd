@@ -10,6 +10,7 @@ interface Props {
 const useLoggedIn = ({ redirectTo, redirectToIfFound }: Props) => {
   const router = useRouter()
   const { data, isLoading, isSuccess } = loggedInApi.useLoggedInQuery()
+  const [refetchLoggedIn] = loggedInApi.useRefetchLoggedInMutation()
 
   useEffect(() => {
     if ((!redirectTo && isLoading) || (!redirectToIfFound && isLoading)) return
@@ -30,6 +31,7 @@ const useLoggedIn = ({ redirectTo, redirectToIfFound }: Props) => {
 
   return {
     ...data,
+    refetchLoggedIn,
     isSuccess,
   }
 }
