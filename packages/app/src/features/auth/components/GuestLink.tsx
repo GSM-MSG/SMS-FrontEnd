@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import Link from 'next/link'
 import { ReactNode } from 'react'
 
 interface Props {
@@ -7,7 +6,7 @@ interface Props {
   children: ReactNode
 }
 
-const Wrapper = styled(Link)`
+const Wrapper = styled.a`
   ${({ theme }) => theme.body2}
   color: var(--WHITE);
   text-decoration: underline;
