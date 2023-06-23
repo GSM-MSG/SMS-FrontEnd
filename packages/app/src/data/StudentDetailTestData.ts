@@ -26,7 +26,7 @@ const StudentDetailTestData: StudentDetail = {
     },
   ],
   certificates: ['정보처리산업기사', '리눅스마스터2급'],
-  techStacks: ['Spring', 'Mysql'],
+  techStack: ['Spring', 'Mysql'],
 }
 
 export default StudentDetailTestData
