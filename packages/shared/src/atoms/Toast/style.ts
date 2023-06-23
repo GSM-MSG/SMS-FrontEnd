@@ -36,7 +36,7 @@ export const Wrapper = styled.span<WrapperProps>`
   position: relative;
   height: min-content;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem;
+  padding: 0.5rem 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -53,6 +53,7 @@ export const Wrapper = styled.span<WrapperProps>`
 `
 
 export const Comment = styled.div`
-  ${({ theme }) => theme.body1}
+  ${({ theme }) => theme.body2}
   color: var(--WHITE);
+  white-space: pre;
 `
