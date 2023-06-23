@@ -6,18 +6,27 @@ interface Props {
   children: ReactNode
 }
 
-const Wrapper = styled.a`
+const Wrapper = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+`
+
+const Link = styled.a`
   ${({ theme }) => theme.body2}
   color: var(--WHITE);
   text-decoration: underline;
-  display: block;
+  display: inline;
   text-align: center;
-  margin-top: 1rem;
   cursor: pointer;
 `
 
 const GuestLink = ({ children, href }: Props) => {
-  return <Wrapper href={href}>{children}</Wrapper>
+  return (
+    <Wrapper>
+      <Link href={href}>{children}</Link>
+    </Wrapper>
+  )
 }
 
 export default GuestLink

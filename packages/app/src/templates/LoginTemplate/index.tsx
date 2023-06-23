@@ -8,15 +8,9 @@ const LoginTemplate = () => {
 
   return (
     <S.Wrapper>
-      <S.Video muted autoPlay loop>
-        <source
-          src='/video/login-background.mp4'
-          type='video/mp4; codecs=hvc1'
-        />
-        <source
-          src='/video/login-background.webm'
-          type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'
-        />
+      <S.Video muted autoPlay playsInline loop>
+        <source src='/video/login-background.webm' type='video/webm' />
+        <source src='/video/login-background.mp4' type='video/mp4' />
       </S.Video>
       <FadeinAnimation>
         <Headline type='headline1'>{'STUDENT\nMANAGEMENT SERVICE'}</Headline>
