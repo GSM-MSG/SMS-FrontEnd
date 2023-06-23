@@ -8,11 +8,11 @@ import {
   PostStudentInfoService,
   PostFileService,
 } from '@features/register/services'
-import { useRouter } from 'next/router'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
 const useRegister = () => {
   const { addToast } = useToast()
-  const router = useRouter()
+  const { refetchLoggedIn } = useLoggedIn({})
   const {
     register,
     control,
@@ -66,7 +66,9 @@ const useRegister = () => {
     if (res) return addToast('error', ErrorMapper(res, apiErrors))
 
     addToast('success', '학생 정보 기입에 성공했습니다')
-    router.push('/')
+    await refetchLoggedIn()
+
+    window.location.href = '/'
   })
 
   return {
