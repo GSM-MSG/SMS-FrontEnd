@@ -1,3 +1,4 @@
+import { SEO } from '@components'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { RegisterForm } from '@features/register/organisms'
 import RegisterLayout from '@layouts/RegisterLayout'
@@ -6,9 +7,12 @@ const Register = () => {
   useLoggedIn({ redirectTo: '/', redirectToIfFound: '/' })
 
   return (
-    <RegisterLayout>
-      <RegisterForm />
-    </RegisterLayout>
+    <>
+      <SEO title='회원가입' />
+      <RegisterLayout>
+        <RegisterForm />
+      </RegisterLayout>
+    </>
   )
 }
 

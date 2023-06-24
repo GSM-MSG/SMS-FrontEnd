@@ -14,9 +14,11 @@ const SEO = ({
   link = env.NEXT_PUBLIC_CLIENT_URL,
   image = '/png/twitter-card.png',
 }: Props) => {
+  const seoTitle = `SMS${title ? ` | ${title}` : ''}`
+
   return (
     <Head>
-      <title>{`SMS${title ? ` | ${title}` : ''}`}</title>
+      <title>{seoTitle}</title>
 
       <meta
         name='keywords'
@@ -25,16 +27,15 @@ const SEO = ({
       <meta name='description' content={description} />
 
       {/* twitter card */}
-      <meta property='og:title' content={title} />
+      <meta property='og:title' content={seoTitle} />
       <meta property='og:description' content={description} />
       <meta property='og:type' content='website' />
       <meta property='og:url' content={link} />
       <meta property='og:image' content={image} />
 
-      <meta name='twitter:title' content={title} />
+      <meta name='twitter:title' content={seoTitle} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content={title} />
       <meta name='twitter:url' content={link} />
       <meta name='twitter:image' content={image} />
     </Head>
