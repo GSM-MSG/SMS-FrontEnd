@@ -7,7 +7,7 @@ const Login = () => {
 
   return (
     <>
-      <SEO title='login' />
+      <SEO title='로그인' />
       <LoginTemplate />
     </>
   )
