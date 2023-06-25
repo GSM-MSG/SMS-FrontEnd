@@ -4,15 +4,18 @@ import Lottie from 'react-lottie'
 import * as LoadingData from '@assets/lottie/loading.json'
 import * as S from './style'
 
-const Loading = () => {
+interface Props {
+  isShow: boolean
+}
+
+const Loading = ({ isShow }: Props) => {
   const [isCSR, setIsCSR] = useState(false)
 
   useEffect(() => {
     setIsCSR(true)
   }, [])
 
-  if (typeof window === 'undefined') return <></>
-  if (!isCSR) return <></>
+  if (typeof window === 'undefined' || !isCSR || !isShow) return <></>
 
   const portal = document.getElementById('loading')
   if (!portal) throw new Error('Not found loading')
