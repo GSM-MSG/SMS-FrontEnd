@@ -21,8 +21,8 @@ const Loading = () => {
     <S.Wrapper>
       <Lottie
         options={{ loop: true, autoplay: true, animationData: LoadingData }}
-        width={200}
-        height={200}
+        width={100}
+        height={100}
       />
     </S.Wrapper>,
     portal

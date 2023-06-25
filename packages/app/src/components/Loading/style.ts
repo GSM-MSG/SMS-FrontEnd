@@ -9,6 +9,6 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  backdrop-filter: blur(1rem);
-  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2rem);
+  background: rgba(255, 255, 255, 0.85);
 `
