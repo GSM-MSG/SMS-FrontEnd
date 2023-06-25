@@ -36,7 +36,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
 
     return (
       <S.Wrapper>
-        <S.InputWrapper isFocused={isFocused}>
+        <S.InputWrapper isDisabled={props.disabled} isFocused={isFocused}>
           {icon}
           <S.TextFiled
             {...props}
@@ -47,7 +47,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           />
           <S.ResetButton
             type='button'
-            hidden={!value.length || !onReset}
+            hidden={!value.length || !onReset || props.disabled}
             onClick={resetHandler}
           >
             <Xmark />
