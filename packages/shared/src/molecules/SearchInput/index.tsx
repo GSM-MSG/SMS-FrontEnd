@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
 import { Input, Dropdown, Tag } from '../../atoms'
 import { Search } from '../../icons'
@@ -51,6 +51,15 @@ const SearchInput = ({
     if (onChange) onChange(e)
   }
 
+  const onKeyDownEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') e.preventDefault()
+  }
+  const onKeyUpEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== 'Enter' || !searchValue) return
+    if (dropdownList.length <= 0) onClick(searchValue)
+    else onClick(dropdownList[0])
+  }
+
   const includesValue = () =>
     dropdownList.filter((i) => i.toLowerCase() === searchValue.toLowerCase())[0]
 
@@ -64,6 +73,8 @@ const SearchInput = ({
           value={searchValue}
           onReset={() => setSearchValue('')}
           disabled={limit ? stacks.split(',').length >= limit : false}
+          onKeyDown={onKeyDownEnter}
+          onKeyUp={onKeyUpEnter}
         />
         <Dropdown.Menu isShow={isShow && !!searchValue} onClose={onClose}>
           {dropdownList?.map((i, idx) => (
