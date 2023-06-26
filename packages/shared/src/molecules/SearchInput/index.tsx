@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
 import { Input, Dropdown, Tag } from '../../atoms'
 import { Search } from '../../icons'
@@ -30,7 +30,7 @@ const SearchInput = ({
   }, [dropdownList])
 
   const onClose = () => setIsShow(false)
-  const onClick = (newStack: string) => {
+  const onAddStack = (newStack: string) => {
     const value = stacks.length ? `${stacks},${newStack}` : newStack
     setStacks(value)
     setValue(name, value)
@@ -51,8 +51,24 @@ const SearchInput = ({
     if (onChange) onChange(e)
   }
 
+  const onKeyDownEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') e.preventDefault()
+  }
+  const onKeyUpEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== 'Enter' || !searchValue || hasTechStack()) return
+    if (dropdownList.length <= 0) onAddStack(searchValue)
+    else onAddStack(dropdownList[0])
+  }
+
+  const hasTechStack = () =>
+    stacks
+      .split(',')
+      .filter((i) => i.toLowerCase() === searchValue.toLowerCase())[0]
+
   const includesValue = () =>
-    dropdownList.filter((i) => i.toLowerCase() === searchValue.toLowerCase())[0]
+    dropdownList.filter(
+      (i) => i.toLowerCase() === searchValue.toLowerCase()
+    )[0] || hasTechStack()
 
   return (
     <div>
@@ -64,19 +80,26 @@ const SearchInput = ({
           value={searchValue}
           onReset={() => setSearchValue('')}
           disabled={limit ? stacks.split(',').length >= limit : false}
+          onKeyDown={onKeyDownEnter}
+          onKeyUp={onKeyUpEnter}
         />
-        <Dropdown.Menu isShow={isShow && !!searchValue} onClose={onClose}>
-          {dropdownList?.map((i, idx) => (
-            <Dropdown.Item onClick={() => onClick(i)} key={idx}>
-              {i}
-            </Dropdown.Item>
-          ))}
-          {!includesValue() && (
-            <Dropdown.Item onClick={() => onClick(searchValue)}>
-              {`+ "${searchValue}" 직접 추가하기`}
-            </Dropdown.Item>
-          )}
-        </Dropdown.Menu>
+
+        {!hasTechStack() && (
+          <Dropdown.Menu isShow={isShow && !!searchValue} onClose={onClose}>
+            {dropdownList
+              ?.filter((i) => !stacks.split(',').includes(i))
+              ?.map((i, idx) => (
+                <Dropdown.Item onClick={() => onAddStack(i)} key={idx}>
+                  {i}
+                </Dropdown.Item>
+              ))}
+            {!includesValue() && (
+              <Dropdown.Item onClick={() => onAddStack(searchValue)}>
+                {`+ "${searchValue}" 직접 추가하기`}
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        )}
       </S.Wrapper>
 
       {!!stacks.length && (

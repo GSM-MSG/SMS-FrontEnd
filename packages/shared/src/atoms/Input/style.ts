@@ -12,15 +12,17 @@ export const InputWrapper = styled.label<InputWrapperProps>`
   gap: 0.5rem;
   background: var(--N10);
   transition: 0.2s;
-  cursor: text;
+  cursor: ${({ isDisabled }) => (isDisabled ? 'auto' : 'text')};
 
   :hover {
     border: 1px solid
       ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'var(--P1)')};
+    ${({ isDisabled }) => (isDisabled ? 'border: 1px solid transparent' : '')}
   }
 
   border: 1px solid
-    ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'transparent')};
+    ${({ isFocused, isDisabled }) =>
+      isFocused && isDisabled ? 'var(--P2)' : 'transparent'};
 `
 
 export const TextFiled = styled.input`

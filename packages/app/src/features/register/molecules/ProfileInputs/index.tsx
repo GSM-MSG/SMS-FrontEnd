@@ -89,7 +89,7 @@ const ProfileInputs = ({
           placeholder='https://'
         />
       </InputColumn>
-      <InputColumn comment='세부스택'>
+      <InputColumn comment='세부스택 (5개)'>
         <SearchInput
           name='techStack'
           onChange={onChange}
