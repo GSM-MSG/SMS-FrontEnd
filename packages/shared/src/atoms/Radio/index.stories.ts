@@ -2,9 +2,9 @@ import { Meta, StoryObj } from '@storybook/react'
 import Radio from './index'
 
 const config: Meta<typeof Radio> = {
-  title: 'Selection Controls',
+  title: 'Radio',
   component: Radio,
-  args: { placeholder: 'Text' },
+  args: { placeholder: 'Text', label: 'hello world' },
 }
 
 export default config

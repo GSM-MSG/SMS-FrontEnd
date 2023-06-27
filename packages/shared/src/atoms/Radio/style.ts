@@ -26,6 +26,14 @@ const beforeAnimation = keyframes`
 `
 
 export const Wrapper = styled.label`
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--N30);
+`
+
+export const RadioButton = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +41,6 @@ export const Wrapper = styled.label`
   height: 20px;
   border-radius: 100%;
   border: 2px solid var(--N20);
-  cursor: pointer;
   position: relative;
   transition: 0.4s;
 `
@@ -41,8 +48,13 @@ export const Wrapper = styled.label`
 export const Input = styled.input`
   display: none;
 
-  :checked ~ #fake-checkbox {
+  :checked ~ span {
+    color: var(--N50);
+  }
+
+  :checked ~ label {
     border: 2px solid var(--P2);
+    color: var(--N50);
 
     ::after {
       display: block;
@@ -68,3 +80,5 @@ export const Input = styled.input`
     }
   }
 `
+
+export const Label = styled.span``

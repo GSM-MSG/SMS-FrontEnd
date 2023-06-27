@@ -11,7 +11,9 @@ interface Props
   extends DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  > {}
+  > {
+  label?: string
+}
 
 const Radio = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -22,10 +24,11 @@ const Radio = forwardRef<HTMLInputElement, Props>((props, ref) => {
   }
 
   return (
-    <>
+    <S.Wrapper>
       <S.Input ref={ref || inputRef} {...props} type='radio' />
-      <S.Wrapper onClick={onClick} id='fake-checkbox' />
-    </>
+      <S.RadioButton onClick={onClick} />
+      <S.Label>{props.label}</S.Label>
+    </S.Wrapper>
   )
 })
 
