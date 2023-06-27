@@ -42,7 +42,10 @@ const Input = forwardRef<HTMLInputElement, Props>(
             {...props}
             ref={ref}
             onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
+            onBlur={(e) => {
+              setIsFocused(false)
+              if (props.onBlur) props.onBlur(e)
+            }}
             onChange={onChange}
           />
           <S.ResetButton

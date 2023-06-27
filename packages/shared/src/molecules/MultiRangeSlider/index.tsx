@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
+import { KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { Input } from '../../atoms'
 import * as S from './style'
 
@@ -11,8 +11,13 @@ interface Props {
 const MultiRangeSlider = ({ min, max, onChange }: Props) => {
   const [minValue, setMinValue] = useState<number>(min)
   const [maxValue, setMaxValue] = useState<number>(max)
+
+  const [minInputValue, setMinInputValue] = useState<string>(min + '')
+  const [maxInputValue, setMaxInputValue] = useState<string>(max + '')
+
   const minValueRef = useRef<HTMLInputElement>(null)
   const maxValueRef = useRef<HTMLInputElement>(null)
+
   const rangeRef = useRef<HTMLDivElement>(null)
 
   const getPercent = useCallback(
@@ -43,16 +48,24 @@ const MultiRangeSlider = ({ min, max, onChange }: Props) => {
     onChange(minValue, maxValue)
   }, [minValue, maxValue, onChange])
 
-  const onChangeRightInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Math.min(+e.target.value, maxValue - 100)
-    setMinValue(value)
-    e.target.value = value + ''
+  const onChangeLeftInput = (inputValue: string) => {
+    const value = Math.min(+inputValue, maxValue - 100)
+    const limitValue = value <= min ? min : value
+    setMinValue(limitValue)
+
+    return limitValue
   }
 
-  const onChangeLeftInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Math.max(+e.target.value, minValue + 100)
-    setMaxValue(value)
-    e.target.value = value + ''
+  const onChangeRightInput = (inputValue: string) => {
+    const value = Math.max(+inputValue, minValue + 100)
+    const limitValue = value >= max ? max : value
+    setMaxValue(limitValue)
+
+    return limitValue
+  }
+
+  const blockEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') e.preventDefault()
   }
 
   return (
@@ -63,7 +76,9 @@ const MultiRangeSlider = ({ min, max, onChange }: Props) => {
         max={max}
         value={minValue}
         ref={minValueRef}
-        onChange={onChangeRightInput}
+        onChange={(e) =>
+          setMinInputValue(onChangeLeftInput(e.target.value) + '')
+        }
         isUp={minValue > max - 100}
       />
       <S.RangeRightInput
@@ -72,7 +87,9 @@ const MultiRangeSlider = ({ min, max, onChange }: Props) => {
         max={max}
         value={maxValue}
         ref={maxValueRef}
-        onChange={onChangeLeftInput}
+        onChange={(e) =>
+          setMaxInputValue(onChangeRightInput(e.target.value) + '')
+        }
       />
 
       <S.Slider className='slider'>
@@ -81,17 +98,23 @@ const MultiRangeSlider = ({ min, max, onChange }: Props) => {
         <S.Inputs>
           <Input
             type='number'
-            min={min}
-            max={maxValue}
-            value={minValue}
-            onChange={onChangeRightInput}
+            value={minInputValue}
+            onChange={(e) => {
+              onChangeLeftInput(e.target.value)
+              setMinInputValue(e.target.value)
+            }}
+            onBlur={() => setMinInputValue(minValue + '')}
+            onKeyDown={blockEnter}
           />
           <Input
             type='number'
-            min={minValue}
-            max={max}
-            value={maxValue}
-            onChange={onChangeLeftInput}
+            value={maxInputValue}
+            onChange={(e) => {
+              onChangeRightInput(e.target.value)
+              setMaxInputValue(e.target.value)
+            }}
+            onBlur={() => setMaxInputValue(maxValue + '')}
+            onKeyDown={blockEnter}
           />
         </S.Inputs>
       </S.Slider>
