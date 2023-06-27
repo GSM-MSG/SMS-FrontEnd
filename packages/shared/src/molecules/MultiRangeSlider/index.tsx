@@ -44,13 +44,13 @@ const MultiRangeSlider = ({ min, max, onChange }: Props) => {
   }, [minValue, maxValue, onChange])
 
   const onChangeRightInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Math.min(+e.target.value, maxValue - 1)
+    const value = Math.min(+e.target.value, maxValue - 100)
     setMinValue(value)
     e.target.value = value + ''
   }
 
   const onChangeLeftInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Math.max(+e.target.value, minValue + 1)
+    const value = Math.max(+e.target.value, minValue + 100)
     setMaxValue(value)
     e.target.value = value + ''
   }
