@@ -81,4 +81,6 @@ export const Input = styled.input`
   }
 `
 
-export const Label = styled.span``
+export const Label = styled.span`
+  ${({ theme }) => theme.body2}
+`

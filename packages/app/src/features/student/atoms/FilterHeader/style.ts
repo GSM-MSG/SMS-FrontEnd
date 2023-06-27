@@ -6,7 +6,11 @@ export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin-bottom: 1.5rem;
+  background: var(--WHITE);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
 
   @media (max-width: 39rem) {
     grid-template-columns: 1fr 1fr 1fr;
