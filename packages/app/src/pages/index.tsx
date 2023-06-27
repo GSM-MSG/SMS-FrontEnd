@@ -7,12 +7,16 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@store'
 import useStudentDetail from '@features/student/hooks/useStudentDetail'
 import FilterModal from '@features/student/molecules/FilterModal'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
 export default function Home() {
   const { data } = useStudent()
   const { isShow } = useModal('detail')
   const { isShow: isFilterShow } = useModal('filter')
+
+  useLoggedIn({})
   useStudentDetail()
+
   const { studentDetail } = useSelector((state: RootState) => ({
     studentDetail: state.studentDetail,
   }))

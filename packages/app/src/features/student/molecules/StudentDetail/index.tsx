@@ -68,9 +68,9 @@ const StudentDetail = ({ student }: Props) => {
                   {DepartmentData[student.department]}
                 </S.SchoolInfo>
               )}
-            {student.techStacks?.length && (
+            {student.techStack && (
               <S.Tags>
-                {student.techStacks.map((stack, idx) => (
+                {student.techStack.map((stack, idx) => (
                   <S.Tag key={idx}>{stack}</S.Tag>
                 ))}
               </S.Tags>

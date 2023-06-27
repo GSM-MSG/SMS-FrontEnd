@@ -1,19 +1,24 @@
-const Check = () => (
+interface Props {
+  color?: string
+  background?: string
+}
+
+const Check = ({ color = '#62636A', background = '#E1E2E4' }: Props) => (
   <svg
-    width='20'
-    height='20'
-    viewBox='0 0 20 20'
+    width='24'
+    height='24'
+    viewBox='0 0 24 24'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
+    <circle cx='12' cy='12' r='10' fill={background} />
     <path
-      d='M7 10L9 12L13 8'
-      stroke='black'
+      d='M8.5 12.5L11 15L15.5 10'
+      stroke={color}
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
     />
-    <circle cx='10' cy='10' r='9' stroke='black' strokeWidth='2' />
   </svg>
 )
 

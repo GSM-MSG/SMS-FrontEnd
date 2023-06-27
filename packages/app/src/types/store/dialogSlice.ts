@@ -3,8 +3,8 @@ import { Emitter } from '@sms/shared'
 export interface DialogInitialState {
   title: string
   content: string
-  cancelText: string
-  confirmText: string
+  cancelText?: string
+  confirmText?: string
   isShow: boolean
   emitter: Emitter
 }

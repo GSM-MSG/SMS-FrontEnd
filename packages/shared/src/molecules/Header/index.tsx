@@ -7,9 +7,10 @@ interface Props {
   onLogout?: () => void
   onExit?: () => void
   onFilter?: () => void
+  isLoggedIn?: boolean
 }
 
-const Header = ({ onExit, onLogout, onFilter }: Props) => {
+const Header = ({ onExit, onLogout, onFilter, isLoggedIn }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
 
   return (
@@ -22,9 +23,17 @@ const Header = ({ onExit, onLogout, onFilter }: Props) => {
           <Icon.Filter />
           <p>필터</p>
         </S.Filter>
-        <S.UserCircle onClick={() => setIsShow(true)}>
-          <SVG.Person />
-        </S.UserCircle>
+
+        {isLoggedIn ? (
+          <S.UserCircle onClick={() => setIsShow(true)}>
+            <SVG.Person />
+          </S.UserCircle>
+        ) : (
+          <S.UserCircleLink href='/login'>
+            <SVG.Person />
+          </S.UserCircleLink>
+        )}
+
         <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
           <S.DropdownItem onClick={onLogout}>
             <Icon.Out color='var(--ERROR)' /> 로그아웃

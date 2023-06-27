@@ -16,50 +16,47 @@ interface Props
   > {
   icon?: ReactNode
   error?: string
-  isReset?: boolean
+  onReset?: () => void
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ error, icon, isReset, ...props }, ref) => {
-    const [value, setValue] = useState<string>('')
+  ({ error, icon, onReset, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState<boolean>(false)
-
-    const onFocus = () => setIsFocused(true)
-    const onBlur = () => setIsFocused(false)
+    const [value, setValue] = useState<string>('')
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value)
       if (props.onChange) props.onChange(e)
+      setValue(e.target.value)
     }
 
-    const onReset = () => {
-      if (props.value) props.value = ''
+    const resetHandler = () => {
       setValue('')
+      if (onReset) onReset()
     }
 
     return (
       <S.Wrapper>
-        <S.InputWrapper isFocused={isFocused}>
+        <S.InputWrapper isDisabled={props.disabled} isFocused={isFocused}>
           {icon}
           <S.TextFiled
             {...props}
-            value={value}
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
             ref={ref}
+            onFocus={() => setIsFocused(true)}
+            onBlur={(e) => {
+              setIsFocused(false)
+              if (props.onBlur) props.onBlur(e)
+            }}
+            onChange={onChange}
           />
           <S.ResetButton
             type='button'
-            style={{
-              display: isReset && (props.value || value) ? 'block' : 'none',
-            }}
-            onClick={onReset}
+            hidden={!value.length || !onReset || props.disabled}
+            onClick={resetHandler}
           >
             <Xmark />
           </S.ResetButton>
         </S.InputWrapper>
-        <S.Error>{error}</S.Error>
+        {error && <S.Error>{error}</S.Error>}
       </S.Wrapper>
     )
   }

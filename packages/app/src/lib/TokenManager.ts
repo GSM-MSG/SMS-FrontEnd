@@ -46,10 +46,20 @@ class TokenManager {
       !this.refreshToken ||
       !this.accessTokenExp ||
       !this.refreshTokenExp
-    )
-      return false
+    ) {
+      this.setTokenFromLocalStorage()
+      return true
+    }
 
     const oneMinuteLater = this.getOneMinuteLater()
+    if (
+      this.accessTokenExp <= oneMinuteLater &&
+      this.refreshTokenExp <= oneMinuteLater
+    ) {
+      TokenManager.clearToken()
+      return true
+    }
+
     if (
       this.accessTokenExp > oneMinuteLater ||
       this.refreshTokenExp <= oneMinuteLater
@@ -72,7 +82,6 @@ class TokenManager {
 
     observable.notifyAll(true)
     TokenManager.setToken(data)
-    this.setTokenFromLocalStorage()
 
     return true
   }

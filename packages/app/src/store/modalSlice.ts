@@ -21,7 +21,7 @@ const modalSlice = createSlice({
     onClose: (state) => {
       state = {
         name: null,
-        value: true,
+        value: false,
       }
       return state
     },

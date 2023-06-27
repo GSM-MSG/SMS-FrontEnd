@@ -1,17 +1,26 @@
 import { useRouter } from 'next/router'
 import env from '@lib/env'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import login from '@features/auth/service/login'
+import { useToast } from '@features/toast'
 
 const useAuth = () => {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const code = router.query.code?.toString() || ''
+  const { addToast } = useToast()
 
   useEffect(() => {
     if (!code) return
+    setIsLoading(true)
     ;(async () => {
-      await login(code)
-      router.push('/')
+      const res = await login(code)
+
+      if (typeof res === 'string') return addToast('error', res)
+
+      addToast('success', '로그인에 성공했습니다')
+      await router.push(res.isExist ? '/' : '/register')
+      setIsLoading(false)
     })()
   }, [code])
 
@@ -21,7 +30,7 @@ const useAuth = () => {
     )
   }
 
-  return [onClick]
+  return { onClick, isLoading }
 }
 
 export default useAuth

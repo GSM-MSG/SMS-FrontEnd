@@ -20,6 +20,7 @@ const Wrapper = styled.div<{ isShow: boolean }>`
   transition: 0.2s;
   overflow-y: scroll;
   box-shadow: 0px 4px 24px rgba(76, 75, 91, 0.12);
+  z-index: 100;
 
   opacity: ${({ isShow }) => (isShow ? 1 : 0)};
   ${({ isShow }) => !isShow && 'pointer-events: none;'}
