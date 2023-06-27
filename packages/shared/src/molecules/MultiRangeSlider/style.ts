@@ -1,15 +1,17 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  width: 90%;
+  width: 100%;
+  margin: 0;
+  position: relative;
 
   input[type='range'] {
     height: 0;
+    width: inherit;
     position: absolute;
     appearance: none;
     pointer-events: none;
     outline: none;
-    width: 90%;
 
     ::-webkit-slider-thumb {
       -webkit-appearance: none;
@@ -23,9 +25,9 @@ export const Wrapper = styled.div`
       cursor: pointer;
       height: 1.5rem;
       width: 1.5rem;
-      margin-top: 0.3rem;
       pointer-events: all;
       position: relative;
+      margin-top: 0.1rem;
     }
 
     ::-moz-range-thumb {
@@ -35,9 +37,9 @@ export const Wrapper = styled.div`
       cursor: pointer;
       height: 1.5rem;
       width: 1.5rem;
-      margin-top: 0.3rem;
       pointer-events: all;
       position: relative;
+      margin-top: 0.1rem;
     }
   }
 `
@@ -68,4 +70,16 @@ export const SliderRange = styled.div`
   z-index: 2;
   background: var(--P2);
   height: 2px;
+`
+
+export const Inputs = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 1.44rem;
+
+  & > div {
+    max-width: 5rem;
+  }
 `

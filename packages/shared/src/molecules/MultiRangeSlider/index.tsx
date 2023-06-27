@@ -1,12 +1,14 @@
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
+import { Input } from '../../atoms'
 import * as S from './style'
 
 interface Props {
   min: number
   max: number
+  onChange(min: number, max: number): void
 }
 
-const MultiRangeSlider = ({ min, max }: Props) => {
+const MultiRangeSlider = ({ min, max, onChange }: Props) => {
   const [minValue, setMinValue] = useState<number>(min)
   const [maxValue, setMaxValue] = useState<number>(max)
   const minValueRef = useRef<HTMLInputElement>(null)
@@ -24,7 +26,7 @@ const MultiRangeSlider = ({ min, max }: Props) => {
     const minPercent = getPercent(minValue)
     const maxPercent = getPercent(+maxValueRef.current.value)
 
-    rangeRef.current.style.left = `calc(${minPercent}% + 1rem)`
+    rangeRef.current.style.left = `${minPercent}%`
     rangeRef.current.style.width = `${maxPercent - minPercent}%`
   }, [minValue, getPercent])
 
@@ -37,6 +39,10 @@ const MultiRangeSlider = ({ min, max }: Props) => {
     rangeRef.current.style.width = `${maxPercent - minPercent}%`
   }, [maxValue, getPercent])
 
+  useEffect(() => {
+    onChange(minValue, maxValue)
+  }, [minValue, maxValue, onChange])
+
   const onChangeRightInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Math.min(+e.target.value, maxValue - 1)
     setMinValue(value)
@@ -48,8 +54,6 @@ const MultiRangeSlider = ({ min, max }: Props) => {
     setMaxValue(value)
     e.target.value = value + ''
   }
-
-  useEffect(() => {}, [])
 
   return (
     <S.Wrapper>
@@ -74,6 +78,22 @@ const MultiRangeSlider = ({ min, max }: Props) => {
       <S.Slider className='slider'>
         <S.SliderTrack className='slider__track' />
         <S.SliderRange ref={rangeRef} className='slider__range' />
+        <S.Inputs>
+          <Input
+            type='number'
+            min={min}
+            max={maxValue}
+            value={minValue}
+            onChange={onChangeRightInput}
+          />
+          <Input
+            type='number'
+            min={minValue}
+            max={max}
+            value={maxValue}
+            onChange={onChangeLeftInput}
+          />
+        </S.Inputs>
       </S.Slider>
     </S.Wrapper>
   )
