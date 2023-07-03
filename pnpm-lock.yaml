@@ -95,6 +95,9 @@ importers:
       '@types/node':
         specifier: ^18.15.11
         version: 18.15.11
+      '@types/qs':
+        specifier: ^6.9.7
+        version: 6.9.7
       '@types/react':
         specifier: ^18.0.33
         version: 18.0.33

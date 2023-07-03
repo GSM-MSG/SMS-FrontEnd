@@ -5,15 +5,27 @@ import * as S from './style'
 interface Props {
   min: number
   max: number
+  minDefaultValue?: number
+  maxDefaultValue?: number
   onChange(min: number, max: number): void
 }
 
-const MultiRangeSlider = ({ min, max, onChange }: Props) => {
-  const [minValue, setMinValue] = useState<number>(min)
-  const [maxValue, setMaxValue] = useState<number>(max)
+const MultiRangeSlider = ({
+  min,
+  max,
+  minDefaultValue,
+  maxDefaultValue,
+  onChange,
+}: Props) => {
+  const [minValue, setMinValue] = useState<number>(minDefaultValue || min)
+  const [maxValue, setMaxValue] = useState<number>(maxDefaultValue || max)
 
-  const [minInputValue, setMinInputValue] = useState<string>(min + '')
-  const [maxInputValue, setMaxInputValue] = useState<string>(max + '')
+  const [minInputValue, setMinInputValue] = useState<string>(
+    minDefaultValue + '' && min + ''
+  )
+  const [maxInputValue, setMaxInputValue] = useState<string>(
+    maxDefaultValue + '' && max + ''
+  )
 
   const minValueRef = useRef<HTMLInputElement>(null)
   const maxValueRef = useRef<HTMLInputElement>(null)

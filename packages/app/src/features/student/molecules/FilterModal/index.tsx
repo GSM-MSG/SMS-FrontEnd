@@ -10,35 +10,69 @@ import {
   SearchInput,
 } from '@sms/shared'
 import RangeSliderSection from '@features/student/atoms/RangeSliderSection'
+import useStudentsFilter from '@features/student/hooks/useStudentsFilter'
+import useStudentsParam from '@features/student/hooks/useStudentsParam'
+import { useAutocomplete } from '@features/register/hooks'
 
 import * as S from './style'
 
 const FilterModal = () => {
   const { onClose } = useModal('filter')
+  useStudentsParam()
+  const {
+    register,
+    setValue,
+    onSubmit,
+    minSalary,
+    minGsmAuthenticationScore,
+    maxSalary,
+    maxGsmAuthenticationScore,
+  } = useStudentsFilter()
+  const { onChange, dropdownList } = useAutocomplete()
 
   return (
     <ModalPortal onClose={onClose}>
-      <S.Wrapper>
+      <S.Wrapper onSubmit={onSubmit}>
         <FilterHeader />
 
         <S.Content>
           <CheckboxSection title='학년'>
-            <Checkbox>1학년</Checkbox>
-            <Checkbox>2학년</Checkbox>
-            <Checkbox>3학년</Checkbox>
+            <Checkbox {...register('grade')} value='1'>
+              1학년
+            </Checkbox>
+            <Checkbox {...register('grade')} value='2'>
+              2학년
+            </Checkbox>
+            <Checkbox {...register('grade')} value='3'>
+              3학년
+            </Checkbox>
           </CheckboxSection>
 
           <CheckboxSection title='반'>
-            <Checkbox>1반</Checkbox>
-            <Checkbox>2반</Checkbox>
-            <Checkbox>3반</Checkbox>
-            <Checkbox>4반</Checkbox>
+            <Checkbox {...register('classNum')} value='1'>
+              1반
+            </Checkbox>
+            <Checkbox {...register('classNum')} value='2'>
+              2반
+            </Checkbox>
+            <Checkbox {...register('classNum')} value='3'>
+              3반
+            </Checkbox>
+            <Checkbox {...register('classNum')} value='4'>
+              4반
+            </Checkbox>
           </CheckboxSection>
 
           <CheckboxSection title='학과'>
-            <Checkbox>소프웨어개발과</Checkbox>
-            <Checkbox>스마트IoT과</Checkbox>
-            <Checkbox>인공지능과</Checkbox>
+            <Checkbox {...register('department')} value='SW_DEVELOPMENT'>
+              소프웨어개발과
+            </Checkbox>
+            <Checkbox {...register('department')} value='SMART_IOT_DEVELOPMENT'>
+              스마트IoT과
+            </Checkbox>
+            <Checkbox {...register('department')} value='AI_DEVELOPMENT'>
+              인공지능과
+            </Checkbox>
           </CheckboxSection>
 
           <CheckboxSection title='분야'>
@@ -47,34 +81,93 @@ const FilterModal = () => {
           </CheckboxSection>
 
           <CheckboxSection title='희망 고용 형태'>
-            <Checkbox>정규직</Checkbox>
-            <Checkbox>비정규직</Checkbox>
-            <Checkbox>계약직</Checkbox>
-            <Checkbox>인턴</Checkbox>
+            <Checkbox {...register('formOfEmployment')} value='FULL_TIME'>
+              정규직
+            </Checkbox>
+            <Checkbox {...register('formOfEmployment')} value='TEMPORARY'>
+              비정규직
+            </Checkbox>
+            <Checkbox {...register('formOfEmployment')} value='CONTRACT'>
+              계약직
+            </Checkbox>
+            <Checkbox {...register('formOfEmployment')} value='INTERN'>
+              인턴
+            </Checkbox>
           </CheckboxSection>
 
           <RangeSliderSection title='인증제 점수'>
-            <MultiRangeSlider min={0} max={990} onChange={() => {}} />
+            <MultiRangeSlider
+              min={0}
+              max={990}
+              minDefaultValue={minGsmAuthenticationScore}
+              maxDefaultValue={maxGsmAuthenticationScore}
+              onChange={(min, max) => {
+                setValue('minGsmAuthenticationScore', min)
+                setValue('maxGsmAuthenticationScore', max)
+              }}
+            />
           </RangeSliderSection>
 
           <RangeSliderSection title='희명 연봉'>
-            <MultiRangeSlider min={0} max={9999} onChange={() => {}} />
+            <MultiRangeSlider
+              min={0}
+              max={9999}
+              minDefaultValue={minSalary}
+              maxDefaultValue={maxSalary}
+              onChange={(min, max) => {
+                setValue('minSalary', min)
+                setValue('maxSalary', max)
+              }}
+            />
           </RangeSliderSection>
 
           <CheckboxSection title='학번'>
-            <Radio label='오름차순' name='num' />
-            <Radio label='내림차순' name='num' />
+            <Radio
+              {...register('stuNumSort')}
+              value='ASCENDING'
+              label='오름차순'
+            />
+            <Radio
+              {...register('stuNumSort')}
+              value='DESCENDING'
+              label='내림차순'
+            />
           </CheckboxSection>
 
           <CheckboxSection title='인증제 점수'>
-            <Radio label='오름차순' name='score' />
-            <Radio label='내림차순' name='score' />
+            <Radio
+              {...register('gsmAuthenticationScoreSort')}
+              label='오름차순'
+              value='ASCENDING'
+            />
+            <Radio
+              {...register('gsmAuthenticationScoreSort')}
+              label='내림차순'
+              value='DESCENDING'
+            />
           </CheckboxSection>
 
           <CheckboxSection title='희망 연봉'>
-            <Radio label='오름차순' name='salary' />
-            <Radio label='내림차순' name='salary' />
+            <Radio
+              {...register('salarySort')}
+              label='오름차순'
+              value='ASCENDING'
+            />
+            <Radio
+              {...register('salarySort')}
+              label='내림차순'
+              value='DESCENDING'
+            />
           </CheckboxSection>
+
+          <RangeSliderSection title='세부스택'>
+            <SearchInput
+              setValue={setValue}
+              name='techStacks'
+              dropdownList={dropdownList}
+              onChange={onChange}
+            />
+          </RangeSliderSection>
         </S.Content>
 
         <S.ButtonWrapper>
