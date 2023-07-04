@@ -6,9 +6,14 @@ interface StudentDetailRequest {
   role: string
 }
 
+interface StudentsParams extends StudentParam {
+  page: number
+  size: number
+}
+
 const studentApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
-    student: build.query<Response, StudentParam>({
+    student: build.query<Response, StudentsParams>({
       query: (params) => ({
         url: `/student`,
         params,

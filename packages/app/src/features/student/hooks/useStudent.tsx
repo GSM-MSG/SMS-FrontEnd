@@ -14,7 +14,7 @@ const useStudent = () => {
     studentParam: state.studentParam,
   }))
   const { data, isLoading, isError, error } = studentApi.useStudentQuery(
-    studentParam.param,
+    { ...studentParam.param, size: studentParam.size, page: studentParam.page },
     {
       refetchOnMountOrArgChange: true,
       refetchOnReconnect: true,

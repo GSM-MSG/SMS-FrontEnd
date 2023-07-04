@@ -4,13 +4,14 @@ interface InitialState {
   param: StudentParam
   nextStop: boolean
   isLoading: boolean
+  page: number
+  size: number
 }
 
 const initialState: InitialState = {
-  param: {
-    page: 1,
-    size: 20,
-  },
+  param: {},
+  page: 1,
+  size: 20,
   isLoading: false,
   nextStop: false,
 }
@@ -21,7 +22,7 @@ const studentParamSlice = createSlice({
   reducers: {
     nextPage: (state) => {
       if (state.nextStop) return
-      state.param.page += 1
+      state.page += 1
     },
     nextStop: (state) => {
       state.nextStop = true
@@ -29,14 +30,9 @@ const studentParamSlice = createSlice({
     setLoading: (state, { payload }: PayloadAction<boolean>) => {
       state.isLoading = payload
     },
-    setParam: (
-      state,
-      { payload }: PayloadAction<Omit<StudentParam, 'page' | 'size'>>
-    ) => {
+    setParam: (state, { payload }: PayloadAction<StudentParam>) => {
       state.param = {
         ...payload,
-        page: state.param.page,
-        size: state.param.size,
       }
     },
   },
