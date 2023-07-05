@@ -14,6 +14,8 @@ const useStudentsParam = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    if (!router.query.grade) return
+
     const {
       grade,
       majors,
@@ -47,7 +49,7 @@ const useStudentsParam = () => {
         gsmAuthenticationScoreSort: toString(gsmAuthenticationScoreSort),
       })
     )
-  }, [])
+  }, [router.query])
 }
 
 export default useStudentsParam

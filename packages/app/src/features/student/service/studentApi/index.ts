@@ -30,16 +30,19 @@ const studentApi = rtkApi.injectEndpoints({
         return endpointName
       },
       forceRefetch({ currentArg, previousArg }) {
-        return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
+        const changedPage = currentArg?.page !== previousArg?.page
+        const changedSize = currentArg?.size !== previousArg?.size
+        return changedPage || changedSize
       },
     }),
 
-    refetchStudent: build.mutation<Response, void>({
-      query: () => ({
+    refetchStudent: build.mutation<Response, StudentParam>({
+      query: (params) => ({
         url: '/student',
         params: {
-          page: 1,
           size: 20,
+          page: 1,
+          ...params,
         },
       }),
       invalidatesTags: [{ type: 'Student' }],

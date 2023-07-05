@@ -13,14 +13,11 @@ const useStudent = () => {
   const { studentParam } = useSelector((state: RootState) => ({
     studentParam: state.studentParam,
   }))
-  const { data, isLoading, isError, error } = studentApi.useStudentQuery(
-    { ...studentParam.param, size: studentParam.size, page: studentParam.page },
-    {
-      refetchOnMountOrArgChange: true,
-      refetchOnReconnect: true,
-      refetchOnFocus: true,
-    }
-  )
+  const { data, isLoading, isError, error } = studentApi.useStudentQuery({
+    ...studentParam.param,
+    size: studentParam.size,
+    page: studentParam.page,
+  })
 
   useEffect(() => {
     if (!isError) return

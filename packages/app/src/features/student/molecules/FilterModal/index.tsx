@@ -11,18 +11,17 @@ import {
 } from '@sms/shared'
 import RangeSliderSection from '@features/student/atoms/RangeSliderSection'
 import useStudentsFilter from '@features/student/hooks/useStudentsFilter'
-import useStudentsParam from '@features/student/hooks/useStudentsParam'
 import { useAutocomplete } from '@features/register/hooks'
 
 import * as S from './style'
 
 const FilterModal = () => {
   const { onClose } = useModal('filter')
-  useStudentsParam()
   const {
     register,
     setValue,
     onSubmit,
+    getValues,
     minSalary,
     minGsmAuthenticationScore,
     maxSalary,
@@ -37,28 +36,56 @@ const FilterModal = () => {
 
         <S.Content>
           <CheckboxSection title='학년'>
-            <Checkbox {...register('grade')} value='1'>
+            <Checkbox
+              {...register('grade')}
+              defaultChecked={getValues('grade')?.includes(1)}
+              value='1'
+            >
               1학년
             </Checkbox>
-            <Checkbox {...register('grade')} value='2'>
+            <Checkbox
+              {...register('grade')}
+              defaultChecked={getValues('grade')?.includes(2)}
+              value='2'
+            >
               2학년
             </Checkbox>
-            <Checkbox {...register('grade')} value='3'>
+            <Checkbox
+              {...register('grade')}
+              defaultChecked={getValues('grade')?.includes(3)}
+              value='3'
+            >
               3학년
             </Checkbox>
           </CheckboxSection>
 
           <CheckboxSection title='반'>
-            <Checkbox {...register('classNum')} value='1'>
+            <Checkbox
+              {...register('classNum')}
+              defaultChecked={getValues('classNum')?.includes(1)}
+              value='1'
+            >
               1반
             </Checkbox>
-            <Checkbox {...register('classNum')} value='2'>
+            <Checkbox
+              {...register('classNum')}
+              defaultChecked={getValues('classNum')?.includes(2)}
+              value='2'
+            >
               2반
             </Checkbox>
-            <Checkbox {...register('classNum')} value='3'>
+            <Checkbox
+              {...register('classNum')}
+              defaultChecked={getValues('classNum')?.includes(3)}
+              value='3'
+            >
               3반
             </Checkbox>
-            <Checkbox {...register('classNum')} value='4'>
+            <Checkbox
+              {...register('classNum')}
+              defaultChecked={getValues('classNum')?.includes(4)}
+              value='4'
+            >
               4반
             </Checkbox>
           </CheckboxSection>

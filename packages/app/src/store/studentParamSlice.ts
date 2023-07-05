@@ -32,6 +32,7 @@ const studentParamSlice = createSlice({
     },
     setParam: (state, { payload }: PayloadAction<StudentParam>) => {
       state.param = {
+        ...state.param,
         ...payload,
       }
     },
