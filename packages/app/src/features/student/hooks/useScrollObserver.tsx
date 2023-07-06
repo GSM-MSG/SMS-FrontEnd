@@ -1,17 +1,18 @@
 import { RootState } from '@store'
-import { nextPage } from '@store/studentParamSlice'
 import { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import useStudent from './useStudent'
 
 const useScrollObserver = () => {
   const observe = useRef<HTMLDivElement>(null)
   const { studentParam } = useSelector((state: RootState) => ({
     studentParam: state.studentParam,
   }))
-  const dispatch = useDispatch()
+  const { refetchStudents } = useStudent()
 
   useEffect(() => {
-    if (!observe.current) return
+    if (!observe.current || studentParam.isError || !studentParam.isReady)
+      return
 
     const observer = new IntersectionObserver(
       (e) => {
@@ -22,14 +23,23 @@ const useScrollObserver = () => {
         )
           return
 
-        dispatch(nextPage())
+        refetchStudents({
+          page: studentParam.page,
+          size: studentParam.size,
+          ...studentParam.param,
+        })
       },
       { threshold: 0 }
     )
     observer.observe(observe.current)
 
     return () => observer.disconnect()
-  }, [observe.current, studentParam.nextStop, studentParam.isLoading])
+  }, [
+    observe.current,
+    studentParam.nextStop,
+    studentParam.isLoading,
+    studentParam.isReady,
+  ])
 
   return { observe }
 }

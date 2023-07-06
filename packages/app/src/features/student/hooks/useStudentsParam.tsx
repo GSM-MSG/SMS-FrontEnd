@@ -1,20 +1,27 @@
+import { ParsedUrlQuery } from 'querystring'
 import { setParam } from '@store/studentParamSlice'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useLayoutEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   toNumberArray,
   toStringArray,
   toString,
   toNumber,
 } from '@features/student/lib/TypeConverter'
+import { RootState } from '@store'
 
-const useStudentsParam = () => {
-  const router = useRouter()
+interface Props {
+  query: ParsedUrlQuery
+}
+
+const useStudentsParam = ({ query }: Props) => {
   const dispatch = useDispatch()
+  const { studentParam } = useSelector((state: RootState) => ({
+    studentParam: state.studentParam,
+  }))
 
-  useEffect(() => {
-    if (!router.query.grade) return
+  useLayoutEffect(() => {
+    if (studentParam.isReady) return
 
     const {
       grade,
@@ -30,7 +37,7 @@ const useStudentsParam = () => {
       maxGsmAuthenticationScore,
       minGsmAuthenticationScore,
       gsmAuthenticationScoreSort,
-    } = router.query
+    } = query
 
     dispatch(
       setParam({
@@ -49,7 +56,7 @@ const useStudentsParam = () => {
         gsmAuthenticationScoreSort: toString(gsmAuthenticationScoreSort),
       })
     )
-  }, [router.query])
+  }, [query])
 }
 
 export default useStudentsParam

@@ -5,7 +5,9 @@ interface InitialState {
   nextStop: boolean
   isLoading: boolean
   page: number
+  isReady: boolean
   size: number
+  isError: boolean
 }
 
 const initialState: InitialState = {
@@ -20,7 +22,9 @@ const initialState: InitialState = {
   page: 1,
   size: 20,
   isLoading: false,
+  isReady: false,
   nextStop: false,
+  isError: false,
 }
 
 const studentParamSlice = createSlice({
@@ -34,6 +38,10 @@ const studentParamSlice = createSlice({
     nextStop: (state) => {
       state.nextStop = true
     },
+    resetPage: (state) => {
+      state.page = 1
+      state.nextStop = false
+    },
     setLoading: (state, { payload }: PayloadAction<boolean>) => {
       state.isLoading = payload
     },
@@ -42,11 +50,21 @@ const studentParamSlice = createSlice({
         ...initialState.param,
         ...payload,
       }
+      state.isReady = true
+    },
+    setIsError: (state, { payload }: PayloadAction<boolean>) => {
+      state.isError = payload
     },
   },
 })
 
-export const { nextPage, setParam, nextStop, setLoading } =
-  studentParamSlice.actions
+export const {
+  nextPage,
+  setParam,
+  nextStop,
+  setLoading,
+  resetPage,
+  setIsError,
+} = studentParamSlice.actions
 
 export default studentParamSlice

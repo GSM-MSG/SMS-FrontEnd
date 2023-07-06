@@ -1,7 +1,7 @@
 type ValueType = string | string[] | undefined
 
 export const toNumberArray = (value: ValueType) => {
-  if (!value) return
+  if (!value) return []
   else if (typeof value === 'string') return [+value]
   return value.map((i) => +i)
 }

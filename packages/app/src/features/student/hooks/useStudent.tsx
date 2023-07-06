@@ -1,41 +1,51 @@
-import { studentApi } from '@features/student'
 import errors from '@features/student/service/errors'
 import { useToast } from '@features/toast'
 import ErrorMapper from '@lib/ErrorMapper'
 import { RootState } from '@store'
-import { nextStop, setLoading } from '@store/studentParamSlice'
-import { useEffect } from 'react'
+import { addStudents, setTotoalSize } from '@store/studentListSlice'
+import { nextStop, setIsError, setLoading } from '@store/studentParamSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import studentListApi from '@features/student/service/studentListApi'
+
+interface StudentsParams extends StudentParam {
+  page: number
+  size: number
+}
 
 const useStudent = () => {
   const dispatch = useDispatch()
   const { addToast } = useToast()
-  const { studentParam } = useSelector((state: RootState) => ({
-    studentParam: state.studentParam,
-  }))
-  const { data, isLoading, isError, error } = studentApi.useStudentQuery({
-    ...studentParam.param,
-    size: studentParam.size,
-    page: studentParam.page,
-  })
+  const { studentParam, studentList, totalSize } = useSelector(
+    (state: RootState) => ({
+      studentParam: state.studentParam,
+      studentList: state.studentList.studentList,
+      totalSize: state.studentList.totalSize,
+    })
+  )
 
-  useEffect(() => {
-    if (!isError) return
+  const refetchStudents = async (params: StudentsParams) => {
+    if (studentParam.nextStop) return
 
-    if (typeof error === 'string') return addToast('error', error)
-    addToast('error', ErrorMapper(error, errors))
-  }, [isError])
+    dispatch(setLoading(true))
+    const { data, isError, error } = await studentListApi({
+      ...params,
+    })
+    dispatch(setLoading(false))
 
-  useEffect(() => {
-    if (isLoading) return
-    dispatch(setLoading(isLoading))
-  }, [isLoading])
+    if (isError) {
+      dispatch(setIsError(isError))
+      return addToast('error', ErrorMapper(error, errors))
+    }
+    dispatch(setTotoalSize(data.totalSize))
+    if (data?.content) dispatch(addStudents(data.content))
+    if (data.last) return dispatch(nextStop())
+  }
 
-  useEffect(() => {
-    if (data?.last) dispatch(nextStop())
-  }, [data])
-
-  return { data }
+  return {
+    studentList,
+    totalSize,
+    refetchStudents,
+  }
 }
 
 export default useStudent

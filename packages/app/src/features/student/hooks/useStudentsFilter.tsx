@@ -2,32 +2,39 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store'
-import { setParam } from '@store/studentParamSlice'
-import studentApi from '@features/student/service/studentApi'
+import { resetPage, setParam } from '@store/studentParamSlice'
+import { resetStudents } from '@store/studentListSlice'
 import useModal from './useModal'
+import useStudent from './useStudent'
 
 const useStudentsFilter = () => {
-  const [refetchStudents] = studentApi.useRefetchStudentMutation()
   const dispatch = useDispatch()
-  const { param } = useSelector((state: RootState) => ({
+  const { param, studentParam } = useSelector((state: RootState) => ({
     param: state.studentParam.param,
+    studentParam: state.studentParam,
   }))
   const router = useRouter()
-
+  const { refetchStudents } = useStudent()
   const { onClose } = useModal('filter')
   const { register, setValue, handleSubmit, getValues } = useForm<StudentParam>(
     {
       defaultValues: {
+        grade: [],
+        majors: [],
+        classNum: [],
+        department: [],
+        techStacks: [],
+        formOfEmployment: [],
         ...param,
       },
     }
   )
 
   const onSubmit = handleSubmit(async (form) => {
-    refetchStudents({
-      ...form,
-    })
+    dispatch(resetPage())
+    dispatch(resetStudents())
     dispatch(setParam(form))
+    refetchStudents({ ...form, size: studentParam.size, page: 1 })
 
     await router.push('/', {
       query: {

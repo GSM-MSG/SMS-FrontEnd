@@ -2,7 +2,6 @@ import StudentType from '@features/student/types/StudentType'
 import { StudentCard } from '@sms/shared'
 import useScrollObserver from '@features/student/hooks/useScrollObserver'
 import useModal from '@features/student/hooks/useModal'
-import useStudentsParam from '@features/student/hooks/useStudentsParam'
 import * as S from './style'
 
 interface Props {
@@ -11,7 +10,6 @@ interface Props {
 }
 
 const StudentList = ({ students, max }: Props) => {
-  useStudentsParam()
   const { observe } = useScrollObserver()
   const { onShowAndSetId } = useModal('detail')
 
