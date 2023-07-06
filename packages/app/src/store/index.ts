@@ -6,6 +6,7 @@ import studentParamSlice from './studentParamSlice'
 import modalSlice from './modalSlice'
 import studentDetailSlice from './studentDetailSlice'
 import toastSlice from './toastSlice'
+import studentListSlice from './studentListSlice'
 
 const reducers = combineReducers({
   dialog: dialogSlice.reducer,
@@ -14,6 +15,7 @@ const reducers = combineReducers({
   modal: modalSlice.reducer,
   studentDetail: studentDetailSlice.reducer,
   toast: toastSlice.reducer,
+  studentList: studentListSlice.reducer,
 })
 
 export type RootState = ReturnType<typeof reducers>
