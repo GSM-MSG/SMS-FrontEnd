@@ -9,7 +9,14 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  param: {},
+  param: {
+    grade: [],
+    majors: [],
+    classNum: [],
+    department: [],
+    techStacks: [],
+    formOfEmployment: [],
+  },
   page: 1,
   size: 20,
   isLoading: false,
@@ -32,7 +39,7 @@ const studentParamSlice = createSlice({
     },
     setParam: (state, { payload }: PayloadAction<StudentParam>) => {
       state.param = {
-        ...state.param,
+        ...initialState.param,
         ...payload,
       }
     },

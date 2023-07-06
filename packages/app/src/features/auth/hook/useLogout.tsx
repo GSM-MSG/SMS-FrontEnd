@@ -1,15 +1,20 @@
+import { useRouter } from 'next/router'
 import logout from '@features/auth/service/logout'
 import TokenManager from '@lib/TokenManager'
 import { useDialog } from '@hooks'
 import { useToast } from '@features/toast'
 import { studentApi } from '@features/student'
+import { useDispatch } from 'react-redux'
+import { setParam } from '@store/studentParamSlice'
 import useLoggedIn from './useLoggedIn'
 
 const useLogout = () => {
   const { dialog } = useDialog()
   const { addToast } = useToast()
+  const dispatch = useDispatch()
   const [mutation] = studentApi.useRefetchStudentMutation()
   const { refetchLoggedIn } = useLoggedIn({})
+  const router = useRouter()
 
   const onLogout = async () => {
     if (
@@ -26,8 +31,10 @@ const useLogout = () => {
     TokenManager.clearToken()
 
     addToast('success', '로그아웃에 성공했습니다')
-    mutation()
+    dispatch(setParam({}))
+    router.push('/')
     refetchLoggedIn()
+    mutation({})
   }
 
   return { onLogout }
