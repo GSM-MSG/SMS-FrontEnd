@@ -33,7 +33,7 @@ export const Wrapper = styled.label`
   color: var(--N30);
 `
 
-export const RadioButton = styled.label`
+export const RadioButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,8 +51,7 @@ export const Input = styled.input`
   :checked ~ span {
     color: var(--N50);
   }
-
-  :checked ~ label {
+  :checked ~ div {
     border: 2px solid var(--P2);
     color: var(--N50);
 
@@ -73,7 +72,7 @@ export const Input = styled.input`
       opacity: 0.5;
       width: 32px;
       height: 32px;
-      border-radius: 100%;
+      border-radius: 100 %;
       z-index: -100;
       animation-duration: 0.4s;
       animation: ${beforeAnimation} 0.6s forwards;
@@ -83,4 +82,5 @@ export const Input = styled.input`
 
 export const Label = styled.span`
   ${({ theme }) => theme.body2}
+  cursor: pointer;
 `
