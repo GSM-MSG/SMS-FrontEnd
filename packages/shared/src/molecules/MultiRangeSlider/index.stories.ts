@@ -8,6 +8,8 @@ const config: Meta<typeof MultiRangeSlider> = {
   args: {
     min: 0,
     max: 1000,
+    maxDefaultValue: 900,
+    minDefaultValue: 10,
   },
 }
 
