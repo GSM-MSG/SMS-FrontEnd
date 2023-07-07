@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store'
 import { resetPage, setParam } from '@store/studentParamSlice'
 import { resetStudents } from '@store/studentListSlice'
+import ParamsFilter from '@lib/ParamsFilter'
 import useModal from './useModal'
 import useStudent from './useStudent'
 
@@ -38,7 +39,7 @@ const useStudentsFilter = () => {
 
     await router.push('/', {
       query: {
-        ...form,
+        ...ParamsFilter(form),
       },
     })
     onClose()
