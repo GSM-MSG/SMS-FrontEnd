@@ -21,10 +21,10 @@ const MultiRangeSlider = ({
   const [maxValue, setMaxValue] = useState<number>(maxDefaultValue || max)
 
   const [minInputValue, setMinInputValue] = useState<string>(
-    minDefaultValue + '' || min + ''
+    minDefaultValue ? minDefaultValue + '' : min + ''
   )
   const [maxInputValue, setMaxInputValue] = useState<string>(
-    maxDefaultValue + '' || max + ''
+    maxDefaultValue ? maxDefaultValue + '' : max + ''
   )
 
   const minValueRef = useRef<HTMLInputElement>(null)
