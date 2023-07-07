@@ -1,6 +1,6 @@
 import { ParsedUrlQuery } from 'querystring'
 import { setParam } from '@store/studentParamSlice'
-import { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   toNumberArray,
@@ -20,7 +20,7 @@ const useStudentsParam = ({ query }: Props) => {
     studentParam: state.studentParam,
   }))
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (studentParam.isReady) return
 
     const {
