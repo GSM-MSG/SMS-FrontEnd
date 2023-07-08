@@ -24,7 +24,7 @@ const FilterModal = () => {
   return (
     <ModalPortal onClose={onClose}>
       <S.Wrapper onSubmit={onSubmit}>
-        <FilterHeader />
+        <FilterHeader reset={reset} />
 
         <S.Content>
           <CheckboxSection title='학년'>
