@@ -19,9 +19,10 @@ const useRegister = () => {
     handleSubmit,
     setValue,
     setError,
+    getValues,
     resetField,
     formState: { errors },
-  } = useForm<RegisterFormType>()
+  } = useForm<RegisterFormType>({ defaultValues: { techStack: [] } })
 
   const imageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     // TODO 리팩토링
@@ -80,6 +81,7 @@ const useRegister = () => {
     resetField,
     errors,
     setValue,
+    getValues,
   }
 }
 

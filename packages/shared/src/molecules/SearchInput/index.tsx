@@ -78,7 +78,7 @@ const SearchInput = ({
           onChange={changeHandler}
           value={searchValue}
           onReset={() => setSearchValue('')}
-          disabled={limit ? value?.length >= limit : false}
+          disabled={limit && value?.length ? value.length >= limit : false}
           onKeyDown={onKeyDownEnter}
           onKeyUp={onKeyUpEnter}
         />

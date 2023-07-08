@@ -19,6 +19,7 @@ const RegisterForm = () => {
     fileUpload,
     errors,
     setValue,
+    getValues,
     resetField,
   } = useRegister()
 
@@ -33,6 +34,7 @@ const RegisterForm = () => {
         register={register}
         errors={errors}
         setValue={setValue}
+        getValues={getValues}
         resetField={resetField}
       />
       <SchoolInputs
