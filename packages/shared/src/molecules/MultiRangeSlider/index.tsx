@@ -5,27 +5,22 @@ import * as S from './style'
 interface Props {
   min: number
   max: number
-  minDefaultValue?: number
-  maxDefaultValue?: number
-  onChange(min: number, max: number): void
+  minValue: number
+  maxValue: number
+  onChangeMin(min: number): void
+  onChangeMax(max: number): void
 }
 
 const MultiRangeSlider = ({
   min,
   max,
-  minDefaultValue,
-  maxDefaultValue,
-  onChange,
+  minValue,
+  maxValue,
+  onChangeMin,
+  onChangeMax,
 }: Props) => {
-  const [minValue, setMinValue] = useState<number>(minDefaultValue || min)
-  const [maxValue, setMaxValue] = useState<number>(maxDefaultValue || max)
-
-  const [minInputValue, setMinInputValue] = useState<string>(
-    minDefaultValue ? minDefaultValue + '' : min + ''
-  )
-  const [maxInputValue, setMaxInputValue] = useState<string>(
-    maxDefaultValue ? maxDefaultValue + '' : max + ''
-  )
+  const [minInputValue, setMinInputValue] = useState<string>(minValue + '')
+  const [maxInputValue, setMaxInputValue] = useState<string>(maxValue + '')
 
   const minValueRef = useRef<HTMLInputElement>(null)
   const maxValueRef = useRef<HTMLInputElement>(null)
@@ -45,6 +40,8 @@ const MultiRangeSlider = ({
 
     rangeRef.current.style.left = `${minPercent}%`
     rangeRef.current.style.width = `${maxPercent - minPercent}%`
+
+    setMinInputValue(onChangeLeftInput(minValue + '') + '')
   }, [minValue, getPercent])
 
   useEffect(() => {
@@ -54,16 +51,14 @@ const MultiRangeSlider = ({
     const maxPercent = getPercent(maxValue)
 
     rangeRef.current.style.width = `${maxPercent - minPercent}%`
-  }, [maxValue, getPercent])
 
-  useEffect(() => {
-    onChange(minValue, maxValue)
-  }, [minValue, maxValue, onChange])
+    setMaxInputValue(onChangeRightInput(maxValue + '') + '')
+  }, [maxValue, getPercent])
 
   const onChangeLeftInput = (inputValue: string) => {
     const value = Math.min(+inputValue, maxValue - 1)
     const limitValue = value <= min ? min : value
-    setMinValue(limitValue)
+    onChangeMin(limitValue)
 
     return limitValue
   }
@@ -71,7 +66,7 @@ const MultiRangeSlider = ({
   const onChangeRightInput = (inputValue: string) => {
     const value = Math.max(+inputValue, minValue + 1)
     const limitValue = value >= max ? max : value
-    setMaxValue(limitValue)
+    onChangeMax(limitValue)
 
     return limitValue
   }
