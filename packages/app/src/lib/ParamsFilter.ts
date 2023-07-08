@@ -1,10 +1,13 @@
 type Any = any
 
-const FilterValue: Record<string, number> = {
+const FilterValue: Record<string, number | string> = {
   minGsmAuthenticationScore: 0,
   maxGsmAuthenticationScore: 990,
   maxSalary: 9999,
   minSalary: 0,
+  salarySort: 'ASCENDING',
+  stuNumSort: 'ASCENDING',
+  gsmAuthenticationScoreSort: 'ASCENDING',
 }
 
 /**
