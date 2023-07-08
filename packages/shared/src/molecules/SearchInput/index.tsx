@@ -9,7 +9,7 @@ interface Props {
   dropdownList: string[]
   setValue: UseFormSetValue<any>
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  defaultValue?: string[]
+  value?: string[]
   limit?: number
 }
 
@@ -17,12 +17,11 @@ const SearchInput = ({
   dropdownList,
   name,
   setValue,
-  defaultValue,
+  value,
   onChange,
   limit,
 }: Props) => {
   const [searchValue, setSearchValue] = useState<string>('')
-  const [stacks, setStacks] = useState<string[]>(defaultValue || [])
   const [isShow, setIsShow] = useState<boolean>(false)
 
   useEffect(() => {
@@ -33,14 +32,15 @@ const SearchInput = ({
 
   const onClose = () => setIsShow(false)
   const onAddStack = (newStack: string) => {
-    const value = [...stacks, newStack]
-    setStacks(value)
-    setValue(name, value)
+    if (value) setValue(name, [...value, newStack])
     setSearchValue('')
   }
 
   const onRemove = (stack: string) => {
-    setStacks(stacks.filter((i) => i !== stack))
+    setValue(
+      name,
+      value?.filter((i) => i !== stack)
+    )
   }
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ const SearchInput = ({
   const onKeyUpEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter' || !searchValue || hasTechStack()) return
     if (
-      !dropdownList?.filter((i) => !stacks.includes(i))[0] &&
+      !dropdownList?.filter((i) => !value?.includes(i))[0] &&
       !includesValue()
     )
       onAddStack(searchValue)
@@ -62,7 +62,7 @@ const SearchInput = ({
   }
 
   const hasTechStack = () =>
-    stacks.filter((i) => i.toLowerCase() === searchValue.toLowerCase())[0]
+    value?.filter((i) => i.toLowerCase() === searchValue.toLowerCase())[0]
 
   const includesValue = () =>
     dropdownList.filter(
@@ -78,7 +78,7 @@ const SearchInput = ({
           onChange={changeHandler}
           value={searchValue}
           onReset={() => setSearchValue('')}
-          disabled={limit ? stacks.length >= limit : false}
+          disabled={limit ? value?.length >= limit : false}
           onKeyDown={onKeyDownEnter}
           onKeyUp={onKeyUpEnter}
         />
@@ -86,7 +86,7 @@ const SearchInput = ({
         {!hasTechStack() && (
           <Dropdown.Menu isShow={isShow && !!searchValue} onClose={onClose}>
             {dropdownList
-              ?.filter((i) => !stacks.includes(i))
+              ?.filter((i) => !value?.includes(i))
               ?.map((i, idx) => (
                 <Dropdown.Item onClick={() => onAddStack(i)} key={idx}>
                   {i}
@@ -101,10 +101,10 @@ const SearchInput = ({
         )}
       </S.Wrapper>
 
-      {!!stacks.length && (
+      {!!value?.length && (
         <S.Tags>
-          {stacks[0] &&
-            stacks.map((i, idx) => (
+          {value[0] &&
+            value.map((i, idx) => (
               <Tag key={idx} onRemove={() => onRemove(i)}>
                 {i}
               </Tag>
