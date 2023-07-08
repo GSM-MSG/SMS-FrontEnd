@@ -53,6 +53,7 @@ export const ButtonWrapper = styled.div`
 export const ResetButton = styled.div`
   ${({ theme }) => theme.title2}
   color: var(--N40);
+  cursor: pointer;
 
   @media (max-width: 39rem) {
     display: none;

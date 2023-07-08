@@ -193,6 +193,7 @@ const FilterModal = () => {
               name='techStacks'
               dropdownList={dropdownList}
               onChange={onChange}
+              defaultValue={getValues('techStacks')}
             />
           </RangeSliderSection>
         </S.Content>
