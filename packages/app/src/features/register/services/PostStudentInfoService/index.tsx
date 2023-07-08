@@ -5,10 +5,6 @@ const PostStudentInfoService = async (form: RegisterFormType) => {
   try {
     await axiosApi.post('/student', {
       ...form,
-      techStack: form.techStack
-        .split(',')
-        .map((i) => i.trim())
-        .filter((i) => !!i),
     })
 
     return

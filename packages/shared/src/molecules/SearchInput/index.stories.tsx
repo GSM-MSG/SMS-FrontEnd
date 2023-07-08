@@ -12,11 +12,13 @@ const config: Meta<typeof SearchInput> = {
 export default config
 
 interface FormType {
-  search: string
+  search: string[]
 }
 
 export const Primary = () => {
-  const { setValue, handleSubmit } = useForm<FormType>()
+  const { setValue, handleSubmit, watch, reset } = useForm<FormType>({
+    defaultValues: { search: [] },
+  })
   const [dropdownInput, setDropdownInput] = useState<string>('')
   const [dropdownList, setDropdownList] = useState<string[]>([])
 
@@ -37,9 +39,12 @@ export const Primary = () => {
         setValue={setValue}
         dropdownList={dropdownList}
         onChange={(e) => setDropdownInput(e.target.value)}
-        defaultValue={['hello', 'hi']}
+        value={watch('search')}
       />
       <button type='submit'>submit</button>
+      <button type='button' onClick={() => reset()}>
+        reset
+      </button>
     </form>
   )
 }

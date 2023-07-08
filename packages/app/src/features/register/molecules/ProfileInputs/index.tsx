@@ -4,6 +4,7 @@ import { RegisterFormType } from '@features/register/type'
 import {
   Control,
   FieldErrors,
+  UseFormGetValues,
   UseFormRegister,
   UseFormResetField,
   UseFormSetValue,
@@ -18,6 +19,7 @@ interface Props {
   onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
   control: Control<RegisterFormType>
   setValue: UseFormSetValue<RegisterFormType>
+  watch: UseFormGetValues<RegisterFormType>
   resetField: UseFormResetField<RegisterFormType>
 }
 
@@ -27,6 +29,7 @@ const ProfileInputs = ({
   errors,
   control,
   setValue,
+  watch,
   resetField,
 }: Props) => {
   const { major } = useMajorAutoComplete()
@@ -95,6 +98,7 @@ const ProfileInputs = ({
           onChange={onChange}
           dropdownList={dropdownList}
           setValue={setValue}
+          value={watch('techStack')}
           limit={5}
         />
       </InputColumn>
