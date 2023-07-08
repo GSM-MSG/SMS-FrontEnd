@@ -37,6 +37,7 @@ export const Primary = () => {
         setValue={setValue}
         dropdownList={dropdownList}
         onChange={(e) => setDropdownInput(e.target.value)}
+        defaultValue={['hello', 'hi']}
       />
       <button type='submit'>submit</button>
     </form>
