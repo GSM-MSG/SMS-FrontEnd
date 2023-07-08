@@ -22,6 +22,8 @@ const FilterModal = () => {
     setValue,
     onSubmit,
     getValues,
+    watch,
+    reset,
     minSalary,
     minGsmAuthenticationScore,
     maxSalary,
@@ -193,13 +195,13 @@ const FilterModal = () => {
               name='techStacks'
               dropdownList={dropdownList}
               onChange={onChange}
-              defaultValue={getValues('techStacks')}
+              value={watch('techStacks')}
             />
           </RangeSliderSection>
         </S.Content>
 
         <S.ButtonWrapper>
-          <S.ResetButton>초기화</S.ResetButton>
+          <S.ResetButton onClick={reset}>초기화</S.ResetButton>
           <Button>학생 38명 보기</Button>
         </S.ButtonWrapper>
       </S.Wrapper>

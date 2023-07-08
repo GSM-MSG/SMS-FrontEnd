@@ -17,8 +17,8 @@ const useStudentsFilter = () => {
   const router = useRouter()
   const { refetchStudents } = useStudent()
   const { onClose } = useModal('filter')
-  const { register, setValue, handleSubmit, getValues } = useForm<StudentParam>(
-    {
+  const { register, setValue, handleSubmit, getValues, watch, reset } =
+    useForm<StudentParam>({
       defaultValues: {
         grade: [],
         majors: [],
@@ -28,8 +28,7 @@ const useStudentsFilter = () => {
         formOfEmployment: [],
         ...param,
       },
-    }
-  )
+    })
 
   const onSubmit = handleSubmit(async (form) => {
     dispatch(resetPage())
@@ -50,6 +49,16 @@ const useStudentsFilter = () => {
     setValue,
     onSubmit,
     getValues,
+    watch,
+    reset: () =>
+      reset({
+        grade: [],
+        majors: [],
+        classNum: [],
+        department: [],
+        techStacks: [],
+        formOfEmployment: [],
+      }),
     minSalary: param.minSalary,
     maxSalary: param.maxSalary,
     maxGsmAuthenticationScore: param.maxGsmAuthenticationScore,
