@@ -16,7 +16,7 @@ interface FormType {
 }
 
 export const Primary = () => {
-  const { setValue, handleSubmit, getValues, reset } = useForm<FormType>({
+  const { setValue, handleSubmit, watch, reset } = useForm<FormType>({
     defaultValues: { search: [] },
   })
   const [dropdownInput, setDropdownInput] = useState<string>('')
@@ -39,7 +39,7 @@ export const Primary = () => {
         setValue={setValue}
         dropdownList={dropdownList}
         onChange={(e) => setDropdownInput(e.target.value)}
-        value={getValues('search')}
+        value={watch('search')}
       />
       <button type='submit'>submit</button>
       <button type='button' onClick={() => reset()}>

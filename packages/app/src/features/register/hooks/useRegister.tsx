@@ -19,7 +19,7 @@ const useRegister = () => {
     handleSubmit,
     setValue,
     setError,
-    getValues,
+    watch,
     resetField,
     formState: { errors },
   } = useForm<RegisterFormType>({ defaultValues: { techStack: [] } })
@@ -81,7 +81,7 @@ const useRegister = () => {
     resetField,
     errors,
     setValue,
-    getValues,
+    watch,
   }
 }
 

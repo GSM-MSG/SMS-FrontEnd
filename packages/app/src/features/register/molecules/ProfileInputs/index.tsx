@@ -19,7 +19,7 @@ interface Props {
   onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
   control: Control<RegisterFormType>
   setValue: UseFormSetValue<RegisterFormType>
-  getValues: UseFormGetValues<RegisterFormType>
+  watch: UseFormGetValues<RegisterFormType>
   resetField: UseFormResetField<RegisterFormType>
 }
 
@@ -29,7 +29,7 @@ const ProfileInputs = ({
   errors,
   control,
   setValue,
-  getValues,
+  watch,
   resetField,
 }: Props) => {
   const { major } = useMajorAutoComplete()
@@ -98,7 +98,7 @@ const ProfileInputs = ({
           onChange={onChange}
           dropdownList={dropdownList}
           setValue={setValue}
-          value={getValues('techStack')}
+          value={watch('techStack')}
           limit={5}
         />
       </InputColumn>
