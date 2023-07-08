@@ -26,6 +26,10 @@ const useStudentsFilter = () => {
         department: [],
         techStacks: [],
         formOfEmployment: [],
+        minSalary: 0,
+        maxSalary: 9999,
+        minGsmAuthenticationScore: 0,
+        maxGsmAuthenticationScore: 990,
         ...param,
       },
     })
@@ -58,11 +62,11 @@ const useStudentsFilter = () => {
         department: [],
         techStacks: [],
         formOfEmployment: [],
+        minSalary: 0,
+        maxSalary: 9999,
+        minGsmAuthenticationScore: 0,
+        maxGsmAuthenticationScore: 990,
       }),
-    minSalary: param.minSalary,
-    maxSalary: param.maxSalary,
-    maxGsmAuthenticationScore: param.maxGsmAuthenticationScore,
-    minGsmAuthenticationScore: param.minGsmAuthenticationScore,
   }
 }
 

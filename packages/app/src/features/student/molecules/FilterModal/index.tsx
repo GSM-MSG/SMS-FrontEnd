@@ -17,18 +17,8 @@ import * as S from './style'
 
 const FilterModal = () => {
   const { onClose } = useModal('filter')
-  const {
-    register,
-    setValue,
-    onSubmit,
-    getValues,
-    watch,
-    reset,
-    minSalary,
-    minGsmAuthenticationScore,
-    maxSalary,
-    maxGsmAuthenticationScore,
-  } = useStudentsFilter()
+  const { register, setValue, onSubmit, getValues, watch, reset } =
+    useStudentsFilter()
   const { onChange, dropdownList } = useAutocomplete()
 
   return (
@@ -128,12 +118,10 @@ const FilterModal = () => {
             <MultiRangeSlider
               min={0}
               max={990}
-              minDefaultValue={minGsmAuthenticationScore}
-              maxDefaultValue={maxGsmAuthenticationScore}
-              onChange={(min, max) => {
-                setValue('minGsmAuthenticationScore', min)
-                setValue('maxGsmAuthenticationScore', max)
-              }}
+              minValue={watch('minGsmAuthenticationScore') || 0}
+              maxValue={watch('maxGsmAuthenticationScore') || 990}
+              onChangeMax={(max) => setValue('maxGsmAuthenticationScore', max)}
+              onChangeMin={(min) => setValue('minGsmAuthenticationScore', min)}
             />
           </RangeSliderSection>
 
@@ -141,12 +129,10 @@ const FilterModal = () => {
             <MultiRangeSlider
               min={0}
               max={9999}
-              minDefaultValue={minSalary}
-              maxDefaultValue={maxSalary}
-              onChange={(min, max) => {
-                setValue('minSalary', min)
-                setValue('maxSalary', max)
-              }}
+              minValue={watch('minSalary') || 0}
+              maxValue={watch('maxSalary') || 9999}
+              onChangeMax={(max) => setValue('maxSalary', max)}
+              onChangeMin={(min) => setValue('minSalary', min)}
             />
           </RangeSliderSection>
 
