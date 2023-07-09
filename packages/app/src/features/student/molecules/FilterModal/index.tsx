@@ -13,9 +13,9 @@ import RangeSliderSection from '@features/student/atoms/RangeSliderSection'
 import useStudentsFilter from '@features/student/hooks/useStudentsFilter'
 import { useAutocomplete } from '@features/register/hooks'
 import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
 import * as S from './style'
-import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
 const FilterModal = () => {
   const { onClose } = useModal('filter')
