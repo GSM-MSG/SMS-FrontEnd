@@ -48,6 +48,16 @@ const useStudentsFilter = () => {
     onClose()
   })
 
+  const onClickMajor = (major: string) => {
+    const majors = watch('majors')
+    if (majors?.includes(major))
+      setValue(
+        'majors',
+        majors?.filter((i) => i !== major)
+      )
+    else if (majors) setValue('majors', [...majors, major])
+  }
+
   return {
     register,
     setValue,
@@ -67,6 +77,7 @@ const useStudentsFilter = () => {
         minGsmAuthenticationScore: 0,
         maxGsmAuthenticationScore: 990,
       }),
+    onClickMajor,
   }
 }
 

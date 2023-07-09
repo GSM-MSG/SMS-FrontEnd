@@ -12,14 +12,23 @@ import {
 import RangeSliderSection from '@features/student/atoms/RangeSliderSection'
 import useStudentsFilter from '@features/student/hooks/useStudentsFilter'
 import { useAutocomplete } from '@features/register/hooks'
+import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
 
 import * as S from './style'
 
 const FilterModal = () => {
   const { onClose } = useModal('filter')
-  const { register, setValue, onSubmit, getValues, watch, reset } =
-    useStudentsFilter()
+  const {
+    register,
+    setValue,
+    onSubmit,
+    getValues,
+    watch,
+    reset,
+    onClickMajor,
+  } = useStudentsFilter()
   const { onChange, dropdownList } = useAutocomplete()
+  const { majorList } = useMajorAutoComplete()
 
   return (
     <ModalPortal onClose={onClose}>
@@ -95,8 +104,17 @@ const FilterModal = () => {
           </CheckboxSection>
 
           <CheckboxSection title='분야'>
-            <Checkbox>Frontend</Checkbox>
-            {/* 백에서 데이터를 가져올 예정*/}
+            {majorList?.map((major) => (
+              <Checkbox
+                key={major}
+                value={major}
+                onClick={() => onClickMajor(major)}
+                checked={watch('majors')?.includes(major)}
+                readOnly
+              >
+                {major}
+              </Checkbox>
+            ))}
           </CheckboxSection>
 
           <CheckboxSection title='희망 고용 형태'>
