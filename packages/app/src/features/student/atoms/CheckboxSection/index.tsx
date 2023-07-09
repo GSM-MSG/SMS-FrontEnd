@@ -4,9 +4,12 @@ import * as S from './style'
 interface Props {
   title: string
   children: ReactNode
+  isShow?: boolean
 }
 
-const CheckboxSection = ({ title, children }: Props) => {
+const CheckboxSection = ({ title, children, isShow }: Props) => {
+  if (!isShow) return null
+
   return (
     <S.Wrapper>
       <S.Title>{title}</S.Title>

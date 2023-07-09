@@ -15,6 +15,7 @@ import { useAutocomplete } from '@features/register/hooks'
 import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
 
 import * as S from './style'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
 const FilterModal = () => {
   const { onClose } = useModal('filter')
@@ -29,6 +30,7 @@ const FilterModal = () => {
   } = useStudentsFilter()
   const { onChange, dropdownList } = useAutocomplete()
   const { majorList } = useMajorAutoComplete()
+  const { role } = useLoggedIn({})
 
   return (
     <ModalPortal onClose={onClose}>
@@ -36,7 +38,7 @@ const FilterModal = () => {
         <FilterHeader reset={reset} />
 
         <S.Content>
-          <CheckboxSection title='학년'>
+          <CheckboxSection isShow={!!role} title='학년'>
             <Checkbox
               {...register('grade')}
               defaultChecked={getValues('grade')?.includes(1)}
@@ -60,7 +62,7 @@ const FilterModal = () => {
             </Checkbox>
           </CheckboxSection>
 
-          <CheckboxSection title='반'>
+          <CheckboxSection isShow={!!role} title='반'>
             <Checkbox
               {...register('classNum')}
               defaultChecked={getValues('classNum')?.includes(1)}
@@ -91,7 +93,7 @@ const FilterModal = () => {
             </Checkbox>
           </CheckboxSection>
 
-          <CheckboxSection title='학과'>
+          <CheckboxSection isShow={!!role} title='학과'>
             <Checkbox {...register('department')} value='SW_DEVELOPMENT'>
               소프웨어개발과
             </Checkbox>
@@ -103,7 +105,7 @@ const FilterModal = () => {
             </Checkbox>
           </CheckboxSection>
 
-          <CheckboxSection title='분야'>
+          <CheckboxSection isShow={true} title='분야'>
             {majorList?.map((major) => (
               <Checkbox
                 key={major}
@@ -117,7 +119,10 @@ const FilterModal = () => {
             ))}
           </CheckboxSection>
 
-          <CheckboxSection title='희망 고용 형태'>
+          <CheckboxSection
+            isShow={role === 'ROLE_TEACHER'}
+            title='희망 고용 형태'
+          >
             <Checkbox {...register('formOfEmployment')} value='FULL_TIME'>
               정규직
             </Checkbox>
@@ -132,7 +137,10 @@ const FilterModal = () => {
             </Checkbox>
           </CheckboxSection>
 
-          <RangeSliderSection title='인증제 점수'>
+          <RangeSliderSection
+            isShow={role === 'ROLE_TEACHER'}
+            title='인증제 점수'
+          >
             <MultiRangeSlider
               min={0}
               max={990}
@@ -143,7 +151,10 @@ const FilterModal = () => {
             />
           </RangeSliderSection>
 
-          <RangeSliderSection title='희명 연봉'>
+          <RangeSliderSection
+            isShow={role === 'ROLE_TEACHER'}
+            title='희명 연봉'
+          >
             <MultiRangeSlider
               min={0}
               max={9999}
@@ -154,7 +165,7 @@ const FilterModal = () => {
             />
           </RangeSliderSection>
 
-          <CheckboxSection title='학번'>
+          <CheckboxSection isShow={!!role} title='학번'>
             <Radio
               {...register('stuNumSort')}
               value='ASCENDING'
@@ -167,7 +178,7 @@ const FilterModal = () => {
             />
           </CheckboxSection>
 
-          <CheckboxSection title='인증제 점수'>
+          <CheckboxSection isShow={role === 'ROLE_TEACHER'} title='인증제 점수'>
             <Radio
               {...register('gsmAuthenticationScoreSort')}
               label='오름차순'
@@ -180,7 +191,7 @@ const FilterModal = () => {
             />
           </CheckboxSection>
 
-          <CheckboxSection title='희망 연봉'>
+          <CheckboxSection isShow={role === 'ROLE_TEACHER'} title='희망 연봉'>
             <Radio
               {...register('salarySort')}
               label='오름차순'
@@ -193,7 +204,7 @@ const FilterModal = () => {
             />
           </CheckboxSection>
 
-          <RangeSliderSection title='세부스택'>
+          <RangeSliderSection isShow={true} title='세부스택'>
             <SearchInput
               setValue={setValue}
               name='techStacks'
