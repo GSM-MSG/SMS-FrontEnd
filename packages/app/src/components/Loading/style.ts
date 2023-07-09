@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   backdrop-filter: blur(2rem);
   background: rgba(255, 255, 255, 0.85);
 `
