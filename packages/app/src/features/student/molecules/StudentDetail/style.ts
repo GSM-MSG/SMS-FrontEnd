@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
   width: 31rem;
-  height: 90vh;
+  height: 90%;
   position: relative;
   background: var(--WHITE);
   z-index: -2;
@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: 34rem) {
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 `
 

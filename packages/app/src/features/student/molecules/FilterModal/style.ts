@@ -4,7 +4,7 @@ export const Wrapper = styled.form`
   max-width: 35rem;
   max-height: 46.25rem;
   width: 100%;
-  height: 90vh;
+  height: 90%;
   background: var(--WHITE);
   border-radius: 1.5rem;
   position: relative;
@@ -14,8 +14,8 @@ export const Wrapper = styled.form`
 
   @media (max-width: 39rem) {
     max-width: 100%;
-    max-height: 100vh;
-    height: 100vh;
+    max-height: 100%;
+    height: 100%;
     border-radius: 0;
   }
 `
