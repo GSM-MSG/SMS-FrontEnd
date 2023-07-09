@@ -9,7 +9,7 @@ import useModal from './useModal'
 const useStudentDetail = () => {
   const [mutation] = studentApi.useStudentDetailMutation()
   const dispatch = useDispatch()
-  const { onClose } = useModal()
+  const { onClose } = useModal('detail')
   const { role, isSuccess } = useLoggedIn({})
   const { id: studentId } = useSelector((state: RootState) => ({
     id: state.studentDetail.id,

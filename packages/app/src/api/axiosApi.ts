@@ -2,8 +2,14 @@ import axios, { isAxiosError } from 'axios'
 import env from '@lib/env'
 import TokenManager from '@lib/TokenManager'
 import needsTokenRefresh from '@lib/needsTokenRefresh'
+import qs from 'qs'
+import ParamsFilter from '@lib/ParamsFilter'
 
-const axiosApi = axios.create({ baseURL: env.NEXT_PUBLIC_SERVER_URL })
+const axiosApi = axios.create({
+  baseURL: env.NEXT_PUBLIC_SERVER_URL,
+  paramsSerializer: (params) =>
+    qs.stringify(ParamsFilter(params), { arrayFormat: 'repeat' }),
+})
 
 axiosApi.interceptors.request.use(async (config) => {
   const tokenManager = new TokenManager()

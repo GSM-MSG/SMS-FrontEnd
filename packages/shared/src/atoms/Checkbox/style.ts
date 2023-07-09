@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.label`
-  width: 1.25rem;
-  height: 1.25rem;
-  display: inline-block;
+  display: inline-flex;
+  gap: 0.5rem;
   cursor: pointer;
   border-radius: 0.25rem;
+  color: var(--N30);
 `
 
 export const Input = styled.input`
@@ -21,11 +21,17 @@ export const Input = styled.input`
     z-index: -2;
   }
 
+  :checked ~ span {
+    color: var(--BLACK);
+  }
+
   :checked ~ label {
     background: var(--P2);
-    border: none;
+    border: 1px solid transparent;
 
     svg {
+      width: 65%;
+      height: 65%;
       display: block;
     }
   }
@@ -50,4 +56,8 @@ export const Checkbox = styled.label`
   ::before {
     transition: 0.2s;
   }
+`
+
+export const Label = styled.span`
+  ${({ theme }) => theme.body2}
 `

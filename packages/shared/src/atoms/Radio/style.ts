@@ -26,6 +26,7 @@ const beforeAnimation = keyframes`
 `
 
 export const Wrapper = styled.label`
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -40,7 +41,6 @@ export const RadioButton = styled.div`
   height: 20px;
   border-radius: 100%;
   border: 2px solid var(--N20);
-  cursor: pointer;
   position: relative;
   transition: 0.4s;
 `
@@ -72,7 +72,7 @@ export const Input = styled.input`
       opacity: 0.5;
       width: 32px;
       height: 32px;
-      border-radius: 100%;
+      border-radius: 100 %;
       z-index: -100;
       animation-duration: 0.4s;
       animation: ${beforeAnimation} 0.6s forwards;

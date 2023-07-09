@@ -15,6 +15,7 @@ const useMajorAutoComplete = () => {
       pre[cur] = cur
       return pre
     }, {} as OptionsType),
+    majorList: data?.major,
   }
 }
 

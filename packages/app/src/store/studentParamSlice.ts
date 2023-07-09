@@ -4,15 +4,27 @@ interface InitialState {
   param: StudentParam
   nextStop: boolean
   isLoading: boolean
+  page: number
+  isReady: boolean
+  size: number
+  isError: boolean
 }
 
 const initialState: InitialState = {
   param: {
-    page: 1,
-    size: 20,
+    grade: [],
+    majors: [],
+    classNum: [],
+    department: [],
+    techStacks: [],
+    formOfEmployment: [],
   },
+  page: 1,
+  size: 20,
   isLoading: false,
+  isReady: false,
   nextStop: false,
+  isError: false,
 }
 
 const studentParamSlice = createSlice({
@@ -21,28 +33,38 @@ const studentParamSlice = createSlice({
   reducers: {
     nextPage: (state) => {
       if (state.nextStop) return
-      state.param.page += 1
+      state.page += 1
     },
     nextStop: (state) => {
       state.nextStop = true
     },
+    resetPage: (state) => {
+      state.page = 1
+      state.nextStop = false
+    },
     setLoading: (state, { payload }: PayloadAction<boolean>) => {
       state.isLoading = payload
     },
-    setParam: (
-      state,
-      { payload }: PayloadAction<Omit<StudentParam, 'page' | 'size'>>
-    ) => {
+    setParam: (state, { payload }: PayloadAction<StudentParam>) => {
       state.param = {
+        ...initialState.param,
         ...payload,
-        page: state.param.page,
-        size: state.param.size,
       }
+      state.isReady = true
+    },
+    setIsError: (state, { payload }: PayloadAction<boolean>) => {
+      state.isError = payload
     },
   },
 })
 
-export const { nextPage, setParam, nextStop, setLoading } =
-  studentParamSlice.actions
+export const {
+  nextPage,
+  setParam,
+  nextStop,
+  setLoading,
+  resetPage,
+  setIsError,
+} = studentParamSlice.actions
 
 export default studentParamSlice
