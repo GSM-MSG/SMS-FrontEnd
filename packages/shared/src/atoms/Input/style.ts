@@ -31,6 +31,17 @@ export const TextFiled = styled.input`
   outline: none;
   border: none;
   background: transparent;
+  transition: width 0.2s;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`
+
+export const Label = styled.div`
+  word-break: keep-all;
 `
 
 export const ResetButton = styled.button`

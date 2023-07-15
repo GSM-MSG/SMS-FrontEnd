@@ -77,10 +77,11 @@ export const Inputs = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   position: absolute;
   top: 1.44rem;
 
   & > div {
-    max-width: 5rem;
+    max-width: 6rem;
   }
 `
