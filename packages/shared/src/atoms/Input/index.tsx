@@ -17,10 +17,11 @@ interface Props
   icon?: ReactNode
   error?: string
   onReset?: () => void
+  label?: string
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ error, icon, onReset, ...props }, ref) => {
+  ({ error, icon, onReset, label, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState<boolean>(false)
     const [value, setValue] = useState<string>('')
 
@@ -48,6 +49,9 @@ const Input = forwardRef<HTMLInputElement, Props>(
             }}
             onChange={onChange}
           />
+
+          {label && <S.Label>{label}</S.Label>}
+
           <S.ResetButton
             type='button'
             hidden={!value.length || !onReset || props.disabled}

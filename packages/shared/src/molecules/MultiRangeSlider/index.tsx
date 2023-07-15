@@ -9,6 +9,7 @@ interface Props {
   maxValue: number
   onChangeMin(min: number): void
   onChangeMax(max: number): void
+  label?: string
 }
 
 const MultiRangeSlider = ({
@@ -18,6 +19,7 @@ const MultiRangeSlider = ({
   maxValue,
   onChangeMin,
   onChangeMax,
+  label,
 }: Props) => {
   const [minInputValue, setMinInputValue] = useState<string>(minValue + '')
   const [maxInputValue, setMaxInputValue] = useState<string>(maxValue + '')
@@ -106,6 +108,7 @@ const MultiRangeSlider = ({
           <Input
             type='number'
             value={minInputValue}
+            label={label}
             onChange={(e) => {
               onChangeLeftInput(e.target.value)
               setMinInputValue(e.target.value)
@@ -116,6 +119,7 @@ const MultiRangeSlider = ({
           <Input
             type='number'
             value={maxInputValue}
+            label={label}
             onChange={(e) => {
               onChangeRightInput(e.target.value)
               setMaxInputValue(e.target.value)
