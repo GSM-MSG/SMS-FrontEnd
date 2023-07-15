@@ -217,7 +217,7 @@ const FilterModal = () => {
 
         <S.ButtonWrapper>
           <S.ResetButton onClick={reset}>초기화</S.ResetButton>
-          <Button>학생 38명 보기</Button>
+          <Button>확인</Button>
         </S.ButtonWrapper>
       </S.Wrapper>
     </ModalPortal>
