@@ -6,6 +6,7 @@ const DateInput = () => {
     if (e.target.value) e.target.classList.add('has-value')
     else e.target.classList.remove('has-value')
   }
+
   return <S.Input type='month' placeholder='yyyy.mm' onChange={onChange} />
 }
 
