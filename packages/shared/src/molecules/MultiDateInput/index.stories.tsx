@@ -1,4 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta } from '@storybook/react'
+import { useForm } from 'react-hook-form'
+import React from 'react'
 import MultiDateInput from './index'
 
 const config: Meta<typeof MultiDateInput> = {
@@ -8,6 +10,26 @@ const config: Meta<typeof MultiDateInput> = {
 
 export default config
 
-type Story = StoryObj<typeof MultiDateInput>
+interface FormType {
+  startDate: string
+  endDate: string
+}
 
-export const Primary: Story = {}
+export const Primary = () => {
+  const { setValue, watch, handleSubmit } = useForm<FormType>()
+
+  const onSubmit = handleSubmit(() => {})
+
+  return (
+    <form onSubmit={onSubmit}>
+      <MultiDateInput
+        startDate={watch('startDate')}
+        endDate={watch('endDate')}
+        setStartDate={(startDate) => setValue('startDate', startDate)}
+        setEndDate={(endDate) => setValue('endDate', endDate)}
+      />
+
+      <button type='submit'>submit</button>
+    </form>
+  )
+}
