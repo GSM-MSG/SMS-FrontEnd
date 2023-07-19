@@ -5,6 +5,7 @@ import {
   ProfileInputs,
   SchoolInputs,
   WorkingInputs,
+  ProjectsInput,
 } from '@features/register/molecules'
 import { useRegister } from '@features/register/hooks'
 import { SMSLogo } from '@sms/shared'
@@ -56,6 +57,8 @@ const RegisterForm = () => {
         errors={errors}
       />
       <LanguageInputs register={register} control={control} errors={errors} />
+
+      <ProjectsInput />
 
       <S.ButtonWrapper>
         <S.SubmitBtn type='submit'>확인</S.SubmitBtn>
