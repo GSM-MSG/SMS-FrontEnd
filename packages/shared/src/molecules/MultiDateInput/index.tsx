@@ -6,7 +6,7 @@ interface Props {
   setStartDate(startDate: string): void
   startDate: string
   setEndDate(endDate: string): void
-  endDate: string
+  endDate: string | null
 }
 
 const MultiDateInput = ({
@@ -20,7 +20,7 @@ const MultiDateInput = ({
       <DateInput
         value={startDate || ''}
         onChange={(e) => setStartDate(e.target.value)}
-        max={endDate}
+        max={endDate || ''}
       />
       <S.IconWrapper>
         <Icon.Tilde />
