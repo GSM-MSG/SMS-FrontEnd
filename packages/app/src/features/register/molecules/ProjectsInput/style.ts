@@ -16,7 +16,7 @@ export const DoubleInputs = styled.div`
 export const Hr = styled.hr`
   border: none;
   border-top: 1px solid var(--N20);
-  margin-top: 2.5rem;
+  margin: 2.5rem 0;
 `
 
 export const ButtonWrapper = styled.div`

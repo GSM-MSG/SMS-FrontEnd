@@ -58,7 +58,7 @@ const RegisterForm = () => {
       />
       <LanguageInputs register={register} control={control} errors={errors} />
 
-      <ProjectsInput />
+      <ProjectsInput register={register} control={control} errors={errors} />
 
       <S.ButtonWrapper>
         <S.SubmitBtn type='submit'>확인</S.SubmitBtn>

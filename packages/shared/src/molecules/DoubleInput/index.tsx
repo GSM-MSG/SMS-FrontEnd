@@ -6,6 +6,8 @@ import * as S from './style'
 interface Props {
   titleRegister: UseFormRegisterReturn
   contentRegister: UseFormRegisterReturn
+  titleError?: string
+  contentError?: string
   titlePlaceholder: string
   contentPlaceholder: string
   onDelete?: () => void
@@ -14,6 +16,8 @@ interface Props {
 const DoubleInput = ({
   titleRegister,
   contentRegister,
+  titleError,
+  contentError,
   titlePlaceholder,
   contentPlaceholder,
   onDelete,
@@ -21,8 +25,16 @@ const DoubleInput = ({
   return (
     <S.Wrapper>
       <S.Inputs>
-        <Input {...titleRegister} placeholder={titlePlaceholder} />
-        <Input {...contentRegister} placeholder={contentPlaceholder} />
+        <Input
+          {...titleRegister}
+          error={titleError}
+          placeholder={titlePlaceholder}
+        />
+        <Input
+          {...contentRegister}
+          error={contentError}
+          placeholder={contentPlaceholder}
+        />
       </S.Inputs>
 
       {onDelete && <DeleteButton onClick={onDelete} />}
