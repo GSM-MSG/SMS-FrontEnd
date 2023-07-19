@@ -14,6 +14,8 @@ interface RegisterFormType {
   dreamBookFileUrl: string // 드림북
   militaryService: 'HOPE' | 'NOT_HOPE' | 'NO_MATTER' | 'NONE' // 희망, 비희망, 상관없음, 해당없음
   certificate: string[]
+  projects: ProjectType[]
+  prizes: PrizeType[]
 }
 
 interface LanguageCertificateType {

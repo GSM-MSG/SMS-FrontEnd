@@ -22,7 +22,9 @@ const useRegister = () => {
     watch,
     resetField,
     formState: { errors },
-  } = useForm<RegisterFormType>({ defaultValues: { techStack: [] } })
+  } = useForm<RegisterFormType>({
+    defaultValues: { techStack: [] },
+  })
 
   const imageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     // TODO 리팩토링

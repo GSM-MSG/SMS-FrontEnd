@@ -1,13 +1,13 @@
 const XmarkOutline = () => (
   <svg
-    width='12'
-    height='12'
-    viewBox='0 0 12 12'
+    width='24'
+    height='24'
+    viewBox='0 0 24 24'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
     <path
-      d='M1.05066 10.9502L10.9502 1.05074M10.948 10.9515L1.04854 1.05205'
+      d='M7.05066 16.9502L16.9502 7.05074M16.948 16.9515L7.04854 7.05205'
       stroke='black'
       strokeWidth='2'
       strokeLinecap='round'
