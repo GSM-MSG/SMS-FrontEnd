@@ -2,6 +2,15 @@ import styled from '@emotion/styled'
 
 export { Wrapper } from '@features/register/atoms/FormWrapper/style'
 
+export const ProjectList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & div:last-of-type hr {
+    margin-bottom: 0;
+  }
+`
+
 export const IconInput = styled.div`
   max-width: 6.75rem;
   max-height: 6.75rem;

@@ -14,7 +14,7 @@ const HideableWrapper = ({ children, title, onDelete }: Props) => {
   return (
     <S.Wrapper>
       <S.Header>
-        <S.Title>{title}</S.Title>
+        <S.Title>{title || '프로젝트 이름이 없습니다'}</S.Title>
         <S.Icons>
           <S.Icon>
             <S.HideAnimationInput
