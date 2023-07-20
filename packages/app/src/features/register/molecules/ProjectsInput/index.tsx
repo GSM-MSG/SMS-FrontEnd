@@ -35,8 +35,23 @@ const ProjectsInput = ({
   setValue,
   watch,
 }: Props) => {
-  const { fields, remove } = useFieldArray({ name: 'projects', control })
+  const { fields, remove, append } = useFieldArray({
+    name: 'projects',
+    control,
+  })
   const { onChange, dropdownList } = useAutocomplete()
+
+  const onClick = () =>
+    append({
+      name: '',
+      icon: '',
+      links: [{ name: '', url: '' }],
+      inProgress: { end: '', start: '' },
+      myActivity: '',
+      techStacks: [],
+      description: '',
+      previewImages: [],
+    })
 
   return (
     <S.Wrapper>
@@ -127,7 +142,7 @@ const ProjectsInput = ({
       </S.ProjectList>
 
       <S.ButtonWrapper>
-        <S.AddButton>
+        <S.AddButton onClick={onClick}>
           <Icon.SmallPlus type='outline' /> 추가
         </S.AddButton>
       </S.ButtonWrapper>
