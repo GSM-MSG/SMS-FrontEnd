@@ -5,7 +5,9 @@ const config: Meta<typeof DateInput> = {
   title: 'DateInput',
   component: DateInput,
 
-  args: {},
+  args: {
+    error: 'hello',
+  },
 }
 
 export default config
