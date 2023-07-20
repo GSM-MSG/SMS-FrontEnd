@@ -25,6 +25,8 @@ export const Primary = () => {
       <MultiDateInput
         startDateRegister={register('startDate')}
         endDateRegister={register('endDate')}
+        startDateError='hello'
+        endDateError='world'
         min={watch('startDate')}
         max={watch('endDate')}
       />

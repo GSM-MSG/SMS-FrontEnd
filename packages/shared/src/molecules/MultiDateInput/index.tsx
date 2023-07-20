@@ -7,19 +7,31 @@ import * as S from './style'
 interface Props {
   startDateRegister: UseFormRegisterReturn
   endDateRegister: UseFormRegisterReturn
+  startDateError?: string
+  endDateError?: string
   min: string
   max: string
 }
 
 const MultiDateInput = forwardRef<HTMLDivElement, Props>(
-  ({ startDateRegister, endDateRegister, min, max }, ref) => {
+  (
+    {
+      startDateRegister,
+      endDateRegister,
+      startDateError,
+      endDateError,
+      min,
+      max,
+    },
+    ref
+  ) => {
     return (
       <S.Wrapper ref={ref}>
-        <DateInput {...startDateRegister} max={max} />
+        <DateInput {...startDateRegister} error={startDateError} max={max} />
         <S.IconWrapper>
           <Icon.Tilde />
         </S.IconWrapper>
-        <DateInput {...endDateRegister} min={min} />
+        <DateInput {...endDateRegister} error={endDateError} min={min} />
       </S.Wrapper>
     )
   }
