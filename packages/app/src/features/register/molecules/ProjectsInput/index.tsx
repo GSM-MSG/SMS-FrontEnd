@@ -115,14 +115,21 @@ const ProjectsInput = ({
 
               <InputColumn comment='진행 기간'>
                 <MultiDateInput
-                  startDate={watch(`projects.${idx}.inProgress.start`)}
-                  endDate={watch(`projects.${idx}.inProgress.end`)}
-                  setStartDate={(startDate) =>
-                    setValue(`projects.${idx}.inProgress.start`, startDate)
+                  startDateRegister={register(
+                    `projects.${idx}.inProgress.start`,
+                    { required: { value: true, message: '필수 값입니다' } }
+                  )}
+                  endDateRegister={register(`projects.${idx}.inProgress.end`, {
+                    required: { value: true, message: '필수 값입니다' },
+                  })}
+                  startDateError={
+                    errors.projects?.[idx]?.inProgress?.start?.message
                   }
-                  setEndDate={(endDate) =>
-                    setValue(`projects.${idx}.inProgress.end`, endDate)
+                  endDateError={
+                    errors.projects?.[idx]?.inProgress?.end?.message
                   }
+                  min={watch(`projects.${idx}.inProgress.start`)}
+                  max={watch(`projects.${idx}.inProgress.end`)}
                 />
               </InputColumn>
 
