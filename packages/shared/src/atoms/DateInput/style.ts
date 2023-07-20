@@ -45,3 +45,9 @@ export const Input = styled.input`
     cursor: pointer;
   }
 `
+
+export const Error = styled.div`
+  ${({ theme }) => theme.caption1}
+  color: var(--ERROR);
+  margin-top: 0.5rem;
+`

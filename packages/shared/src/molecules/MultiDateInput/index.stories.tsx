@@ -16,17 +16,19 @@ interface FormType {
 }
 
 export const Primary = () => {
-  const { setValue, watch, handleSubmit } = useForm<FormType>()
+  const { register, watch, handleSubmit } = useForm<FormType>()
 
   const onSubmit = handleSubmit(() => {})
 
   return (
     <form onSubmit={onSubmit}>
       <MultiDateInput
-        startDate={watch('startDate')}
-        endDate={watch('endDate')}
-        setStartDate={(startDate) => setValue('startDate', startDate)}
-        setEndDate={(endDate) => setValue('endDate', endDate)}
+        startDateRegister={register('startDate')}
+        endDateRegister={register('endDate')}
+        startDateError='hello'
+        endDateError='world'
+        min={watch('startDate')}
+        max={watch('endDate')}
       />
 
       <button type='submit'>submit</button>
