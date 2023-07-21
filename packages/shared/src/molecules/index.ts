@@ -4,5 +4,8 @@ export { default as Select } from './Select'
 export { default as SearchInput } from './SearchInput'
 export { default as Header } from './Header'
 export { default as MultiRangeSlider } from './MultiRangeSlider'
+export { default as MultiDateInput } from './MultiDateInput'
+export { default as FourImageInputs } from './FourImageInputs'
+export { default as DoubleInput } from './DoubleInput'
 
 export type { OptionsType } from './Select/type'

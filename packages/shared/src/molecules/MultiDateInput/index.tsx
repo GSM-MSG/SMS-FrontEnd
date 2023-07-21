@@ -10,7 +10,7 @@ interface Props {
   startDateError?: string
   endDateError?: string
   min: string
-  max: string
+  max: string | null
 }
 
 const MultiDateInput = forwardRef<HTMLDivElement, Props>(
@@ -27,7 +27,11 @@ const MultiDateInput = forwardRef<HTMLDivElement, Props>(
   ) => {
     return (
       <S.Wrapper ref={ref}>
-        <DateInput {...startDateRegister} error={startDateError} max={max} />
+        <DateInput
+          {...startDateRegister}
+          error={startDateError}
+          max={max || ''}
+        />
         <S.IconWrapper>
           <Icon.Tilde />
         </S.IconWrapper>

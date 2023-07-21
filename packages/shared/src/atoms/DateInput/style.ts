@@ -1,8 +1,11 @@
 import styled from '@emotion/styled'
 
+export const Wrapper = styled.div`
+  width: 100%;
+`
+
 export const Input = styled.input`
   ${({ theme }) => theme.body1}
-  background: transparent;
   border: none;
   width: 100%;
   position: relative;
@@ -11,6 +14,7 @@ export const Input = styled.input`
   color: var(--N30);
   border-radius: 0.5rem;
   outline: none;
+  flex-wrap: wrap;
 
   :not(.has-value)::before {
     color: var(--N30);

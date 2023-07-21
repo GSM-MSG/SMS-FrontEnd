@@ -1,2 +1,5 @@
 export { default as FormWrapper } from './FormWrapper'
 export { default as InputColumn } from './InputColumn'
+export { default as LinkMultiDoubleInput } from './LinkMultiDoubleInput'
+export { default as FourImageInputs } from './FourImageInputs'
+export { default as IconImageInput } from './IconImageInput'

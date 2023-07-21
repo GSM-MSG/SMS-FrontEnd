@@ -5,7 +5,7 @@ const config: Meta<typeof ImageInput> = {
   title: 'ImageInput',
   component: ImageInput,
   args: {
-    onChange: (e) => {
+    onChange: async (e) => {
       if (!e.target.files || !e.target.files[0]) return ''
 
       return URL.createObjectURL(e.target.files[0])

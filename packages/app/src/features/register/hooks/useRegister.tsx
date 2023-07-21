@@ -22,7 +22,23 @@ const useRegister = () => {
     watch,
     resetField,
     formState: { errors },
-  } = useForm<RegisterFormType>({ defaultValues: { techStack: [] } })
+  } = useForm<RegisterFormType>({
+    defaultValues: {
+      techStack: [],
+      projects: [
+        {
+          name: '',
+          icon: '',
+          links: [{ name: '', url: '' }],
+          inProgress: { end: '', start: '' },
+          myActivity: '',
+          techStacks: [],
+          description: '',
+          previewImages: [],
+        },
+      ],
+    },
+  })
 
   const imageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     // TODO 리팩토링
@@ -79,6 +95,7 @@ const useRegister = () => {
     imageUpload,
     fileUpload,
     resetField,
+    setError,
     errors,
     setValue,
     watch,

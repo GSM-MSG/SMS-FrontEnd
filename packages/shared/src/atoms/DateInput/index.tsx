@@ -24,7 +24,7 @@ const DateInput = forwardRef<HTMLInputElement, Props>(
     }
 
     return (
-      <div>
+      <S.Wrapper>
         <S.Input
           {...props}
           ref={ref}
@@ -33,7 +33,7 @@ const DateInput = forwardRef<HTMLInputElement, Props>(
           onChange={onChange}
         />
         {error && <S.Error>{error}</S.Error>}
-      </div>
+      </S.Wrapper>
     )
   }
 )
