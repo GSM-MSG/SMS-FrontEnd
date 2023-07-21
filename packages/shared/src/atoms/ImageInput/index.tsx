@@ -14,18 +14,18 @@ interface Props
     HTMLInputElement
   > {
   error?: string
-  onChange: (e: ChangeEvent<HTMLInputElement>) => string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => Promise<string | void>
 }
 
 const Profile = forwardRef<HTMLInputElement, Props>(
   ({ error, ...props }, ref) => {
     const [url, setUrl] = useState<string>('')
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) =>
-      setUrl(props.onChange(e))
+    const onChange = async (e: ChangeEvent<HTMLInputElement>) =>
+      setUrl((await props.onChange(e)) || url)
 
     return (
-      <S.Wrapper>
+      <div>
         <S.InputLabel>
           <input
             {...props}
@@ -43,8 +43,8 @@ const Profile = forwardRef<HTMLInputElement, Props>(
           )}
         </S.InputLabel>
 
-        <S.ErrorMessage>{error}</S.ErrorMessage>
-      </S.Wrapper>
+        {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
+      </div>
     )
   }
 )

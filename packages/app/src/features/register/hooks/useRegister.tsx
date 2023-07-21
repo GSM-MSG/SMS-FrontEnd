@@ -95,6 +95,7 @@ const useRegister = () => {
     imageUpload,
     fileUpload,
     resetField,
+    setError,
     errors,
     setValue,
     watch,

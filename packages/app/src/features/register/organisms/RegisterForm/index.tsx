@@ -19,6 +19,7 @@ const RegisterForm = () => {
     imageUpload,
     fileUpload,
     errors,
+    setError,
     setValue,
     watch,
     resetField,
@@ -64,6 +65,7 @@ const RegisterForm = () => {
         errors={errors}
         setValue={setValue}
         watch={watch}
+        setError={setError}
       />
 
       <S.ButtonWrapper>

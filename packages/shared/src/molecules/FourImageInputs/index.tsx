@@ -3,7 +3,7 @@ import ImageInput from '../../atoms/ImageInput'
 import * as S from './style'
 
 interface Props {
-  onChange: (e: ChangeEvent<HTMLInputElement>) => string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => Promise<string | void>
 }
 
 const FourImageInputs = ({ onChange }: Props) => {

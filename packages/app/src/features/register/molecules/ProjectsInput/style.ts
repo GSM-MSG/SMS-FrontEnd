@@ -12,8 +12,7 @@ export const ProjectList = styled.div`
 `
 
 export const IconInput = styled.div`
-  max-width: 6.75rem;
-  max-height: 6.75rem;
+  width: 6.75rem;
 `
 
 export const DoubleInputs = styled.div`

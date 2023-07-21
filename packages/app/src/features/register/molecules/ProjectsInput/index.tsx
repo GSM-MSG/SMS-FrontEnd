@@ -1,12 +1,11 @@
 import HideableWrapper from '@features/register/atoms/HideableWrapper'
-import { InputColumn, LinkMultiDoubleInput } from '@features/register/atoms'
 import {
-  Input,
-  ImageInput,
+  InputColumn,
+  LinkMultiDoubleInput,
   FourImageInputs,
-  SearchInput,
-  MultiDateInput,
-} from '@sms/shared'
+  IconImageInput,
+} from '@features/register/atoms'
+import { Input, SearchInput, MultiDateInput } from '@sms/shared'
 import { RegisterFormType } from '@features/register/type'
 import * as Icon from '@sms/shared/src/icons'
 import {
@@ -14,6 +13,7 @@ import {
   FieldErrors,
   UseFormGetValues,
   UseFormRegister,
+  UseFormSetError,
   UseFormSetValue,
   useFieldArray,
 } from 'react-hook-form'
@@ -26,6 +26,7 @@ interface Props {
   errors: FieldErrors<RegisterFormType>
   setValue: UseFormSetValue<RegisterFormType>
   watch: UseFormGetValues<RegisterFormType>
+  setError: UseFormSetError<RegisterFormType>
 }
 
 const ProjectsInput = ({
@@ -34,6 +35,7 @@ const ProjectsInput = ({
   errors,
   setValue,
   watch,
+  setError,
 }: Props) => {
   const { fields, remove, append } = useFieldArray({
     name: 'projects',
@@ -74,12 +76,22 @@ const ProjectsInput = ({
 
               <InputColumn comment='아이콘'>
                 <S.IconInput>
-                  <ImageInput onChange={() => 'hello'} />
+                  <IconImageInput
+                    idx={idx}
+                    setValue={setValue}
+                    setError={setError}
+                    error={errors?.projects?.[idx]?.icon?.message}
+                  />
                 </S.IconInput>
               </InputColumn>
 
               <InputColumn comment='미리보기 사진'>
-                <FourImageInputs onChange={() => 'hello'} />
+                <FourImageInputs
+                  idx={idx}
+                  values={watch(`projects.${idx}.previewImages`)}
+                  setValue={setValue}
+                  setError={setError}
+                />
               </InputColumn>
 
               <InputColumn comment='내용'>
