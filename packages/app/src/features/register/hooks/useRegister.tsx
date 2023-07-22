@@ -37,6 +37,7 @@ const useRegister = () => {
           previewImages: [],
         },
       ],
+      prizes: [{ name: '', type: '', date: '' }],
     },
   })
 
