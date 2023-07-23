@@ -1,5 +1,5 @@
 interface PrizeType {
   name: string
-  type: string
+  kind: string
   date: string
 }

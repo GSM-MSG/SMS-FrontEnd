@@ -20,17 +20,14 @@ interface Props {
 const PrizeInputs = ({ control, errors, register }: Props) => {
   const { fields, remove, append } = useFieldArray({ name: 'prizes', control })
 
-  const onClick = () => append({ name: '', date: '', type: '' })
+  const onClick = () => append({ name: '', date: '', kind: '' })
 
   return (
     <S.Wrapper>
       <S.PriszesList>
         {fields.map((field, idx) => (
           <div key={field.id}>
-            <HideableWrapper
-              onDelete={fields.length > 1 ? () => remove(idx) : () => {}}
-              title='수상'
-            >
+            <HideableWrapper onDelete={() => remove(idx)} title='수상'>
               <InputColumn comment='이름'>
                 <Input
                   {...register(`prizes.${idx}.name`, {
@@ -41,13 +38,13 @@ const PrizeInputs = ({ control, errors, register }: Props) => {
                 />
               </InputColumn>
 
-              <InputColumn comment='종류'>
+              <InputColumn comment='수상 일자'>
                 <Input
-                  {...register(`prizes.${idx}.type`, {
+                  {...register(`prizes.${idx}.kind`, {
                     required: { value: true, message: '필수 값입니다' },
                   })}
-                  placeholder='종류'
-                  // error={errors?.prizes?.[idx]?.type?.message}
+                  placeholder='수상 종류입력'
+                  error={errors?.prizes?.[idx]?.kind?.message}
                 />
               </InputColumn>
 
@@ -65,6 +62,8 @@ const PrizeInputs = ({ control, errors, register }: Props) => {
           </div>
         ))}
       </S.PriszesList>
+
+      {fields.length === 0 && <S.Title>수상</S.Title>}
 
       <S.ButtonWrapper>
         <S.AddButton onClick={onClick}>

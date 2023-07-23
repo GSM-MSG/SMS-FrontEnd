@@ -15,3 +15,7 @@ export const PriszesList = styled.div`
     margin-bottom: 0;
   }
 `
+
+export const Title = styled.h3`
+  ${({ theme }) => theme.title1}
+`
