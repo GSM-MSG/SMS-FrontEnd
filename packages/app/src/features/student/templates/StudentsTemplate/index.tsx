@@ -4,7 +4,8 @@ import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import useLogout from '@features/auth/hook/useLogout'
 import useWithdraw from '@features/auth/hook/useWithdraw'
 import { Header } from '@sms/shared'
-import useModal from '@features/student/hooks/useModal'
+import FilterModal from '@features/student/molecules/FilterModal'
+import { useModal } from '@features/modal/hooks'
 
 import * as S from './style'
 
@@ -14,15 +15,15 @@ interface Props {
 }
 
 const StudentsTemplate = ({ students, max }: Props) => {
-  const { onShow } = useModal('filter')
   const { isSuccess } = useLoggedIn({})
   const { onLogout } = useLogout()
   const { onWithdraw } = useWithdraw()
+  const { onShow } = useModal()
 
   return (
     <S.Wrapper>
       <Header
-        onFilter={onShow}
+        onFilter={() => onShow(<FilterModal />)}
         isLoggedIn={isSuccess}
         onExit={onWithdraw}
         onLogout={onLogout}

@@ -1,5 +1,4 @@
-import ModalPortal from '@components/ModalPortal'
-import useModal from '@features/student/hooks/useModal'
+import { ModalPortal } from '@features/modal/portals'
 import FilterHeader from '@features/student/atoms/FilterHeader'
 import CheckboxSection from '@features/student/atoms/CheckboxSection'
 import {
@@ -18,7 +17,6 @@ import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import * as S from './style'
 
 const FilterModal = () => {
-  const { onClose } = useModal('filter')
   const {
     register,
     setValue,
@@ -33,7 +31,7 @@ const FilterModal = () => {
   const { role } = useLoggedIn({})
 
   return (
-    <ModalPortal onClose={onClose}>
+    <ModalPortal>
       <S.Wrapper onSubmit={onSubmit}>
         <FilterHeader reset={reset} />
 
