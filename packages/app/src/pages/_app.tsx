@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux'
 import GlobalLayout from '@layouts/GlobalLayout'
 import { ToastContainer } from '@features/toast'
+import { ModalProvider } from '@features/modal/providers'
 import wrapper from '@store'
 import type { AppProps } from 'next/app'
 
@@ -13,7 +14,9 @@ export default function App({ Component, ...rest }: AppProps) {
   return (
     <Provider store={store}>
       <GlobalLayout>
-        <Component {...props.pageProps} />
+        <ModalProvider>
+          <Component {...props.pageProps} />
+        </ModalProvider>
         <ToastContainer />
       </GlobalLayout>
     </Provider>
