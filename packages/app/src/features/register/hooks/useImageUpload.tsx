@@ -4,7 +4,7 @@ import { PostFileService } from '@features/register/services'
 
 interface Props {
   setValue: (value: string) => void
-  setError: (error: string) => void
+  setError: (error: string | undefined) => void
 }
 
 const useImageUpload = ({ setValue, setError }: Props) => {
@@ -16,8 +16,7 @@ const useImageUpload = ({ setValue, setError }: Props) => {
   }
 
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || !e.target.files[0])
-      return showErrorMessage('파일이 존재하지 않습니다')
+    if (!e.target.files || !e.target.files[0]) return
 
     const file = e.target.files[0]
 
@@ -27,6 +26,7 @@ const useImageUpload = ({ setValue, setError }: Props) => {
 
     setValue(imageUrl)
     addToast('success', '파일 업로드에 성공했습니다')
+    setError(undefined)
 
     return imageUrl
   }

@@ -7,16 +7,17 @@ import {
   UseFormGetValues,
   UseFormRegister,
   UseFormResetField,
+  UseFormSetError,
   UseFormSetValue,
 } from 'react-hook-form'
-import { ChangeEvent } from 'react'
 import { useAutocomplete } from '@features/register/hooks'
 import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
+import useImageUpload from '@features/register/hooks/useImageUpload'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
-  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
+  setError: UseFormSetError<RegisterFormType>
   control: Control<RegisterFormType>
   setValue: UseFormSetValue<RegisterFormType>
   watch: UseFormGetValues<RegisterFormType>
@@ -25,8 +26,8 @@ interface Props {
 
 const ProfileInputs = ({
   register,
-  onUpload,
   errors,
+  setError,
   control,
   setValue,
   watch,
@@ -34,6 +35,10 @@ const ProfileInputs = ({
 }: Props) => {
   const { major } = useMajorAutoComplete()
   const { dropdownList, onChange } = useAutocomplete()
+  const { onChange: imageUpload } = useImageUpload({
+    setValue: (value) => setValue('profileImgUrl', value),
+    setError: (message) => setError('profileImgUrl', { message }),
+  })
 
   return (
     <FormWrapper title='프로필'>
@@ -43,7 +48,7 @@ const ProfileInputs = ({
             required: { value: true, message: '필수 값입니다' },
           })}
           error={errors.profileImgUrl?.message}
-          onUpload={onUpload}
+          onUpload={imageUpload}
         />
       </InputColumn>
       <InputColumn comment='자기 소개'>

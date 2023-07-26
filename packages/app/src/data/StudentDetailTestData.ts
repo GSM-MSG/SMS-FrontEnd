@@ -1,7 +1,6 @@
 const StudentDetailTestData: StudentDetail = {
   name: '전승원',
   introduce: '한줄 자기소개',
-  dreamBookFileUrl: 'https://',
   portfolioUrl: 'https://t.ly/WvpI1', // null 가능
   grade: 3,
   classNum: 2,
