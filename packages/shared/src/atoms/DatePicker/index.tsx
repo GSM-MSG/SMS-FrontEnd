@@ -1,26 +1,58 @@
-import { ChangeEvent, useRef, useState } from 'react'
+import {
+  DetailedHTMLProps,
+  forwardRef,
+  InputHTMLAttributes,
+  useRef,
+  useState,
+} from 'react'
 import * as Icon from '../../icons'
 import Modal from './Modal'
 import * as S from './style'
 
-interface Props {
-  error: string
+interface Props
+  extends DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
+  value: string
+  setValue: (value: string) => void
+  clearError: () => void
+  error?: string
 }
 
-const DatePicker = ({ error }: Props) => {
-  const [value, setValue] = useState<string>('')
+const DatePicker = forwardRef<HTMLInputElement, Props>(
+  ({ value, setValue, error, clearError, ...props }, ref) => {
+    const [isShow, setIsShow] = useState<boolean>(false)
 
-  return (
-    <S.Wrapper>
-      <input hidden />
-      <S.DateInput>
-        <S.Text>{value || 'yyyy.mm'}</S.Text>
-        <Icon.Calendar />
-        <Modal />
-      </S.DateInput>
-      {error && <S.Error>{error}</S.Error>}
-    </S.Wrapper>
-  )
-}
+    const onChange = (value: string) => {
+      setValue(value)
+      clearError()
+    }
+
+    return (
+      <S.Wrapper>
+        <input {...props} ref={ref} hidden />
+        <S.DateInput
+          onClick={(e) => {
+            e.stopPropagation()
+            setIsShow(true)
+          }}
+        >
+          <S.Text>{value || 'yyyy.mm'}</S.Text>
+          <Icon.Calendar />
+          <Modal
+            isShow={isShow}
+            value={value}
+            onChange={onChange}
+            onClose={() => setIsShow(false)}
+          />
+        </S.DateInput>
+        {error && <S.Error>{error}</S.Error>}
+      </S.Wrapper>
+    )
+  }
+)
+
+DatePicker.displayName = 'DatePicker'
 
 export default DatePicker
