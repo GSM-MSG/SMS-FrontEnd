@@ -54,7 +54,7 @@ const Modal = ({ isShow, value, onChange, onClose }: Props) => {
         </S.ArrowIcon>
       </S.ModalTitle>
 
-      <S.DateList>
+      <S.MonthList>
         {Array(...Array(12)).map((_, idx) => (
           <label key={idx} onClick={() => setMonth(idx + 1)}>
             <S.DateButtonInput
@@ -63,10 +63,10 @@ const Modal = ({ isShow, value, onChange, onClose }: Props) => {
               hidden
               type='checkbox'
             />
-            <S.DateButton>{idx + 1}</S.DateButton>
+            <S.MonthButton>{idx + 1}</S.MonthButton>
           </label>
         ))}
-      </S.DateList>
+      </S.MonthList>
 
       <S.ButtonWrapper>
         <Button onClick={onClose}>취소</Button>

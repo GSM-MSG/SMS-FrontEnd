@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 100%;
 `
 
-export const DateInput = styled.div`
+export const MonthInput = styled.div`
   width: 100%;
   height: 3rem;
   border-radius: 0.5rem;
@@ -49,7 +49,7 @@ export const ArrowIcon = styled.div`
   cursor: pointer;
 `
 
-export const DateList = styled.div`
+export const MonthList = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 0.5rem;
@@ -63,7 +63,7 @@ export const DateButtonInput = styled.input`
   }
 `
 
-export const DateButton = styled.div`
+export const MonthButton = styled.div`
   ${({ theme }) => theme.title2}
   width: 100%;
   text-align: center;

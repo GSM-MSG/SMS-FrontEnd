@@ -1,11 +1,11 @@
 import { Meta } from '@storybook/react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import DatePicker from './index'
+import MonthPicker from './index'
 
-const config: Meta<typeof DatePicker> = {
-  title: 'DatePicker',
-  component: DatePicker,
+const config: Meta<typeof MonthPicker> = {
+  title: 'MonthPicker',
+  component: MonthPicker,
 
   args: {},
 }
@@ -26,11 +26,11 @@ export const Primary = () => {
     formState: { errors },
   } = useForm<FormType>()
 
-  const onSubmit = handleSubmit(console.log)
+  const onSubmit = handleSubmit(() => {})
 
   return (
     <form onSubmit={onSubmit}>
-      <DatePicker
+      <MonthPicker
         {...register('date', {
           required: { value: true, message: '필수 값입니다' },
         })}

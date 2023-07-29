@@ -2,7 +2,6 @@ import {
   DetailedHTMLProps,
   forwardRef,
   InputHTMLAttributes,
-  useRef,
   useState,
 } from 'react'
 import * as Icon from '../../icons'
@@ -20,7 +19,7 @@ interface Props
   error?: string
 }
 
-const DatePicker = forwardRef<HTMLInputElement, Props>(
+const MonthPicker = forwardRef<HTMLInputElement, Props>(
   ({ value, setValue, error, clearError, ...props }, ref) => {
     const [isShow, setIsShow] = useState<boolean>(false)
 
@@ -32,7 +31,7 @@ const DatePicker = forwardRef<HTMLInputElement, Props>(
     return (
       <S.Wrapper>
         <input {...props} ref={ref} hidden />
-        <S.DateInput
+        <S.MonthInput
           onClick={(e) => {
             e.stopPropagation()
             setIsShow(true)
@@ -46,13 +45,13 @@ const DatePicker = forwardRef<HTMLInputElement, Props>(
             onChange={onChange}
             onClose={() => setIsShow(false)}
           />
-        </S.DateInput>
+        </S.MonthInput>
         {error && <S.Error>{error}</S.Error>}
       </S.Wrapper>
     )
   }
 )
 
-DatePicker.displayName = 'DatePicker'
+MonthPicker.displayName = 'MonthPicker'
 
-export default DatePicker
+export default MonthPicker
