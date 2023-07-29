@@ -4,6 +4,7 @@ import { RegisterFormType } from '@features/register/type'
 import {
   Control,
   FieldErrors,
+  UseFormClearErrors,
   UseFormGetValues,
   UseFormRegister,
   UseFormResetField,
@@ -22,6 +23,7 @@ interface Props {
   setValue: UseFormSetValue<RegisterFormType>
   watch: UseFormGetValues<RegisterFormType>
   resetField: UseFormResetField<RegisterFormType>
+  clearErrors: UseFormClearErrors<RegisterFormType>
 }
 
 const ProfileInputs = ({
@@ -32,12 +34,14 @@ const ProfileInputs = ({
   setValue,
   watch,
   resetField,
+  clearErrors,
 }: Props) => {
   const { major } = useMajorAutoComplete()
   const { dropdownList, onChange } = useAutocomplete()
   const { onChange: imageUpload } = useImageUpload({
     setValue: (value) => setValue('profileImgUrl', value),
     setError: (message) => setError('profileImgUrl', { message }),
+    clearError: () => clearErrors('profileImgUrl'),
   })
 
   return (

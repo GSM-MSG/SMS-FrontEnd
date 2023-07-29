@@ -4,10 +4,11 @@ import { PostFileService } from '@features/register/services'
 
 interface Props {
   setValue: (value: string) => void
-  setError: (error: string | undefined) => void
+  setError: (error: string) => void
+  clearError: () => void
 }
 
-const useImageUpload = ({ setValue, setError }: Props) => {
+const useImageUpload = ({ setValue, setError, clearError }: Props) => {
   const { addToast } = useToast()
 
   const showErrorMessage = (message: string) => {
@@ -26,7 +27,7 @@ const useImageUpload = ({ setValue, setError }: Props) => {
 
     setValue(imageUrl)
     addToast('success', '파일 업로드에 성공했습니다')
-    setError(undefined)
+    clearError()
 
     return imageUrl
   }

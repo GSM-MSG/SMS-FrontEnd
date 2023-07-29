@@ -16,6 +16,7 @@ import {
   UseFormSetError,
   UseFormSetValue,
   useFieldArray,
+  UseFormClearErrors,
 } from 'react-hook-form'
 import { useAutocomplete } from '@features/register/hooks'
 import * as S from './style'
@@ -27,6 +28,7 @@ interface Props {
   setValue: UseFormSetValue<RegisterFormType>
   watch: UseFormGetValues<RegisterFormType>
   setError: UseFormSetError<RegisterFormType>
+  clearErrors: UseFormClearErrors<RegisterFormType>
 }
 
 const ProjectsInput = ({
@@ -36,6 +38,7 @@ const ProjectsInput = ({
   setValue,
   watch,
   setError,
+  clearErrors,
 }: Props) => {
   const { fields, remove, append } = useFieldArray({
     name: 'projects',
@@ -81,6 +84,7 @@ const ProjectsInput = ({
                     setValue={setValue}
                     setError={setError}
                     error={errors?.projects?.[idx]?.icon?.message}
+                    clearErrors={clearErrors}
                   />
                 </S.IconInput>
               </InputColumn>
@@ -91,6 +95,7 @@ const ProjectsInput = ({
                   values={watch(`projects.${idx}.previewImages`)}
                   setValue={setValue}
                   setError={setError}
+                  clearErrors={clearErrors}
                 />
               </InputColumn>
 

@@ -22,6 +22,7 @@ const RegisterForm = () => {
     setValue,
     watch,
     resetField,
+    clearErrors,
   } = useRegister()
 
   return (
@@ -37,6 +38,7 @@ const RegisterForm = () => {
         watch={watch}
         resetField={resetField}
         setError={setError}
+        clearErrors={clearErrors}
       />
       <SchoolInputs
         resetField={resetField}
@@ -64,6 +66,7 @@ const RegisterForm = () => {
         setValue={setValue}
         watch={watch}
         setError={setError}
+        clearErrors={clearErrors}
       />
 
       <PrizeInputs register={register} control={control} errors={errors} />
