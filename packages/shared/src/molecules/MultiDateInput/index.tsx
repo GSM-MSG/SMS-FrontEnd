@@ -1,16 +1,20 @@
 import { UseFormRegisterReturn } from 'react-hook-form'
 import { forwardRef } from 'react'
-import DateInput from '../../atoms/DateInput'
+import { MonthPicker } from '../../atoms'
 import * as Icon from '../../icons'
 import * as S from './style'
 
 interface Props {
   startDateRegister: UseFormRegisterReturn
   endDateRegister: UseFormRegisterReturn
+  startDate: string
+  endDate: string
+  onChangeStartDate: (value: string) => void
+  onChangeEndDate: (value: string) => void
   startDateError?: string
   endDateError?: string
-  min: string
-  max: string | null
+  clearErrorStartDate: () => void
+  clearErrorEndDate: () => void
 }
 
 const MultiDateInput = forwardRef<HTMLDivElement, Props>(
@@ -18,24 +22,43 @@ const MultiDateInput = forwardRef<HTMLDivElement, Props>(
     {
       startDateRegister,
       endDateRegister,
+      startDate,
+      endDate,
+      onChangeEndDate,
+      onChangeStartDate,
       startDateError,
       endDateError,
-      min,
-      max,
+      clearErrorStartDate,
+      clearErrorEndDate,
     },
     ref
   ) => {
     return (
       <S.Wrapper ref={ref}>
-        <DateInput
-          {...startDateRegister}
-          error={startDateError}
-          max={max || ''}
-        />
-        <S.IconWrapper>
-          <Icon.Tilde />
-        </S.IconWrapper>
-        <DateInput {...endDateRegister} error={endDateError} min={min} />
+        <S.Inputs>
+          <MonthPicker
+            {...startDateRegister}
+            value={startDate}
+            setValue={onChangeStartDate}
+            clearError={clearErrorStartDate}
+          />
+          <S.IconWrapper>
+            <Icon.Tilde />
+          </S.IconWrapper>
+          <MonthPicker
+            {...endDateRegister}
+            value={endDate}
+            setValue={onChangeEndDate}
+            clearError={clearErrorEndDate}
+          />
+        </S.Inputs>
+
+        {(startDateError || endDateError) && (
+          <S.Errors>
+            <S.Error>{startDateError}</S.Error>
+            <S.Error>{endDateError}</S.Error>
+          </S.Errors>
+        )}
       </S.Wrapper>
     )
   }

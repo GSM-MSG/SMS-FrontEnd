@@ -4,13 +4,12 @@ import Button from '../Button'
 import * as S from './style'
 
 interface Props {
-  isShow: boolean
   value: string
   onChange: (value: string) => void
   onClose: () => void
 }
 
-const Modal = ({ isShow, value, onChange, onClose }: Props) => {
+const Modal = ({ value, onChange, onClose }: Props) => {
   const date = useMemo(() => {
     return value ? new Date(value) : new Date()
   }, [value])
@@ -31,8 +30,6 @@ const Modal = ({ isShow, value, onChange, onClose }: Props) => {
 
     return () => document.removeEventListener('click', onClose)
   }, [])
-
-  if (!isShow) return null
 
   return (
     <S.Modal onClick={(e) => e.stopPropagation()}>

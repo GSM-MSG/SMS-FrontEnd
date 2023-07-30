@@ -16,19 +16,34 @@ interface FormType {
 }
 
 export const Primary = () => {
-  const { register, watch, handleSubmit } = useForm<FormType>()
+  const {
+    register,
+    watch,
+    handleSubmit,
+    clearErrors,
+    setValue,
+    formState: { errors },
+  } = useForm<FormType>()
 
-  const onSubmit = handleSubmit(() => {})
+  const onSubmit = handleSubmit(console.log)
 
   return (
     <form onSubmit={onSubmit}>
       <MultiDateInput
-        startDateRegister={register('startDate')}
-        endDateRegister={register('endDate')}
-        startDateError='hello'
-        endDateError='world'
-        min={watch('startDate')}
-        max={watch('endDate')}
+        startDateRegister={register('startDate', {
+          required: { value: true, message: '필수 값입니다' },
+        })}
+        endDateRegister={register('endDate', {
+          required: { value: true, message: '필수 값입니다' },
+        })}
+        startDate={watch('startDate')}
+        endDate={watch('endDate')}
+        onChangeStartDate={(value) => setValue('startDate', value)}
+        onChangeEndDate={(value) => setValue('endDate', value)}
+        startDateError={errors.startDate?.message}
+        endDateError={errors.endDate?.message}
+        clearErrorEndDate={() => clearErrors('endDate')}
+        clearErrorStartDate={() => clearErrors('startDate')}
       />
 
       <button type='submit'>submit</button>
