@@ -12,7 +12,7 @@ export default config
 
 interface FormType {
   startDate: string
-  endDate: string
+  endDate: string | null
 }
 
 export const Primary = () => {
@@ -23,9 +23,11 @@ export const Primary = () => {
     clearErrors,
     setValue,
     formState: { errors },
-  } = useForm<FormType>()
+  } = useForm<FormType>({
+    defaultValues: { endDate: undefined },
+  })
 
-  const onSubmit = handleSubmit(() => {})
+  const onSubmit = handleSubmit(console.log)
 
   return (
     <form onSubmit={onSubmit}>
@@ -34,7 +36,10 @@ export const Primary = () => {
           required: { value: true, message: '필수 값입니다' },
         })}
         endDateRegister={register('endDate', {
-          required: { value: true, message: '필수 값입니다' },
+          required: {
+            value: watch('endDate') !== null,
+            message: '필수 값입니다',
+          },
         })}
         startDate={watch('startDate')}
         endDate={watch('endDate')}
