@@ -20,7 +20,7 @@ interface Props
 }
 
 const MonthPicker = forwardRef<HTMLInputElement, Props>(
-  ({ value, setValue, error, clearError, ...props }, ref) => {
+  ({ value, setValue, error, clearError, disabled, ...props }, ref) => {
     const [isShow, setIsShow] = useState<boolean>(false)
 
     const onChange = (value: string) => {
@@ -30,8 +30,9 @@ const MonthPicker = forwardRef<HTMLInputElement, Props>(
 
     return (
       <S.Wrapper>
-        <input {...props} ref={ref} hidden />
+        <input {...props} disabled={disabled} ref={ref} hidden />
         <S.MonthInput
+          style={{ cursor: disabled ? 'auto' : 'pointer' }}
           onClick={(e) => {
             e.stopPropagation()
             setIsShow(true)
@@ -39,7 +40,7 @@ const MonthPicker = forwardRef<HTMLInputElement, Props>(
         >
           <S.Text>{value || 'yyyy.mm'}</S.Text>
           <Icon.Calendar />
-          {isShow && (
+          {isShow && !disabled && (
             <Modal
               value={value}
               onChange={onChange}

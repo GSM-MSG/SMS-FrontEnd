@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from 'react-hook-form'
-import { forwardRef } from 'react'
-import { MonthPicker } from '../../atoms'
+import { forwardRef, useState } from 'react'
+import { Checkbox, MonthPicker } from '../../atoms'
 import * as Icon from '../../icons'
 import * as S from './style'
 
@@ -10,7 +10,7 @@ interface Props {
   startDate: string
   endDate: string | null
   onChangeStartDate: (value: string) => void
-  onChangeEndDate: (value: string) => void
+  onChangeEndDate: (value: string | null) => void
   startDateError?: string
   endDateError?: string
   clearErrorStartDate: () => void
@@ -33,6 +33,16 @@ const MultiMonthPicker = forwardRef<HTMLDivElement, Props>(
     },
     ref
   ) => {
+    const [inProgress, setInProgress] = useState<boolean>(false)
+
+    const onChange = () => {
+      if (!inProgress) onChangeEndDate(null)
+      else onChangeEndDate('')
+
+      clearErrorEndDate()
+      setInProgress(!inProgress)
+    }
+
     return (
       <div ref={ref}>
         <S.Inputs>
@@ -47,6 +57,7 @@ const MultiMonthPicker = forwardRef<HTMLDivElement, Props>(
           </S.IconWrapper>
           <MonthPicker
             {...endDateRegister}
+            disabled={inProgress}
             value={endDate || ''}
             setValue={onChangeEndDate}
             clearError={clearErrorEndDate}
@@ -59,6 +70,12 @@ const MultiMonthPicker = forwardRef<HTMLDivElement, Props>(
             <S.Error>{endDateError}</S.Error>
           </S.Errors>
         )}
+
+        <S.CheckboxWrapper>
+          <Checkbox checked={inProgress} onChange={onChange}>
+            진행중
+          </Checkbox>
+        </S.CheckboxWrapper>
       </div>
     )
   }

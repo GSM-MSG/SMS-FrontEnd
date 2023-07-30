@@ -23,3 +23,8 @@ export const IconWrapper = styled.div`
   width: 1.5rem;
   height: 1.5rem;
 `
+
+export const CheckboxWrapper = styled.div`
+  display: flex;
+  margin-top: 0.5rem;
+`
