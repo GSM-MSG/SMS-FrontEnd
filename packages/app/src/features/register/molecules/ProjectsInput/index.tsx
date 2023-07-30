@@ -135,7 +135,10 @@ const ProjectsInput = ({
                     { required: { value: true, message: '필수 값입니다' } }
                   )}
                   endDateRegister={register(`projects.${idx}.inProgress.end`, {
-                    required: { value: true, message: '필수 값입니다' },
+                    required: {
+                      value: watch(`projects.${idx}.inProgress.end`) !== null,
+                      message: '필수 값입니다',
+                    },
                   })}
                   onChangeStartDate={(value) =>
                     setValue(`projects.${idx}.inProgress.start`, value)

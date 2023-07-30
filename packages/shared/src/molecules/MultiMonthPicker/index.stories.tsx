@@ -27,7 +27,7 @@ export const Primary = () => {
     defaultValues: { endDate: undefined },
   })
 
-  const onSubmit = handleSubmit(console.log)
+  const onSubmit = handleSubmit(() => {})
 
   return (
     <form onSubmit={onSubmit}>
