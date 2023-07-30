@@ -5,7 +5,7 @@ import {
   FourImageInputs,
   IconImageInput,
 } from '@features/register/atoms'
-import { Input, SearchInput, MultiDateInput } from '@sms/shared'
+import { Input, SearchInput, MultiMonthPicker } from '@sms/shared'
 import { RegisterFormType } from '@features/register/type'
 import * as Icon from '@sms/shared/src/icons'
 import {
@@ -16,6 +16,7 @@ import {
   UseFormSetError,
   UseFormSetValue,
   useFieldArray,
+  UseFormClearErrors,
 } from 'react-hook-form'
 import { useAutocomplete } from '@features/register/hooks'
 import * as S from './style'
@@ -27,6 +28,7 @@ interface Props {
   setValue: UseFormSetValue<RegisterFormType>
   watch: UseFormGetValues<RegisterFormType>
   setError: UseFormSetError<RegisterFormType>
+  clearErrors: UseFormClearErrors<RegisterFormType>
 }
 
 const ProjectsInput = ({
@@ -36,6 +38,7 @@ const ProjectsInput = ({
   setValue,
   watch,
   setError,
+  clearErrors,
 }: Props) => {
   const { fields, remove, append } = useFieldArray({
     name: 'projects',
@@ -126,7 +129,7 @@ const ProjectsInput = ({
               </InputColumn>
 
               <InputColumn comment='진행 기간'>
-                <MultiDateInput
+                <MultiMonthPicker
                   startDateRegister={register(
                     `projects.${idx}.inProgress.start`,
                     { required: { value: true, message: '필수 값입니다' } }
@@ -134,14 +137,26 @@ const ProjectsInput = ({
                   endDateRegister={register(`projects.${idx}.inProgress.end`, {
                     required: { value: true, message: '필수 값입니다' },
                   })}
+                  onChangeStartDate={(value) =>
+                    setValue(`projects.${idx}.inProgress.start`, value)
+                  }
+                  onChangeEndDate={(value) =>
+                    setValue(`projects.${idx}.inProgress.end`, value)
+                  }
                   startDateError={
                     errors.projects?.[idx]?.inProgress?.start?.message
                   }
                   endDateError={
                     errors.projects?.[idx]?.inProgress?.end?.message
                   }
-                  min={watch(`projects.${idx}.inProgress.start`)}
-                  max={watch(`projects.${idx}.inProgress.end`)}
+                  clearErrorEndDate={() =>
+                    clearErrors(`projects.${idx}.inProgress.end`)
+                  }
+                  clearErrorStartDate={() =>
+                    clearErrors(`projects.${idx}.inProgress.start`)
+                  }
+                  startDate={watch(`projects.${idx}.inProgress.start`)}
+                  endDate={watch(`projects.${idx}.inProgress.end`)}
                 />
               </InputColumn>
 

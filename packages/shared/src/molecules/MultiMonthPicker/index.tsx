@@ -8,7 +8,7 @@ interface Props {
   startDateRegister: UseFormRegisterReturn
   endDateRegister: UseFormRegisterReturn
   startDate: string
-  endDate: string
+  endDate: string | null
   onChangeStartDate: (value: string) => void
   onChangeEndDate: (value: string) => void
   startDateError?: string
@@ -47,7 +47,7 @@ const MultiMonthPicker = forwardRef<HTMLDivElement, Props>(
           </S.IconWrapper>
           <MonthPicker
             {...endDateRegister}
-            value={endDate}
+            value={endDate || ''}
             setValue={onChangeEndDate}
             clearError={clearErrorEndDate}
           />

@@ -24,6 +24,7 @@ const RegisterForm = () => {
     setValue,
     watch,
     resetField,
+    clearErrors,
   } = useRegister()
 
   return (
@@ -67,9 +68,17 @@ const RegisterForm = () => {
         setValue={setValue}
         watch={watch}
         setError={setError}
+        clearErrors={clearErrors}
       />
 
-      <PrizeInputs register={register} control={control} errors={errors} />
+      <PrizeInputs
+        register={register}
+        watch={watch}
+        setValue={setValue}
+        clearErrors={clearErrors}
+        control={control}
+        errors={errors}
+      />
 
       <S.ButtonWrapper>
         <S.SubmitBtn type='submit'>확인</S.SubmitBtn>

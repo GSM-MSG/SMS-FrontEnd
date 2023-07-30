@@ -25,7 +25,7 @@ export const Primary = () => {
     formState: { errors },
   } = useForm<FormType>()
 
-  const onSubmit = handleSubmit(console.log)
+  const onSubmit = handleSubmit(() => {})
 
   return (
     <form onSubmit={onSubmit}>

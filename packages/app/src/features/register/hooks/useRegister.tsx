@@ -21,6 +21,7 @@ const useRegister = () => {
     setError,
     watch,
     resetField,
+    clearErrors,
     formState: { errors },
   } = useForm<RegisterFormType>({
     defaultValues: {
@@ -100,6 +101,7 @@ const useRegister = () => {
     errors,
     setValue,
     watch,
+    clearErrors,
   }
 }
 
