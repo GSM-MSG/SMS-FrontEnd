@@ -39,12 +39,13 @@ const MonthPicker = forwardRef<HTMLInputElement, Props>(
         >
           <S.Text>{value || 'yyyy.mm'}</S.Text>
           <Icon.Calendar />
-          <Modal
-            isShow={isShow}
-            value={value}
-            onChange={onChange}
-            onClose={() => setIsShow(false)}
-          />
+          {isShow && (
+            <Modal
+              value={value}
+              onChange={onChange}
+              onClose={() => setIsShow(false)}
+            />
+          )}
         </S.MonthInput>
         {error && <S.Error>{error}</S.Error>}
       </S.Wrapper>

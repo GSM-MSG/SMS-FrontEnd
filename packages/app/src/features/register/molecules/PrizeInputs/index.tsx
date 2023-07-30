@@ -1,4 +1,4 @@
-import { Input, DateInput } from '@sms/shared'
+import { Input, MonthPicker } from '@sms/shared'
 import * as Icon from '@sms/shared/src/icons'
 import { InputColumn } from '@features/register/atoms'
 import HideableWrapper from '@features/register/atoms/HideableWrapper'
@@ -7,7 +7,10 @@ import {
   Control,
   FieldErrors,
   useFieldArray,
+  UseFormClearErrors,
   UseFormRegister,
+  UseFormSetValue,
+  UseFormWatch,
 } from 'react-hook-form'
 import * as S from './style'
 
@@ -15,9 +18,19 @@ interface Props {
   control: Control<RegisterFormType>
   register: UseFormRegister<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
+  clearErrors: UseFormClearErrors<RegisterFormType>
+  setValue: UseFormSetValue<RegisterFormType>
+  watch: UseFormWatch<RegisterFormType>
 }
 
-const PrizeInputs = ({ control, errors, register }: Props) => {
+const PrizeInputs = ({
+  control,
+  errors,
+  register,
+  watch,
+  clearErrors,
+  setValue,
+}: Props) => {
   const { fields, remove, append } = useFieldArray({ name: 'prizes', control })
 
   const onClick = () => append({ name: '', date: '', kind: '' })
@@ -49,10 +62,13 @@ const PrizeInputs = ({ control, errors, register }: Props) => {
               </InputColumn>
 
               <InputColumn comment='기간'>
-                <DateInput
+                <MonthPicker
                   {...register(`prizes.${idx}.date`, {
                     required: { value: true, message: '필수 값입니다' },
                   })}
+                  value={watch(`prizes.${idx}.date`)}
+                  setValue={(value) => setValue(`prizes.${idx}.date`, value)}
+                  clearError={() => clearErrors(`prizes.${idx}.date`)}
                   error={errors?.prizes?.[idx]?.date?.message}
                 />
               </InputColumn>
