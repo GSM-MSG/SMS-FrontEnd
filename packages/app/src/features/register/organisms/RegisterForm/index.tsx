@@ -69,7 +69,14 @@ const RegisterForm = () => {
         clearErrors={clearErrors}
       />
 
-      <PrizeInputs register={register} control={control} errors={errors} />
+      <PrizeInputs
+        register={register}
+        watch={watch}
+        setValue={setValue}
+        clearErrors={clearErrors}
+        control={control}
+        errors={errors}
+      />
 
       <S.ButtonWrapper>
         <S.SubmitBtn type='submit'>확인</S.SubmitBtn>
