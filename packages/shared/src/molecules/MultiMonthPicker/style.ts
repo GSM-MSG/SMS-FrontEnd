@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
 
-export const Wrapper = styled.div``
-
 export const Inputs = styled.div`
   display: flex;
   align-items: center;

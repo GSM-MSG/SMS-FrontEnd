@@ -17,7 +17,7 @@ interface Props {
   clearErrorEndDate: () => void
 }
 
-const MultiDateInput = forwardRef<HTMLDivElement, Props>(
+const MultiMonthPicker = forwardRef<HTMLDivElement, Props>(
   (
     {
       startDateRegister,
@@ -34,7 +34,7 @@ const MultiDateInput = forwardRef<HTMLDivElement, Props>(
     ref
   ) => {
     return (
-      <S.Wrapper ref={ref}>
+      <div ref={ref}>
         <S.Inputs>
           <MonthPicker
             {...startDateRegister}
@@ -59,11 +59,11 @@ const MultiDateInput = forwardRef<HTMLDivElement, Props>(
             <S.Error>{endDateError}</S.Error>
           </S.Errors>
         )}
-      </S.Wrapper>
+      </div>
     )
   }
 )
 
-MultiDateInput.displayName = 'MultiDateInput'
+MultiMonthPicker.displayName = 'MultiMonthPicker'
 
-export default MultiDateInput
+export default MultiMonthPicker
