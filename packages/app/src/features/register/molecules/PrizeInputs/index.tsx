@@ -51,7 +51,7 @@ const PrizeInputs = ({
                 />
               </InputColumn>
 
-              <InputColumn comment='수상 일자'>
+              <InputColumn comment='종류'>
                 <Input
                   {...register(`prizes.${idx}.kind`, {
                     required: { value: true, message: '필수 값입니다' },
@@ -61,7 +61,7 @@ const PrizeInputs = ({
                 />
               </InputColumn>
 
-              <InputColumn comment='기간'>
+              <InputColumn comment='수상 일자'>
                 <MonthPicker
                   {...register(`prizes.${idx}.date`, {
                     required: { value: true, message: '필수 값입니다' },
