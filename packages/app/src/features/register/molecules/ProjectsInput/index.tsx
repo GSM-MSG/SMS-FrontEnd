@@ -65,7 +65,7 @@ const ProjectsInput = ({
           <div key={field.id}>
             <HideableWrapper
               title={watch(`projects.${idx}.name`)}
-              onDelete={fields.length > 1 ? () => remove(idx) : () => {}}
+              onDelete={() => remove(idx)}
             >
               <InputColumn comment='이름'>
                 <Input
@@ -179,6 +179,8 @@ const ProjectsInput = ({
           </div>
         ))}
       </S.ProjectList>
+
+      {fields.length === 0 && <S.Title>프로젝트</S.Title>}
 
       <S.ButtonWrapper>
         <S.AddButton onClick={onClick}>
