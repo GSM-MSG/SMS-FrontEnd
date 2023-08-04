@@ -42,14 +42,14 @@ export const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `
 
 export const Tag = styled.span`
   ${({ theme }) => theme.caption2}
   background: var(--N10);
   color: var(--N40);
-  padding: 0.35rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
 `
 
