@@ -37,6 +37,7 @@ export const Content = styled.div`
   background: var(--WHITE);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  padding-top: 1rem;
 
   @media (max-width: 34rem) {
     overflow: hidden;

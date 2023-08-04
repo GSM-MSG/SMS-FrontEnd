@@ -1,5 +1,6 @@
 import { useModal } from '@features/modal/hooks'
 import { BlurPortal } from '@features/modal/portals'
+import PrizesDetail from '@features/student/atoms/PrizesDetail'
 import ProfileDetail from '@features/student/atoms/ProfileDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
 import * as Icon from '@sms/shared/src/icons'
@@ -20,6 +21,7 @@ const StudentDetailModal = () => {
         <S.Content>
           <ProfileDetail />
           <StudentInfo />
+          <PrizesDetail />
         </S.Content>
       </S.Wrapper>
     </BlurPortal>
