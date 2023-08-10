@@ -25,7 +25,7 @@ const StudentList = ({ students, max }: Props) => {
           <StudentCard
             key={i.id}
             {...i}
-            onClick={() => onShow(<StudentDetailModal />)}
+            onClick={() => onShow(<StudentDetailModal studentId={i.id} />)}
           />
         ))}
       </S.Students>

@@ -7,7 +7,7 @@ interface StudentDetailRequest {
 
 const studentApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
-    studentDetail: build.mutation<StudentDetail, StudentDetailRequest>({
+    studentDetail: build.query<StudentDetail, StudentDetailRequest>({
       query: ({ studentId, role }) => ({
         url: `/student/${role}${studentId}`,
       }),

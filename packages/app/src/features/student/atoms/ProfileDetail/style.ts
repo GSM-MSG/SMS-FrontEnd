@@ -73,6 +73,13 @@ export const Right = styled.div`
   }
 `
 
+export const ProfileImage = styled.img`
+  width: 10rem;
+  height: 10rem;
+  border-radius: 0.48rem;
+  object-fit: cover;
+`
+
 export const TemeporaryImage = styled.div`
   width: 10rem;
   height: 10rem;
