@@ -5,7 +5,7 @@ import { RootState } from '@store'
 import { resetPage, setParam } from '@store/studentParamSlice'
 import { resetStudents } from '@store/studentListSlice'
 import ParamsFilter from '@lib/ParamsFilter'
-import useModal from './useModal'
+import { useModal } from '@features/modal/hooks'
 import useStudent from './useStudent'
 
 const useStudentsFilter = () => {
@@ -16,7 +16,7 @@ const useStudentsFilter = () => {
   }))
   const router = useRouter()
   const { refetchStudents } = useStudent()
-  const { onClose } = useModal('filter')
+  const { onClose } = useModal()
   const { register, setValue, handleSubmit, getValues, watch, reset } =
     useForm<StudentParam>({
       defaultValues: {

@@ -1,7 +1,6 @@
 import { ParsedUrlQuery } from 'querystring'
 import { SEO } from '@components'
 import StudentsTemplate from '@features/student/templates/StudentsTemplate'
-import useStudentDetail from '@features/student/hooks/useStudentDetail'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { useStudent } from '@features/student'
 import useStudentsParam from '@features/student/hooks/useStudentsParam'
@@ -20,7 +19,6 @@ export default function Home({ query }: Props) {
   useStudentsParam({ query })
 
   useLoggedIn({})
-  useStudentDetail()
 
   return (
     <>
