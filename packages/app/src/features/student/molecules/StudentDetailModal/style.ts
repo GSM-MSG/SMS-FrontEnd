@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: end;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 
   @media (max-width: 34rem) {
     margin-right: 1.25rem;

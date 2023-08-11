@@ -19,7 +19,7 @@ const StudentDetailModal = ({ studentId }: Props) => {
   return (
     <BlurPortal>
       <S.Wrapper>
-        <S.ButtonWrapper>
+        <S.ButtonWrapper onClick={onClose}>
           <S.CloseBtn onClick={onClose}>
             <Icon.XmarkOutline color='white' />
           </S.CloseBtn>
