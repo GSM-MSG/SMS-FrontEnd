@@ -20,7 +20,7 @@ const useAutocomplete = () => {
       const res = await mutation(stack)
       if ('error' in res) return
 
-      setDropdownList([...res.data.techStack])
+      setDropdownList([...res.data.techStacks])
     }, 400)
 
     return () => clearTimeout(delayFetch)

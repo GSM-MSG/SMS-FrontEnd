@@ -21,7 +21,7 @@ const useRegister = () => {
     formState: { errors },
   } = useForm<RegisterFormType>({
     defaultValues: {
-      techStack: [],
+      techStacks: [],
       projects: [
         {
           name: '',

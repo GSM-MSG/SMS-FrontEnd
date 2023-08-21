@@ -84,7 +84,7 @@ const ProfileInputs = ({
           options={major || {}}
           name='major'
           directInput
-          error={errors.techStack?.message}
+          error={errors.major?.message}
         />
       </InputColumn>
       <InputColumn comment='포트폴리오'>
@@ -103,11 +103,11 @@ const ProfileInputs = ({
       </InputColumn>
       <InputColumn comment='세부스택 (5개)'>
         <SearchInput
-          name='techStack'
+          name='techStacks'
           onChange={onChange}
           dropdownList={dropdownList}
           setValue={setValue}
-          value={watch('techStack')}
+          value={watch('techStacks')}
           limit={5}
         />
       </InputColumn>

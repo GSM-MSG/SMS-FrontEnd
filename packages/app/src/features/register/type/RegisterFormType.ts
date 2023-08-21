@@ -1,6 +1,6 @@
 interface RegisterFormType {
   major: string
-  techStack: string[]
+  techStacks: string[]
   profileImgUrl: string
   introduce: string
   stuNum: string
