@@ -1,6 +1,7 @@
 import useImageUpload from '@features/register/hooks/useImageUpload'
 import {
   UseFormClearErrors,
+  UseFormRegisterReturn,
   UseFormSetError,
   UseFormSetValue,
 } from 'react-hook-form'
@@ -13,6 +14,7 @@ interface Props {
   setError: UseFormSetError<RegisterFormType>
   error?: string
   clearErrors: UseFormClearErrors<RegisterFormType>
+  register: UseFormRegisterReturn
 }
 
 const IconImageInput = ({

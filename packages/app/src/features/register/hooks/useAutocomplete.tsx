@@ -21,7 +21,7 @@ const useAutocomplete = () => {
       if ('error' in res) return
 
       setDropdownList([...res.data.techStacks])
-    }, 400)
+    }, 300)
 
     return () => clearTimeout(delayFetch)
   }, [stack])

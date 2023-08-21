@@ -85,6 +85,9 @@ const ProjectsInput = ({
                     setError={setError}
                     error={errors?.projects?.[idx]?.icon?.message}
                     clearErrors={clearErrors}
+                    register={register(`projects.${idx}.icon`, {
+                      required: { value: true, message: '필수 값입니다' },
+                    })}
                   />
                 </S.IconInput>
               </InputColumn>
@@ -95,7 +98,12 @@ const ProjectsInput = ({
                   values={watch(`projects.${idx}.previewImages`)}
                   setValue={setValue}
                   setError={setError}
+                  error={errors?.projects?.[idx]?.previewImages?.message}
+                  control={control}
                   clearErrors={clearErrors}
+                  register={register(`projects.${idx}.previewImages`, {
+                    required: { value: true, message: '필수 값입니다' },
+                  })}
                 />
               </InputColumn>
 

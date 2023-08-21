@@ -15,10 +15,11 @@ interface Props
   > {
   error?: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => Promise<string | void>
+  isPreview?: boolean
 }
 
 const Profile = forwardRef<HTMLInputElement, Props>(
-  ({ error, ...props }, ref) => {
+  ({ error, isPreview, ...props }, ref) => {
     const [url, setUrl] = useState<string>('')
 
     const onChange = async (e: ChangeEvent<HTMLInputElement>) =>
@@ -28,7 +29,6 @@ const Profile = forwardRef<HTMLInputElement, Props>(
       <div>
         <S.InputLabel>
           <input
-            {...props}
             onChange={onChange}
             type='file'
             accept='image/*'
@@ -36,7 +36,7 @@ const Profile = forwardRef<HTMLInputElement, Props>(
             ref={ref}
           />
 
-          {url ? (
+          {!isPreview && url ? (
             <S.ImagePreview src={url} alt='image preview' />
           ) : (
             <Icon.Picture />
