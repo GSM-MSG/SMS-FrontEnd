@@ -1,6 +1,5 @@
 import useImageUpload from '@features/register/hooks/useImageUpload'
 import {
-  Control,
   UseFormClearErrors,
   UseFormRegisterReturn,
   UseFormSetError,
@@ -17,7 +16,6 @@ interface Props {
   values: string[]
   setValue: UseFormSetValue<RegisterFormType>
   setError: UseFormSetError<RegisterFormType>
-  control: Control<RegisterFormType>
   error?: string
   clearErrors: UseFormClearErrors<RegisterFormType>
   register: UseFormRegisterReturn
@@ -30,6 +28,7 @@ const FourImageInputs = ({
   setError,
   error,
   clearErrors,
+  register,
 }: Props) => {
   const { onChange } = useImageUpload({
     setValue: (value: string) =>
@@ -47,6 +46,7 @@ const FourImageInputs = ({
 
   return (
     <S.Wrapper>
+      <input {...register} hidden />
       <S.Images>
         {values.map((url, idx) => (
           <S.ImageWrapper key={idx}>

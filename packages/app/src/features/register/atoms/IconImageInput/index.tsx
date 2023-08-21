@@ -23,6 +23,7 @@ const IconImageInput = ({
   setError,
   error,
   clearErrors,
+  register,
 }: Props) => {
   const { onChange } = useImageUpload({
     setValue: (value: string) => setValue(`projects.${idx}.icon`, value),
@@ -30,7 +31,12 @@ const IconImageInput = ({
     clearError: () => clearErrors(`projects.${idx}.icon`),
   })
 
-  return <ImageInput onChange={onChange} error={error} />
+  return (
+    <>
+      <input {...register} hidden />
+      <ImageInput onChange={onChange} error={error} />
+    </>
+  )
 }
 
 export default IconImageInput

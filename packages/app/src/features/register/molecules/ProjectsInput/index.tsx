@@ -99,7 +99,6 @@ const ProjectsInput = ({
                   setValue={setValue}
                   setError={setError}
                   error={errors?.projects?.[idx]?.previewImages?.message}
-                  control={control}
                   clearErrors={clearErrors}
                   register={register(`projects.${idx}.previewImages`, {
                     required: { value: true, message: '필수 값입니다' },
