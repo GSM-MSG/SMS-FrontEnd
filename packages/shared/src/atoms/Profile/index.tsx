@@ -15,7 +15,7 @@ interface Props
     HTMLInputElement
   > {
   error?: string
-  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
+  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string | void>
 }
 
 const Profile = forwardRef<HTMLInputElement, Props>(

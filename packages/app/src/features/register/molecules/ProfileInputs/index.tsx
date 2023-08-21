@@ -4,36 +4,45 @@ import { RegisterFormType } from '@features/register/type'
 import {
   Control,
   FieldErrors,
+  UseFormClearErrors,
   UseFormGetValues,
   UseFormRegister,
   UseFormResetField,
+  UseFormSetError,
   UseFormSetValue,
 } from 'react-hook-form'
-import { ChangeEvent } from 'react'
 import { useAutocomplete } from '@features/register/hooks'
 import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
+import useImageUpload from '@features/register/hooks/useImageUpload'
 
 interface Props {
   register: UseFormRegister<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
-  onUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<string>
+  setError: UseFormSetError<RegisterFormType>
   control: Control<RegisterFormType>
   setValue: UseFormSetValue<RegisterFormType>
   watch: UseFormGetValues<RegisterFormType>
   resetField: UseFormResetField<RegisterFormType>
+  clearErrors: UseFormClearErrors<RegisterFormType>
 }
 
 const ProfileInputs = ({
   register,
-  onUpload,
   errors,
+  setError,
   control,
   setValue,
   watch,
   resetField,
+  clearErrors,
 }: Props) => {
   const { major } = useMajorAutoComplete()
   const { dropdownList, onChange } = useAutocomplete()
+  const { onChange: imageUpload } = useImageUpload({
+    setValue: (value) => setValue('profileImgUrl', value),
+    setError: (message) => setError('profileImgUrl', { message }),
+    clearError: () => clearErrors('profileImgUrl'),
+  })
 
   return (
     <FormWrapper title='프로필'>
@@ -43,7 +52,7 @@ const ProfileInputs = ({
             required: { value: true, message: '필수 값입니다' },
           })}
           error={errors.profileImgUrl?.message}
-          onUpload={onUpload}
+          onUpload={imageUpload}
         />
       </InputColumn>
       <InputColumn comment='자기 소개'>
@@ -75,7 +84,7 @@ const ProfileInputs = ({
           options={major || {}}
           name='major'
           directInput
-          error={errors.techStack?.message}
+          error={errors.major?.message}
         />
       </InputColumn>
       <InputColumn comment='포트폴리오'>
@@ -94,11 +103,11 @@ const ProfileInputs = ({
       </InputColumn>
       <InputColumn comment='세부스택 (5개)'>
         <SearchInput
-          name='techStack'
+          name='techStacks'
           onChange={onChange}
           dropdownList={dropdownList}
           setValue={setValue}
-          value={watch('techStack')}
+          value={watch('techStacks')}
           limit={5}
         />
       </InputColumn>

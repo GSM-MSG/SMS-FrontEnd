@@ -17,8 +17,6 @@ const RegisterForm = () => {
     control,
     register,
     onSubmit,
-    imageUpload,
-    fileUpload,
     errors,
     setError,
     setValue,
@@ -33,16 +31,16 @@ const RegisterForm = () => {
         <SMSLogo />
       </S.LogoWrapper>
       <ProfileInputs
-        onUpload={imageUpload}
         control={control}
         register={register}
         errors={errors}
         setValue={setValue}
         watch={watch}
         resetField={resetField}
+        setError={setError}
+        clearErrors={clearErrors}
       />
       <SchoolInputs
-        onUpload={fileUpload}
         resetField={resetField}
         register={register}
         errors={errors}
