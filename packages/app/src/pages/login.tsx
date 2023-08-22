@@ -1,4 +1,4 @@
-import { SEO } from '@components'
+import { SEO } from '@features/global'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import LoginTemplate from '@templates/LoginTemplate'
 

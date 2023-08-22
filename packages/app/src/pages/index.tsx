@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from 'querystring'
-import { SEO } from '@components'
+import { SEO } from '@features/global'
 import StudentsTemplate from '@features/student/templates/StudentsTemplate'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { useStudent } from '@features/student'
