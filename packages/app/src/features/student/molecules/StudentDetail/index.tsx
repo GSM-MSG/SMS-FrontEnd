@@ -18,7 +18,7 @@ const StudentDetail = ({ studentId, isCloseBtn }: Props) => {
   const { data } = useStudentDetail(studentId)
 
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={(e) => e.stopPropagation()}>
       <SEO
         title={data?.name}
         description={data?.introduce}
@@ -55,6 +55,14 @@ const StudentDetail = ({ studentId, isCloseBtn }: Props) => {
         />
         <PrizesDetail prizes={data?.prizes} />
         <ProjectDetail projects={data?.projects} />
+
+        {data?.portfolioUrl && (
+          <S.PortfolioWrapper>
+            <S.PortfolioButton href={data?.portfolioUrl}>
+              포트폴리오
+            </S.PortfolioButton>
+          </S.PortfolioWrapper>
+        )}
       </S.Content>
     </S.Wrapper>
   )
