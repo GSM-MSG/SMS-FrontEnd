@@ -16,6 +16,8 @@ const StudentDetailModal = ({ studentId }: Props) => {
   const { data } = useStudentDetail(studentId)
   const { onClose } = useModal()
 
+  console.log(data)
+
   return (
     <BlurPortal>
       <S.Wrapper>
@@ -36,7 +38,15 @@ const StudentDetailModal = ({ studentId }: Props) => {
             introduce={data?.introduce}
             profileImg={data?.profileImg}
           />
-          <StudentInfo />
+          <StudentInfo
+            contactEmail={data?.contactEmail}
+            gsmAuthenticationScore={data?.gsmAuthenticationScore}
+            militaryService={data?.militaryService}
+            formOfEmployment={data?.formOfEmployment}
+            salary={data?.salary}
+            languageCertificates={data?.languageCertificates}
+            certificates={data?.certificates}
+          />
           <PrizesDetail />
           <ProjectDetail />
         </S.Content>

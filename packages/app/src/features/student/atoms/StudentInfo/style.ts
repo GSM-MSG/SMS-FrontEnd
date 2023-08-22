@@ -36,6 +36,7 @@ export const TableTitle = styled.p`
 export const TableValue = styled.div`
   ${({ theme }) => theme.body2}
   color: var(--N40);
+  word-break: keep-all;
 `
 
 export const TableLine = styled.hr`
