@@ -27,6 +27,10 @@ export const Hr = styled.hr`
   margin: 2.5rem 0;
 `
 
+export const Title = styled.h3`
+  ${({ theme }) => theme.title1}
+`
+
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: end;

@@ -65,7 +65,7 @@ const ProjectsInput = ({
           <div key={field.id}>
             <HideableWrapper
               title={watch(`projects.${idx}.name`)}
-              onDelete={fields.length > 1 ? () => remove(idx) : () => {}}
+              onDelete={() => remove(idx)}
             >
               <InputColumn comment='이름'>
                 <Input
@@ -84,6 +84,10 @@ const ProjectsInput = ({
                     setValue={setValue}
                     setError={setError}
                     error={errors?.projects?.[idx]?.icon?.message}
+                    clearErrors={clearErrors}
+                    register={register(`projects.${idx}.icon`, {
+                      required: { value: true, message: '필수 값입니다' },
+                    })}
                   />
                 </S.IconInput>
               </InputColumn>
@@ -94,6 +98,11 @@ const ProjectsInput = ({
                   values={watch(`projects.${idx}.previewImages`)}
                   setValue={setValue}
                   setError={setError}
+                  error={errors?.projects?.[idx]?.previewImages?.message}
+                  clearErrors={clearErrors}
+                  register={register(`projects.${idx}.previewImages`, {
+                    required: { value: true, message: '필수 값입니다' },
+                  })}
                 />
               </InputColumn>
 
@@ -177,6 +186,8 @@ const ProjectsInput = ({
           </div>
         ))}
       </S.ProjectList>
+
+      {fields.length === 0 && <S.Title>프로젝트</S.Title>}
 
       <S.ButtonWrapper>
         <S.AddButton onClick={onClick}>

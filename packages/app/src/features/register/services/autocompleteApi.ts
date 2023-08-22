@@ -1,7 +1,7 @@
 import { rtkApi } from '@api'
 
 interface TechStackResponse {
-  techStack: string[]
+  techStacks: string[]
 }
 
 interface MajorResponse {
