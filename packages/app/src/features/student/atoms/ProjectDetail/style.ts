@@ -56,8 +56,9 @@ export const Images = styled.div`
 
 export const Image = styled.img`
   min-width: 8rem;
-  aspect-ratio: 1 / 1;
   width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
   border-radius: 0.5rem;
 `
 
@@ -110,6 +111,10 @@ export const LinkUrl = styled.p`
   color: var(--N40);
   display: flex;
   align-items: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  white-space: nowrap;
 `
 
 export const IconWrapper = styled.div`

@@ -89,9 +89,9 @@ const StudentInfo = ({
           </S.TableColumn>
         )}
 
-        {formOfEmployment && salary && regions && <S.TableLine />}
+        {formOfEmployment && salary && !!regions?.length && <S.TableLine />}
 
-        {languageCertificates?.length &&
+        {!!languageCertificates?.length &&
           languageCertificates?.map((i, idx) => (
             <S.TableColumn key={idx}>
               <S.TableTitle>{i.languageCertificateName}</S.TableTitle>
@@ -99,9 +99,9 @@ const StudentInfo = ({
             </S.TableColumn>
           ))}
 
-        {languageCertificates && <S.TableLine />}
+        {!!languageCertificates?.length && <S.TableLine />}
 
-        {certificates?.length && (
+        {!!certificates?.length && (
           <S.TableColumn>
             <S.TableTitle>자격증</S.TableTitle>
             <S.TableValue>{certificates?.join(', ')}</S.TableValue>
