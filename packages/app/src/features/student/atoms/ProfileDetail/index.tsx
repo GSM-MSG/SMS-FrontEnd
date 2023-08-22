@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import * as SVG from '@sms/shared/src/assets/svg'
 import * as S from './style'
 
@@ -22,6 +23,8 @@ const ProfileDetail = ({
   introduce,
   techStack,
 }: Props) => {
+  const [isError, setIsError] = useState<boolean>(false)
+
   return (
     <S.Wrapper>
       <S.Left>
@@ -48,8 +51,12 @@ const ProfileDetail = ({
       </S.Left>
 
       <S.Right>
-        {profileImg ? (
-          <S.ProfileImage src={profileImg} alt='profile image' />
+        {!isError && profileImg ? (
+          <S.ProfileImage
+            src={profileImg}
+            alt='profile image'
+            onError={() => setIsError(true)}
+          />
         ) : (
           <S.TemeporaryImage>
             <SVG.Person />
