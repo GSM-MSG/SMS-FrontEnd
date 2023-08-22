@@ -17,6 +17,12 @@ interface RegisterFormType {
   prizes: PrizeType[]
 }
 
+interface PrizeType {
+  name: string
+  kind: string
+  date: string
+}
+
 interface LanguageCertificateType {
   languageCertificateName: string
   score: string
