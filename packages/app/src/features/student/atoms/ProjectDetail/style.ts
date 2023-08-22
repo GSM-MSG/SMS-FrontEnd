@@ -24,7 +24,7 @@ export const ProjectInfo = styled.div`
   margin-bottom: 0.5rem;
 `
 
-export const ProjectIcon = styled.div`
+export const ProjectIcon = styled.img`
   width: 2.5rem;
   height: 2.5rem;
   background: var(--N10);
@@ -43,6 +43,7 @@ export const Images = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
+  margin-bottom: 1.5rem;
 
   @media (max-width: 42.5rem) {
     grid-template-columns: repeat(3, 1fr);
