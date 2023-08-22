@@ -1,4 +1,4 @@
-import { close, show } from '@store/modalSlice'
+import { actions } from '@features/modal/stores'
 import { ReactElement } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
@@ -9,11 +9,11 @@ const useModal = () => {
 
   const onClose = () => {
     router.push('/', '/')
-    dispatch(close())
+    dispatch(actions.close())
   }
 
   const onShow = (element: ReactElement) => {
-    dispatch(show(element))
+    dispatch(actions.show(element))
   }
 
   return {

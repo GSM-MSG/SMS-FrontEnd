@@ -1,4 +1,4 @@
-import { setIsShow, setLogInfo } from '@store/dialogSlice'
+import { actions } from '@features/dialog/stores'
 import { useDispatch } from 'react-redux'
 import { Emitter } from '@sms/shared'
 import { SetLogInfoType } from '@/types/store/dialogSlice'
@@ -12,8 +12,8 @@ const useDialog = () => {
   const dialog = (dialogInfo: Omit<SetLogInfoType, 'emitter'>) =>
     new Promise((resolve) => {
       emitter.on(eventName, (result) => resolve(result))
-      dispatch(setLogInfo({ ...dialogInfo, emitter }))
-      dispatch(setIsShow())
+      dispatch(actions.setLogInfo({ ...dialogInfo, emitter }))
+      dispatch(actions.setIsShow())
     })
 
   return { dialog }

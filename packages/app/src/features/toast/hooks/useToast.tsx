@@ -1,4 +1,4 @@
-import { addToast, hideToast, removeToast } from '@store/toastSlice'
+import { actions } from '@features/toast/stores'
 import { useDispatch } from 'react-redux'
 
 const useToast = () => {
@@ -6,14 +6,14 @@ const useToast = () => {
 
   const createToast = (type: 'success' | 'error', comment: string) => {
     const id = Symbol('toast')
-    dispatch(addToast({ id, type, comment, milliseconds: 3000 }))
+    dispatch(actions.addToast({ id, type, comment, milliseconds: 3000 }))
 
     setTimeout(() => {
-      dispatch(hideToast(id))
+      dispatch(actions.hideToast(id))
     }, 3000)
 
     setTimeout(() => {
-      dispatch(removeToast(id))
+      dispatch(actions.removeToast(id))
     }, 3400)
   }
 

@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from 'querystring'
-import { setParam } from '@store/studentParamSlice'
+import { actions } from '@features/student/stores'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -40,7 +40,7 @@ const useStudentsParam = ({ query }: Props) => {
     } = query
 
     dispatch(
-      setParam({
+      actions.setParam({
         grade: toNumberArray(grade),
         majors: toStringArray(majors),
         classNum: toNumberArray(classNum),
