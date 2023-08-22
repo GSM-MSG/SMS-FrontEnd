@@ -1,11 +1,10 @@
 import { rtkApi } from '@api'
 import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
-import dialogSlice from './dialogSlice'
-import studentParamSlice from './studentParamSlice'
-import modalSlice from './modalSlice'
-import toastSlice from './toastSlice'
-import studentListSlice from './studentListSlice'
+import { dialogSlice } from '@features/dialog/stores'
+import { modalSlice } from '@features/modal/stores'
+import { studentListSlice, studentParamSlice } from '@features/student/stores'
+import { toastSlice } from '@features/toast/stores'
 
 const reducers = combineReducers({
   dialog: dialogSlice.reducer,

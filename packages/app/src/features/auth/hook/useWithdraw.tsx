@@ -4,8 +4,7 @@ import { useToast } from '@features/toast'
 import { useDialog } from '@hooks'
 import TokenManager from '@lib/TokenManager'
 import { useDispatch } from 'react-redux'
-import { resetPage } from '@store/studentParamSlice'
-import { resetStudents } from '@store/studentListSlice'
+import { actions } from '@features/student/stores'
 import { useStudent } from '@features/student'
 import useLoggedIn from './useLoggedIn'
 
@@ -31,8 +30,8 @@ const useWithdraw = () => {
 
     TokenManager.clearToken()
     addToast('success', '회원탈퇴에 성공했습니다')
-    dispatch(resetPage())
-    dispatch(resetStudents())
+    dispatch(actions.resetPage())
+    dispatch(actions.resetStudents())
     refetchStudents({ page: 1, size: 20 })
     router.push('/')
     refetchLoggedIn()

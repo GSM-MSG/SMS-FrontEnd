@@ -2,8 +2,7 @@ import errors from '@features/student/service/errors'
 import { useToast } from '@features/toast'
 import ErrorMapper from '@lib/ErrorMapper'
 import { RootState } from '@store'
-import { addStudents, setTotoalSize } from '@store/studentListSlice'
-import { nextStop, setIsError, setLoading } from '@store/studentParamSlice'
+import { actions } from '@features/student/stores'
 import { useDispatch, useSelector } from 'react-redux'
 import studentListApi from '@features/student/service/studentListApi'
 
@@ -26,19 +25,19 @@ const useStudent = () => {
   const refetchStudents = async (params: StudentsParams) => {
     if (studentParam.nextStop) return
 
-    dispatch(setLoading(true))
+    dispatch(actions.setLoading(true))
     const { data, isError, error } = await studentListApi({
       ...params,
     })
-    dispatch(setLoading(false))
+    dispatch(actions.setLoading(false))
 
     if (isError) {
-      dispatch(setIsError(isError))
+      dispatch(actions.setIsError(isError))
       return addToast('error', ErrorMapper(error, errors))
     }
-    dispatch(setTotoalSize(data.totalSize))
-    if (data?.content) dispatch(addStudents(data.content))
-    if (data.last) return dispatch(nextStop())
+    dispatch(actions.setTotoalSize(data.totalSize))
+    if (data?.content) dispatch(actions.addStudents(data.content))
+    if (data.last) return dispatch(actions.nextStop())
   }
 
   return {
