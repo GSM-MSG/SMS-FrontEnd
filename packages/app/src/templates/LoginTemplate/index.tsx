@@ -1,7 +1,7 @@
 import { FadeinAnimation, GauthLoginButton, Headline, Title } from '@sms/shared'
 import useAuth from '@features/auth/hook/useAuth'
 import { GuestLink } from '@features/auth/components'
-import { Loading } from '@components'
+import { Loading } from '@features/global'
 import * as S from './style'
 
 const LoginTemplate = () => {

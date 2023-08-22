@@ -1,5 +1,4 @@
-import { SEO } from '@components'
-import NotFound from '@components/NotFound'
+import { SEO, NotFound } from '@features/global'
 
 const NotFoundPage = () => {
   return (

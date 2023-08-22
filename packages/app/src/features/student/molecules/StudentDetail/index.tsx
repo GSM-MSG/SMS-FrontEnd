@@ -1,4 +1,4 @@
-import { SEO } from '@components'
+import { SEO } from '@features/global'
 import { useModal } from '@features/modal/hooks'
 import PrizesDetail from '@features/student/atoms/PrizesDetail'
 import ProfileDetail from '@features/student/atoms/ProfileDetail'
