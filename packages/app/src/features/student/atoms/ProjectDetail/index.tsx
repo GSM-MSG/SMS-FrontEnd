@@ -47,6 +47,11 @@ const ProjectDetail = ({ projects }: Props) => {
           </S.Section>
 
           <S.Section>
+            <S.SubTitle>프로젝트 설명</S.SubTitle>
+            <S.ProjectDescription>{project.description}</S.ProjectDescription>
+          </S.Section>
+
+          <S.Section>
             <S.SubTitle>주요 작업 서술</S.SubTitle>
             <S.ProjectDescription>{project.myActivity}</S.ProjectDescription>
           </S.Section>
