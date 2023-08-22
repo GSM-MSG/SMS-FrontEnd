@@ -15,6 +15,8 @@ export const Wrapper = styled.div`
 `
 
 export const Left = styled.div`
+  width: 100%;
+
   @media (max-width: 34rem) {
     padding: 0 1.25rem;
   }
@@ -78,6 +80,12 @@ export const ProfileImage = styled.img`
   height: 10rem;
   border-radius: 0.48rem;
   object-fit: cover;
+
+  @media (max-width: 34rem) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
 `
 
 export const TemeporaryImage = styled.div`
