@@ -1,16 +1,22 @@
 import * as S from './style'
 
-const PrizesDetail = () => {
+interface Props {
+  prizes?: PrizeType[]
+}
+
+const PrizesDetail = ({ prizes }: Props) => {
+  if (!prizes?.length) return null
+
   return (
     <S.Wrapper>
       <S.Title>수상</S.Title>
-      {Array(...Array(3)).map((_, idx) => (
+      {prizes.map((prize, idx) => (
         <S.Prize key={idx}>
           <S.PrizeTop>
-            <S.PrizeTitle>한국인의 밥상</S.PrizeTitle>
-            <S.PrizeDate>2022.06</S.PrizeDate>
+            <S.PrizeTitle>{prize.name}</S.PrizeTitle>
+            <S.PrizeDate>{prize.date}</S.PrizeDate>
           </S.PrizeTop>
-          <S.PrizeInfo>KBS</S.PrizeInfo>
+          <S.PrizeInfo>{prize.type}</S.PrizeInfo>
         </S.Prize>
       ))}
     </S.Wrapper>

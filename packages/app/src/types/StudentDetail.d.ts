@@ -25,4 +25,6 @@ interface StudentDetail {
   languageCertificates?: LanguageCertificates[]
   certificates?: string[]
   techStack: string[]
+  prizes?: PrizeType[]
+  projects?: ProjectType[]
 }

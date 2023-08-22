@@ -47,7 +47,7 @@ const StudentDetailModal = ({ studentId }: Props) => {
             languageCertificates={data?.languageCertificates}
             certificates={data?.certificates}
           />
-          <PrizesDetail />
+          <PrizesDetail prizes={data?.prizes} />
           <ProjectDetail />
         </S.Content>
       </S.Wrapper>
