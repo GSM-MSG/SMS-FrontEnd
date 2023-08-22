@@ -2,8 +2,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store'
-import { resetPage, setParam } from '@store/studentParamSlice'
-import { resetStudents } from '@store/studentListSlice'
+import { actions } from '@features/student/stores'
 import ParamsFilter from '@lib/ParamsFilter'
 import { useModal } from '@features/modal/hooks'
 import useStudent from './useStudent'
@@ -35,9 +34,9 @@ const useStudentsFilter = () => {
     })
 
   const onSubmit = handleSubmit(async (form) => {
-    dispatch(resetPage())
-    dispatch(resetStudents())
-    dispatch(setParam(form))
+    dispatch(actions.resetPage())
+    dispatch(actions.resetStudents())
+    dispatch(actions.setParam(form))
     refetchStudents({ ...form, size: studentParam.size, page: 1 })
 
     await router.push('/', {

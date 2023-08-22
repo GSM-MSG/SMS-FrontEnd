@@ -1,7 +1,7 @@
 import { useEffect, useState, MouseEvent } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import { close } from '@store/modalSlice'
+import { actions } from '@features/modal/stores'
 
 const usePortal = () => {
   const router = useRouter()
@@ -36,7 +36,7 @@ const usePortal = () => {
 
   const onClose = () => {
     router.push('/', '/')
-    dispatch(close())
+    dispatch(actions.close())
   }
 
   return {

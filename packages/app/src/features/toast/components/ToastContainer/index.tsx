@@ -1,6 +1,6 @@
 import { Toast } from '@sms/shared'
 import { RootState } from '@store'
-import { ToastType } from '@store/toastSlice'
+import { ToastType } from '@features/toast/stores/toastSlice'
 import { useSelector } from 'react-redux'
 
 import * as S from './style'

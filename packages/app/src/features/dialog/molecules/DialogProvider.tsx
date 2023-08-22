@@ -1,7 +1,7 @@
 import { Dialog } from '@sms/shared'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store'
-import { setIsShow } from '@store/dialogSlice'
+import { actions } from '@features/dialog/stores'
 import Portal from '@features/dialog/atoms/Portal'
 
 const DialogProvider = () => {
@@ -12,7 +12,7 @@ const DialogProvider = () => {
 
   const onClose = () => {
     dialog.emitter.emit('dialog', false)
-    dispatch(setIsShow())
+    dispatch(actions.setIsShow())
   }
 
   return dialog.isShow ? (
@@ -23,7 +23,7 @@ const DialogProvider = () => {
         cancelText={dialog.cancelText || '취소'}
         confirmText={dialog.confirmText || '확인'}
         emitter={dialog.emitter}
-        onClose={() => dispatch(setIsShow())}
+        onClose={() => dispatch(actions.setIsShow())}
       />
     </Portal>
   ) : null
