@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
@@ -43,29 +42,5 @@ export const Content = styled.div`
   @media (max-width: 34rem) {
     overflow: hidden;
     padding-top: 0;
-  }
-`
-
-export const PortfolioWrapper = styled.div`
-  padding: 0 1.25rem 3.5rem;
-  display: flex;
-  justify-content: center;
-`
-
-export const PortfolioButton = styled(Link)`
-  ${({ theme }) => theme.title2}
-  max-width: 15rem;
-  width: 100%;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--WHITE);
-  background: var(--P2);
-  text-decoration: none;
-  border-radius: 0.5rem;
-
-  @media (max-width: 34rem) {
-    max-width: 100%;
   }
 `

@@ -1,4 +1,4 @@
-import useModal from '@features/student/hooks/useModal'
+import { useModal } from '@features/modal/hooks'
 import * as Icon from '@sms/shared/src/icons'
 
 import * as S from './style'
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const FilterHeader = ({ reset }: Props) => {
-  const { onClose } = useModal('filter')
+  const { onClose } = useModal()
 
   return (
     <S.Wrapper>

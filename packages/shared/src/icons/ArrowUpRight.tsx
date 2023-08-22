@@ -1,8 +1,8 @@
 interface Props {
-  color?: 'black' | 'white'
+  color?: string
 }
 
-const XmarkOutline = ({ color = 'black' }: Props) => (
+const ArrowUpRight = ({ color = 'black' }: Props) => (
   <svg
     width='24'
     height='24'
@@ -11,7 +11,7 @@ const XmarkOutline = ({ color = 'black' }: Props) => (
     xmlns='http://www.w3.org/2000/svg'
   >
     <path
-      d='M7.05066 16.9502L16.9502 7.05074M16.948 16.9515L7.04854 7.05205'
+      d='M14 4H20M20 4V10M20 4L12 12'
       stroke={color}
       strokeWidth='2'
       strokeLinecap='round'
@@ -20,4 +20,4 @@ const XmarkOutline = ({ color = 'black' }: Props) => (
   </svg>
 )
 
-export default XmarkOutline
+export default ArrowUpRight
