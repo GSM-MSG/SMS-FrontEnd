@@ -1,8 +1,10 @@
 import { useEffect, useState, MouseEvent } from 'react'
+import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { close } from '@store/modalSlice'
 
 const usePortal = () => {
+  const router = useRouter()
   const [isCSR, setIsCSR] = useState(false)
   const dispatch = useDispatch()
 
@@ -33,6 +35,7 @@ const usePortal = () => {
   }
 
   const onClose = () => {
+    router.push('/', '/')
     dispatch(close())
   }
 

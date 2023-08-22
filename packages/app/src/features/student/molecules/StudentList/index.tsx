@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import StudentType from '@features/student/types/StudentType'
 import { StudentCard } from '@sms/shared'
 import useScrollObserver from '@features/student/hooks/useScrollObserver'
@@ -11,8 +12,14 @@ interface Props {
 }
 
 const StudentList = ({ students, max }: Props) => {
+  const router = useRouter()
   const { observe } = useScrollObserver()
   const { onShow } = useModal()
+
+  const onClick = (id: string) => {
+    router.push('/', `/student/${id}`)
+    onShow(<StudentDetailModal studentId={id} />)
+  }
 
   return (
     <S.Content>
@@ -22,11 +29,7 @@ const StudentList = ({ students, max }: Props) => {
 
       <S.Students>
         {students?.map((i) => (
-          <StudentCard
-            key={i.id}
-            {...i}
-            onClick={() => onShow(<StudentDetailModal studentId={i.id} />)}
-          />
+          <StudentCard key={i.id} {...i} onClick={() => onClick(i.id)} />
         ))}
       </S.Students>
 
