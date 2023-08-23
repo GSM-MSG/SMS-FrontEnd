@@ -14,7 +14,7 @@ const studentListApi = async (
   params: StudentsParams
 ): Promise<ResponseType> => {
   try {
-    const { data } = await axiosApi.get<Response>('/student', { params })
+    const { data } = await axiosApi.get<Response>('/server/student', { params })
     return {
       isError: false,
       data,

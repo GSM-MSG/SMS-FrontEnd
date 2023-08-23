@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import logout from '@features/auth/service/logout'
-import TokenManager from '@lib/TokenManager'
 import { useDialog } from '@hooks'
 import { useToast } from '@features/toast'
 import { useDispatch } from 'react-redux'
@@ -27,8 +26,6 @@ const useLogout = () => {
 
     const res = await logout()
     if (res) return addToast('error', res)
-
-    TokenManager.clearToken()
 
     addToast('success', '로그아웃에 성공했습니다')
     dispatch(actions.resetPage())

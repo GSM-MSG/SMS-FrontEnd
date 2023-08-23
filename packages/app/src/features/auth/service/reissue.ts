@@ -5,7 +5,7 @@ import axios from 'axios'
 const reissue = async (refreshToken: string) => {
   try {
     const { data } = await axios.patch<ReissueResponse>(
-      '/auth',
+      '/server/auth',
       {},
       {
         headers: {

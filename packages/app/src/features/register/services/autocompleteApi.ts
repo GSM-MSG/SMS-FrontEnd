@@ -11,10 +11,10 @@ interface MajorResponse {
 const autocompleteApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     techStack: build.mutation<TechStackResponse, string>({
-      query: (stack) => ({ url: '/stack/list', params: { stack } }),
+      query: (stack) => ({ url: '/server/stack/list', params: { stack } }),
     }),
     major: build.query<MajorResponse, void>({
-      query: () => ({ url: '/major/list' }),
+      query: () => ({ url: '/server/major/list' }),
     }),
   }),
 })

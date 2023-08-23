@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { axiosApi } from '@api'
 import { TokenResponse } from '@features/auth/type/TokenResponse'
 import { isAxiosError } from 'axios'
+import Token from '@lib/Token'
 
 /**
  * 로그인 BFF
@@ -32,12 +33,12 @@ export default async function handler(
 
 const createSetCookie = (data: TokenResponse) => {
   const accessToken = createCookie(
-    'accessToken',
+    Token.ACCESS_TOKEN,
     data.accessToken,
     data.accessTokenExp
   )
   const refreshToken = createCookie(
-    'refreshToken',
+    Token.REFRESH_TOKEN,
     data.refreshToken,
     data.refreshTokenExp
   )
