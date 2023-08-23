@@ -6,7 +6,7 @@ import { useToast } from '@features/toast'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/student/service/errors'
 
-const useStudentDetail = (studentId: string) => {
+const useStudentDetail = (studentId: string | null) => {
   let studentRole = ''
   const { role, isSuccess } = useLoggedIn({})
 
@@ -15,7 +15,7 @@ const useStudentDetail = (studentId: string) => {
 
   const { error, data, isLoading } = studentApi.useStudentDetailQuery(
     {
-      studentId,
+      studentId: studentId || '',
       role: studentRole,
     },
     { skip: !studentId }

@@ -8,7 +8,7 @@ interface Props {
 const StudentDetailModal = ({ studentId }: Props) => {
   return (
     <BlurPortal>
-      <StudentDetail isCloseBtn studentId={studentId} />
+      <StudentDetail isCloseBtn studentId={studentId} student={null} />
     </BlurPortal>
   )
 }
