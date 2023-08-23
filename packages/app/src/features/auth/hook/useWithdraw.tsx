@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import withdraw from '@features/auth/service/withdraw'
 import { useToast } from '@features/toast'
 import { useDialog } from '@hooks'
-import TokenManager from '@lib/TokenManager'
 import { useDispatch } from 'react-redux'
 import { actions } from '@features/student/stores'
 import { useStudent } from '@features/student'
@@ -28,7 +27,6 @@ const useWithdraw = () => {
     const res = await withdraw()
     if (res) return addToast('error', res)
 
-    TokenManager.clearToken()
     addToast('success', '회원탈퇴에 성공했습니다')
     dispatch(actions.resetPage())
     dispatch(actions.resetStudents())

@@ -16,7 +16,10 @@ const useAuth = () => {
     ;(async () => {
       const res = await login(code)
 
-      if (typeof res === 'string') return addToast('error', res)
+      if (typeof res === 'string') {
+        setIsLoading(false)
+        return addToast('error', res)
+      }
 
       addToast('success', '로그인에 성공했습니다')
       await router.push(res.isExist ? '/' : '/register')

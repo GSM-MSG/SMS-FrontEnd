@@ -9,7 +9,7 @@ const studentApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     studentDetail: build.query<StudentDetail, StudentDetailRequest>({
       query: ({ studentId, role }) => ({
-        url: `/student/${role}${studentId}`,
+        url: `/server/student/${role}${studentId}`,
       }),
     }),
   }),

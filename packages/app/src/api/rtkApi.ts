@@ -1,8 +1,7 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import CutomBaseQuery from './CustomBaseQuery'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const rtkApi = createApi({
-  baseQuery: CutomBaseQuery,
+  baseQuery: fetchBaseQuery(),
   tagTypes: ['Student', 'My'],
   endpoints: () => ({}),
 })

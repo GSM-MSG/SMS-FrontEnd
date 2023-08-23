@@ -4,7 +4,7 @@ import errors from '@features/auth/errors'
 
 const withdraw = async () => {
   try {
-    await axiosApi.delete('/auth/withdrawal')
+    await axiosApi.delete('/server/auth/withdrawal')
 
     return
   } catch (e) {
