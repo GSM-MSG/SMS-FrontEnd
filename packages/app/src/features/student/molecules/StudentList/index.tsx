@@ -18,7 +18,7 @@ const StudentList = ({ students, max }: Props) => {
 
   const onClick = (id: string) => {
     router.push('/', `/student/${id}`)
-    onShow(<StudentDetailModal studentId={id} />)
+    onShow(<StudentDetailModal studentId={id} student={null} />)
   }
 
   return (
