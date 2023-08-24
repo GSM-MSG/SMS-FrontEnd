@@ -20,7 +20,7 @@ const StudentDetail = ({ studentId, isCloseBtn }: Props) => {
   return (
     <S.Wrapper onClick={(e) => e.stopPropagation()}>
       <SEO
-        title={data?.name}
+        title={data?.name.replace('**', '소금')}
         description={data?.introduce}
         image={data?.profileImg}
       />
