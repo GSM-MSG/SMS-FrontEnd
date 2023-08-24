@@ -1,7 +1,8 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
+import CustomBaseQuery from './CustomBaseQuery'
 
 const rtkApi = createApi({
-  baseQuery: fetchBaseQuery(),
+  baseQuery: CustomBaseQuery,
   tagTypes: ['Student', 'My'],
   endpoints: () => ({}),
 })

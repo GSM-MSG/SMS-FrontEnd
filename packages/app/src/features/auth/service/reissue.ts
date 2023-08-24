@@ -1,19 +1,9 @@
 import { ReissueResponse } from '@features/auth/type/TokenResponse'
-import env from '@lib/env'
 import axios from 'axios'
 
-const reissue = async (refreshToken: string) => {
+const reissue = async () => {
   try {
-    const { data } = await axios.patch<ReissueResponse>(
-      '/server/auth',
-      {},
-      {
-        headers: {
-          'Refresh-Token': refreshToken,
-        },
-        baseURL: env.NEXT_PUBLIC_SERVER_URL,
-      }
-    )
+    const { data } = await axios.patch<ReissueResponse>('/api/reissue')
 
     return data
   } catch (e) {
