@@ -2,7 +2,7 @@ import { BaseQueryFn, FetchBaseQueryMeta } from '@reduxjs/toolkit/query/react'
 import { AxiosError, AxiosRequestConfig, isAxiosError } from 'axios'
 import axiosApi from './axiosApi'
 
-const CutomBaseQuery: BaseQueryFn<
+const CustomBaseQuery: BaseQueryFn<
   AxiosRequestConfig,
   unknown,
   AxiosError | string,
@@ -21,4 +21,4 @@ const CutomBaseQuery: BaseQueryFn<
   }
 }
 
-export default CutomBaseQuery
+export default CustomBaseQuery

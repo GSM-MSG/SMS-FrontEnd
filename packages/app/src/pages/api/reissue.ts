@@ -3,20 +3,21 @@ import { axiosApi } from '@api'
 import env from '@lib/env'
 import { TokenResponse } from '@features/auth/type/TokenResponse'
 import { createSetCookie } from '@features/auth/lib/createSetCookie'
+import Token from '@lib/Token'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'POST')
+  if (req.method !== 'PATCH')
     return res.status(400).json({ message: 'not found page' })
-  const code = req.body.code
-  if (!code) return res.status(400).json({ message: 'not found code' })
+  const refreshToken = req.cookies[Token.REFRESH_TOKEN]
 
   try {
-    const { data } = await axiosApi.post<TokenResponse>(
+    const { data } = await axiosApi.patch<TokenResponse>(
       `${env.NEXT_PUBLIC_SERVER_URL}/auth`,
-      { code }
+      {},
+      { headers: { 'Refresh-Token': refreshToken } }
     )
     res.status(200).setHeader('Set-Cookie', createSetCookie(data)).json(data)
   } catch (e) {
