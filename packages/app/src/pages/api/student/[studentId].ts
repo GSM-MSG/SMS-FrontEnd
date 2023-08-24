@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { axiosApi } from '@api'
-import env from '@lib/env'
-import { decode } from 'jsonwebtoken'
+import { findRole } from '@features/student/lib/findRole'
+import studentDetailApi from '@features/student/service/studentDetailApi'
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,28 +14,10 @@ export default async function handler(
     return res.status(400).json({ message: 'not found student id' })
 
   const accessToken = req.cookies['accessToken']
-  const payload = decode(accessToken || '', { json: true })
+  const role = findRole(accessToken || '')
 
-  let role: string
-  switch (payload?.ROLE) {
-    case 'ROLE_TEACHER':
-      role = 'teacher/'
-      break
-    case 'ROLE_STUDENT':
-      role = ''
-      break
-    default:
-      role = 'anonymous/'
-  }
+  const data = await studentDetailApi(`${studentId}`, role, accessToken)
+  if (!data) return res.status(404).json({ message: 'not found student' })
 
-  try {
-    const { data } = await axiosApi.get(
-      `${env.NEXT_PUBLIC_SERVER_URL}/student/${role}${studentId}`,
-      { headers: { Authorization: accessToken && `Bearer ${accessToken}` } }
-    )
-
-    res.status(200).json(data)
-  } catch (e) {
-    return res.status(404).json({ message: 'not found student' })
-  }
+  res.status(200).json(data)
 }

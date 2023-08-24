@@ -8,17 +8,11 @@ import useStudentDetail from '@features/student/hooks/useStudentDetail'
 import * as Icon from '@sms/shared/src/icons'
 import * as S from './style'
 
-type Props =
-  | {
-      studentId: string
-      isCloseBtn?: boolean
-      student: null
-    }
-  | {
-      studentId: null
-      isCloseBtn?: boolean
-      student: StudentDetail
-    }
+interface Props {
+  studentId: string | null
+  isCloseBtn?: boolean
+  student: StudentDetail | null
+}
 
 const StudentDetail = ({ studentId, isCloseBtn, student }: Props) => {
   const { onClose } = useModal()

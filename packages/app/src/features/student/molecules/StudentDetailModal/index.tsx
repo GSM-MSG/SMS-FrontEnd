@@ -2,13 +2,14 @@ import { BlurPortal } from '@features/modal/portals'
 import StudentDetail from '@features/student/molecules/StudentDetail'
 
 interface Props {
-  studentId: string
+  studentId: string | null
+  student: StudentDetail | null
 }
 
-const StudentDetailModal = ({ studentId }: Props) => {
+const StudentDetailModal = ({ studentId, student }: Props) => {
   return (
     <BlurPortal>
-      <StudentDetail isCloseBtn studentId={studentId} student={null} />
+      <StudentDetail isCloseBtn studentId={studentId} student={student} />
     </BlurPortal>
   )
 }

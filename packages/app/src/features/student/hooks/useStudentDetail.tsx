@@ -5,7 +5,7 @@ import { useToast } from '@features/toast'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/student/service/errors'
 
-const useStudentDetail = (studentId: string) => {
+const useStudentDetail = (studentId: string | null) => {
   const { error, data, isLoading } = studentApi.useStudentDetailQuery(
     { studentId },
     { skip: !studentId }

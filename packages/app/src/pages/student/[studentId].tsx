@@ -8,17 +8,31 @@ import StudentsTemplate from '@features/student/templates/StudentsTemplate'
 import { useEffect } from 'react'
 import { useModal } from '@features/modal/hooks'
 import StudentDetailModal from '@features/student/molecules/StudentDetailModal'
+import { findRole } from '@features/student/lib/findRole'
+import Token from '@lib/Token'
+import studentDetailApi from '@features/student/service/studentDetailApi'
+import { useRouter } from 'next/router'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return { props: { query: ctx.query, studentId: ctx.params?.studentId } }
+  const accessToken = ctx.req.cookies[Token.ACCESS_TOKEN]
+  const role = findRole(accessToken || '')
+
+  const data = await studentDetailApi(
+    `${ctx.params?.studentId}` || '',
+    role,
+    accessToken
+  )
+
+  return { props: { query: ctx.query, data } }
 }
 
 interface Props {
   query: ParsedUrlQuery
-  studentId?: string
+  data: StudentDetail | null
 }
 
-const StudentDetailPage = ({ query, studentId }: Props) => {
+const StudentDetailPage = ({ query, data }: Props) => {
+  const router = useRouter()
   const { studentList, totalSize } = useStudent()
   const { onShow } = useModal()
   useStudentsParam({ query })
@@ -26,9 +40,12 @@ const StudentDetailPage = ({ query, studentId }: Props) => {
   useLoggedIn({})
 
   useEffect(() => {
-    if (!studentId) return
+    if (!data) {
+      router.push('/', '/')
+      return
+    }
 
-    onShow(<StudentDetailModal studentId={studentId} />)
+    onShow(<StudentDetailModal studentId={null} student={data} />)
   }, [])
 
   return (
