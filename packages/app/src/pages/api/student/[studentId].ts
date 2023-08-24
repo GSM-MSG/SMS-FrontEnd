@@ -16,10 +16,9 @@ export default async function handler(
 
   const accessToken = req.cookies['accessToken']
   const payload = decode(accessToken || '', { json: true })
-  if (!payload) return res.status(401).json({ message: '쿠키가 변조됨' })
 
   let role: string
-  switch (payload.ROLE) {
+  switch (payload?.ROLE) {
     case 'ROLE_TEACHER':
       role = 'teacher/'
       break
@@ -33,7 +32,7 @@ export default async function handler(
   try {
     const { data } = await axiosApi.get(
       `${env.NEXT_PUBLIC_SERVER_URL}/student/${role}${studentId}`,
-      { headers: { Authorization: `Bearer ${accessToken}` } }
+      { headers: { Authorization: accessToken && `Bearer ${accessToken}` } }
     )
 
     res.status(200).json(data)
