@@ -4,7 +4,7 @@ import errors from '@features/auth/errors'
 
 const logout = async () => {
   try {
-    await axiosApi.delete('server/auth')
+    await axiosApi.delete('api/logout')
 
     return
   } catch (e) {
