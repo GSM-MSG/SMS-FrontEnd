@@ -9,20 +9,23 @@ import * as Icon from '@sms/shared/src/icons'
 import * as S from './style'
 
 interface Props {
-  studentId: string
+  studentId: string | null
   isCloseBtn?: boolean
+  student: StudentDetail | null
 }
 
-const StudentDetail = ({ studentId, isCloseBtn }: Props) => {
+const StudentDetail = ({ studentId, isCloseBtn, student }: Props) => {
   const { onClose } = useModal()
   const { data } = useStudentDetail(studentId)
+
+  const studentData = studentId ? data : student
 
   return (
     <S.Wrapper onClick={(e) => e.stopPropagation()}>
       <SEO
-        title={data?.name.replace('**', '소금')}
-        description={data?.introduce}
-        image={data?.profileImg}
+        title={studentData?.name.replace('**', '소금')}
+        description={studentData?.introduce}
+        image={studentData?.profileImg}
       />
 
       {isCloseBtn && (
@@ -35,30 +38,30 @@ const StudentDetail = ({ studentId, isCloseBtn }: Props) => {
 
       <S.Content>
         <ProfileDetail
-          major={data?.major}
-          name={data?.name}
-          grade={data?.grade}
-          classNum={data?.classNum}
-          number={data?.number}
-          techStack={data?.techStack}
-          introduce={data?.introduce}
-          profileImg={data?.profileImg}
+          major={studentData?.major}
+          name={studentData?.name}
+          grade={studentData?.grade}
+          classNum={studentData?.classNum}
+          number={studentData?.number}
+          techStack={studentData?.techStack}
+          introduce={studentData?.introduce}
+          profileImg={studentData?.profileImg}
         />
         <StudentInfo
-          contactEmail={data?.contactEmail}
-          gsmAuthenticationScore={data?.gsmAuthenticationScore}
-          militaryService={data?.militaryService}
-          formOfEmployment={data?.formOfEmployment}
-          salary={data?.salary}
-          languageCertificates={data?.languageCertificates}
-          certificates={data?.certificates}
+          contactEmail={studentData?.contactEmail}
+          gsmAuthenticationScore={studentData?.gsmAuthenticationScore}
+          militaryService={studentData?.militaryService}
+          formOfEmployment={studentData?.formOfEmployment}
+          salary={studentData?.salary}
+          languageCertificates={studentData?.languageCertificates}
+          certificates={studentData?.certificates}
         />
-        <PrizesDetail prizes={data?.prizes} />
-        <ProjectDetail projects={data?.projects} />
+        <PrizesDetail prizes={studentData?.prizes} />
+        <ProjectDetail projects={studentData?.projects} />
 
-        {data?.portfolioUrl && (
+        {studentData?.portfolioUrl && (
           <S.PortfolioWrapper>
-            <S.PortfolioButton href={data?.portfolioUrl}>
+            <S.PortfolioButton href={studentData?.portfolioUrl}>
               포트폴리오
             </S.PortfolioButton>
           </S.PortfolioWrapper>

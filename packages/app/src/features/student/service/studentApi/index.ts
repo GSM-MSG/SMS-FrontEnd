@@ -1,7 +1,7 @@
 import { rtkApi } from '@api'
 
 interface StudentDetailRequest {
-  studentId: string
+  studentId: string | null
 }
 
 const studentApi = rtkApi.injectEndpoints({
