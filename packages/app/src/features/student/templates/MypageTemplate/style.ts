@@ -8,4 +8,8 @@ export const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+
+  @media (max-width: 41.5rem) {
+    padding: 0 0 2.5rem 0;
+  }
 `

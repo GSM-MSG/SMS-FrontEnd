@@ -30,7 +30,7 @@ const Profile = forwardRef<HTMLInputElement, Props>(
 
     return (
       <>
-        <S.HiddenInput {...props} readOnly ref={ref} />
+        <input hidden {...props} readOnly ref={ref} />
         <S.Wrapper>
           <S.ProfileWrapper>
             <S.ImageInput type='file' accept='image/*' onChange={onChange} />

@@ -16,8 +16,8 @@ const LanguageInputs = ({ control, register, errors }: Props) => {
         <MultiDoubleInput
           register={register}
           control={control}
-          name='languageCertificate'
-          errors={errors.languageCertificate}
+          name='languageCertificates'
+          errors={errors.languageCertificates}
         />
       </InputColumn>
     </FormWrapper>

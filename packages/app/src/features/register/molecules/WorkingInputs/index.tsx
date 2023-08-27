@@ -44,10 +44,10 @@ const WorkingInputs = ({ register, control, errors, resetField }: Props) => {
       <InputColumn comment='근무 지역'>
         <MultiInput
           placeholder='근무 희망 지역입력'
-          name='region'
+          name='regions'
           register={register}
           control={control}
-          errors={errors.region}
+          errors={errors.regions}
           firstRequired
         />
       </InputColumn>
