@@ -20,7 +20,7 @@ export const createSetCookie = (data: TokenResponse) => {
 export const createCookie = (name: string, token: string, expired: string) => {
   const secure = process.env.NODE_ENV === 'production' ? 'secure;' : ''
   const UTCDate = new Date(expired).toUTCString()
-  const host = new URL(env.NEXT_PUBLIC_CLIENT_URL).host
+  const host = new URL(env.NEXT_PUBLIC_CLIENT_URL).host.replace(':3000', '')
 
   return `${name}=${token}; path=/; expires=${UTCDate}; httpOnly; ${secure} domain=${host}`
 }

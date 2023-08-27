@@ -43,9 +43,6 @@ export const InfoWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1.25rem;
-
-  @media (max-width: 41.5rem) {
-  }
 `
 
 export const FilterWrapper = styled.div`
@@ -69,7 +66,6 @@ export const UserInfoWrapper = styled.div`
 
   @media (max-width: 41.5rem) {
     background: transparent;
-    padding: 0;
 
     & > p {
       display: none;
@@ -91,7 +87,6 @@ export const UserInfoWrapperLink = styled(Link)`
 
   @media (max-width: 41.5rem) {
     background: transparent;
-    padding: 0;
 
     & > p {
       display: none;
