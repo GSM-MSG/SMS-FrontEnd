@@ -6,7 +6,11 @@ import { useForm } from 'react-hook-form'
 import { PostStudentInfoService } from '@features/register/services'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
-const useRegister = () => {
+interface Props {
+  defaultValue?: Partial<RegisterFormType>
+}
+
+const useRegister = ({ defaultValue }: Props) => {
   const { addToast } = useToast()
   const { refetchLoggedIn } = useLoggedIn({})
   const {
@@ -35,6 +39,7 @@ const useRegister = () => {
         },
       ],
       prizes: [{ date: '', kind: '', name: '' }],
+      ...defaultValue,
     },
   })
 

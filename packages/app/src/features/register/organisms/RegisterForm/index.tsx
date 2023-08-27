@@ -10,9 +10,16 @@ import {
 } from '@features/register/molecules'
 import { useRegister } from '@features/register/hooks'
 import { SMSLogo } from '@sms/shared'
+import { RegisterFormType } from '@features/register/type'
 import * as S from './style'
 
-const RegisterForm = () => {
+interface Props {
+  defaultValue?: Partial<RegisterFormType>
+  isLogo?: boolean
+  title?: string
+}
+
+const RegisterForm = ({ defaultValue, isLogo, title }: Props) => {
   const {
     control,
     register,
@@ -23,13 +30,18 @@ const RegisterForm = () => {
     watch,
     resetField,
     clearErrors,
-  } = useRegister()
+  } = useRegister({ defaultValue })
 
   return (
     <S.Wrapper onSubmit={onSubmit}>
-      <S.LogoWrapper>
-        <SMSLogo />
-      </S.LogoWrapper>
+      {isLogo && (
+        <S.LogoWrapper>
+          <SMSLogo />
+        </S.LogoWrapper>
+      )}
+
+      {title && <S.Title>{title}</S.Title>}
+
       <ProfileInputs
         control={control}
         register={register}

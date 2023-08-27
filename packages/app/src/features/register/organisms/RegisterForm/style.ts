@@ -12,6 +12,15 @@ export const LogoWrapper = styled.div`
   margin: 0 auto 2rem;
 `
 
+export const Title = styled.h2`
+  ${({ theme }) => theme.headline3}
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 44rem) {
+    padding: 0 1.25rem;
+  }
+`
+
 export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
