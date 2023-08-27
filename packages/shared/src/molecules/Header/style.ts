@@ -5,6 +5,7 @@ import { Dropdown } from '../../atoms'
 export const Wrapper = styled.div`
   max-width: 45.5rem;
   width: 90%;
+  height: 4rem;
   padding: 0.5rem 0.75rem;
   background: var(--WHITE);
   border-radius: 5rem;
@@ -40,27 +41,31 @@ export const LogoWrapper = styled(Link)`
 
 export const InfoWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 1.25rem;
+`
+
+export const FilterWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`
+
+export const UserInfoWrapper = styled.div`
+  ${({ theme }) => theme.body1}
+  height: 2.5rem;
+  padding: 0 0.25rem 0 0.5rem;
+  border-radius: 2rem;
+  border: 1px solid var(--N10);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
   position: relative;
 
   @media (max-width: 41.5rem) {
-    gap: 1.25rem;
-  }
-`
-
-export const Filter = styled.div`
-  ${({ theme }) => theme.body1}
-  padding: 0.75rem 1rem;
-  background: var(--N10);
-  border-radius: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  cursor: pointer;
-
-  @media (max-width: 41.5rem) {
     background: transparent;
-    padding: 0;
 
     & > p {
       display: none;
@@ -68,9 +73,36 @@ export const Filter = styled.div`
   }
 `
 
+export const UserInfoWrapperLink = styled(Link)`
+  ${({ theme }) => theme.body1}
+  height: 2.5rem;
+  padding: 0 0.25rem 0 0.5rem;
+  border-radius: 2rem;
+  border: 1px solid var(--N10);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+
+  @media (max-width: 41.5rem) {
+    background: transparent;
+
+    & > p {
+      display: none;
+    }
+  }
+`
+
+export const UserInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 export const UserCircle = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 100%;
   overflow: hidden;
   background: var(--N10);
@@ -80,15 +112,6 @@ export const UserCircle = styled.div`
     width: 2rem;
     height: 2rem;
   }
-`
-
-export const UserCircleLink = styled(Link)`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100%;
-  overflow: hidden;
-  background: var(--N10);
-  cursor: pointer;
 `
 
 export const DropdownMenu = styled(Dropdown.Menu)`
@@ -101,7 +124,6 @@ export const DropdownMenu = styled(Dropdown.Menu)`
 export const DropdownItem = styled(Dropdown.Item)`
   display: flex;
   gap: 0.75rem;
-  color: var(--ERROR);
 `
 
 export const Line = styled.hr`

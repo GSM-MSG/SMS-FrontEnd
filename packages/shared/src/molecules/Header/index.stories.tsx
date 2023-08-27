@@ -11,5 +11,5 @@ export default config
 type Story = StoryObj<typeof Header>
 
 export const Primary: Story = {
-  args: { isLoggedIn: false },
+  args: { isLoggedIn: true },
 }
