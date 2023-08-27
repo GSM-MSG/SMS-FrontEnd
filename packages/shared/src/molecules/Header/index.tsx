@@ -5,12 +5,12 @@ import * as S from './style'
 
 interface Props {
   onLogout?: () => void
-  onExit?: () => void
+  onMyPage?: () => void
   onFilter?: () => void
   isLoggedIn?: boolean
 }
 
-const Header = ({ onExit, onLogout, onFilter, isLoggedIn }: Props) => {
+const Header = ({ onMyPage, onLogout, onFilter, isLoggedIn }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
 
   return (
@@ -19,32 +19,45 @@ const Header = ({ onExit, onLogout, onFilter, isLoggedIn }: Props) => {
         <SVG.SMSLogo />
       </S.LogoWrapper>
       <S.InfoWrapper>
-        <S.Filter onClick={onFilter}>
-          <Icon.Filter />
-          <p>필터</p>
-        </S.Filter>
-
-        {isLoggedIn ? (
-          <S.UserCircle onClick={() => setIsShow(true)}>
-            <SVG.Person />
-          </S.UserCircle>
-        ) : (
-          <S.UserCircleLink href='/login'>
-            <SVG.Person />
-          </S.UserCircleLink>
+        {onFilter && (
+          <S.FilterWrapper onClick={onFilter}>
+            <Icon.Filter />
+          </S.FilterWrapper>
         )}
 
-        <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
-          <S.DropdownItem onClick={onLogout}>
-            <Icon.Out color='var(--ERROR)' /> 로그아웃
-          </S.DropdownItem>
+        {isLoggedIn ? (
+          <S.UserInfoWrapper onClick={() => setIsShow(true)}>
+            <S.UserInfo>
+              <Icon.Bars3 />
+            </S.UserInfo>
 
-          <S.Line />
+            <S.UserCircle>
+              <SVG.Person />
+            </S.UserCircle>
 
-          <S.DropdownItem onClick={onExit}>
-            <Icon.Person color='var(--ERROR)' /> 회원 탈퇴
-          </S.DropdownItem>
-        </S.DropdownMenu>
+            <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
+              <S.DropdownItem onClick={onMyPage}>
+                <Icon.Person color='var(--N50)' /> 마이페이지
+              </S.DropdownItem>
+
+              <S.Line />
+
+              <S.DropdownItem onClick={onLogout}>
+                <Icon.Out color='var(--N50)' /> 로그아웃
+              </S.DropdownItem>
+            </S.DropdownMenu>
+          </S.UserInfoWrapper>
+        ) : (
+          <S.UserInfoWrapperLink href='/login'>
+            <S.UserInfo>
+              <Icon.Bars3 />
+            </S.UserInfo>
+
+            <S.UserCircle>
+              <SVG.Person />
+            </S.UserCircle>
+          </S.UserInfoWrapperLink>
+        )}
       </S.InfoWrapper>
     </S.Wrapper>
   )
