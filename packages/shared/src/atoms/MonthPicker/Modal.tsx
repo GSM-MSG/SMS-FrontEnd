@@ -66,10 +66,10 @@ const Modal = ({ value, onChange, onClose }: Props) => {
       </S.MonthList>
 
       <S.ButtonWrapper>
-        <Button onClick={onClose}>취소</Button>
-        <Button theme='white' onClick={onSubmit}>
-          확인
+        <Button theme='white' onClick={onClose}>
+          취소
         </Button>
+        <Button onClick={onSubmit}>확인</Button>
       </S.ButtonWrapper>
     </S.Modal>
   )

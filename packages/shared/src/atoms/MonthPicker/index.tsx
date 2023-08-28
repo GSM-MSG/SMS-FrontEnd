@@ -34,7 +34,7 @@ const MonthPicker = forwardRef<HTMLInputElement, Props>(
         <S.MonthInput
           style={{ cursor: disabled ? 'auto' : 'pointer' }}
           onClick={(e) => {
-            e.stopPropagation()
+            if (!isShow) e.stopPropagation()
             setIsShow(true)
           }}
         >
