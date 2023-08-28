@@ -19,8 +19,8 @@ interface Props
 }
 
 const Profile = forwardRef<HTMLInputElement, Props>(
-  ({ error, onUpload, ...props }, ref) => {
-    const [imgUrl, setImgUrl] = useState<string>('')
+  ({ error, value, onUpload, ...props }, ref) => {
+    const [imgUrl, setImgUrl] = useState<string>(`${value || ''}`)
 
     const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
       const url = await onUpload(e)
@@ -30,7 +30,7 @@ const Profile = forwardRef<HTMLInputElement, Props>(
 
     return (
       <>
-        <S.HiddenInput {...props} readOnly ref={ref} />
+        <input hidden {...props} readOnly ref={ref} />
         <S.Wrapper>
           <S.ProfileWrapper>
             <S.ImageInput type='file' accept='image/*' onChange={onChange} />

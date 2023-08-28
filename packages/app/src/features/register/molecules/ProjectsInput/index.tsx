@@ -85,6 +85,7 @@ const ProjectsInput = ({
                     setError={setError}
                     error={errors?.projects?.[idx]?.icon?.message}
                     clearErrors={clearErrors}
+                    value={watch(`projects.${idx}.icon`)}
                     register={register(`projects.${idx}.icon`, {
                       required: { value: true, message: '필수 값입니다' },
                     })}

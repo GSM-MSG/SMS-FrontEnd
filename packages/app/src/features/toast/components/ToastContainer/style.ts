@@ -9,4 +9,5 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   transition: 0.4s;
+  z-index: 1000;
 `

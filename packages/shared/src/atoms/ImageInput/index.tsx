@@ -19,8 +19,8 @@ interface Props
 }
 
 const Profile = forwardRef<HTMLInputElement, Props>(
-  ({ error, isPreview, ...props }, ref) => {
-    const [url, setUrl] = useState<string>('')
+  ({ error, value, isPreview, ...props }, ref) => {
+    const [url, setUrl] = useState<string>(`${value || ''}`)
 
     const onChange = async (e: ChangeEvent<HTMLInputElement>) =>
       setUrl((await props.onChange(e)) || url)

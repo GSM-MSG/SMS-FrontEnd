@@ -15,6 +15,7 @@ interface Props {
   error?: string
   clearErrors: UseFormClearErrors<RegisterFormType>
   register: UseFormRegisterReturn
+  value: string
 }
 
 const IconImageInput = ({
@@ -24,6 +25,7 @@ const IconImageInput = ({
   error,
   clearErrors,
   register,
+  value,
 }: Props) => {
   const { onChange } = useImageUpload({
     setValue: (value: string) => setValue(`projects.${idx}.icon`, value),
@@ -34,7 +36,7 @@ const IconImageInput = ({
   return (
     <>
       <input {...register} hidden />
-      <ImageInput onChange={onChange} error={error} />
+      <ImageInput onChange={onChange} error={error} value={value} />
     </>
   )
 }

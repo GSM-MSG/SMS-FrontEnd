@@ -10,7 +10,7 @@ interface Props {
   number?: number
   techStack?: string[]
   introduce?: string
-  profileImg?: string
+  profileImgUrl?: string
 }
 
 const ProfileDetail = ({
@@ -18,7 +18,7 @@ const ProfileDetail = ({
   name,
   grade,
   number,
-  profileImg,
+  profileImgUrl,
   classNum,
   introduce,
   techStack,
@@ -51,9 +51,9 @@ const ProfileDetail = ({
       </S.Left>
 
       <S.Right>
-        {!isError && profileImg ? (
+        {!isError && profileImgUrl ? (
           <S.ProfileImage
-            src={profileImg}
+            src={profileImgUrl}
             alt='profile image'
             onError={() => setIsError(true)}
           />

@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import {
   Control,
   FieldValues,
@@ -26,10 +25,6 @@ const MultiDoubleInput = ({ name, control, register, errors }: Props) => {
     name,
     control,
   })
-
-  useEffect(() => {
-    append('')
-  }, [])
 
   return (
     <S.Wrapper>

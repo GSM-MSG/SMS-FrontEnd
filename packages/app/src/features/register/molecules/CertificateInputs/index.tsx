@@ -16,9 +16,9 @@ const CertificateInputs = ({ control, register, errors }: Props) => {
         <MultiInput
           register={register}
           control={control}
-          name='certificate'
+          name='certificates'
           placeholder='예)정보처리산업기사'
-          errors={errors.certificate}
+          errors={errors.certificates}
         />
       </InputColumn>
     </FormWrapper>

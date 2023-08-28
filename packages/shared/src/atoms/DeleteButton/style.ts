@@ -7,7 +7,7 @@ export const Wrapper = styled.button`
   border: none;
   cursor: pointer;
   position: relative;
-  z-index: 100;
+  z-index: 1;
 
   path {
     transition: 0.1s;

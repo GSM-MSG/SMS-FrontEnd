@@ -1,18 +1,22 @@
+import useModifyProfile from '@features/student/hooks/useModifyProfile'
 import {
   CertificateInputs,
   LanguageInputs,
   MilitaryInputs,
+  PrizeInputs,
   ProfileInputs,
+  ProjectsInput,
   SchoolInputs,
   WorkingInputs,
-  ProjectsInput,
-  PrizeInputs,
 } from '@features/register/molecules'
-import { useRegister } from '@features/register/hooks'
-import { SMSLogo } from '@sms/shared'
+import { RegisterFormType } from '@features/register/type'
 import * as S from './style'
 
-const RegisterForm = () => {
+interface Props {
+  defaultValue?: Partial<RegisterFormType>
+}
+
+const MyPageForm = ({ defaultValue }: Props) => {
   const {
     control,
     register,
@@ -23,14 +27,11 @@ const RegisterForm = () => {
     watch,
     resetField,
     clearErrors,
-  } = useRegister()
+  } = useModifyProfile({ defaultValue })
 
   return (
     <S.Wrapper onSubmit={onSubmit}>
-      <S.LogoWrapper>
-        <SMSLogo />
-      </S.LogoWrapper>
-
+      <S.Title>마이페이지</S.Title>
       <ProfileInputs
         control={control}
         register={register}
@@ -92,4 +93,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm
+export default MyPageForm

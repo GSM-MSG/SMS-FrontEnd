@@ -11,6 +11,7 @@ interface Props {
   register: any
   control: Control<any>
   name: string
+  value: string
   directInput?: boolean
   placeholder?: string
   error?: string
@@ -19,6 +20,7 @@ interface Props {
 const Select = ({
   options,
   name,
+  value,
   register,
   control,
   directInput,
@@ -27,8 +29,12 @@ const Select = ({
 }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
   const optionKeys = Object.keys(options)
-  const [label, setLabel] = useState<string>(placeholder || '선택하기')
-  const [directIsChecked, setDirectIsChecked] = useState<boolean>(false)
+  const [label, setLabel] = useState<string>(
+    optionKeys.find((i) => options[i] === value) || placeholder || '선택하기'
+  )
+  const [directIsChecked, setDirectIsChecked] = useState<boolean>(
+    !Object.values(options).includes(value) && !!directInput
+  )
 
   const onClose = () => setIsShow(false)
 

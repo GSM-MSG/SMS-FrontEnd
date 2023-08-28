@@ -53,6 +53,7 @@ const ProfileInputs = ({
           })}
           error={errors.profileImgUrl?.message}
           onUpload={imageUpload}
+          value={watch('profileImgUrl')}
         />
       </InputColumn>
       <InputColumn comment='자기 소개'>
@@ -85,6 +86,7 @@ const ProfileInputs = ({
           name='major'
           directInput
           error={errors.major?.message}
+          value={watch('major')}
         />
       </InputColumn>
       <InputColumn comment='포트폴리오'>
