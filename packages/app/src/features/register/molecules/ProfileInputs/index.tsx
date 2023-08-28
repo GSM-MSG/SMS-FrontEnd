@@ -85,6 +85,7 @@ const ProfileInputs = ({
           name='major'
           directInput
           error={errors.major?.message}
+          value={watch('major')}
         />
       </InputColumn>
       <InputColumn comment='포트폴리오'>

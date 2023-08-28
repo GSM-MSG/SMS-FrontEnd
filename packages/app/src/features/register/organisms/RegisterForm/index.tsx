@@ -51,6 +51,7 @@ const RegisterForm = () => {
         register={register}
         errors={errors}
         resetField={resetField}
+        watch={watch}
       />
       <MilitaryInputs control={control} register={register} errors={errors} />
       <CertificateInputs
