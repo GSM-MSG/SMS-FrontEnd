@@ -53,7 +53,12 @@ const RegisterForm = () => {
         resetField={resetField}
         watch={watch}
       />
-      <MilitaryInputs control={control} register={register} errors={errors} />
+      <MilitaryInputs
+        control={control}
+        register={register}
+        errors={errors}
+        watch={watch}
+      />
       <CertificateInputs
         register={register}
         control={control}

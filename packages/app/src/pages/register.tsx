@@ -10,7 +10,7 @@ const Register = () => {
     <>
       <SEO title='회원가입' />
       <RegisterLayout>
-        <RegisterForm isLogo />
+        <RegisterForm />
       </RegisterLayout>
     </>
   )

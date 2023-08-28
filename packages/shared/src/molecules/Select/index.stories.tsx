@@ -32,6 +32,7 @@ export const Primary = () => {
     handleSubmit,
     control,
     formState: { errors },
+    watch,
   } = useForm<FormType>()
 
   const onSubmit = handleSubmit(() => {})
@@ -45,6 +46,7 @@ export const Primary = () => {
         control={control}
         directInput
         error={errors.select?.message}
+        value={watch('select')}
       />
       <button type='submit'>submit</button>
     </form>
