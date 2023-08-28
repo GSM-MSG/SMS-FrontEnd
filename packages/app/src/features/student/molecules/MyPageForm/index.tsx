@@ -31,6 +31,7 @@ const MyPageForm = ({ defaultValue }: Props) => {
 
   return (
     <S.Wrapper onSubmit={onSubmit}>
+      <S.Title>마이페이지</S.Title>
       <ProfileInputs
         control={control}
         register={register}
