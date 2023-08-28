@@ -12,6 +12,10 @@ const modifyStudentService = async (data: RegisterFormType) => {
         type: prize.kind,
         date: prize.date,
       })),
+      profileImg: undefined,
+      classNum: undefined,
+      grade: undefined,
+      number: undefined,
     })
   } catch (e) {
     return ErrorMapper(e, errors)

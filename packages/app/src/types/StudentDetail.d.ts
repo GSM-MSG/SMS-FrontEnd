@@ -15,7 +15,7 @@ interface StudentDetail {
   number?: number
   department?: Department
   major: string
-  profileImg?: string
+  profileImgUrl?: string
   contactEmail?: string
   gsmAuthenticationScore?: number
   formOfEmployment?: FormOfEmployment

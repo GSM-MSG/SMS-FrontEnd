@@ -25,7 +25,7 @@ const StudentDetail = ({ studentId, isCloseBtn, student }: Props) => {
       <SEO
         title={studentData?.name.replace('**', '소금')}
         description={studentData?.introduce}
-        image={studentData?.profileImg}
+        image={studentData?.profileImgUrl}
       />
 
       {isCloseBtn && (
@@ -45,7 +45,7 @@ const StudentDetail = ({ studentId, isCloseBtn, student }: Props) => {
           number={studentData?.number}
           techStack={studentData?.techStack}
           introduce={studentData?.introduce}
-          profileImg={studentData?.profileImg}
+          profileImgUrl={studentData?.profileImgUrl}
         />
         <StudentInfo
           contactEmail={studentData?.contactEmail}
