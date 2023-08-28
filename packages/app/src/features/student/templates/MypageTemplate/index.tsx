@@ -3,7 +3,6 @@ import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { RegisterFormType } from '@features/register/type'
 import MyPageForm from '@features/student/molecules/MyPageForm'
 import useLogout from '@features/auth/hook/useLogout'
-import StudentExitButton from '@features/student/atoms/StudentExitButton'
 import * as S from './style'
 
 interface Props {
@@ -19,8 +18,6 @@ const MypageTemplate = ({ defaultValue }: Props) => {
       <Header isLoggedIn={isSuccess} onLogout={onLogout} />
 
       <MyPageForm defaultValue={defaultValue} />
-
-      <StudentExitButton />
     </S.Wrapper>
   )
 }

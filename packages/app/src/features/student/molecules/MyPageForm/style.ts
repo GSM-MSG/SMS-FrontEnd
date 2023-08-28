@@ -3,10 +3,13 @@ import styled from '@emotion/styled'
 
 export const Wrapper = styled.form`
   max-width: 44rem;
-  margin: 4.87rem auto 7.25rem;
+  padding: 4.87rem 0 7.25rem;
+  height: 100%;
+  overflow-y: scroll;
 
   @media (max-width: 41.5rem) {
-    margin: 1.88rem auto 7.25rem;
+    padding: 4.87rem 0 7.25rem;
+    margin: 0 auto;
   }
 `
 

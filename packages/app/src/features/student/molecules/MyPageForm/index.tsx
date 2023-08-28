@@ -10,6 +10,7 @@ import {
   WorkingInputs,
 } from '@features/register/molecules'
 import { RegisterFormType } from '@features/register/type'
+import StudentExitButton from '@features/student/atoms/StudentExitButton'
 import * as S from './style'
 
 interface Props {
@@ -89,6 +90,8 @@ const MyPageForm = ({ defaultValue }: Props) => {
       <S.ButtonWrapper>
         <S.SubmitBtn type='submit'>확인</S.SubmitBtn>
       </S.ButtonWrapper>
+
+      <StudentExitButton />
     </S.Wrapper>
   )
 }
