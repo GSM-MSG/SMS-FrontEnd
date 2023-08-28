@@ -53,6 +53,7 @@ const ProfileInputs = ({
           })}
           error={errors.profileImgUrl?.message}
           onUpload={imageUpload}
+          value={watch('profileImgUrl')}
         />
       </InputColumn>
       <InputColumn comment='자기 소개'>

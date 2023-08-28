@@ -19,8 +19,8 @@ interface Props
 }
 
 const Profile = forwardRef<HTMLInputElement, Props>(
-  ({ error, onUpload, ...props }, ref) => {
-    const [imgUrl, setImgUrl] = useState<string>('')
+  ({ error, value, onUpload, ...props }, ref) => {
+    const [imgUrl, setImgUrl] = useState<string>(`${value || ''}`)
 
     const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
       const url = await onUpload(e)
