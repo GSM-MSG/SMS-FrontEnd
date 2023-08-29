@@ -31,7 +31,6 @@ export const Modal = styled.div`
   cursor: auto;
   box-shadow: 0px 2px 24px 0px rgba(76, 75, 91, 0.12);
   top: 100%;
-  left: 0;
   z-index: 100;
 `
 

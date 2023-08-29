@@ -61,6 +61,7 @@ const MultiMonthPicker = forwardRef<HTMLDivElement, Props>(
             value={endDate || ''}
             setValue={onChangeEndDate}
             clearError={clearErrorEndDate}
+            position='right'
           />
         </S.Inputs>
 

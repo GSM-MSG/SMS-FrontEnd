@@ -7,9 +7,10 @@ interface Props {
   value: string
   onChange: (value: string) => void
   onClose: () => void
+  position?: 'left' | 'right'
 }
 
-const Modal = ({ value, onChange, onClose }: Props) => {
+const Modal = ({ value, onChange, onClose, position = 'left' }: Props) => {
   const date = useMemo(() => {
     return value ? new Date(value) : new Date()
   }, [value])
@@ -32,7 +33,7 @@ const Modal = ({ value, onChange, onClose }: Props) => {
   }, [])
 
   return (
-    <S.Modal onClick={(e) => e.stopPropagation()}>
+    <S.Modal style={{ [position]: '0' }} onClick={(e) => e.stopPropagation()}>
       <S.ModalTitle>
         <S.ArrowIcon
           onClick={onPrevYear}
