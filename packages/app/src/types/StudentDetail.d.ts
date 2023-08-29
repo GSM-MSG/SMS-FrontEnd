@@ -24,7 +24,7 @@ interface StudentDetail {
   salary?: number
   languageCertificates?: LanguageCertificates[]
   certificates?: string[]
-  techStack: string[]
+  techStacks: string[]
   prizes?: PrizeType[]
   projects?: ProjectType[]
 }
