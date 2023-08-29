@@ -33,7 +33,7 @@ const MultiMonthPicker = forwardRef<HTMLDivElement, Props>(
     },
     ref
   ) => {
-    const [inProgress, setInProgress] = useState<boolean>(false)
+    const [inProgress, setInProgress] = useState<boolean>(endDate === null)
 
     const onChange = () => {
       if (!inProgress) onChangeEndDate(null)
