@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { RegisterFormType } from '@features/register/type'
 import { useToast } from '@features/toast'
 import apiErrors from '@features/register/services/errors'
@@ -5,9 +6,12 @@ import ErrorMapper from '@lib/ErrorMapper'
 import { useForm } from 'react-hook-form'
 import { PostStudentInfoService } from '@features/register/services'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
+import useLoading from '@features/modal/hooks/useLoading'
 
 const useRegister = () => {
   const { addToast } = useToast()
+  const router = useRouter()
+  const { loadingWrap } = useLoading()
   const { refetchLoggedIn } = useLoggedIn({})
   const {
     register,
@@ -22,8 +26,8 @@ const useRegister = () => {
   } = useForm<RegisterFormType>({
     defaultValues: {
       techStacks: [],
-      regions: [''],
-      certificates: [''],
+      regions: [' '],
+      certificates: [' '],
       languageCertificates: [{ score: '', languageCertificateName: '' }],
       projects: [
         {
@@ -42,13 +46,13 @@ const useRegister = () => {
   })
 
   const onSubmit = handleSubmit(async (form: RegisterFormType) => {
-    const res = await PostStudentInfoService(form)
+    const res = await loadingWrap(PostStudentInfoService(form))
     if (res) return addToast('error', ErrorMapper(res, apiErrors))
+
+    router.push('/')
 
     addToast('success', '학생 정보 기입에 성공했습니다')
     await refetchLoggedIn()
-
-    window.location.href = '/'
   })
 
   return {
