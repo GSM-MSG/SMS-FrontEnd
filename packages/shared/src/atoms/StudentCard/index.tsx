@@ -6,7 +6,7 @@ interface Props {
   major: string
   name: string
   profileImg?: string
-  techStack: string[]
+  techStacks: string[]
   onClick(id: string): void
   opacity?: number
 }
@@ -15,7 +15,7 @@ const StudentCard = ({
   id,
   name,
   major,
-  techStack,
+  techStacks,
   profileImg,
   onClick,
   opacity = 1,
@@ -37,7 +37,7 @@ const StudentCard = ({
         </div>
 
         <S.Tags>
-          {techStack?.map((stack) => (
+          {techStacks?.map((stack) => (
             <S.Tag key={stack}>{stack}</S.Tag>
           ))}
         </S.Tags>

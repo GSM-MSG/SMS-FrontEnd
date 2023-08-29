@@ -3,7 +3,7 @@ interface StudentType {
   major: string
   name: string // 김** 게스트 일시
   profileImg: string // "" 게스트 일시
-  techStack: string[]
+  techStacks: string[]
 }
 
 export default StudentType
