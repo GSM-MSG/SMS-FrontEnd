@@ -1,11 +1,10 @@
 import { FadeinAnimation, GauthLoginButton, Headline, Title } from '@sms/shared'
 import useAuth from '@features/auth/hook/useAuth'
 import { GuestLink } from '@features/auth/components'
-import { Loading } from '@features/global'
 import * as S from './style'
 
 const LoginTemplate = () => {
-  const { onClick, isLoading } = useAuth()
+  const { onClick } = useAuth()
 
   return (
     <>
@@ -26,7 +25,6 @@ const LoginTemplate = () => {
           <GuestLink href='/'>게스트로 둘러보기</GuestLink>
         </FadeinAnimation>
       </S.Wrapper>
-      <Loading isShow={isLoading} />
     </>
   )
 }

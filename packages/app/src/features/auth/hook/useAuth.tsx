@@ -1,16 +1,17 @@
 import { useRouter } from 'next/router'
 import env from '@lib/env'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import login from '@features/auth/service/login'
 import { useToast } from '@features/toast'
 import useLocalStorage from '@features/global/hooks/useLocalStorage'
 import Token from '@lib/Token'
+import useLoading from '@features/modal/hooks/useLoading'
 
 const useAuth = () => {
   const router = useRouter()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   const code = router.query.code?.toString() || ''
   const { addToast } = useToast()
+  const { loadingWrap } = useLoading()
   const [_, setAccessExpires] = useLocalStorage<string | undefined>(
     Token.ACCESS_TOKEN_EXP,
     undefined
@@ -22,12 +23,10 @@ const useAuth = () => {
 
   useEffect(() => {
     if (!code) return
-    setIsLoading(true)
     ;(async () => {
-      const res = await login(code)
+      const res = await loadingWrap(login(code))
 
       if (typeof res === 'string') {
-        setIsLoading(false)
         return addToast('error', res)
       }
 
@@ -35,7 +34,6 @@ const useAuth = () => {
       setRefreshExpires(res.refreshTokenExp)
       addToast('success', '로그인에 성공했습니다')
       await router.push(res.isExist ? '/' : '/register')
-      setIsLoading(false)
     })()
   }, [code])
 
@@ -45,7 +43,7 @@ const useAuth = () => {
     )
   }
 
-  return { onClick, isLoading }
+  return { onClick }
 }
 
 export default useAuth
