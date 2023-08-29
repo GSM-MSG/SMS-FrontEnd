@@ -8,7 +8,7 @@ interface Props {
   grade?: number
   classNum?: number
   number?: number
-  techStack?: string[]
+  techStacks?: string[]
   introduce?: string
   profileImgUrl?: string
 }
@@ -21,7 +21,7 @@ const ProfileDetail = ({
   profileImgUrl,
   classNum,
   introduce,
-  techStack,
+  techStacks,
 }: Props) => {
   const [isError, setIsError] = useState<boolean>(false)
 
@@ -39,7 +39,7 @@ const ProfileDetail = ({
         )}
 
         <S.Tags>
-          {techStack?.map((stack, idx) => (
+          {techStacks?.map((stack, idx) => (
             <S.Tag key={idx}>{stack}</S.Tag>
           ))}
         </S.Tags>
