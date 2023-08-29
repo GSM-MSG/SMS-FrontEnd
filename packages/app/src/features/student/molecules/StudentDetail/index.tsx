@@ -43,7 +43,7 @@ const StudentDetail = ({ studentId, isCloseBtn, student }: Props) => {
           grade={studentData?.grade}
           classNum={studentData?.classNum}
           number={studentData?.number}
-          techStack={studentData?.techStack}
+          techStacks={studentData?.techStacks}
           introduce={studentData?.introduce}
           profileImgUrl={studentData?.profileImgUrl}
         />

@@ -36,6 +36,7 @@ export const ProfileBackground = styled.div`
   display: flex;
   align-items: end;
   border-radius: 0.68rem;
+  overflow: hidden;
 
   @media (max-width: 41.5rem) {
     min-width: 6.25rem;
