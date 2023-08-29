@@ -17,10 +17,22 @@ interface Props
   setValue: (value: string) => void
   clearError: () => void
   error?: string
+  position?: 'left' | 'right'
 }
 
 const MonthPicker = forwardRef<HTMLInputElement, Props>(
-  ({ value, setValue, error, clearError, disabled, ...props }, ref) => {
+  (
+    {
+      value,
+      setValue,
+      error,
+      clearError,
+      disabled,
+      position = 'left',
+      ...props
+    },
+    ref
+  ) => {
     const [isShow, setIsShow] = useState<boolean>(false)
 
     const onChange = (value: string) => {
@@ -45,6 +57,7 @@ const MonthPicker = forwardRef<HTMLInputElement, Props>(
               value={value}
               onChange={onChange}
               onClose={() => setIsShow(false)}
+              position={position}
             />
           )}
         </S.MonthInput>
