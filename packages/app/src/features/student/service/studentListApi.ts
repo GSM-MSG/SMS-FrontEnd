@@ -1,4 +1,5 @@
 import { axiosApi } from '@api'
+import env from '@lib/env'
 import Response from './studentApi/Response'
 
 interface StudentsParams extends StudentParam {
@@ -6,15 +7,22 @@ interface StudentsParams extends StudentParam {
   size: number
 }
 
-type ResponseType =
+export type ResponseType =
   | { isError: false; data: Response; error: undefined }
   | { isError: true; error: unknown; data: undefined }
 
 const studentListApi = async (
-  params: StudentsParams
+  params: StudentsParams,
+  accessToken?: string
 ): Promise<ResponseType> => {
   try {
-    const { data } = await axiosApi.get<Response>('/server/student', { params })
+    const { data } = await axiosApi.get<Response>(
+      `${env.NEXT_PUBLIC_SERVER_URL}/student`,
+      {
+        params,
+        headers: { Authorization: accessToken && `Bearer ${accessToken}` },
+      }
+    )
     return {
       isError: false,
       data,
