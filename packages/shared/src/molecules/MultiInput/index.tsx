@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   Control,
   FieldValues,
@@ -16,6 +17,7 @@ interface Props {
   register: UseFormRegister<any>
   errors?: Merge<FieldError, (FieldError | undefined)[]> | undefined
   placeholder?: string
+  required?: boolean
 }
 
 const MultiInput = ({
@@ -25,11 +27,16 @@ const MultiInput = ({
   errors,
   placeholder,
   firstRequired,
+  required,
 }: Props) => {
   const { fields, append, remove } = useFieldArray<FieldValues>({
     name,
     control,
   })
+
+  useEffect(() => {
+    if (fields.length <= 0) append('')
+  }, [])
 
   return (
     <S.Wrapper>
@@ -46,7 +53,7 @@ const MultiInput = ({
               })}
               error={errors?.[index]?.message}
             />
-            {fields.length > 1 && (
+            {!(required && fields.length <= 1) && (
               <DeleteButton type='button' onClick={() => remove(index)} />
             )}
           </S.InputWrapper>

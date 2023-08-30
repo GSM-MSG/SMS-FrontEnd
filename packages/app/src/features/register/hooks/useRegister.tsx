@@ -26,8 +26,8 @@ const useRegister = () => {
   } = useForm<RegisterFormType>({
     defaultValues: {
       techStacks: [],
-      regions: [' '],
-      certificates: [' '],
+      regions: [],
+      certificates: [],
       languageCertificates: [{ score: '', languageCertificateName: '' }],
       projects: [
         {

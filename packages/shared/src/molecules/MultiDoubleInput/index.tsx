@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   Control,
   FieldValues,
@@ -26,6 +27,10 @@ const MultiDoubleInput = ({ name, control, register, errors }: Props) => {
     control,
   })
 
+  useEffect(() => {
+    if (fields.length <= 0) append('')
+  }, [])
+
   return (
     <S.Wrapper>
       <S.InputsWrapper>
@@ -35,7 +40,7 @@ const MultiDoubleInput = ({ name, control, register, errors }: Props) => {
               <Input
                 {...register(`${name}[${index}].languageCertificateName`, {
                   required: {
-                    value: fields.length > 1,
+                    value: true,
                     message: '필수 값입니다',
                   },
                 })}
@@ -45,7 +50,7 @@ const MultiDoubleInput = ({ name, control, register, errors }: Props) => {
               <Input
                 {...register(`${name}[${index}].score`, {
                   required: {
-                    value: fields.length > 1,
+                    value: true,
                     message: '필수 값입니다',
                   },
                 })}
@@ -54,9 +59,7 @@ const MultiDoubleInput = ({ name, control, register, errors }: Props) => {
               />
             </S.DoubleInputWrapper>
 
-            {fields.length > 1 && (
-              <DeleteButton type='button' onClick={() => remove(index)} />
-            )}
+            <DeleteButton type='button' onClick={() => remove(index)} />
           </S.InputWrapper>
         ))}
       </S.InputsWrapper>

@@ -58,6 +58,7 @@ const WorkingInputs = ({
           control={control}
           errors={errors.regions}
           firstRequired
+          required
         />
       </InputColumn>
     </FormWrapper>
