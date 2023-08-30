@@ -1,17 +1,24 @@
 import { useState } from 'react'
-import * as SVG from '../../assets/svg'
-import * as Icon from '../../icons'
+import * as SVG from '@sms/shared/src/assets/svg'
+import * as Icon from '@sms/shared/src/icons'
+import useLogout from '@features/auth/hook/useLogout'
+import useMyPage from '@features/student/hooks/useMyPage'
+import profileImgApi from '@features/auth/service/profileImgApi'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
+
 import * as S from './style'
 
 interface Props {
-  onLogout?: () => void
-  onMyPage?: () => void
-  onFilter?: () => void
   isLoggedIn?: boolean
+  onFilter?: () => void
 }
 
-const Header = ({ onMyPage, onLogout, onFilter, isLoggedIn }: Props) => {
+const Header = ({ onFilter }: Props) => {
+  const { onLogout } = useLogout()
+  const { redirectMyPage } = useMyPage()
   const [isShow, setIsShow] = useState<boolean>(false)
+  const { isSuccess } = useLoggedIn({})
+  const { data } = profileImgApi.useProfileImgQuery()
 
   return (
     <S.Wrapper>
@@ -25,18 +32,22 @@ const Header = ({ onMyPage, onLogout, onFilter, isLoggedIn }: Props) => {
           </S.FilterWrapper>
         )}
 
-        {isLoggedIn ? (
+        {isSuccess ? (
           <S.UserInfoWrapper onClick={() => setIsShow(true)}>
             <S.UserInfo>
               <Icon.Bars3 />
             </S.UserInfo>
 
             <S.UserCircle>
-              <SVG.Person />
+              {data?.profileImgUrl ? (
+                <S.UserImg src={data?.profileImgUrl} alt='user profile' />
+              ) : (
+                <SVG.Person />
+              )}
             </S.UserCircle>
 
             <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
-              <S.DropdownItem onClick={onMyPage}>
+              <S.DropdownItem onClick={redirectMyPage}>
                 <Icon.Person color='var(--N50)' /> 마이페이지
               </S.DropdownItem>
 

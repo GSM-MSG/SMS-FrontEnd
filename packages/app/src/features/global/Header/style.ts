@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import Link from 'next/link'
-import { Dropdown } from '../../atoms'
+import { Dropdown } from '@sms/shared'
 
 export const Wrapper = styled.div`
   max-width: 45.5rem;
@@ -113,6 +113,13 @@ export const UserCircle = styled.div`
     width: 2rem;
     height: 2rem;
   }
+`
+
+export const UserImg = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  object-fit: cover;
 `
 
 export const DropdownMenu = styled(Dropdown.Menu)`

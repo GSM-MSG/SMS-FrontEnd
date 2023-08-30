@@ -3,7 +3,7 @@ import CustomBaseQuery from './CustomBaseQuery'
 
 const rtkApi = createApi({
   baseQuery: CustomBaseQuery,
-  tagTypes: ['Student', 'My'],
+  tagTypes: ['Student', 'My', 'Profile-Image'],
   endpoints: () => ({}),
 })
 
