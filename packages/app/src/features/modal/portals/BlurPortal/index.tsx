@@ -11,7 +11,7 @@ interface Props {
  * 배경은 blur로 되어 있음
  */
 const BlurPortal = ({ children }: Props) => {
-  const portalValue = usePortal()
+  const portalValue = usePortal(true)
 
   if (!portalValue) return <></>
 
