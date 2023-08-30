@@ -4,7 +4,6 @@ import { useToast } from '@features/toast'
 import { useDialog } from '@hooks'
 import { useDispatch } from 'react-redux'
 import { actions } from '@features/student/stores'
-import { useStudent } from '@features/student'
 import useLoggedIn from './useLoggedIn'
 
 const useWithdraw = () => {
@@ -13,7 +12,6 @@ const useWithdraw = () => {
   const dispatch = useDispatch()
   const { refetchLoggedIn } = useLoggedIn({})
   const router = useRouter()
-  const { refetchStudents } = useStudent()
 
   const onWithdraw = async () => {
     if (
@@ -30,7 +28,6 @@ const useWithdraw = () => {
     addToast('success', '회원탈퇴에 성공했습니다')
     dispatch(actions.resetPage())
     dispatch(actions.resetStudents())
-    refetchStudents({ page: 1, size: 20 })
     router.push('/')
     refetchLoggedIn()
   }

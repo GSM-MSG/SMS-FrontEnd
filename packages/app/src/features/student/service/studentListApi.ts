@@ -17,7 +17,7 @@ const studentListApi = async (
 ): Promise<ResponseType> => {
   try {
     const { data } = await axiosApi.get<Response>(
-      `${env.NEXT_PUBLIC_SERVER_URL}/student`,
+      `${accessToken ? env.NEXT_PUBLIC_SERVER_URL : '/server'}/student`,
       {
         params,
         headers: { Authorization: accessToken && `Bearer ${accessToken}` },

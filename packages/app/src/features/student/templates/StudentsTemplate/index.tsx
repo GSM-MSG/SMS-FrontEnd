@@ -1,4 +1,3 @@
-import StudentType from '@features/student/types/StudentType'
 import StudentList from '@features/student/molecules/StudentList'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import useLogout from '@features/auth/hook/useLogout'
@@ -9,12 +8,7 @@ import useMyPage from '@features/student/hooks/useMyPage'
 
 import * as S from './style'
 
-interface Props {
-  students?: StudentType[]
-  max: number
-}
-
-const StudentsTemplate = ({ students, max }: Props) => {
+const StudentsTemplate = () => {
   const { isSuccess } = useLoggedIn({})
   const { onLogout } = useLogout()
   const { onShow } = useModal()
@@ -28,7 +22,7 @@ const StudentsTemplate = ({ students, max }: Props) => {
         onMyPage={redirectMyPage}
         onLogout={onLogout}
       />
-      <StudentList students={students} max={max} />
+      <StudentList />
     </S.Wrapper>
   )
 }

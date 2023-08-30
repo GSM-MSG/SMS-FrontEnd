@@ -4,7 +4,6 @@ import { useDialog } from '@hooks'
 import { useToast } from '@features/toast'
 import { useDispatch } from 'react-redux'
 import { actions } from '@features/student/stores'
-import { useStudent } from '@features/student'
 import useLoggedIn from './useLoggedIn'
 
 const useLogout = () => {
@@ -13,7 +12,6 @@ const useLogout = () => {
   const dispatch = useDispatch()
   const { refetchLoggedIn } = useLoggedIn({})
   const router = useRouter()
-  const { refetchStudents } = useStudent()
 
   const onLogout = async () => {
     if (
@@ -30,7 +28,6 @@ const useLogout = () => {
     addToast('success', '로그아웃에 성공했습니다')
     dispatch(actions.resetPage())
     dispatch(actions.resetStudents())
-    refetchStudents({ page: 1, size: 20 })
     router.push('/')
     refetchLoggedIn()
   }

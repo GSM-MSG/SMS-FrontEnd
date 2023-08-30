@@ -7,6 +7,8 @@ import { GetServerSideProps } from 'next'
 import studentListApi from '@features/student/service/studentListApi'
 import Response from '@features/student/service/studentApi/Response'
 import Token from '@lib/Token'
+import { useStudent } from '@features/student'
+import { useEffect } from 'react'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { data } = await studentListApi(
@@ -27,14 +29,18 @@ interface Props {
 }
 
 export default function Home({ query, data }: Props) {
+  const { setStudentList } = useStudent()
   useStudentsParam({ query })
-
   useLoggedIn({})
+
+  useEffect(() => {
+    setStudentList(data?.content, data.totalSize, data.last)
+  }, [])
 
   return (
     <>
       <SEO />
-      <StudentsTemplate students={data?.content} max={data?.totalSize || 0} />
+      <StudentsTemplate />
     </>
   )
 }
