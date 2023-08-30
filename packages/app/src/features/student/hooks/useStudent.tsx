@@ -5,6 +5,7 @@ import { RootState } from '@store'
 import { actions } from '@features/student/stores'
 import { useDispatch, useSelector } from 'react-redux'
 import studentListApi from '@features/student/service/studentListApi'
+import StudentType from '@features/student/types/StudentType'
 
 interface StudentsParams extends StudentParam {
   page: number
@@ -40,10 +41,22 @@ const useStudent = () => {
     if (data.last) return dispatch(actions.nextStop())
   }
 
+  const setStudentList = (
+    students: StudentType[],
+    totalSize: number,
+    last: boolean
+  ) => {
+    dispatch(actions.resetStudents())
+    dispatch(actions.addStudents(students))
+    dispatch(actions.setTotoalSize(totalSize))
+    if (last) dispatch(actions.nextStop())
+  }
+
   return {
     studentList,
     totalSize,
     refetchStudents,
+    setStudentList,
   }
 }
 

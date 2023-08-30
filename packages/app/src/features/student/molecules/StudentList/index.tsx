@@ -1,18 +1,14 @@
 import { useRouter } from 'next/router'
-import StudentType from '@features/student/types/StudentType'
 import { StudentCard } from '@sms/shared'
 import useScrollObserver from '@features/student/hooks/useScrollObserver'
 import { useModal } from '@features/modal/hooks'
 import StudentDetailModal from '@features/student/molecules/StudentDetailModal'
+import useStudent from '@features/student/hooks/useStudent'
 import * as S from './style'
 
-interface Props {
-  students?: StudentType[]
-  max: number
-}
-
-const StudentList = ({ students, max }: Props) => {
+const StudentList = () => {
   const router = useRouter()
+  const { studentList, totalSize } = useStudent()
   const { observe } = useScrollObserver()
   const { onShow } = useModal()
 
@@ -24,11 +20,11 @@ const StudentList = ({ students, max }: Props) => {
   return (
     <S.Content>
       <S.MaxCount>
-        <S.Count>{max}</S.Count>명
+        <S.Count>{totalSize}</S.Count>명
       </S.MaxCount>
 
       <S.Students>
-        {students?.map((i) => (
+        {studentList?.map((i) => (
           <StudentCard key={i.id} {...i} onClick={() => onClick(i.id)} />
         ))}
       </S.Students>

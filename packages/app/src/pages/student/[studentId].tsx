@@ -2,7 +2,6 @@ import { ParsedUrlQuery } from 'querystring'
 import { GetServerSideProps } from 'next'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { SEO } from '@features/global'
-import { useStudent } from '@features/student'
 import useStudentsParam from '@features/student/hooks/useStudentsParam'
 import StudentsTemplate from '@features/student/templates/StudentsTemplate'
 import { useEffect } from 'react'
@@ -33,7 +32,6 @@ interface Props {
 
 const StudentDetailPage = ({ query, data }: Props) => {
   const router = useRouter()
-  const { studentList, totalSize } = useStudent()
   const { onShow } = useModal()
   useStudentsParam({ query })
 
@@ -51,7 +49,7 @@ const StudentDetailPage = ({ query, data }: Props) => {
   return (
     <>
       <SEO />
-      <StudentsTemplate students={studentList} max={totalSize || 0} />
+      <StudentsTemplate />
     </>
   )
 }

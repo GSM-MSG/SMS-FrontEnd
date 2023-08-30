@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { actions } from '@features/modal/stores'
 
-const usePortal = () => {
+const usePortal = (toRedirect?: boolean) => {
   const router = useRouter()
   const [isCSR, setIsCSR] = useState(false)
   const dispatch = useDispatch()
@@ -35,7 +35,7 @@ const usePortal = () => {
   }
 
   const onClose = () => {
-    router.push('/', '/')
+    if (toRedirect) router.push('/', '/')
     dispatch(actions.close())
   }
 
