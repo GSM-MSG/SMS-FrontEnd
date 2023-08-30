@@ -4,6 +4,7 @@ import * as Icon from '@sms/shared/src/icons'
 import useLogout from '@features/auth/hook/useLogout'
 import useMyPage from '@features/student/hooks/useMyPage'
 import profileImgApi from '@features/auth/service/profileImgApi'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
 import * as S from './style'
 
@@ -16,7 +17,8 @@ const Header = ({ onFilter }: Props) => {
   const { onLogout } = useLogout()
   const { redirectMyPage } = useMyPage()
   const [isShow, setIsShow] = useState<boolean>(false)
-  const { data, isSuccess } = profileImgApi.useProfileImgQuery()
+  const { isSuccess } = useLoggedIn({})
+  const { data } = profileImgApi.useProfileImgQuery()
 
   return (
     <S.Wrapper>
@@ -30,14 +32,18 @@ const Header = ({ onFilter }: Props) => {
           </S.FilterWrapper>
         )}
 
-        {isSuccess && data.profileImgUrl ? (
+        {isSuccess ? (
           <S.UserInfoWrapper onClick={() => setIsShow(true)}>
             <S.UserInfo>
               <Icon.Bars3 />
             </S.UserInfo>
 
             <S.UserCircle>
-              <S.UserImg src={data.profileImgUrl} alt='user profile' />
+              {data?.profileImgUrl ? (
+                <S.UserImg src={data?.profileImgUrl} alt='user profile' />
+              ) : (
+                <SVG.Person />
+              )}
             </S.UserCircle>
 
             <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
