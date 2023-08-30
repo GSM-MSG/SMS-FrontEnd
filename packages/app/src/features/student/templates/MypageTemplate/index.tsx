@@ -1,9 +1,8 @@
-import { Header } from '@sms/shared'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { RegisterFormType } from '@features/register/type'
 import MyPageForm from '@features/student/molecules/MyPageForm'
-import useLogout from '@features/auth/hook/useLogout'
 import StudentExitButton from '@features/student/atoms/StudentExitButton'
+import Header from '@features/global/Header'
 import * as S from './style'
 
 interface Props {
@@ -11,12 +10,11 @@ interface Props {
 }
 
 const MypageTemplate = ({ defaultValue }: Props) => {
-  const { isSuccess } = useLoggedIn({ redirectTo: '/login' })
-  const { onLogout } = useLogout()
+  useLoggedIn({ redirectTo: '/login' })
 
   return (
     <S.Wrapper>
-      <Header isLoggedIn={isSuccess} onLogout={onLogout} />
+      <Header />
 
       <MyPageForm defaultValue={defaultValue} />
 
