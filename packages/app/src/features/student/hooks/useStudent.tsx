@@ -27,9 +27,12 @@ const useStudent = () => {
     if (studentParam.nextStop) return
 
     dispatch(actions.setLoading(true))
-    const { data, isError, error } = await studentListApi({
-      ...params,
-    })
+    const { data, isError, error } = await studentListApi(
+      {
+        ...params,
+      },
+      null
+    )
     dispatch(actions.setLoading(false))
 
     if (isError) {
@@ -42,10 +45,12 @@ const useStudent = () => {
   }
 
   const setStudentList = (
-    students: StudentType[],
-    totalSize: number,
-    last: boolean
+    students?: StudentType[],
+    totalSize?: number,
+    last?: boolean
   ) => {
+    if (!students || !totalSize || !last) return
+
     dispatch(actions.resetStudents())
     dispatch(actions.addStudents(students))
     dispatch(actions.setTotoalSize(totalSize))

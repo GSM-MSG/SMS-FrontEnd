@@ -34,7 +34,7 @@ export default function Home({ query, data }: Props) {
   useLoggedIn({})
 
   useEffect(() => {
-    setStudentList(data?.content, data.totalSize, data.last)
+    setStudentList(data?.content, data?.totalSize, data?.last)
   }, [])
 
   return (

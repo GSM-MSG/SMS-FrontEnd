@@ -13,11 +13,13 @@ export type ResponseType =
 
 const studentListApi = async (
   params: StudentsParams,
-  accessToken?: string
+  accessToken?: string | null
 ): Promise<ResponseType> => {
   try {
     const { data } = await axiosApi.get<Response>(
-      `${accessToken ? env.NEXT_PUBLIC_SERVER_URL : '/server'}/student`,
+      `${
+        accessToken !== null ? env.NEXT_PUBLIC_SERVER_URL : '/server'
+      }/student`,
       {
         params,
         headers: { Authorization: accessToken && `Bearer ${accessToken}` },
