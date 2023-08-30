@@ -1,26 +1,38 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
-import { UseFormSetValue } from 'react-hook-form'
+import {
+  Control,
+  FieldValues,
+  UseFormRegisterReturn,
+  useFieldArray,
+} from 'react-hook-form'
 import { Input, Dropdown, Tag } from '../../atoms'
 import { Search } from '../../icons'
 import * as S from './style'
 
 interface Props {
   name: string
+  error?: string
   dropdownList: string[]
-  setValue: UseFormSetValue<any>
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   value?: string[]
   limit?: number
+  control: Control<any>
+  register: UseFormRegisterReturn<any>
 }
 
 const SearchInput = ({
   dropdownList,
   name,
-  setValue,
+  error,
   value,
   onChange,
   limit,
+  control,
 }: Props) => {
+  const { fields, append, remove } = useFieldArray<FieldValues>({
+    control,
+    name,
+  })
   const [searchValue, setSearchValue] = useState<string>('')
   const [isShow, setIsShow] = useState<boolean>(false)
 
@@ -32,15 +44,8 @@ const SearchInput = ({
 
   const onClose = () => setIsShow(false)
   const onAddStack = (newStack: string) => {
-    if (value) setValue(name, [...value, newStack])
+    if (value) append(newStack)
     setSearchValue('')
-  }
-
-  const onRemove = (stack: string) => {
-    setValue(
-      name,
-      value?.filter((i) => i !== stack)
-    )
   }
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -61,8 +66,11 @@ const SearchInput = ({
     else onAddStack(dropdownList[0])
   }
 
-  const hasTechStack = () =>
-    value?.filter((i) => i.toLowerCase() === searchValue.toLowerCase())[0]
+  const hasTechStack = () => {
+    return value?.filter(
+      (i) => i.toLowerCase() === searchValue.toLowerCase()
+    )[0]
+  }
 
   const includesValue = () =>
     dropdownList.filter(
@@ -81,6 +89,7 @@ const SearchInput = ({
           disabled={limit && value?.length ? value.length >= limit : false}
           onKeyDown={onKeyDownEnter}
           onKeyUp={onKeyUpEnter}
+          error={error}
         />
 
         {!hasTechStack() && (
@@ -101,16 +110,13 @@ const SearchInput = ({
         )}
       </S.Wrapper>
 
-      {!!value?.length && (
-        <S.Tags>
-          {value[0] &&
-            value.map((i, idx) => (
-              <Tag key={idx} onRemove={() => onRemove(i)}>
-                {i}
-              </Tag>
-            ))}
-        </S.Tags>
-      )}
+      <S.Tags>
+        {fields.map((field, idx) => (
+          <Tag key={field.id} onRemove={() => remove(idx)}>
+            {value?.[idx]}
+          </Tag>
+        ))}
+      </S.Tags>
     </div>
   )
 }

@@ -108,9 +108,13 @@ const ProfileInputs = ({
           name='techStacks'
           onChange={onChange}
           dropdownList={dropdownList}
-          setValue={setValue}
           value={watch('techStacks')}
           limit={5}
+          control={control}
+          register={register('techStacks', {
+            required: { value: true, message: '필수 값입니다' },
+          })}
+          error={errors.techStacks?.message}
         />
       </InputColumn>
     </FormWrapper>
