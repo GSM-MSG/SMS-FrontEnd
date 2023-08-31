@@ -39,10 +39,19 @@ const useAutoReissue = () => {
     }
   }
 
+  const onOnlineReissue = () => {
+    setIsFocusFetch(true)
+    onReissue()
+  }
+
   useEffect(() => {
     window.addEventListener('focus', onFocusReissue)
+    window.addEventListener('online', onOnlineReissue)
 
-    return () => window.removeEventListener('focus', onFocusReissue)
+    return () => {
+      window.removeEventListener('focus', onFocusReissue)
+      window.removeEventListener('online', onOnlineReissue)
+    }
   }, [])
 
   useEffect(() => {
