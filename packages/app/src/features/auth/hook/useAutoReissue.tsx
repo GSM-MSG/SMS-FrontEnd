@@ -1,22 +1,31 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import reissue from '@features/auth/service/reissue'
 import useLocalStorage from '@features/global/hooks/useLocalStorage'
 import Token from '@lib/Token'
 
 const useAutoReissue = () => {
-  const [access, setAccess] = useLocalStorage<string>(
-    Token.ACCESS_TOKEN_EXP,
-    ''
-  )
-  const [refresh, setRefresh] = useLocalStorage<string>(
-    Token.REFRESH_TOKEN_EXP,
-    ''
-  )
+  const [isFocusFetch, setIsFocusFetch] = useState<boolean>(false)
+  const [access, setAccess] = useLocalStorage(Token.ACCESS_TOKEN_EXP, '')
+  const [refresh, setRefresh] = useLocalStorage(Token.REFRESH_TOKEN_EXP, '')
 
-  useEffect(() => {
-    if (!access && !refresh) return
-    if (new Date(refresh) <= new Date()) {
+  const onReissue = async () => {
+    const res = await reissue()
+    if (!res) {
       setAccess('')
+      setRefresh('')
+      return
+    }
+
+    setAccess(res?.accessTokenExp || '')
+    setRefresh(res?.refreshTokenExp || '')
+  }
+
+  const onFocusReissue = () => {
+    const access = localStorage.getItem(Token.ACCESS_TOKEN_EXP)
+    const refresh = localStorage.getItem(Token.REFRESH_TOKEN_EXP)
+    if (!refresh || new Date(refresh) <= new Date()) {
+      setAccess('')
+      setRefresh('')
       return
     }
 
@@ -24,13 +33,32 @@ const useAutoReissue = () => {
       ? new Date(access).getTime() - new Date().getTime() - 10000
       : 0
 
-    const timeout = setTimeout(async () => {
-      const res = await reissue()
-      if (!res) setAccess('')
+    if (beforeMinute <= 0) {
+      setIsFocusFetch(true)
+      onReissue()
+    }
+  }
 
-      setAccess(res?.accessTokenExp || '')
-      setRefresh(res?.refreshTokenExp || '')
-    }, beforeMinute)
+  useEffect(() => {
+    window.addEventListener('focus', onFocusReissue)
+
+    return () => window.removeEventListener('focus', onFocusReissue)
+  }, [])
+
+  useEffect(() => {
+    if (isFocusFetch) return setIsFocusFetch(false)
+    if (!access && !refresh) return
+    if (new Date(refresh) <= new Date()) {
+      setAccess('')
+      setRefresh('')
+      return
+    }
+
+    const beforeMinute = access
+      ? new Date(access).getTime() - new Date().getTime() - 10000
+      : 0
+
+    const timeout = setTimeout(onReissue, beforeMinute)
 
     return () => clearTimeout(timeout)
   }, [access])
