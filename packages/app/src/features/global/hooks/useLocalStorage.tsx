@@ -1,24 +1,24 @@
 import { useCallback, useEffect, useState } from 'react'
 
-const useLocalStorage = <T,>(
+const useLocalStorage = (
   key: string,
-  initialValue: T
-): [T, (value: T) => void] => {
-  const [storedValue, setStoredValue] = useState<T>(initialValue)
+  initialValue: string
+): [string, (value: string) => void] => {
+  const [storedValue, setStoredValue] = useState<string>(initialValue)
 
   useEffect(() => {
     try {
       const item = localStorage.getItem(key)
-      item && setStoredValue(JSON.parse(item))
+      item && setStoredValue(item)
     } catch (e) {
       console.error(e)
     }
-  }, [])
+  }, [storedValue])
 
   const setValue = useCallback(
-    (value: T) => {
+    (value: string) => {
       try {
-        localStorage.setItem(key, JSON.stringify(value))
+        localStorage.setItem(key, value)
         setStoredValue(value)
       } catch (e) {
         console.error(e)

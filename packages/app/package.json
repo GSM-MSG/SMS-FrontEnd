@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.3",
     "@sms/shared": "workspace:*",
     "axios": "^1.3.5",
+    "axios-retry": "^3.7.0",
     "file-saver": "^2.0.5",
     "jsonwebtoken": "^9.0.1",
     "next": "13.3.0",
