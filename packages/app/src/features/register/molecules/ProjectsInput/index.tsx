@@ -70,7 +70,10 @@ const ProjectsInput = ({
               <InputColumn comment='이름'>
                 <Input
                   {...register(`projects.${idx}.name`, {
-                    required: { value: true, message: '필수 값입니다' },
+                    required: {
+                      value: true,
+                      message: '1개 이상은 입력해야 합니다',
+                    },
                   })}
                   placeholder='프로젝트 이름입력'
                   error={errors.projects?.[idx]?.name?.message}
