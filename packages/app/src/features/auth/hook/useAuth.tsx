@@ -12,14 +12,8 @@ const useAuth = () => {
   const code = router.query.code?.toString() || ''
   const { addToast } = useToast()
   const { loadingWrap } = useLoading()
-  const [_, setAccessExpires] = useLocalStorage<string | undefined>(
-    Token.ACCESS_TOKEN_EXP,
-    undefined
-  )
-  const [__, setRefreshExpires] = useLocalStorage<string | undefined>(
-    Token.REFRESH_TOKEN_EXP,
-    undefined
-  )
+  const [_, setAccessExpires] = useLocalStorage(Token.ACCESS_TOKEN_EXP, '')
+  const [__, setRefreshExpires] = useLocalStorage(Token.REFRESH_TOKEN_EXP, '')
 
   useEffect(() => {
     if (!code) return
