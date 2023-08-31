@@ -70,7 +70,10 @@ const ProjectsInput = ({
               <InputColumn comment='이름'>
                 <Input
                   {...register(`projects.${idx}.name`, {
-                    required: { value: true, message: '필수 값입니다' },
+                    required: {
+                      value: true,
+                      message: '1개 이상은 입력해야 합니다',
+                    },
                   })}
                   placeholder='프로젝트 이름입력'
                   error={errors.projects?.[idx]?.name?.message}
@@ -121,10 +124,14 @@ const ProjectsInput = ({
                 <SearchInput
                   name={`projects.${idx}.techStacks`}
                   dropdownList={dropdownList}
-                  setValue={setValue}
                   onChange={onChange}
                   limit={20}
                   value={watch(`projects.${idx}.techStacks`)}
+                  control={control}
+                  register={register(`projects.${idx}.techStacks`, {
+                    required: { value: true, message: '필수 값입니다' },
+                  })}
+                  error={errors.projects?.[idx]?.techStacks?.message}
                 />
               </InputColumn>
 

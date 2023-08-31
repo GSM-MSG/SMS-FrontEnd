@@ -12,7 +12,7 @@ const useStudentsFilter = () => {
     param: state.studentParam.param,
   }))
   const { onClose } = useModal()
-  const { register, setValue, handleSubmit, getValues, watch, reset } =
+  const { register, setValue, handleSubmit, getValues, watch, reset, control } =
     useForm<StudentParam>({
       defaultValues: {
         grade: [],
@@ -53,6 +53,8 @@ const useStudentsFilter = () => {
     onSubmit,
     getValues,
     watch,
+    control,
+    onClickMajor,
     reset: () =>
       reset({
         grade: [],
@@ -66,7 +68,6 @@ const useStudentsFilter = () => {
         minGsmAuthenticationScore: 0,
         maxGsmAuthenticationScore: 990,
       }),
-    onClickMajor,
   }
 }
 

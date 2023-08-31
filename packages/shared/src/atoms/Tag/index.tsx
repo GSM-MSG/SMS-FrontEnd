@@ -1,3 +1,4 @@
+import { DetailedHTMLProps, HTMLAttributes } from 'react'
 import styled from '@emotion/styled'
 import { XmarkOutline } from '../../icons'
 
@@ -21,9 +22,9 @@ const XIcon = styled.div`
   cursor: pointer;
 `
 
-interface Props {
-  children: string
-  onRemove(): void
+interface Props
+  extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+  onRemove?: () => void
 }
 
 const Tag = ({ children, onRemove }: Props) => {

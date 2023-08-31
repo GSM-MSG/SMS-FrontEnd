@@ -19,6 +19,7 @@ const CertificateInputs = ({ control, register, errors }: Props) => {
           name='certificates'
           placeholder='예)정보처리산업기사'
           errors={errors.certificates}
+          firstRequired
         />
       </InputColumn>
     </FormWrapper>

@@ -24,6 +24,7 @@ const FilterModal = () => {
     getValues,
     watch,
     reset,
+    control,
     onClickMajor,
   } = useStudentsFilter()
   const { onChange, dropdownList } = useAutocomplete()
@@ -204,11 +205,13 @@ const FilterModal = () => {
 
           <RangeSliderSection isShow={true} title='세부스택'>
             <SearchInput
-              setValue={setValue}
               name='techStacks'
               dropdownList={dropdownList}
               onChange={onChange}
               value={watch('techStacks')}
+              control={control}
+              register={register('techStacks')}
+              error=''
             />
           </RangeSliderSection>
         </S.Content>

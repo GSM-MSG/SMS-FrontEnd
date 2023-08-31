@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 export const Wrapper = styled.form`
   max-width: 44rem;
   margin: 4.87rem auto 7.25rem;
+  width: 100%;
 
   @media (max-width: 41.5rem) {
     margin: 1.88rem auto 7.25rem;
