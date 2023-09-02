@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { StudentCard } from '@sms/shared'
+import { StudentCard, StudentCardSkeleton } from '@sms/shared'
 import useScrollObserver from '@features/student/hooks/useScrollObserver'
 import { useModal } from '@features/modal/hooks'
 import StudentDetailModal from '@features/student/molecules/StudentDetailModal'
@@ -24,6 +24,10 @@ const StudentList = () => {
       </S.MaxCount>
 
       <S.Students>
+        {!studentList.length &&
+          Array(...Array(20)).map((_, idx) => (
+            <StudentCardSkeleton key={idx} />
+          ))}
         {studentList?.map((i) => (
           <StudentCard key={i.id} {...i} onClick={() => onClick(i.id)} />
         ))}
