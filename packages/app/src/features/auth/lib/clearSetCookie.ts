@@ -9,5 +9,5 @@ export const createCookie = (name: string) => {
   const secure = process.env.NODE_ENV === 'production' ? 'secure;' : ''
   const host = new URL(env.NEXT_PUBLIC_CLIENT_URL).host.replace(':3000', '')
 
-  return `${name}=empty; path=/; max-age=-1; httpOnly; ${secure} domain=${host}`
+  return `${name}=empty; path=/; max-age=-1; httpOnly; ${secure} domain=${host}; SameSite=Strict`
 }
