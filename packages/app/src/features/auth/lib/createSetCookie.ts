@@ -22,5 +22,5 @@ export const createCookie = (name: string, token: string, expired: string) => {
   const UTCDate = new Date(expired).toUTCString()
   const host = new URL(env.NEXT_PUBLIC_CLIENT_URL).host.replace(':3000', '')
 
-  return `${name}=${token}; path=/; expires=${UTCDate}; httpOnly; ${secure} domain=${host}`
+  return `${name}=${token}; path=/; expires=${UTCDate}; httpOnly; ${secure} domain=${host}; SameSite=Strict`
 }
