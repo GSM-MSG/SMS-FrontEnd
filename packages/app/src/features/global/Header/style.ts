@@ -115,11 +115,12 @@ export const UserCircle = styled.div`
   }
 `
 
-export const UserImg = styled.img`
+export const UserImgWrapper = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  object-fit: cover;
+  overflow: hidden;
+  position: relative;
 `
 
 export const DropdownMenu = styled(Dropdown.Menu)`
