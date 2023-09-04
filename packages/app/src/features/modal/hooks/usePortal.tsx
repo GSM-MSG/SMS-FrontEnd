@@ -35,7 +35,7 @@ const usePortal = (toRedirect?: boolean) => {
   }
 
   const onClose = () => {
-    if (toRedirect) router.push('/', '/')
+    if (toRedirect) router.push('/', '/', { scroll: false })
     dispatch(actions.close())
   }
 

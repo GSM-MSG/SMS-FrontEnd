@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import * as SVG from '@sms/shared/src/assets/svg'
 import * as Icon from '@sms/shared/src/icons'
 import useLogout from '@features/auth/hook/useLogout'
@@ -40,7 +41,16 @@ const Header = ({ onFilter }: Props) => {
 
             <S.UserCircle>
               {data?.profileImgUrl ? (
-                <S.UserImg src={data?.profileImgUrl} alt='user profile' />
+                <S.UserImgWrapper>
+                  <Image
+                    src={data?.profileImgUrl}
+                    alt='user profile'
+                    fill
+                    priority
+                    sizes='100%'
+                    style={{ objectFit: 'cover' }}
+                  />
+                </S.UserImgWrapper>
               ) : (
                 <SVG.Person />
               )}

@@ -23,7 +23,16 @@ const StudentCard = ({
   return (
     <S.Wrapper style={{ opacity }} onClick={() => onClick(id)}>
       {profileImg ? (
-        <S.ProfileImg src={profileImg} />
+        <S.ProfileImageWrapper>
+          <S.ProfileImg
+            src={profileImg}
+            alt='profile image'
+            fill
+            priority
+            sizes='100%'
+            style={{ objectFit: 'cover' }}
+          />
+        </S.ProfileImageWrapper>
       ) : (
         <S.ProfileBackground>
           <SVG.Person />
