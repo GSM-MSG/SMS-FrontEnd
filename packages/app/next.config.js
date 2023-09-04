@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['shared'],
+  images: { domains: [process.env.IMAGE_SERVER_DOMAIN] },
   async rewrites() {
     return [
       {
