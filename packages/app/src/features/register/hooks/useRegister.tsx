@@ -11,7 +11,7 @@ import useLoading from '@features/modal/hooks/useLoading'
 const useRegister = () => {
   const { addToast } = useToast()
   const router = useRouter()
-  const { loadingWrap } = useLoading()
+  const { loadingWrap, loadingClose } = useLoading()
   const { refetchLoggedIn } = useLoggedIn({})
   const {
     register,
@@ -51,6 +51,7 @@ const useRegister = () => {
 
     router.push('/')
 
+    loadingClose()
     addToast('success', '학생 정보 기입에 성공했습니다')
     await refetchLoggedIn()
   })
