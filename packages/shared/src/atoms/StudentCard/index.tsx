@@ -30,6 +30,7 @@ const StudentCard = ({
             fill
             priority
             sizes='100%'
+            style={{ objectFit: 'cover' }}
           />
         </S.ProfileImageWrapper>
       ) : (

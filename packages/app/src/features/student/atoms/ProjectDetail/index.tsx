@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import * as Icon from '@sms/shared/src/icons'
 import * as S from './style'
 
@@ -29,11 +30,16 @@ const ProjectDetail = ({ projects }: Props) => {
           </S.ProjectInfo>
           <S.Images>
             {project.previewImages.map((image, idx) => (
-              <S.Image
-                key={idx}
-                src={image}
-                alt={`project preview image ${idx}`}
-              />
+              <S.ImageWrapper key={idx}>
+                <Image
+                  src={image}
+                  alt={`project preview image ${idx}`}
+                  fill
+                  priority
+                  sizes='100%'
+                  style={{ objectFit: 'cover' }}
+                />
+              </S.ImageWrapper>
             ))}
           </S.Images>
 
