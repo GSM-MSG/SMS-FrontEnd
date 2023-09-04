@@ -24,7 +24,8 @@ const useImageUpload = ({ setValue, setError, clearError }: Props) => {
     const file = e.target.files[0]
 
     const imageUrl = await loadingWrap(
-      PostFileService(file, file.type.includes('image'))
+      PostFileService(file, file.type.includes('image')),
+      true
     )
 
     if (!imageUrl) return showErrorMessage('파일 업로드에 실패했습니다')
