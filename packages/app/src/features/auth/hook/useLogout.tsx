@@ -4,13 +4,12 @@ import { useDialog } from '@hooks'
 import { useToast } from '@features/toast'
 import { useDispatch } from 'react-redux'
 import { actions } from '@features/student/stores'
-import useLoggedIn from './useLoggedIn'
+import { rtkApi } from '@api'
 
 const useLogout = () => {
   const { dialog } = useDialog()
   const { addToast } = useToast()
   const dispatch = useDispatch()
-  const { refetchLoggedIn } = useLoggedIn({})
   const router = useRouter()
 
   const onLogout = async () => {
@@ -28,8 +27,9 @@ const useLogout = () => {
     addToast('success', '로그아웃에 성공했습니다')
     dispatch(actions.resetPage())
     dispatch(actions.resetStudents())
+    dispatch(rtkApi.util.resetApiState())
+
     router.push('/')
-    refetchLoggedIn()
   }
 
   return { onLogout }
