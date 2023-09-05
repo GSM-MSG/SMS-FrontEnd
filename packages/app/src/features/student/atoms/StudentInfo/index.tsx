@@ -55,7 +55,7 @@ const StudentInfo = ({
           </S.TableColumn>
         )}
 
-        {contactEmail && gsmAuthenticationScore && <S.TableLine />}
+        {(contactEmail || gsmAuthenticationScore) && <S.TableLine />}
 
         {militaryService && (
           <S.TableColumn>
@@ -75,10 +75,12 @@ const StudentInfo = ({
           </S.TableColumn>
         )}
 
-        {salary && (
+        {salary !== undefined && (
           <S.TableColumn>
             <S.TableTitle>희망 연봉</S.TableTitle>
-            <S.TableValue>{salary} 만원</S.TableValue>
+            <S.TableValue>
+              {salary <= 0 ? '상관 없음' : `${salary} 만원`}
+            </S.TableValue>
           </S.TableColumn>
         )}
 
@@ -89,7 +91,9 @@ const StudentInfo = ({
           </S.TableColumn>
         )}
 
-        {formOfEmployment && salary && !!regions?.length && <S.TableLine />}
+        {(formOfEmployment !== undefined ||
+          salary !== undefined ||
+          !!regions?.length) && <S.TableLine />}
 
         {!!languageCertificates?.length &&
           languageCertificates?.map((i, idx) => (
