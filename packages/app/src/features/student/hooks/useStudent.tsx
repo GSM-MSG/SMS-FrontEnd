@@ -42,6 +42,7 @@ const useStudent = () => {
     dispatch(actions.setTotoalSize(data.totalSize))
     if (data?.content) dispatch(actions.addStudents(data.content))
     if (data.last) return dispatch(actions.nextStop())
+    dispatch(actions.nextPage())
   }
 
   const setStudentList = (
