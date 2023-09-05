@@ -46,6 +46,7 @@ const StudentDetail = ({ studentId, isCloseBtn, student }: Props) => {
           techStacks={studentData?.techStacks}
           introduce={studentData?.introduce}
           profileImgUrl={studentData?.profileImgUrl}
+          department={studentData?.department}
         />
         <StudentInfo
           contactEmail={studentData?.contactEmail}
