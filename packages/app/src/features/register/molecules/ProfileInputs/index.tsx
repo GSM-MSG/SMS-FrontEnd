@@ -111,9 +111,7 @@ const ProfileInputs = ({
           value={watch('techStacks')}
           limit={5}
           control={control}
-          register={register('techStacks', {
-            required: { value: true, message: '1개 이상은 입력해야 합니다' },
-          })}
+          register={register('techStacks')}
           error={errors.techStacks?.message}
         />
       </InputColumn>

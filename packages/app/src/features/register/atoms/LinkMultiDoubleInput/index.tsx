@@ -33,9 +33,17 @@ const LinkMultiDoubleInput = ({ index, control, register, errors }: Props) => {
             key={field.id}
             titleRegister={register(`projects.${index}.links.${idx}.name`, {
               required: { value: true, message: '필수 값입니다' },
+              maxLength: {
+                value: 50,
+                message: '최대 50자까지 가능합니다',
+              },
             })}
             contentRegister={register(`projects.${index}.links.${idx}.url`, {
               required: { value: true, message: '필수 값입니다' },
+              maxLength: {
+                value: 5000,
+                message: '최대 5000자까지 가능합니다',
+              },
             })}
             titleError={errors?.projects?.[index]?.links?.[idx]?.name?.message}
             contentError={errors?.projects?.[index]?.links?.[idx]?.url?.message}

@@ -16,11 +16,11 @@ interface Props {
 const SchoolInputs = ({ register, errors, resetField }: Props) => {
   return (
     <FormWrapper title='학교 생활'>
-      <InputColumn comment='인증제 점수'>
+      <InputColumn comment={`인증제 점수\n(최대 9999점)`}>
         <Input
           {...register('gsmAuthenticationScore', {
             required: { value: true, message: '필수 값입니다' },
-            max: { value: 3000, message: '최대 3000점 까지 가능합니다' },
+            max: { value: 9999, message: '최대 9999점 까지 가능합니다' },
             valueAsNumber: true,
           })}
           placeholder='인증 점수 입력'
