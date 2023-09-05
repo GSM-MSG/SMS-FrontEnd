@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { DepartmentData } from '@features/student/data/StudentDetailData'
 import * as SVG from '@sms/shared/src/assets/svg'
 import * as S from './style'
 
@@ -11,6 +12,7 @@ interface Props {
   techStacks?: string[]
   introduce?: string
   profileImgUrl?: string
+  department?: Department
 }
 
 const ProfileDetail = ({
@@ -22,6 +24,7 @@ const ProfileDetail = ({
   classNum,
   introduce,
   techStacks,
+  department,
 }: Props) => {
   return (
     <S.Wrapper>
@@ -30,9 +33,9 @@ const ProfileDetail = ({
 
         <S.Name>{name?.replace('**', '소금')}</S.Name>
 
-        {grade && classNum && number && (
+        {grade && classNum && number && department && (
           <S.SchoolInfo>
-            {grade}학년 {classNum}반 {number}번 • 소프트웨어 개발과
+            {grade}학년 {classNum}반 {number}번 • {DepartmentData[department]}
           </S.SchoolInfo>
         )}
 
