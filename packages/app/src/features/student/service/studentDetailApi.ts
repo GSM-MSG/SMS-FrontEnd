@@ -1,5 +1,4 @@
 import { axiosApi } from '@api'
-import env from '@lib/env'
 
 const studentDetailApi = async (
   studentId: string,
@@ -8,7 +7,7 @@ const studentDetailApi = async (
 ) => {
   try {
     const { data } = await axiosApi.get<StudentDetail>(
-      `${env.NEXT_PUBLIC_SERVER_URL}/student/${role}${studentId}`,
+      `${process.env.SERVER_URL}/student/${role}${studentId}`,
       { headers: { Authorization: token && `Bearer ${token}` } }
     )
     return data

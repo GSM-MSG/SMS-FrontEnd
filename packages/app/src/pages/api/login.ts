@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { axiosApi } from '@api'
-import env from '@lib/env'
 import { TokenResponse } from '@features/auth/type/TokenResponse'
 import { createSetCookie } from '@features/auth/lib/createSetCookie'
 
@@ -15,7 +14,7 @@ export default async function handler(
 
   try {
     const { data } = await axiosApi.post<TokenResponse>(
-      `${env.NEXT_PUBLIC_SERVER_URL}/auth`,
+      `${process.env.SERVER_URL}/auth`,
       { code }
     )
     res.status(200).setHeader('Set-Cookie', createSetCookie(data)).json(data)

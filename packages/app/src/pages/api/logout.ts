@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { axiosApi } from '@api'
-import env from '@lib/env'
 import { clearSetCookie } from '@features/auth/lib/clearSetCookie'
 import { isAxiosError } from 'axios'
 import ErrorMapper from '@lib/ErrorMapper'
@@ -20,7 +19,7 @@ export default async function handler(
     return res.status(404).json({ message: 'Not found token' })
 
   try {
-    await axiosApi.delete(`${env.NEXT_PUBLIC_SERVER_URL}/auth`, {
+    await axiosApi.delete(`${process.env.SERVER_URL}/auth`, {
       headers: {
         Authorization: `Bearer ${access}`,
         Refresh_Token: refresh,
