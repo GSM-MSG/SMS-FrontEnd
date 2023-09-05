@@ -45,6 +45,10 @@ const PrizeInputs = ({
                 <Input
                   {...register(`prizes.${idx}.name`, {
                     required: { value: true, message: '필수 값입니다' },
+                    maxLength: {
+                      value: 40,
+                      message: '최대 40자까지 가능합니다',
+                    },
                   })}
                   placeholder='수상 내역 이름입력'
                   error={errors?.prizes?.[idx]?.name?.message}
@@ -55,6 +59,10 @@ const PrizeInputs = ({
                 <Input
                   {...register(`prizes.${idx}.kind`, {
                     required: { value: true, message: '필수 값입니다' },
+                    maxLength: {
+                      value: 20,
+                      message: '최대 20자까지 가능합니다',
+                    },
                   })}
                   placeholder='수상 종류입력'
                   error={errors?.prizes?.[idx]?.kind?.message}

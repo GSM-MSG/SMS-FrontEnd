@@ -72,7 +72,11 @@ const ProjectsInput = ({
                   {...register(`projects.${idx}.name`, {
                     required: {
                       value: true,
-                      message: '1개 이상은 입력해야 합니다',
+                      message: '필수 값입니다',
+                    },
+                    maxLength: {
+                      value: 30,
+                      message: '최대 30자까지 가능합니다',
                     },
                   })}
                   placeholder='프로젝트 이름입력'
@@ -114,6 +118,10 @@ const ProjectsInput = ({
                 <Input
                   {...register(`projects.${idx}.description`, {
                     required: { value: true, message: '필수 값입니다' },
+                    maxLength: {
+                      value: 1000,
+                      message: '최대 1000자까지 가능합니다',
+                    },
                   })}
                   placeholder='프로젝트 내용입력'
                   error={errors.projects?.[idx]?.description?.message}
@@ -139,6 +147,10 @@ const ProjectsInput = ({
                 <Input
                   {...register(`projects.${idx}.myActivity`, {
                     required: { value: true, message: '필수 값입니다' },
+                    maxLength: {
+                      value: 1000,
+                      message: '최대 1000자까지 가능합니다',
+                    },
                   })}
                   placeholder='주요 작업 내용서술'
                   error={errors.projects?.[idx]?.myActivity?.message}

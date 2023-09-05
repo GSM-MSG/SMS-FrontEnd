@@ -90,6 +90,7 @@ const SearchInput = ({
           onKeyDown={onKeyDownEnter}
           onKeyUp={onKeyUpEnter}
           error={error}
+          maxLength={30}
         />
 
         {!hasTechStack() && (
