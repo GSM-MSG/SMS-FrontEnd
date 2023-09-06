@@ -13,13 +13,19 @@ export default async function handler(
   const refreshToken = req.cookies[Token.REFRESH_TOKEN]
 
   try {
-    const { data } = await axiosApi.patch<TokenResponse>(
+    const { data, headers } = await axiosApi.patch<TokenResponse>(
       `${process.env.SERVER_URL}/auth`,
       {},
       { headers: { 'Refresh-Token': refreshToken } }
     )
-    res.status(200).setHeader('Set-Cookie', createSetCookie(data)).json(data)
+
+    const setCookie = headers['set-cookie'] || []
+
+    res
+      .status(200)
+      .setHeader('Set-Cookie', createSetCookie(setCookie))
+      .json(data)
   } catch (e) {
-    res.status(500).json({ message: 'Server Error' })
+    res.status(500).json('server error')
   }
 }
