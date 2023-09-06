@@ -19,8 +19,10 @@ export const createSetCookie = (data: TokenResponse) => {
 
 export const createCookie = (name: string, token: string, expired: string) => {
   const secure = process.env.NODE_ENV === 'production' ? 'secure;' : ''
-  const UTCDate = new Date(expired).getTime() - new Date().getTime()
+  const maxAge = (new Date(expired).getTime() - new Date().getTime()) / 1000
   const host = new URL(env.NEXT_PUBLIC_CLIENT_URL).host.replace(':3000', '')
 
-  return `${name}=${token}; path=/; max-age=${UTCDate}; httpOnly; ${secure} domain=${host}; SameSite=Strict`
+  return `${name}=${token}; path=/; max-age=${Math.floor(
+    maxAge
+  )}; httpOnly; ${secure} domain=${host}; SameSite=Strict`
 }
