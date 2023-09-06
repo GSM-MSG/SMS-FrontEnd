@@ -5,7 +5,7 @@ import {
   FourImageInputs,
   IconImageInput,
 } from '@features/register/atoms'
-import { Input, SearchInput, MultiMonthPicker } from '@sms/shared'
+import { Input, SearchInput, MultiMonthPicker, Textarea } from '@sms/shared'
 import { RegisterFormType } from '@features/register/type'
 import * as Icon from '@sms/shared/src/icons'
 import {
@@ -115,7 +115,7 @@ const ProjectsInput = ({
               </InputColumn>
 
               <InputColumn comment='내용'>
-                <Input
+                <Textarea
                   {...register(`projects.${idx}.description`, {
                     required: { value: true, message: '필수 값입니다' },
                     maxLength: {
@@ -144,7 +144,7 @@ const ProjectsInput = ({
               </InputColumn>
 
               <InputColumn comment='주요 작업'>
-                <Input
+                <Textarea
                   {...register(`projects.${idx}.myActivity`, {
                     required: { value: true, message: '필수 값입니다' },
                     maxLength: {

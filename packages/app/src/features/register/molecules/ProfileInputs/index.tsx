@@ -1,4 +1,4 @@
-import { Input, Profile, Select, SearchInput } from '@sms/shared'
+import { Input, Profile, Select, SearchInput, Textarea } from '@sms/shared'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
 import { RegisterFormType } from '@features/register/type'
 import {
@@ -57,13 +57,12 @@ const ProfileInputs = ({
         />
       </InputColumn>
       <InputColumn comment='자기 소개'>
-        <Input
+        <Textarea
           {...register('introduce', {
             required: { value: true, message: '필수 값입니다' },
             maxLength: { value: 50, message: '최대 50자 까지 가능합니다' },
           })}
           error={errors.introduce?.message}
-          onReset={() => resetField('introduce')}
           placeholder='1줄 자기소개 입력'
         />
       </InputColumn>
