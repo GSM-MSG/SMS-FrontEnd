@@ -33,7 +33,7 @@ export const createCookie = (name: string, token: string, expired: string) => {
   const host = new URL(env.NEXT_PUBLIC_CLIENT_URL).host.replace(':3000', '')
   const maxAge = (expires.getTime() - currentDate.getTime()) / 1000
 
-  return `${name}=${token}; path=/; expires=${Math.floor(
+  return `${name}=${token}; path=/; max-age=${Math.floor(
     maxAge
   )}; httpOnly; ${secure} domain=${host}; SameSite=Strict`
 }
