@@ -13,11 +13,17 @@ export default async function handler(
   if (!code) return res.status(400).json({ message: 'not found code' })
 
   try {
-    const { data } = await axiosApi.post<TokenResponse>(
+    const { data, headers } = await axiosApi.post<TokenResponse>(
       `${process.env.SERVER_URL}/auth`,
       { code }
     )
-    res.status(200).setHeader('Set-Cookie', createSetCookie(data)).json(data)
+
+    const setCookie = headers['set-cookie'] || []
+
+    res
+      .status(200)
+      .setHeader('Set-Cookie', createSetCookie(setCookie))
+      .json(data)
   } catch (e) {
     res.status(500).json({ message: 'Server Error' })
   }
