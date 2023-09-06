@@ -87,6 +87,7 @@ export const Stack = styled.div`
 export const ProjectDescription = styled.p`
   ${({ theme }) => theme.body2}
   color: var(--N40);
+  white-space: pre-line;
 `
 
 export const LinkWrapper = styled(Link)`

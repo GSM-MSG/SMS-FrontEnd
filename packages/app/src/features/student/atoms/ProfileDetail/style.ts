@@ -61,6 +61,7 @@ export const Introduce = styled.div`
   color: var(--BLACK);
   padding: 1rem 1.14rem;
   border-radius: 0.5rem;
+  white-space: pre-line;
 `
 
 export const IntroduceLabel = styled.div`
