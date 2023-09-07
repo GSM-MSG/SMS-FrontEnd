@@ -5,9 +5,14 @@ interface Response {
   role: Role
 }
 
-const accessService = async () => {
+const accessService = async (accessToken: string) => {
   try {
-    const { data } = await axiosApi.get<Response>('/auth/verify/access')
+    const { data } = await axiosApi.get<Response>(
+      `${process.env.SERVER_URL}/auth/verify/access`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    )
     return { isSuccess: true, data }
   } catch (error) {
     return { isSuccess: false, error }
