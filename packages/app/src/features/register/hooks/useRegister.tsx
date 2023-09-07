@@ -47,7 +47,10 @@ const useRegister = () => {
 
   const onSubmit = handleSubmit(async (form: RegisterFormType) => {
     const res = await loadingWrap(PostStudentInfoService(form))
-    if (res) return addToast('error', ErrorMapper(res, apiErrors))
+    if (res) {
+      loadingClose()
+      return addToast('error', ErrorMapper(res, apiErrors))
+    }
 
     router.push('/')
 

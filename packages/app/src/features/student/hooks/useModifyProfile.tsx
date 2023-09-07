@@ -35,6 +35,7 @@ const useModifyProfile = ({ defaultValue }: Props) => {
     const errorMessage = await loadingWrap(modifyStudentService(form))
 
     if (errorMessage) {
+      loadingClose()
       return addToast('error', errorMessage)
     }
     await router.push('/')

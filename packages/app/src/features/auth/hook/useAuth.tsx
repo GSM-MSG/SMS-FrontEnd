@@ -21,6 +21,7 @@ const useAuth = () => {
       const res = await loadingWrap(login(code))
 
       if (typeof res === 'string') {
+        loadingClose()
         return addToast('error', res)
       }
 
