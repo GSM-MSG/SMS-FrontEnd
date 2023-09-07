@@ -8,11 +8,11 @@ interface Response {
 const loggedInApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     loggedIn: build.query<Response, void>({
-      query: () => ({ url: '/server/auth/verify/access' }),
+      query: () => ({ url: '/api/verify' }),
       providesTags: [{ type: 'My' }],
     }),
     refetchLoggedIn: build.mutation<Response, void>({
-      query: () => ({ url: '/server/auth/verify/access' }),
+      query: () => ({ url: '/api/verify' }),
       invalidatesTags: [{ type: 'My' }],
     }),
   }),
