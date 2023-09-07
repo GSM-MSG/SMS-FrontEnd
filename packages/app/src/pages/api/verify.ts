@@ -25,7 +25,7 @@ export default async function handler(
       .json({ message: 'logout' })
   }
 
-  res.status(500).json({ message: '니가 잘못 했겠지' })
+  res.status(400).json({ message: '니가 잘못 했겠지' })
 }
 
 const verifyToken = (token: string) => {
