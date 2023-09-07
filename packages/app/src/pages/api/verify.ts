@@ -11,9 +11,10 @@ export default async function handler(
   if (req.method !== 'GET') {
     return res.status(400).json({ message: 'not found page' })
   }
+  const accessToken = req.cookies[Token.ACCESS_TOKEN] || ''
   const refreshToken = req.cookies[Token.REFRESH_TOKEN] || ''
 
-  const { isSuccess, data } = await accessService()
+  const { isSuccess, data } = await accessService(accessToken)
   if (isSuccess) {
     return res.status(200).json(data)
   }
