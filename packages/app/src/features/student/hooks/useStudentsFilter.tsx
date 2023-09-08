@@ -32,6 +32,7 @@ const useStudentsFilter = () => {
   const onSubmit = handleSubmit(async (form) => {
     dispatch(actions.resetPage())
     dispatch(actions.setParam(form))
+    ParamsFilter(form)
 
     location.href = toQueryString(ParamsFilter(form))
     onClose()
@@ -67,6 +68,9 @@ const useStudentsFilter = () => {
         maxSalary: 9999,
         minGsmAuthenticationScore: 0,
         maxGsmAuthenticationScore: 990,
+        stuNumSort: '',
+        salarySort: '',
+        gsmAuthenticationScoreSort: '',
       }),
   }
 }
