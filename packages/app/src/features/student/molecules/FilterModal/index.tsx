@@ -105,7 +105,7 @@ const FilterModal = () => {
           </CheckboxSection>
 
           <CheckboxSection isShow={true} title='분야'>
-            {majorList?.map((major) => (
+            {[...(majorList || []), '기타']?.map((major) => (
               <Checkbox
                 key={major}
                 value={major}
