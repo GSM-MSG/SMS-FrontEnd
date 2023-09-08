@@ -18,6 +18,7 @@ interface Props {
   limit?: number
   control: Control<any>
   register: UseFormRegisterReturn<any>
+  disableDirectInput?: boolean
 }
 
 const SearchInput = ({
@@ -28,6 +29,7 @@ const SearchInput = ({
   onChange,
   limit,
   control,
+  disableDirectInput,
 }: Props) => {
   const { fields, append, remove } = useFieldArray<FieldValues>({
     control,
@@ -102,7 +104,7 @@ const SearchInput = ({
                   {i}
                 </Dropdown.Item>
               ))}
-            {!includesValue() && (
+            {!includesValue() && !disableDirectInput && (
               <Dropdown.Item onClick={() => onAddStack(searchValue)}>
                 {`+ "${searchValue}" 직접 추가하기`}
               </Dropdown.Item>

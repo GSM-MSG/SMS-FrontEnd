@@ -211,6 +211,7 @@ const FilterModal = () => {
               value={watch('techStacks')}
               control={control}
               register={register('techStacks')}
+              disableDirectInput
               error=''
             />
           </RangeSliderSection>
