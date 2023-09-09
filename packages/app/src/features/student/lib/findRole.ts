@@ -6,17 +6,12 @@ import { decode } from 'jsonwebtoken'
 export const findRole = (cookie: string) => {
   const payload = decode(cookie, { json: true })
 
-  let role: string
   switch (payload?.ROLE) {
     case 'ROLE_TEACHER':
-      role = 'teacher/'
-      break
+      return 'teacher/'
     case 'ROLE_STUDENT':
-      role = ''
-      break
+      return ''
     default:
-      role = 'anonymous/'
+      return 'anonymous/'
   }
-
-  return role
 }

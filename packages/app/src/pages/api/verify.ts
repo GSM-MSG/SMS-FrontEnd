@@ -1,49 +1,29 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import Token from '@lib/Token'
-import { decode } from 'jsonwebtoken'
-import accessService from '@features/server/services/accessService'
+import { accessService } from '@features/server/services'
 import { clearSetCookie } from '@features/auth/lib/clearSetCookie'
+import { checkTokenExpiration, withHandler } from '@features/server/libs'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'GET') {
-    return res.status(400).json({ message: 'not found page' })
-  }
-  const accessToken = req.cookies[Token.ACCESS_TOKEN] || ''
-  const refreshToken = req.cookies[Token.REFRESH_TOKEN] || ''
+export default withHandler({
+  methods: ['GET'],
+  checkAccess: true,
+  checkRefresh: true,
 
-  const { isSuccess, data } = await accessService(accessToken)
-  if (isSuccess) {
-    return res.status(200).json(data)
-  }
+  handler: async (req, res) => {
+    const accessToken = req.cookies[Token.ACCESS_TOKEN] || ''
+    const refreshToken = req.cookies[Token.REFRESH_TOKEN] || ''
 
-  if (!verifyToken(refreshToken)) {
-    return res
-      .status(401)
-      .setHeader('Set-Cookie', clearSetCookie())
-      .json({ message: 'logout' })
-  }
+    const { isSuccess, data, error } = await accessService(accessToken)
+    if (isSuccess) {
+      return res.status(200).json(data)
+    }
 
-  res.status(400).json({ message: '니가 잘못 했겠지' })
-}
+    if (!checkTokenExpiration(refreshToken)) {
+      return res
+        .status(401)
+        .setHeader('Set-Cookie', clearSetCookie())
+        .json({ message: '로그아웃 되었습니다' })
+    }
 
-const verifyToken = (token: string) => {
-  try {
-    const decodedToken = decode(token, { json: true, complete: true })
-    if (
-      !decodedToken ||
-      typeof decodedToken.payload === 'string' ||
-      !decodedToken.payload.exp
-    )
-      return false
-
-    const expiresDate = new Date(decodedToken.payload.exp * 1000)
-    if (expiresDate <= new Date()) return false
-
-    return true
-  } catch (e) {
-    return false
-  }
-}
+    throw error
+  },
+})

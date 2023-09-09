@@ -1,23 +1,24 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import { findRole } from '@features/student/lib/findRole'
-import studentDetailApi from '@features/student/service/studentDetailApi'
+import { studentDetailService } from '@features/server/services'
+import { withHandler } from '@features/server/libs'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'GET')
-    return res.status(400).json({ message: 'not found page' })
+export default withHandler({
+  methods: ['GET'],
 
-  const studentId = req.query.studentId
-  if (!studentId)
-    return res.status(400).json({ message: 'not found student id' })
+  handler: async (req, res) => {
+    const studentId = req.query.studentId
+    if (!studentId)
+      return res.status(400).json({ message: 'id를 찾을 수 없습니다' })
 
-  const accessToken = req.cookies['accessToken']
-  const role = findRole(accessToken || '')
+    const accessToken = req.cookies['accessToken'] || ''
+    const role = findRole(accessToken)
 
-  const data = await studentDetailApi(`${studentId}`, role, accessToken)
-  if (!data) return res.status(404).json({ message: 'not found student' })
+    const { data } = await studentDetailService(
+      `${studentId}`,
+      role,
+      accessToken
+    )
 
-  res.status(200).json(data)
-}
+    res.status(200).json(data)
+  },
+})
