@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   max-width: 60rem;
   width: 90%;
 
-  @media (max-width: 34rem) {
+  @media (max-width: 41.5rem) {
     width: 100%;
   }
 `
@@ -16,7 +16,7 @@ export const ButtonWrapper = styled.div`
   justify-content: end;
   padding-bottom: 1rem;
 
-  @media (max-width: 34rem) {
+  @media (max-width: 41.5rem) {
     margin-right: 1.25rem;
   }
 `
@@ -39,7 +39,7 @@ export const Content = styled.div`
   border-top-right-radius: 1rem;
   padding-top: 1rem;
 
-  @media (max-width: 34rem) {
+  @media (max-width: 41.5rem) {
     overflow: hidden;
     padding-top: 0;
   }
