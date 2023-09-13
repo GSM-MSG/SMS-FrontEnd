@@ -8,7 +8,7 @@ import * as S from './style'
 
 const StudentList = () => {
   const router = useRouter()
-  const { studentList, totalSize } = useStudent()
+  const { studentList, totalSize, nextStop } = useStudent()
   const { observe } = useScrollObserver()
   const { onShow } = useModal()
 
@@ -24,16 +24,17 @@ const StudentList = () => {
       </S.MaxCount>
 
       <S.Students>
-        {!studentList.length &&
-          Array(...Array(20)).map((_, idx) => (
-            <StudentCardSkeleton key={idx} />
-          ))}
         {studentList?.map((i) => (
           <StudentCard key={i.id} {...i} onClick={() => onClick(i.id)} />
         ))}
-      </S.Students>
 
-      <div ref={observe} />
+        {!nextStop &&
+          Array(...Array(10)).map((_, idx) => (
+            <div ref={idx === 0 ? observe : undefined} key={idx}>
+              <StudentCardSkeleton />
+            </div>
+          ))}
+      </S.Students>
     </S.Content>
   )
 }

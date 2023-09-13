@@ -78,6 +78,7 @@ export const UserInfo = styled.div`
   flex-direction: column;
   gap: 1rem;
   overflow: hidden;
+  width: 100%;
 
   @media (max-width: 41.5rem) {
     gap: 1.25rem;

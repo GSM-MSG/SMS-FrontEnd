@@ -19,7 +19,7 @@ const initialState: InitialState = {
     techStacks: [],
     formOfEmployment: [],
   },
-  page: 1,
+  page: 2,
   size: 20,
   isLoading: false,
   isReady: false,

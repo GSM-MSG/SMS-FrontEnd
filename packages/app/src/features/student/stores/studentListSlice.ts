@@ -3,11 +3,12 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 interface InitialState {
   studentList: StudentType[]
-  totalSize?: number
+  totalSize: number
 }
 
 const initialState: InitialState = {
   studentList: [],
+  totalSize: 0,
 }
 
 const studentListSlice = createSlice({
@@ -20,8 +21,8 @@ const studentListSlice = createSlice({
     resetStudents: (state) => {
       state.studentList = []
     },
-    setTotoalSize: (state, { payload }: PayloadAction<number>) => {
-      state.totalSize = payload
+    setTotoalSize: (state, { payload }: PayloadAction<number | undefined>) => {
+      state.totalSize = payload || 0
     },
   },
 })

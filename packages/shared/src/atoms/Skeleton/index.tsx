@@ -27,7 +27,7 @@ interface TextProps {
 }
 
 export const SkeletonText = ({
-  width,
+  width = '100%',
   height = '1em',
   marginRight,
   marginBottom,

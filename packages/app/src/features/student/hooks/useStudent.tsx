@@ -15,11 +15,12 @@ interface StudentsParams extends StudentParam {
 const useStudent = () => {
   const dispatch = useDispatch()
   const { addToast } = useToast()
-  const { studentParam, studentList, totalSize } = useSelector(
+  const { studentParam, studentList, totalSize, nextStop } = useSelector(
     (state: RootState) => ({
       studentParam: state.studentParam,
       studentList: state.studentList.studentList,
       totalSize: state.studentList.totalSize,
+      nextStop: state.studentParam.nextStop,
     })
   )
 
@@ -50,10 +51,8 @@ const useStudent = () => {
     totalSize?: number,
     last?: boolean
   ) => {
-    if (!students || !totalSize || !last) return
-
     dispatch(actions.resetStudents())
-    dispatch(actions.addStudents(students))
+    dispatch(actions.addStudents(students || []))
     dispatch(actions.setTotoalSize(totalSize))
     if (last) dispatch(actions.nextStop())
   }
@@ -63,6 +62,7 @@ const useStudent = () => {
     totalSize,
     refetchStudents,
     setStudentList,
+    nextStop,
   }
 }
 
