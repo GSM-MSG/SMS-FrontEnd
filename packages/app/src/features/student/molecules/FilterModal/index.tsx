@@ -94,7 +94,7 @@ const FilterModal = () => {
 
           <CheckboxSection isShow={!!role} title='학과'>
             <Checkbox {...register('department')} value='SW_DEVELOPMENT'>
-              소프웨어개발과
+              소프트웨어개발과
             </Checkbox>
             <Checkbox {...register('department')} value='SMART_IOT_DEVELOPMENT'>
               스마트IoT과
@@ -105,7 +105,7 @@ const FilterModal = () => {
           </CheckboxSection>
 
           <CheckboxSection isShow={true} title='분야'>
-            {majorList?.map((major) => (
+            {[...(majorList || []), '기타']?.map((major) => (
               <Checkbox
                 key={major}
                 value={major}
@@ -211,6 +211,7 @@ const FilterModal = () => {
               value={watch('techStacks')}
               control={control}
               register={register('techStacks')}
+              disableDirectInput
               error=''
             />
           </RangeSliderSection>

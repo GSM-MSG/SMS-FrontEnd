@@ -11,7 +11,7 @@ const useAuth = () => {
   const router = useRouter()
   const code = router.query.code?.toString() || ''
   const { addToast } = useToast()
-  const { loadingWrap } = useLoading()
+  const { loadingWrap, loadingClose } = useLoading()
   const [_, setAccessExpires] = useLocalStorage(Token.ACCESS_TOKEN_EXP, '')
   const [__, setRefreshExpires] = useLocalStorage(Token.REFRESH_TOKEN_EXP, '')
 
@@ -21,6 +21,7 @@ const useAuth = () => {
       const res = await loadingWrap(login(code))
 
       if (typeof res === 'string') {
+        loadingClose()
         return addToast('error', res)
       }
 
@@ -28,6 +29,7 @@ const useAuth = () => {
       setRefreshExpires(res.refreshTokenExp)
       addToast('success', '로그인에 성공했습니다')
       await router.push(res.isExist ? '/' : '/register')
+      loadingClose()
     })()
   }, [code])
 

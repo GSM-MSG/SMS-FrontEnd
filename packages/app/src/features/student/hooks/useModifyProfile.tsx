@@ -27,7 +27,7 @@ const useModifyProfile = ({ defaultValue }: Props) => {
     },
   })
   const { addToast } = useToast()
-  const { loadingWrap } = useLoading()
+  const { loadingWrap, loadingClose } = useLoading()
   const router = useRouter()
   const [mutation] = profileImgApi.useRefetchProfileImgMutation()
 
@@ -35,9 +35,11 @@ const useModifyProfile = ({ defaultValue }: Props) => {
     const errorMessage = await loadingWrap(modifyStudentService(form))
 
     if (errorMessage) {
+      loadingClose()
       return addToast('error', errorMessage)
     }
     await router.push('/')
+    loadingClose()
     mutation()
 
     addToast('success', '정보 수정에 성공했습니다')

@@ -5,7 +5,7 @@ import {
   FourImageInputs,
   IconImageInput,
 } from '@features/register/atoms'
-import { Input, SearchInput, MultiMonthPicker } from '@sms/shared'
+import { Input, SearchInput, MultiMonthPicker, Textarea } from '@sms/shared'
 import { RegisterFormType } from '@features/register/type'
 import * as Icon from '@sms/shared/src/icons'
 import {
@@ -72,7 +72,11 @@ const ProjectsInput = ({
                   {...register(`projects.${idx}.name`, {
                     required: {
                       value: true,
-                      message: '1개 이상은 입력해야 합니다',
+                      message: '필수 값입니다',
+                    },
+                    maxLength: {
+                      value: 30,
+                      message: '최대 30자까지 가능합니다',
                     },
                   })}
                   placeholder='프로젝트 이름입력'
@@ -111,9 +115,13 @@ const ProjectsInput = ({
               </InputColumn>
 
               <InputColumn comment='내용'>
-                <Input
+                <Textarea
                   {...register(`projects.${idx}.description`, {
                     required: { value: true, message: '필수 값입니다' },
+                    maxLength: {
+                      value: 1000,
+                      message: '최대 1000자까지 가능합니다',
+                    },
                   })}
                   placeholder='프로젝트 내용입력'
                   error={errors.projects?.[idx]?.description?.message}
@@ -136,9 +144,13 @@ const ProjectsInput = ({
               </InputColumn>
 
               <InputColumn comment='주요 작업'>
-                <Input
+                <Textarea
                   {...register(`projects.${idx}.myActivity`, {
                     required: { value: true, message: '필수 값입니다' },
+                    maxLength: {
+                      value: 1000,
+                      message: '최대 1000자까지 가능합니다',
+                    },
                   })}
                   placeholder='주요 작업 내용서술'
                   error={errors.projects?.[idx]?.myActivity?.message}

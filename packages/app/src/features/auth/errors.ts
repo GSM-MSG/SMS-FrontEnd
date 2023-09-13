@@ -2,7 +2,7 @@ import env from '@lib/env'
 import Errors from '@/types/Errors'
 
 const errors: Errors = {
-  [env.NEXT_PUBLIC_SERVER_URL]: {
+  [env.NEXT_PUBLIC_CLIENT_URL]: {
     '/auth': {
       POST: {
         400: '시크릿 값이 일치하지 않습니다',

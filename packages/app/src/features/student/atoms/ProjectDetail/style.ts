@@ -54,12 +54,13 @@ export const Images = styled.div`
   }
 `
 
-export const Image = styled.img`
+export const ImageWrapper = styled.div`
   min-width: 8rem;
   width: 100%;
-  object-fit: cover;
   aspect-ratio: 1 / 1;
   border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
 `
 
 export const Section = styled.section`
@@ -86,6 +87,7 @@ export const Stack = styled.div`
 export const ProjectDescription = styled.p`
   ${({ theme }) => theme.body2}
   color: var(--N40);
+  white-space: pre-line;
 `
 
 export const LinkWrapper = styled(Link)`

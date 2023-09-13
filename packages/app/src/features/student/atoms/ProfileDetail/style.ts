@@ -61,6 +61,7 @@ export const Introduce = styled.div`
   color: var(--BLACK);
   padding: 1rem 1.14rem;
   border-radius: 0.5rem;
+  white-space: pre-line;
 `
 
 export const IntroduceLabel = styled.div`
@@ -75,11 +76,12 @@ export const Right = styled.div`
   }
 `
 
-export const ProfileImage = styled.img`
+export const ProfileImage = styled.div`
   width: 10rem;
   height: 10rem;
   border-radius: 0.48rem;
-  object-fit: cover;
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: 34rem) {
     width: 100%;

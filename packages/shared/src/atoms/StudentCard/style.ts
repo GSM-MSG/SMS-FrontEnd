@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Image from 'next/image'
 
 export const Wrapper = styled.div`
   width: 17rem;
@@ -29,6 +30,17 @@ export const Wrapper = styled.div`
   }
 `
 
+export const ProfileImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @media (max-width: 41.5rem) {
+    width: 6.25rem;
+    height: 6.25rem;
+  }
+`
+
 export const ProfileBackground = styled.div`
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -46,7 +58,7 @@ export const ProfileBackground = styled.div`
   }
 `
 
-export const ProfileImg = styled.img`
+export const ProfileImg = styled(Image)`
   min-width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 0.68rem;

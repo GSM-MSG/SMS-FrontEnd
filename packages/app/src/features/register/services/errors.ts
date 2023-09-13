@@ -2,7 +2,7 @@ import env from '@lib/env'
 import Errors from '@/types/Errors'
 
 const errors: Errors = {
-  [env.NEXT_PUBLIC_SERVER_URL]: {
+  [env.NEXT_PUBLIC_CLIENT_URL]: {
     '/student': {
       POST: {
         400: '잘못된 입력 형식입니다',

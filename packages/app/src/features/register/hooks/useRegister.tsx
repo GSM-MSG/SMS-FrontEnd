@@ -11,7 +11,7 @@ import useLoading from '@features/modal/hooks/useLoading'
 const useRegister = () => {
   const { addToast } = useToast()
   const router = useRouter()
-  const { loadingWrap } = useLoading()
+  const { loadingWrap, loadingClose } = useLoading()
   const { refetchLoggedIn } = useLoggedIn({})
   const {
     register,
@@ -47,10 +47,14 @@ const useRegister = () => {
 
   const onSubmit = handleSubmit(async (form: RegisterFormType) => {
     const res = await loadingWrap(PostStudentInfoService(form))
-    if (res) return addToast('error', ErrorMapper(res, apiErrors))
+    if (res) {
+      loadingClose()
+      return addToast('error', ErrorMapper(res, apiErrors))
+    }
 
     router.push('/')
 
+    loadingClose()
     addToast('success', '학생 정보 기입에 성공했습니다')
     await refetchLoggedIn()
   })

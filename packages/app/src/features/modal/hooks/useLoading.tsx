@@ -5,15 +5,20 @@ import { show, close } from '@features/modal/stores/modalSlice'
 const useLoading = () => {
   const dispatch = useDispatch()
 
-  const loadingWrap = async <T,>(callback: Promise<T>) => {
+  const loadingClose = () => dispatch(close())
+
+  const loadingWrap = async <T,>(
+    callback: Promise<T>,
+    immediatelyClose?: boolean
+  ) => {
     dispatch(show(<LoadingPortal />))
     const res = await callback
-    dispatch(close())
+    if (immediatelyClose) loadingClose()
 
     return res
   }
 
-  return { loadingWrap }
+  return { loadingWrap, loadingClose }
 }
 
 export default useLoading

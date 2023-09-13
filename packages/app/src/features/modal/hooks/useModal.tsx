@@ -8,7 +8,7 @@ const useModal = () => {
   const dispatch = useDispatch()
 
   const onClose = () => {
-    router.push('/', '/')
+    router.push('/', '/', { scroll: false })
     dispatch(actions.close())
   }
 
