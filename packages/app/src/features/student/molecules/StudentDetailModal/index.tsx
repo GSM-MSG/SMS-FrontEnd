@@ -4,6 +4,7 @@ import { useModal } from '@features/modal/hooks'
 import { SEO } from '@features/global'
 import useStudentDetail from '@features/student/hooks/useStudentDetail'
 import * as Icon from '@sms/shared/src/icons'
+import StudentDetailSkeleton from '@features/student/molecules/StudentDetailSkeleton'
 import * as S from './style'
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const StudentDetailModal = ({ student, studentId }: Props) => {
-  const { data } = useStudentDetail({ studentId })
+  const { data, isLoading } = useStudentDetail({ studentId })
   const { onClose } = useModal()
 
   return (
@@ -30,7 +31,11 @@ const StudentDetailModal = ({ student, studentId }: Props) => {
           </S.CloseBtn>
         </S.ButtonWrapper>
 
-        <StudentDetail student={student || data} />
+        {isLoading ? (
+          <StudentDetailSkeleton />
+        ) : (
+          <StudentDetail student={student || data} />
+        )}
       </S.Wrapper>
     </BlurPortal>
   )

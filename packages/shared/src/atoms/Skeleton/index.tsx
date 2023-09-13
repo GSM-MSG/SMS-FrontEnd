@@ -20,15 +20,26 @@ export const SkeletonContent = styled.span`
 `
 
 interface TextProps {
-  width?: number | string
-  height?: number | string
+  width?: string
+  height?: string
+  marginRight?: string
+  marginBottom?: string
 }
 
-export const SkeletonText = styled.span<TextProps>`
+export const SkeletonText = ({
+  width,
+  height = '1em',
+  marginRight,
+  marginBottom,
+}: TextProps) => {
+  return (
+    <SkeletonTextStyle style={{ width, height, marginBottom, marginRight }} />
+  )
+}
+
+const SkeletonTextStyle = styled.span`
   display: block;
   opacity: 0.7s;
   animation: ${SkeletonAnimation} 1s linear infinite alternate;
-  height: ${({ height }) => (height ? height : '1.5rem')};
   border-radius: 0.25rem;
-  ${({ width }) => (width ? `width: ${width}` : '')};
 `
