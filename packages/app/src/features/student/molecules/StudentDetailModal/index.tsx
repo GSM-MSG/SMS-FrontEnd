@@ -1,15 +1,37 @@
 import { BlurPortal } from '@features/modal/portals'
 import StudentDetail from '@features/student/molecules/StudentDetail'
+import { useModal } from '@features/modal/hooks'
+import { SEO } from '@features/global'
+import useStudentDetail from '@features/student/hooks/useStudentDetail'
+import * as Icon from '@sms/shared/src/icons'
+import * as S from './style'
 
 interface Props {
-  studentId: string | null
   student: StudentDetail | null
+  studentId: string
 }
 
-const StudentDetailModal = ({ studentId, student }: Props) => {
+const StudentDetailModal = ({ student, studentId }: Props) => {
+  const { data } = useStudentDetail({ studentId })
+  const { onClose } = useModal()
+
   return (
     <BlurPortal>
-      <StudentDetail isCloseBtn studentId={studentId} student={student} />
+      <S.Wrapper onClick={(e) => e.stopPropagation()}>
+        <SEO
+          title={student?.name.replace('**', '소금')}
+          description={student?.introduce}
+          image={student?.profileImgUrl}
+        />
+
+        <S.ButtonWrapper onClick={onClose}>
+          <S.CloseBtn>
+            <Icon.XmarkOutline color='white' />
+          </S.CloseBtn>
+        </S.ButtonWrapper>
+
+        <StudentDetail student={student || data} />
+      </S.Wrapper>
     </BlurPortal>
   )
 }

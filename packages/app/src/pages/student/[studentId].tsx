@@ -43,12 +43,16 @@ const StudentDetailPage = ({ query, data }: Props) => {
       return
     }
 
-    onShow(<StudentDetailModal studentId={null} student={data} />)
+    onShow(<StudentDetailModal studentId='' student={data} />)
   }, [])
 
   return (
     <>
-      <SEO />
+      <SEO
+        title={data?.name.replace('**', '소금')}
+        description={data?.introduce}
+        image={data?.profileImgUrl}
+      />
       <StudentsTemplate />
     </>
   )

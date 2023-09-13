@@ -5,7 +5,11 @@ import { useToast } from '@features/toast'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/student/service/errors'
 
-const useStudentDetail = (studentId: string | null) => {
+interface Props {
+  studentId: string
+}
+
+const useStudentDetail = ({ studentId }: Props) => {
   const { error, data, isLoading } = studentApi.useStudentDetailQuery(
     { studentId },
     { skip: !studentId }
@@ -20,7 +24,7 @@ const useStudentDetail = (studentId: string | null) => {
     }
   }, [studentId])
 
-  return { data, isLoading }
+  return { data: data || null, isLoading }
 }
 
 export default useStudentDetail

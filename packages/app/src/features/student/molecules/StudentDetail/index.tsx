@@ -1,73 +1,46 @@
-import { SEO } from '@features/global'
-import { useModal } from '@features/modal/hooks'
 import PrizesDetail from '@features/student/atoms/PrizesDetail'
 import ProfileDetail from '@features/student/atoms/ProfileDetail'
 import ProjectDetail from '@features/student/atoms/ProjectDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
-import useStudentDetail from '@features/student/hooks/useStudentDetail'
-import * as Icon from '@sms/shared/src/icons'
 import * as S from './style'
 
 interface Props {
-  studentId: string | null
-  isCloseBtn?: boolean
   student: StudentDetail | null
 }
 
-const StudentDetail = ({ studentId, isCloseBtn, student }: Props) => {
-  const { onClose } = useModal()
-  const { data } = useStudentDetail(studentId)
-
-  const studentData = studentId ? data : student
-
+const StudentDetail = ({ student }: Props) => {
   return (
-    <S.Wrapper onClick={(e) => e.stopPropagation()}>
-      <SEO
-        title={studentData?.name.replace('**', '소금')}
-        description={studentData?.introduce}
-        image={studentData?.profileImgUrl}
+    <S.Wrapper>
+      <ProfileDetail
+        major={student?.major}
+        name={student?.name}
+        grade={student?.grade}
+        classNum={student?.classNum}
+        number={student?.number}
+        techStacks={student?.techStacks}
+        introduce={student?.introduce}
+        profileImgUrl={student?.profileImgUrl}
+        department={student?.department}
       />
+      <StudentInfo
+        contactEmail={student?.contactEmail}
+        gsmAuthenticationScore={student?.gsmAuthenticationScore}
+        militaryService={student?.militaryService}
+        formOfEmployment={student?.formOfEmployment}
+        salary={student?.salary}
+        languageCertificates={student?.languageCertificates}
+        certificates={student?.certificates}
+      />
+      <PrizesDetail prizes={student?.prizes} />
+      <ProjectDetail projects={student?.projects} />
 
-      {isCloseBtn && (
-        <S.ButtonWrapper onClick={onClose}>
-          <S.CloseBtn>
-            <Icon.XmarkOutline color='white' />
-          </S.CloseBtn>
-        </S.ButtonWrapper>
+      {student?.portfolioUrl && (
+        <S.PortfolioWrapper>
+          <S.PortfolioButton href={student?.portfolioUrl}>
+            포트폴리오
+          </S.PortfolioButton>
+        </S.PortfolioWrapper>
       )}
-
-      <S.Content>
-        <ProfileDetail
-          major={studentData?.major}
-          name={studentData?.name}
-          grade={studentData?.grade}
-          classNum={studentData?.classNum}
-          number={studentData?.number}
-          techStacks={studentData?.techStacks}
-          introduce={studentData?.introduce}
-          profileImgUrl={studentData?.profileImgUrl}
-          department={studentData?.department}
-        />
-        <StudentInfo
-          contactEmail={studentData?.contactEmail}
-          gsmAuthenticationScore={studentData?.gsmAuthenticationScore}
-          militaryService={studentData?.militaryService}
-          formOfEmployment={studentData?.formOfEmployment}
-          salary={studentData?.salary}
-          languageCertificates={studentData?.languageCertificates}
-          certificates={studentData?.certificates}
-        />
-        <PrizesDetail prizes={studentData?.prizes} />
-        <ProjectDetail projects={studentData?.projects} />
-
-        {studentData?.portfolioUrl && (
-          <S.PortfolioWrapper>
-            <S.PortfolioButton href={studentData?.portfolioUrl}>
-              포트폴리오
-            </S.PortfolioButton>
-          </S.PortfolioWrapper>
-        )}
-      </S.Content>
     </S.Wrapper>
   )
 }
