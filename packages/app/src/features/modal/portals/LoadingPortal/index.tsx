@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import Lottie from 'react-lottie'
+import Lottie from 'lottie-react'
 import * as LoadingData from '@assets/lottie/loading.json'
 import { usePortal } from '@features/modal/hooks'
 import * as S from './style'
@@ -14,9 +14,11 @@ const LoadingPortal = () => {
   return ReactDOM.createPortal(
     <S.Wrapper>
       <Lottie
-        options={{ loop: true, autoplay: true, animationData: LoadingData }}
+        animationData={LoadingData}
         width={100}
         height={100}
+        loop
+        autoplay
       />
     </S.Wrapper>,
     portal
