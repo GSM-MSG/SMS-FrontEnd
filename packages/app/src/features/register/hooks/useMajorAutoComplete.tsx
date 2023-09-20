@@ -1,14 +1,23 @@
 import { OptionsType } from '@sms/shared'
 import autocompleteApi from '@features/register/services/autocompleteApi'
 import { useEffect } from 'react'
+import { useToast } from '@features/toast'
+import ErrorMapper from '@lib/ErrorMapper'
+import errors from '@features/student/service/errors'
+import { useDispatch } from 'react-redux'
+import { close } from '@features/modal/stores/modalSlice'
 
 const useMajorAutoComplete = () => {
-  const { data, isLoading, isError } = autocompleteApi.useMajorQuery()
+  const { data, isLoading, isError, error } = autocompleteApi.useMajorQuery()
+  const { addToast } = useToast()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (isLoading) return
-    isError // TODO toast 띄우기
-  }, [isLoading])
+    if (!isError) return
+
+    addToast('error', ErrorMapper(error, errors))
+    dispatch(close())
+  }, [isError])
 
   return {
     major: data?.major.reduce((pre, cur) => {
@@ -16,6 +25,7 @@ const useMajorAutoComplete = () => {
       return pre
     }, {} as OptionsType),
     majorList: data?.major,
+    isLoading,
   }
 }
 

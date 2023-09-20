@@ -14,8 +14,6 @@ export const SkeletonContent = styled.span`
   display: block;
   opacity: 0.7s;
   animation: ${SkeletonAnimation} 1s linear infinite alternate;
-  width: 100%;
-  height: 100%;
   border-radius: 0.25rem;
 `
 

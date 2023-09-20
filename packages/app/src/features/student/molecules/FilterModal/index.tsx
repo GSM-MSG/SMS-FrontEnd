@@ -11,8 +11,8 @@ import {
 import RangeSliderSection from '@features/student/atoms/RangeSliderSection'
 import useStudentsFilter from '@features/student/hooks/useStudentsFilter'
 import { useAutocomplete } from '@features/register/hooks'
-import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
+import MajorListSection from '@features/student/atoms/MajorListSection'
 
 import * as S from './style'
 
@@ -28,7 +28,6 @@ const FilterModal = () => {
     onClickMajor,
   } = useStudentsFilter()
   const { onChange, dropdownList } = useAutocomplete()
-  const { majorList } = useMajorAutoComplete()
   const { role } = useLoggedIn({})
 
   return (
@@ -104,19 +103,7 @@ const FilterModal = () => {
             </Checkbox>
           </CheckboxSection>
 
-          <CheckboxSection isShow={true} title='분야'>
-            {[...(majorList || []), '기타']?.map((major) => (
-              <Checkbox
-                key={major}
-                value={major}
-                onClick={() => onClickMajor(major)}
-                checked={watch('majors')?.includes(major)}
-                readOnly
-              >
-                {major}
-              </Checkbox>
-            ))}
-          </CheckboxSection>
+          <MajorListSection watch={watch} onClickMajor={onClickMajor} />
 
           <CheckboxSection
             isShow={role === 'ROLE_TEACHER'}
