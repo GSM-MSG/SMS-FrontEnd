@@ -109,9 +109,9 @@ importers:
       jsonwebtoken:
         specifier: ^9.0.1
         version: 9.0.1
-      lottie-react:
-        specifier: ^2.4.0
-        version: 2.4.0(react-dom@18.2.0)(react@18.2.0)
+      lottie-web:
+        specifier: ^5.12.2
+        version: 5.12.2
       next:
         specifier: 13.3.0
         version: 13.3.0(@babel/core@7.22.17)(react-dom@18.2.0)(react@18.2.0)
@@ -9820,17 +9820,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-
-  /lottie-react@2.4.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-pDJGj+AQlnlyHvOHFK7vLdsDcvbuqvwPZdMlJ360wrzGFurXeKPr8SiRCjLf3LrNYKANQtSsh5dz9UYQHuqx4w==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      lottie-web: 5.12.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /lottie-web@5.12.2:
     resolution: {integrity: sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==}
