@@ -28,12 +28,14 @@
     "sharp": "^0.32.5"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.5.2",
     "@types/file-saver": "^2.0.5",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^18.15.11",
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "cross-env": "^7.0.3",
     "typescript": "^5.0.4"
   }
 }
