@@ -18,23 +18,24 @@
     "axios-retry": "^3.7.0",
     "file-saver": "^2.0.5",
     "jsonwebtoken": "^9.0.1",
+    "lottie-web": "^5.12.2",
     "next": "13.3.0",
     "next-redux-wrapper": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
-    "react-lottie": "^1.2.3",
     "react-redux": "^8.0.5",
     "sharp": "^0.32.5"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.5.2",
     "@types/file-saver": "^2.0.5",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^18.15.11",
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
-    "@types/react-lottie": "^1.2.6",
+    "cross-env": "^7.0.3",
     "typescript": "^5.0.4"
   }
 }
