@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react'
-import '../packages/shared/src/style/devStyle.css'
-import '../packages/shared/src/style/global.css'
-import '../packages/shared/public/font.css'
+import '../public/font.css'
+import '../src/style/devStyle.css'
+import '../src/style/global.css'
 
 const preview: Preview = {
   parameters: {
@@ -9,7 +9,7 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/,
+        date: /Date$/i,
       },
     },
   },

@@ -10,9 +10,8 @@
     "build:app": "pnpm --filter app build",
     "build:shared": "pnpm --filter shared build && pnpm --filter app i",
     "dev": "pnpm --filter app dev",
-    "storybook": "storybook dev -p 6006",
     "start": "pnpm --filter app start",
-    "build-storybook": "storybook build"
+    "storybook": "pnpm --filter shared storybook"
   },
   "workspaces": [
     "packages/*"
@@ -20,14 +19,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
-    "@storybook/addon-essentials": "^7.4.0",
-    "@storybook/addon-interactions": "^7.4.0",
-    "@storybook/addon-links": "^7.4.0",
-    "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/blocks": "^7.4.0",
-    "@storybook/nextjs": "^7.4.0",
-    "@storybook/react": "^7.4.0",
-    "@storybook/testing-library": "^0.2.0",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
@@ -37,12 +28,10 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-storybook": "^0.6.13",
     "husky": "^8.0.3",
     "prettier": "^2.8.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.4.0",
     "typescript": "^5.0.4"
   }
 }
