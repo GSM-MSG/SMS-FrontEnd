@@ -1,4 +1,13 @@
-import { ProfileInputs } from '@features/register/molecules'
+import {
+  CertificateInputs,
+  LanguageInputs,
+  MilitaryInputs,
+  ProfileInputs,
+  SchoolInputs,
+  WorkingInputs,
+  ProjectsInput,
+  PrizeInputs,
+} from '@features/register/molecules'
 import { useRegister } from '@features/register/hooks'
 import { SMSLogo } from '@sms/shared'
 import * as S from './style'
@@ -32,6 +41,50 @@ const RegisterForm = () => {
         setError={setError}
         clearErrors={clearErrors}
       />
+      <SchoolInputs
+        resetField={resetField}
+        register={register}
+        errors={errors}
+      />
+      <WorkingInputs
+        control={control}
+        register={register}
+        errors={errors}
+        resetField={resetField}
+        watch={watch}
+      />
+      <MilitaryInputs
+        control={control}
+        register={register}
+        errors={errors}
+        watch={watch}
+      />
+      <CertificateInputs
+        register={register}
+        control={control}
+        errors={errors}
+      />
+      <LanguageInputs register={register} control={control} errors={errors} />
+
+      <ProjectsInput
+        register={register}
+        control={control}
+        errors={errors}
+        setValue={setValue}
+        watch={watch}
+        setError={setError}
+        clearErrors={clearErrors}
+      />
+
+      <PrizeInputs
+        register={register}
+        watch={watch}
+        setValue={setValue}
+        clearErrors={clearErrors}
+        control={control}
+        errors={errors}
+      />
+
       <S.ButtonWrapper>
         <S.SubmitBtn type='submit'>확인</S.SubmitBtn>
       </S.ButtonWrapper>

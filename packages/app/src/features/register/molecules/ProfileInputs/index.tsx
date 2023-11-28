@@ -88,6 +88,20 @@ const ProfileInputs = ({
           value={watch('major')}
         />
       </InputColumn>
+      <InputColumn comment='포트폴리오'>
+        <Input
+          {...register('portfolioUrl', {
+            required: { value: true, message: '필수 값입니다' },
+            pattern: {
+              value: /^(https?:\/\/)/,
+              message: 'url 형식이 올바르지 않습니다',
+            },
+          })}
+          error={errors.portfolioUrl?.message}
+          onReset={() => resetField('portfolioUrl')}
+          placeholder='https://'
+        />
+      </InputColumn>
       <InputColumn comment='세부스택 (5개)'>
         <SearchInput
           name='techStacks'
