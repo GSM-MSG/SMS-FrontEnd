@@ -4,11 +4,11 @@ import {
   LanguageInputs,
   MilitaryInputs,
   PrizeInputs,
-  ProfileInputs,
   ProjectsInput,
   SchoolInputs,
   WorkingInputs,
 } from '@features/register/molecules'
+import ProfileInputs from '@features/student/molecules/ProfileInputs'
 import { RegisterFormType } from '@features/register/type'
 import * as S from './style'
 
