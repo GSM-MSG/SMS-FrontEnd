@@ -15,7 +15,9 @@ const MypageTemplate = ({ defaultValue }: Props) => {
   return (
     <S.Wrapper>
       <Header />
+
       <MyPageForm defaultValue={defaultValue} />
+
       <StudentExitButton />
     </S.Wrapper>
   )
