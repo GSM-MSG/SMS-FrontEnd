@@ -1,5 +1,6 @@
 import { ReactNode, useState } from 'react'
 import * as Icon from '@sms/shared/src/icons'
+import { useRouter } from 'next/router'
 import * as S from './style'
 
 interface Props {
@@ -9,12 +10,18 @@ interface Props {
 }
 
 const HideableWrapper = ({ children, title, onDelete }: Props) => {
+  const router = useRouter()
   const [isChecked, setIsChecked] = useState<boolean>(false)
 
   return (
     <S.Wrapper>
       <S.Header>
-        <S.Title>{title || '활동 제목이 없습니다'}</S.Title>
+        <S.Title>
+          {title ||
+            (router.pathname === '/mypage'
+              ? '프로젝트 제목이 없습니다'
+              : '활동 제목이 없습니다')}
+        </S.Title>
         <S.Icons>
           <S.Icon>
             <S.HideAnimationInput
