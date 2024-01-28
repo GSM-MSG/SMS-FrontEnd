@@ -11,14 +11,8 @@ export const ProjectList = styled.div`
   }
 `
 
-export const IconInput = styled.div`
-  width: 6.75rem;
-`
-
-export const DoubleInputs = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
+export const ImageInput = styled.div`
+  width: 10.5rem;
 `
 
 export const Hr = styled.hr`

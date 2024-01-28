@@ -78,12 +78,14 @@ const AuthenticationInput = ({
               onDelete={() => remove(idx)}
             >
               <InputColumn comment='활동 사진'>
-                <ImageInput
-                  isPreview
-                  onChange={onChange}
-                  value={watch(`activities.${idx}.previewImage`)}
-                  error={errors?.activities?.[idx]?.previewImage?.message}
-                />
+                <S.ImageInput>
+                  <ImageInput
+                    isPreview
+                    onChange={onChange}
+                    value={watch(`activities.${idx}.previewImage`)}
+                    error={errors?.activities?.[idx]?.previewImage?.message}
+                  />
+                </S.ImageInput>
               </InputColumn>
 
               <InputColumn comment='활동 제목'>
