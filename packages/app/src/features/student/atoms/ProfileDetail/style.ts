@@ -90,7 +90,7 @@ export const ProfileImage = styled.div`
   }
 `
 
-export const TemeporaryImage = styled.div`
+export const TemporaryImage = styled.div`
   width: 10rem;
   height: 10rem;
   padding: 0 0.7rem;

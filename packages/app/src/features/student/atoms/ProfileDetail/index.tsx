@@ -64,9 +64,9 @@ const ProfileDetail = ({
             />
           </S.ProfileImage>
         ) : (
-          <S.TemeporaryImage>
+          <S.TemporaryImage>
             <SVG.Person />
-          </S.TemeporaryImage>
+          </S.TemporaryImage>
         )}
       </S.Right>
     </S.Wrapper>
