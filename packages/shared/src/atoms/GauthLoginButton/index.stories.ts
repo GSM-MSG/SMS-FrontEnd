@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react'
-import GauthLoginButton from './index'
+import GAuthLoginButton from './index'
 
-const config: Meta<typeof GauthLoginButton> = {
-  title: 'Gauth login button',
-  component: GauthLoginButton,
+const config: Meta<typeof GAuthLoginButton> = {
+  title: 'GAuth login button',
+  component: GAuthLoginButton,
 }
 
 export default config
 
-type Story = StoryObj<typeof GauthLoginButton>
+type Story = StoryObj<typeof GAuthLoginButton>
 
 export const Primary: Story = {}

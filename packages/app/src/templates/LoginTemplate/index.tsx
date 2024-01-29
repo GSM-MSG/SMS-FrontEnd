@@ -1,4 +1,4 @@
-import { FadeinAnimation, GauthLoginButton, Headline, Title } from '@sms/shared'
+import { FadeinAnimation, GAuthLoginButton, Headline, Title } from '@sms/shared'
 import useAuth from '@features/auth/hook/useAuth'
 import { GuestLink } from '@features/auth/components'
 import * as S from './style'
@@ -20,7 +20,7 @@ const LoginTemplate = () => {
           <Title type='title2'>학생 정보 통합관리 서비스</Title>
         </FadeinAnimation>
         <FadeinAnimation duration={1.6}>
-          <GauthLoginButton onClick={onClick} />
+          <GAuthLoginButton onClick={onClick} />
 
           <GuestLink href='/'>게스트로 둘러보기</GuestLink>
         </FadeinAnimation>
