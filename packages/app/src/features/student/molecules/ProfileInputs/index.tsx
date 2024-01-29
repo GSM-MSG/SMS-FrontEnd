@@ -14,7 +14,6 @@ import {
 import { useAutocomplete } from '@features/register/hooks'
 import useMajorAutoComplete from '@features/register/hooks/useMajorAutoComplete'
 import useImageUpload from '@features/register/hooks/useImageUpload'
-
 interface Props {
   register: UseFormRegister<RegisterFormType>
   errors: FieldErrors<RegisterFormType>
@@ -25,7 +24,6 @@ interface Props {
   resetField: UseFormResetField<RegisterFormType>
   clearErrors: UseFormClearErrors<RegisterFormType>
 }
-
 const ProfileInputs = ({
   register,
   errors,
@@ -43,7 +41,6 @@ const ProfileInputs = ({
     setError: (message) => setError('profileImgUrl', { message }),
     clearError: () => clearErrors('profileImgUrl'),
   })
-
   return (
     <FormWrapper title='프로필'>
       <InputColumn comment='사진'>
@@ -88,6 +85,20 @@ const ProfileInputs = ({
           value={watch('major')}
         />
       </InputColumn>
+      <InputColumn comment='포트폴리오'>
+        <Input
+          {...register('portfolioUrl', {
+            required: { value: true, message: '필수 값입니다' },
+            pattern: {
+              value: /^(https?:\/\/)/,
+              message: 'url 형식이 올바르지 않습니다',
+            },
+          })}
+          error={errors.portfolioUrl?.message}
+          onReset={() => resetField('portfolioUrl')}
+          placeholder='https://'
+        />
+      </InputColumn>
       <InputColumn comment='세부스택 (5개)'>
         <SearchInput
           name='techStacks'
@@ -103,5 +114,4 @@ const ProfileInputs = ({
     </FormWrapper>
   )
 }
-
 export default ProfileInputs
