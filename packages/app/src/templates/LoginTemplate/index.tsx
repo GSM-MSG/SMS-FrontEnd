@@ -1,4 +1,4 @@
-import { FadeinAnimation, GAuthLoginButton, Headline, Title } from '@sms/shared'
+import { FadeInAnimation, GAuthLoginButton, Headline, Title } from '@sms/shared'
 import useAuth from '@features/auth/hook/useAuth'
 import { GuestLink } from '@features/auth/components'
 import * as S from './style'
@@ -13,17 +13,17 @@ const LoginTemplate = () => {
           <source src='/video/login-background.webm' type='video/webm' />
           <source src='/video/login-background.mp4' type='video/mp4' />
         </S.Video>
-        <FadeinAnimation>
+        <FadeInAnimation>
           <Headline type='headline1'>{'STUDENT\nMANAGEMENT SERVICE'}</Headline>
-        </FadeinAnimation>
-        <FadeinAnimation duration={1.3}>
+        </FadeInAnimation>
+        <FadeInAnimation duration={1.3}>
           <Title type='title2'>학생 정보 통합관리 서비스</Title>
-        </FadeinAnimation>
-        <FadeinAnimation duration={1.6}>
+        </FadeInAnimation>
+        <FadeInAnimation duration={1.6}>
           <GAuthLoginButton onClick={onClick} />
 
           <GuestLink href='/'>게스트로 둘러보기</GuestLink>
-        </FadeinAnimation>
+        </FadeInAnimation>
       </S.Wrapper>
     </>
   )
