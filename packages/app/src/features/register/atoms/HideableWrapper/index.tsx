@@ -9,7 +9,7 @@ interface Props {
   title: string
 }
 
-const HideableWrapper = ({ children, title, onDelete }: Props) => {
+const HideAbleWrapper = ({ children, title, onDelete }: Props) => {
   const router = useRouter()
   const [isChecked, setIsChecked] = useState<boolean>(false)
 
@@ -43,4 +43,4 @@ const HideableWrapper = ({ children, title, onDelete }: Props) => {
   )
 }
 
-export default HideableWrapper
+export default HideAbleWrapper

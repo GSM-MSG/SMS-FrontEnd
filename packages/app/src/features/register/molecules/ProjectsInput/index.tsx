@@ -1,4 +1,4 @@
-import HideableWrapper from '@features/register/atoms/HideableWrapper'
+import HideAbleWrapper from '@features/register/atoms/HideAbleWrapper'
 import {
   InputColumn,
   LinkMultiDoubleInput,
@@ -63,7 +63,7 @@ const ProjectsInput = ({
       <S.ProjectList>
         {fields.map((field, idx) => (
           <div key={field.id}>
-            <HideableWrapper
+            <HideAbleWrapper
               title={watch(`projects.${idx}.name`)}
               onDelete={() => remove(idx)}
             >
@@ -200,7 +200,7 @@ const ProjectsInput = ({
                   errors={errors}
                 />
               </InputColumn>
-            </HideableWrapper>
+            </HideAbleWrapper>
 
             <S.Hr />
           </div>
