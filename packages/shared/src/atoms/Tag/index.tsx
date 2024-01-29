@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
 import styled from '@emotion/styled'
-import { XmarkOutline } from '../../icons'
+import { XMarkOutline } from '../../icons'
 
 const Wrapper = styled.span`
   ${({ theme }) => theme.body2}
@@ -32,7 +32,7 @@ const Tag = ({ children, onRemove }: Props) => {
     <Wrapper>
       {children}
       <XIcon onClick={onRemove}>
-        <XmarkOutline />
+        <XMarkOutline />
       </XIcon>
     </Wrapper>
   )

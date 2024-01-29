@@ -33,7 +33,7 @@ const HideAbleWrapper = ({ children, title, onDelete }: Props) => {
           </S.Icon>
 
           <S.Icon onClick={onDelete}>
-            <Icon.XmarkOutline />
+            <Icon.XMarkOutline />
           </S.Icon>
         </S.Icons>
       </S.Header>

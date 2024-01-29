@@ -51,7 +51,7 @@ const FourImageInputs = ({
         {values.map((url, idx) => (
           <S.ImageWrapper key={idx}>
             <S.RemoveButton onClick={() => removeImage(url)}>
-              <Icon.Xmark />
+              <Icon.XMark />
             </S.RemoveButton>
             <S.Image src={url} />
           </S.ImageWrapper>

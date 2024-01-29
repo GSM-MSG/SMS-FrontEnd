@@ -6,7 +6,7 @@ import {
   forwardRef,
   useState,
 } from 'react'
-import { Xmark } from '../../icons'
+import { XMark } from '../../icons'
 import * as S from './style'
 
 interface Props
@@ -57,7 +57,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
             hidden={!value.length || !onReset || props.disabled}
             onClick={resetHandler}
           >
-            <Xmark />
+            <XMark />
           </S.ResetButton>
         </S.InputWrapper>
         {error && <S.Error>{error}</S.Error>}
