@@ -14,7 +14,7 @@ const HideAbleWrapper = ({ children, title, onDelete }: Props) => {
   const [isChecked, setIsChecked] = useState<boolean>(false)
 
   return (
-    <S.Wrapper>
+    <>
       <S.Header>
         <S.Title>
           {title ||
@@ -39,7 +39,7 @@ const HideAbleWrapper = ({ children, title, onDelete }: Props) => {
       </S.Header>
 
       <S.Content isChecked={isChecked}>{children}</S.Content>
-    </S.Wrapper>
+    </>
   )
 }
 
