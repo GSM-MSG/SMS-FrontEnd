@@ -12,7 +12,7 @@ export const ProjectList = styled.div`
 `
 
 export const ImageInput = styled.div`
-  width: 10.5rem;
+  width: 15.375rem;
 `
 
 export const Hr = styled.hr`

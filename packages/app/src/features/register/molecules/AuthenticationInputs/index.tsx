@@ -105,7 +105,7 @@ const AuthenticationInput = ({
                 />
               </InputColumn>
 
-              <InputColumn comment='활동 내용'>
+              <InputColumn comment='활동 설명'>
                 <Textarea
                   {...register(`activities.${idx}.description`, {
                     required: { value: true, message: '필수 값입니다' },
