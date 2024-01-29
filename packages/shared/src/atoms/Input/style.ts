@@ -17,7 +17,7 @@ export const InputWrapper = styled.label<InputWrapperProps>`
   :hover {
     border: 0.0625rem solid
       ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'var(--P1)')};
-    ${({ isDisabled }) => (isDisabled ? 'border: 0.0625rem solid transparent' : '')}
+    ${({ isDisabled }) => (isDisabled ? 'border: 1px solid transparent' : '')}
   }
 
   border: 0.0625rem solid

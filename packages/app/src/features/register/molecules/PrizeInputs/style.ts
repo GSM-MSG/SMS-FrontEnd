@@ -7,7 +7,7 @@ export {
   Hr,
 } from '@features/register/molecules/ProjectsInput/style'
 
-export const PriszesList = styled.div`
+export const PrizesList = styled.div`
   display: flex;
   flex-direction: column;
 

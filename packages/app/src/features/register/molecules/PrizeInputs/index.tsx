@@ -37,7 +37,7 @@ const PrizeInputs = ({
 
   return (
     <S.Wrapper>
-      <S.PriszesList>
+      <S.PrizesList>
         {fields.map((field, idx) => (
           <div key={field.id}>
             <HideAbleWrapper onDelete={() => remove(idx)} title='수상'>
@@ -85,7 +85,7 @@ const PrizeInputs = ({
             <S.Hr />
           </div>
         ))}
-      </S.PriszesList>
+      </S.PrizesList>
 
       {fields.length === 0 && <S.Title>수상</S.Title>}
 
