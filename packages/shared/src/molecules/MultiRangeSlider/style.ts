@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 
     ::-webkit-slider-thumb {
       background-color: var(--WHITE);
-      border: 2px solid var(--P2);
+      border: 0.125rem solid var(--P2);
       border-radius: 50%;
       cursor: pointer;
       height: 1.5rem;
@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
 
     ::-moz-range-thumb {
       background-color: var(--WHITE);
-      border: 2px solid var(--P2);
+      border: 0.125rem solid var(--P2);
       border-radius: 50%;
       cursor: pointer;
       height: 1.5rem;
@@ -58,7 +58,7 @@ export const Slider = styled.div`
   width: 100%;
 `
 export const SliderTrack = styled.div`
-  height: 2px;
+  height: 0.125rem;
   border-radius: 0.5rem;
   width: 100%;
   z-index: 1;
@@ -70,7 +70,7 @@ export const SliderRange = styled.div`
   position: absolute;
   z-index: 2;
   background: var(--P2);
-  height: 2px;
+  height: 0.125rem;
 `
 
 export const Inputs = styled.div`

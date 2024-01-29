@@ -40,5 +40,5 @@ export const TableValue = styled.div`
 `
 
 export const TableLine = styled.hr`
-  border: 0.5px solid var(--N20);
+  border: 0.0313rem solid var(--N20);
 `

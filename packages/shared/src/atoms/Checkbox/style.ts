@@ -29,7 +29,7 @@ export const Input = styled.input`
 
   :checked ~ label {
     background: var(--P2);
-    border: 1px solid transparent;
+    border: 0.0625rem solid transparent;
 
     svg {
       width: 65%;
@@ -44,7 +44,7 @@ export const Checkbox = styled.label`
   height: 1.25rem;
   border-radius: 0.25rem;
   display: inline-block;
-  border: 2px solid var(--N20);
+  border: 0.125rem solid var(--N20);
   pointer-events: none;
   display: flex;
   align-items: center;

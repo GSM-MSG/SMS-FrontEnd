@@ -15,12 +15,12 @@ export const InputWrapper = styled.label<InputWrapperProps>`
   cursor: ${({ isDisabled }) => (isDisabled ? 'auto' : 'text')};
 
   :hover {
-    border: 1px solid
+    border: 0.0625rem solid
       ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'var(--P1)')};
-    ${({ isDisabled }) => (isDisabled ? 'border: 1px solid transparent' : '')}
+    ${({ isDisabled }) => (isDisabled ? 'border: 0.0625rem solid transparent' : '')}
   }
 
-  border: 1px solid
+  border: 0.0625rem solid
     ${({ isFocused, isDisabled }) =>
       isFocused && isDisabled ? 'var(--P2)' : 'transparent'};
 `
