@@ -14,7 +14,6 @@ interface RegisterFormType {
   militaryService: MilitaryService // 희망, 비희망, 상관없음, 해당없음
   certificates: string[]
   projects: ProjectType[]
-  activities: ActivityType[]
   prizes: PrizeType[]
 }
 
