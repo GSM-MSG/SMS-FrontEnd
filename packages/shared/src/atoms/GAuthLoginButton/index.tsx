@@ -5,10 +5,10 @@ interface Props {
   onClick: () => void
 }
 
-const GauthLoginButton = ({ onClick }: Props) => {
+const GAuthLoginButton = ({ onClick }: Props) => {
   return (
     <Button onClick={onClick}>
-      <SVG.GauthLogo />
+      <SVG.GAuthLogo />
       Sign in with GAuth
     </Button>
   )
@@ -23,10 +23,10 @@ const Button = styled.button`
   background: #fff;
   color: #2e80cc;
   font-size: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.25);
   border: none;
   cursor: pointer;
   border-radius: 1.5rem;
 `
 
-export default GauthLoginButton
+export default GAuthLoginButton

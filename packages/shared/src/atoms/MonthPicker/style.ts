@@ -29,7 +29,7 @@ export const Modal = styled.div`
   background: var(--WHITE);
   border-radius: 1rem;
   cursor: auto;
-  box-shadow: 0px 2px 24px 0px rgba(76, 75, 91, 0.12);
+  box-shadow: 0 0.125rem 1.5rem 0 rgba(76, 75, 91, 0.12);
   top: 100%;
   z-index: 100;
 `

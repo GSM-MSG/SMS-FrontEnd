@@ -45,13 +45,13 @@ const FourImageInputs = ({
     )
 
   return (
-    <S.Wrapper>
+    <>
       <input {...register} hidden />
       <S.Images>
         {values.map((url, idx) => (
           <S.ImageWrapper key={idx}>
             <S.RemoveButton onClick={() => removeImage(url)}>
-              <Icon.Xmark />
+              <Icon.XMark />
             </S.RemoveButton>
             <S.Image src={url} />
           </S.ImageWrapper>
@@ -59,7 +59,7 @@ const FourImageInputs = ({
         {values.length < 4 && <ImageInput isPreview onChange={onChange} />}
       </S.Images>
       <S.Error>{error}</S.Error>
-    </S.Wrapper>
+    </>
   )
 }
 

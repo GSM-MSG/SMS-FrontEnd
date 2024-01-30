@@ -1,4 +1,4 @@
-import HideableWrapper from '@features/register/atoms/HideableWrapper'
+import HideAbleWrapper from '@features/register/atoms/HideAbleWrapper'
 import { InputColumn } from '@features/register/atoms'
 import { ImageInput, Input, Textarea } from '@sms/shared'
 import { RegisterFormType } from '@features/register/type'
@@ -73,7 +73,7 @@ const AuthenticationInput = ({
       <S.ProjectList>
         {fields.map((field, idx) => (
           <div key={field.id}>
-            <HideableWrapper
+            <HideAbleWrapper
               title={watch(`activities.${idx}.name`)}
               onDelete={() => remove(idx)}
             >
@@ -122,7 +122,7 @@ const AuthenticationInput = ({
                   error={errors.activities?.[idx]?.description?.message}
                 />
               </InputColumn>
-            </HideableWrapper>
+            </HideAbleWrapper>
 
             <S.Hr />
           </div>

@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
 
-export const Wrapper = styled.div``
-
 export const Images = styled.div`
   display: grid;
   gap: 0.5rem;

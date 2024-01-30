@@ -18,7 +18,7 @@ const FilterHeader = ({ reset }: Props) => {
       <S.FilterTitle>필터</S.FilterTitle>
       <S.CloseIconWrapper>
         <S.CloseIcon onClick={onClose}>
-          <Icon.Xmark />
+          <Icon.XMark />
         </S.CloseIcon>
       </S.CloseIconWrapper>
     </S.Wrapper>

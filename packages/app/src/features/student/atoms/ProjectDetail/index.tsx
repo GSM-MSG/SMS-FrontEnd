@@ -14,7 +14,7 @@ const ProjectDetail = ({ projects }: Props) => {
       <S.Title>프로젝트</S.Title>
 
       {projects.map((project, idx) => (
-        <S.Project key={idx}>
+        <div key={idx}>
           <S.ProjectInfo>
             <S.ProjectIcon
               src={project.icon}
@@ -75,7 +75,7 @@ const ProjectDetail = ({ projects }: Props) => {
               </S.LinkWrapper>
             ))}
           </S.Section>
-        </S.Project>
+        </div>
       ))}
     </S.Wrapper>
   )

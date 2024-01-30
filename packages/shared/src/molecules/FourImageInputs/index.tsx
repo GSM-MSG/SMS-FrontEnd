@@ -9,7 +9,7 @@ interface Props {
 
 const FourImageInputs = ({ onChange, error }: Props) => {
   return (
-    <S.Wrapper>
+    <>
       <S.Images>
         <ImageInput onChange={onChange} />
         <ImageInput onChange={onChange} />
@@ -17,7 +17,7 @@ const FourImageInputs = ({ onChange, error }: Props) => {
         <ImageInput onChange={onChange} />
       </S.Images>
       <S.Error>{error}</S.Error>
-    </S.Wrapper>
+    </>
   )
 }
 

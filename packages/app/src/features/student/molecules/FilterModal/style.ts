@@ -33,7 +33,7 @@ export const Content = styled.div`
 export const ButtonWrapper = styled.div`
   width: 100%;
   padding: 1.5rem 1.47rem;
-  border-top: 1px solid var(--N20);
+  border-top: 0.0625rem solid var(--N20);
   display: flex;
   justify-content: space-between;
   align-items: center;

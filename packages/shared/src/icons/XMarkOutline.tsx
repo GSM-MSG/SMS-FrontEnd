@@ -2,7 +2,7 @@ interface Props {
   color?: 'black' | 'white'
 }
 
-const XmarkOutline = ({ color = 'black' }: Props) => (
+const XMarkOutline = ({ color = 'black' }: Props) => (
   <svg
     width='24'
     height='24'
@@ -20,4 +20,4 @@ const XmarkOutline = ({ color = 'black' }: Props) => (
   </svg>
 )
 
-export default XmarkOutline
+export default XMarkOutline

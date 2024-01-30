@@ -37,8 +37,8 @@ export const RadioButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 100%;
   border: 2px solid var(--N20);
   position: relative;
@@ -52,15 +52,15 @@ export const Input = styled.input`
     color: var(--N50);
   }
   :checked ~ div {
-    border: 2px solid var(--P2);
+    border: 0.125rem solid var(--P2);
     color: var(--N50);
 
     ::after {
       display: block;
       content: '';
       background: var(--P2);
-      width: 12px;
-      height: 12px;
+      width: 0.75rem;
+      height: 0.75rem;
       border-radius: 100%;
       animation: ${afterAnimation} 0.4s forwards;
     }
@@ -70,9 +70,9 @@ export const Input = styled.input`
       position: absolute;
       background: var(--N20);
       opacity: 0.5;
-      width: 32px;
-      height: 32px;
-      border-radius: 100 %;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 100%;
       z-index: -100;
       animation-duration: 0.4s;
       animation: ${beforeAnimation} 0.6s forwards;

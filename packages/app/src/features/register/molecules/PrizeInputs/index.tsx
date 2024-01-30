@@ -1,7 +1,7 @@
 import { Input, MonthPicker } from '@sms/shared'
 import * as Icon from '@sms/shared/src/icons'
 import { InputColumn } from '@features/register/atoms'
-import HideableWrapper from '@features/register/atoms/HideableWrapper'
+import HideAbleWrapper from '@features/register/atoms/HideAbleWrapper'
 import { RegisterFormType } from '@features/register/type'
 import {
   Control,
@@ -37,10 +37,10 @@ const PrizeInputs = ({
 
   return (
     <S.Wrapper>
-      <S.PriszesList>
+      <S.PrizesList>
         {fields.map((field, idx) => (
           <div key={field.id}>
-            <HideableWrapper onDelete={() => remove(idx)} title='수상'>
+            <HideAbleWrapper onDelete={() => remove(idx)} title='수상'>
               <InputColumn comment='이름'>
                 <Input
                   {...register(`prizes.${idx}.name`, {
@@ -80,12 +80,12 @@ const PrizeInputs = ({
                   error={errors?.prizes?.[idx]?.date?.message}
                 />
               </InputColumn>
-            </HideableWrapper>
+            </HideAbleWrapper>
 
             <S.Hr />
           </div>
         ))}
-      </S.PriszesList>
+      </S.PrizesList>
 
       {fields.length === 0 && <S.Title>수상</S.Title>}
 
