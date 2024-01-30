@@ -3,12 +3,12 @@ import { ReactNode } from 'react'
 
 type HeadlineType = 'headline1' | 'headline2' | 'headline3'
 
-interface Porps {
+interface Props {
   children: ReactNode
   type?: HeadlineType
 }
 
-const Headline = ({ children, type = 'headline1' }: Porps) => {
+const Headline = ({ children, type = 'headline1' }: Props) => {
   return <Title type={type}>{children}</Title>
 }
 

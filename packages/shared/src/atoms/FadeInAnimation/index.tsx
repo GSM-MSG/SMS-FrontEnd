@@ -7,7 +7,7 @@ interface Props {
   duration?: number
 }
 
-const FadeinAnimation = ({ children, duration = 1 }: Props) => {
+const FadeInAnimation = ({ children, duration = 1 }: Props) => {
   return <Wrapper duration={duration}>{children}</Wrapper>
 }
 
@@ -27,4 +27,4 @@ const Wrapper = styled.div<{ duration: number }>`
   animation-duration: ${({ duration }) => duration}s;
 `
 
-export default FadeinAnimation
+export default FadeInAnimation

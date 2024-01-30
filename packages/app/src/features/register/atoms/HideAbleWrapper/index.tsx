@@ -9,12 +9,12 @@ interface Props {
   title: string
 }
 
-const HideableWrapper = ({ children, title, onDelete }: Props) => {
+const HideAbleWrapper = ({ children, title, onDelete }: Props) => {
   const router = useRouter()
   const [isChecked, setIsChecked] = useState<boolean>(false)
 
   return (
-    <S.Wrapper>
+    <>
       <S.Header>
         <S.Title>
           {title ||
@@ -33,14 +33,14 @@ const HideableWrapper = ({ children, title, onDelete }: Props) => {
           </S.Icon>
 
           <S.Icon onClick={onDelete}>
-            <Icon.XmarkOutline />
+            <Icon.XMarkOutline />
           </S.Icon>
         </S.Icons>
       </S.Header>
 
       <S.Content isChecked={isChecked}>{children}</S.Content>
-    </S.Wrapper>
+    </>
   )
 }
 
-export default HideableWrapper
+export default HideAbleWrapper

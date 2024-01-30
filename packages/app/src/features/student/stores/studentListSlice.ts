@@ -21,13 +21,13 @@ const studentListSlice = createSlice({
     resetStudents: (state) => {
       state.studentList = []
     },
-    setTotoalSize: (state, { payload }: PayloadAction<number | undefined>) => {
+    setTotalSize: (state, { payload }: PayloadAction<number | undefined>) => {
       state.totalSize = payload || 0
     },
   },
 })
 
-export const { addStudents, resetStudents, setTotoalSize } =
+export const { addStudents, resetStudents, setTotalSize } =
   studentListSlice.actions
 
 export default studentListSlice

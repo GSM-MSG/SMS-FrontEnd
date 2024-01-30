@@ -1,4 +1,4 @@
-const Xmark = () => (
+const XMark = () => (
   <svg
     width='20'
     height='20'
@@ -16,4 +16,4 @@ const Xmark = () => (
   </svg>
 )
 
-export default Xmark
+export default XMark

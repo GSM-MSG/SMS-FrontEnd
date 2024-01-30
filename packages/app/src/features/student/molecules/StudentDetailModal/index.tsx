@@ -27,7 +27,7 @@ const StudentDetailModal = ({ student, studentId }: Props) => {
 
         <S.ButtonWrapper onClick={onClose}>
           <S.CloseBtn>
-            <Icon.XmarkOutline color='white' />
+            <Icon.XMarkOutline color='white' />
           </S.CloseBtn>
         </S.ButtonWrapper>
 

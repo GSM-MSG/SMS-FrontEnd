@@ -40,7 +40,7 @@ const useStudent = () => {
       dispatch(actions.setIsError(isError))
       return addToast('error', ErrorMapper(error, errors))
     }
-    dispatch(actions.setTotoalSize(data.totalSize))
+    dispatch(actions.setTotalSize(data.totalSize))
     if (data?.content) dispatch(actions.addStudents(data.content))
     if (data.last) return dispatch(actions.nextStop())
     dispatch(actions.nextPage())
@@ -53,7 +53,7 @@ const useStudent = () => {
   ) => {
     dispatch(actions.resetStudents())
     dispatch(actions.addStudents(students || []))
-    dispatch(actions.setTotoalSize(totalSize))
+    dispatch(actions.setTotalSize(totalSize))
     if (last) dispatch(actions.nextStop())
   }
 
