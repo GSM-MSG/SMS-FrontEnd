@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 }
 
-const GSMInfoPage = () => {
+const AuthenticationPage = () => {
   return (
     <>
       <SEO title='인증제페이지' />
@@ -27,4 +27,4 @@ const GSMInfoPage = () => {
   )
 }
 
-export default GSMInfoPage
+export default AuthenticationPage
