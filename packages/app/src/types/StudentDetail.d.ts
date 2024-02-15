@@ -27,4 +27,5 @@ interface StudentDetail {
   techStacks: string[]
   prizes?: PrizeType[]
   projects?: ProjectType[]
+  activities?: ActivityType[]
 }

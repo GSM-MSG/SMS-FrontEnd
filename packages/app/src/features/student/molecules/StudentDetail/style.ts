@@ -19,6 +19,7 @@ export const PortfolioWrapper = styled.div`
   padding: 0 1.25rem 3.5rem;
   display: flex;
   justify-content: center;
+  background-color: red;
 `
 
 export const PortfolioButton = styled(Link)`

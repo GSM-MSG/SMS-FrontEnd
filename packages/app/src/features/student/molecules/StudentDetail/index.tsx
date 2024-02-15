@@ -2,6 +2,7 @@ import PrizesDetail from '@features/student/atoms/PrizesDetail'
 import ProfileDetail from '@features/student/atoms/ProfileDetail'
 import ProjectDetail from '@features/student/atoms/ProjectDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
+import GSMInfoDetail from '@features/student/atoms/GSMInfoDetail'
 import * as S from './style'
 
 interface Props {
@@ -41,6 +42,8 @@ const StudentDetail = ({ student }: Props) => {
           </S.PortfolioButton>
         </S.PortfolioWrapper>
       )}
+
+      <GSMInfoDetail activities={student?.activities} />
     </S.Wrapper>
   )
 }
