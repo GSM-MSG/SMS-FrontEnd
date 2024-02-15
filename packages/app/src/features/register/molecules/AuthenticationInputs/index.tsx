@@ -1,6 +1,6 @@
 import HideAbleWrapper from '@features/register/atoms/HideAbleWrapper'
 import { InputColumn } from '@features/register/atoms'
-import { ImageInput, Input, Textarea } from '@sms/shared'
+import { FourImageInputs, Input, Textarea } from '@sms/shared'
 import { RegisterFormType } from '@features/register/type'
 import * as Icon from '@sms/shared/src/icons'
 import {
@@ -76,15 +76,19 @@ const AuthenticationInput = ({
               title={watch(`activities.${idx}.title`)}
               onDelete={() => remove(idx)}
             >
-              <InputColumn comment='활동 사진'>
-                <S.ImageInput>
-                  <ImageInput
-                    isPreview
-                    onChange={onChange}
-                    value={watch(`activities.${idx}.activityImage`)}
-                    error={errors?.activities?.[idx]?.activityImage?.message}
-                  />
-                </S.ImageInput>
+              <InputColumn comment='미리보기 사진'>
+                <FourImageInputs
+                  idx={idx}
+                  values={watch(`activities.${idx}.activityImage`)}
+                  setValue={setValue}
+                  setError={setError}
+                  error={errors?.activities?.[idx]?.activityImage?.message}
+                  clearErrors={clearErrors}
+                  register={register(`activities.${idx}.activityImage`, {
+                    required: { value: false, message: '필수 값이 아닙니다.' },
+                  })}
+                  onChange={onChange}
+                />
               </InputColumn>
 
               <InputColumn comment='활동 제목'>
