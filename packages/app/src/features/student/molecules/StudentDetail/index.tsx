@@ -42,7 +42,6 @@ const StudentDetail = ({ student }: Props) => {
           </S.PortfolioButton>
         </S.PortfolioWrapper>
       )}
-
       <GSMInfoDetail activities={student?.activities} />
     </S.Wrapper>
   )

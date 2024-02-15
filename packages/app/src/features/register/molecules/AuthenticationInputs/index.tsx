@@ -45,25 +45,24 @@ const AuthenticationInput = ({
 
   const { onChange } = useImageUpload({
     setValue: (value: string) => {
-      setValue(`activities.${idx}.previewImage`, [value])
+      setValue(`activities.${idx}.activityImage`, [value])
       setMinLength(200)
     },
     setError: (message) => {
-      setError(`activities.${idx}.previewImage`, { message })
+      setError(`activities.${idx}.activityImage`, { message })
       setMinLength(400)
     },
     clearError: () => {
-      clearErrors(`activities.${idx}.previewImage`)
+      clearErrors(`activities.${idx}.activityImage`)
       setMinLength(400)
     },
   })
 
   const onClick = () =>
     append({
-      name: '',
-      myActivity: '',
-      description: '',
-      previewImage: [],
+      title: '',
+      content: '',
+      activityImage: [],
     })
 
   const [minLength, setMinLength] = useState<number>(400)
@@ -74,7 +73,7 @@ const AuthenticationInput = ({
         {fields.map((field, idx) => (
           <div key={field.id}>
             <HideAbleWrapper
-              title={watch(`activities.${idx}.name`)}
+              title={watch(`activities.${idx}.title`)}
               onDelete={() => remove(idx)}
             >
               <InputColumn comment='활동 사진'>
@@ -82,15 +81,15 @@ const AuthenticationInput = ({
                   <ImageInput
                     isPreview
                     onChange={onChange}
-                    value={watch(`activities.${idx}.previewImage`)}
-                    error={errors?.activities?.[idx]?.previewImage?.message}
+                    value={watch(`activities.${idx}.activityImage`)}
+                    error={errors?.activities?.[idx]?.activityImage?.message}
                   />
                 </S.ImageInput>
               </InputColumn>
 
               <InputColumn comment='활동 제목'>
                 <Input
-                  {...register(`activities.${idx}.name`, {
+                  {...register(`activities.${idx}.title`, {
                     required: {
                       value: true,
                       message: '필수 값입니다',
@@ -101,13 +100,13 @@ const AuthenticationInput = ({
                     },
                   })}
                   placeholder='활동 제목 입력'
-                  error={errors.activities?.[idx]?.name?.message}
+                  error={errors.activities?.[idx]?.title?.message}
                 />
               </InputColumn>
 
               <InputColumn comment='활동 설명'>
                 <Textarea
-                  {...register(`activities.${idx}.description`, {
+                  {...register(`activities.${idx}.content`, {
                     required: { value: true, message: '필수 값입니다' },
                     minLength: {
                       value: minLength,
@@ -119,7 +118,7 @@ const AuthenticationInput = ({
                     },
                   })}
                   placeholder='활동 내용 입력'
-                  error={errors.activities?.[idx]?.description?.message}
+                  error={errors.activities?.[idx]?.content?.message}
                 />
               </InputColumn>
             </HideAbleWrapper>
