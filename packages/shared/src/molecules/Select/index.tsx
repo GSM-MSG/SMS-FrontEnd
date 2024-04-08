@@ -11,7 +11,7 @@ interface Props {
   register: any
   control: Control<any>
   name: string
-  value: string
+  value: string | number
   directInput?: boolean
   placeholder?: string
   error?: string

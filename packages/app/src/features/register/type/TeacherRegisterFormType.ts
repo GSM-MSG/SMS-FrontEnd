@@ -5,8 +5,8 @@ interface TeacherRegisterFormType {
     | 'deputy-principal'
     | 'director'
     | 'common'
-  grade: string
-  classNum: string
+  grade: number
+  classNum: number
 }
 
 export default TeacherRegisterFormType
