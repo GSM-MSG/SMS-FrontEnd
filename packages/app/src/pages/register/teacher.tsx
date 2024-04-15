@@ -1,10 +1,10 @@
-// import useLoggedIn from '@features/auth/hook/useLoggedIn'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { SEO } from '@features/global'
 import { TeacherRegisterForm } from '@features/register/organisms'
 import RegisterLayout from '@layouts/RegisterLayout'
 
 const TeacherRegister = () => {
-  //   useLoggedIn({ redirectTo: '/', redirectToIfFound: '/' })
+  useLoggedIn({ redirectTo: '/', redirectToIfFound: '/' })
 
   return (
     <>

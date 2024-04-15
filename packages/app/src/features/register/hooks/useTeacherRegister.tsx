@@ -4,11 +4,13 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { TeacherRegisterFormType } from '@features/register/type'
 import { PostTeacherRegisterService } from '@features/register/services'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
+
 const useTeacherRegister = () => {
   const { addToast } = useToast()
   const router = useRouter()
   const { loadingWrap, loadingClose } = useLoading()
-
+  const { refetchLoggedIn } = useLoggedIn({})
   const {
     register,
     control,
@@ -33,6 +35,7 @@ const useTeacherRegister = () => {
 
     loadingClose()
     addToast('success', '회원가입에 성공했습니다')
+    await refetchLoggedIn()
   })
 
   return {
