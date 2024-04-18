@@ -1,3 +1,3 @@
 export interface OptionsType {
-  [label: string]: string
+  [label: string]: string | number
 }
