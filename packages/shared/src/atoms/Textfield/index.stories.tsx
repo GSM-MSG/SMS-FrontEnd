@@ -1,6 +1,4 @@
-// import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-// import Search from '../../icons/Search'
 import Textfield from './index'
 
 const config: Meta<typeof Textfield> = {
