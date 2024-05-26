@@ -14,14 +14,15 @@ interface Props
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  icon?: ReactNode
+  leftIcon?: ReactNode
+  rightIcon?: ReactNode
   error?: string
   onReset?: () => void
   label?: string
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ error, icon, onReset, label, ...props }, ref) => {
+  ({ error, leftIcon, rightIcon, onReset, label, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState<boolean>(false)
     const [value, setValue] = useState<string>('')
 
@@ -38,7 +39,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     return (
       <S.Wrapper>
         <S.InputWrapper isDisabled={props.disabled} isFocused={isFocused}>
-          {icon}
+          {leftIcon}
           <S.TextFiled
             {...props}
             ref={ref}
@@ -52,13 +53,16 @@ const Input = forwardRef<HTMLInputElement, Props>(
 
           {label && <S.Label>{label}</S.Label>}
 
-          <S.ResetButton
-            type='button'
-            hidden={!value.length || !onReset || props.disabled}
-            onClick={resetHandler}
-          >
-            <XMark />
-          </S.ResetButton>
+          <S.Icon>
+            {rightIcon || (
+              <div
+                hidden={!value.length || !onReset || props.disabled}
+                onClick={resetHandler}
+              >
+                <XMark />
+              </div>
+            )}
+          </S.Icon>
         </S.InputWrapper>
         {error && <S.Error>{error}</S.Error>}
       </S.Wrapper>

@@ -44,13 +44,13 @@ export const Label = styled.div`
   word-break: keep-all;
 `
 
-export const ResetButton = styled.button`
-  border: none;
-  border-radius: 0.3rem;
-  background: var(--N20);
+export const Icon = styled.div`
   width: 1.25rem;
   height: 1.25rem;
-  cursor: pointer;
+
+  > div {
+    cursor: pointer;
+  }
 `
 
 export const Error = styled.div`
