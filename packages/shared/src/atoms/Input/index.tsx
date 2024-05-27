@@ -55,12 +55,13 @@ const Input = forwardRef<HTMLInputElement, Props>(
 
           <S.Icon>
             {rightIcon || (
-              <div
+              <S.ResetButton
+                type='button'
                 hidden={!value.length || !onReset || props.disabled}
                 onClick={resetHandler}
               >
                 <XMark />
-              </div>
+              </S.ResetButton>
             )}
           </S.Icon>
         </S.InputWrapper>

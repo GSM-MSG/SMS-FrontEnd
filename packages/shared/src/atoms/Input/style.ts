@@ -53,6 +53,13 @@ export const Icon = styled.div`
   }
 `
 
+export const ResetButton = styled.button`
+  border: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+`
+
 export const Error = styled.div`
   ${({ theme }) => theme.caption1}
   color: var(--ERROR);
