@@ -1,18 +1,14 @@
-import { useState } from 'react'
 import * as S from './style'
 
 export interface Props {
   text1: string
   text2: string
+  isTrue: boolean
 }
 
-const SegmentedControl = ({ text1, text2 }: Props) => {
-  const [isTrue, setIsTrue] = useState(true)
-
-  const handleToggle = () => setIsTrue(!isTrue)
-
+const SegmentedControl = ({ text1, text2, isTrue }: Props) => {
   return (
-    <S.Wrapper onClick={handleToggle}>
+    <S.Wrapper>
       <S.LabelWrapper>
         <div>{text1}</div>
         <div>{text2}</div>
