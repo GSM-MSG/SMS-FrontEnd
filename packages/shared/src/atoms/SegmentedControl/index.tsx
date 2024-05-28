@@ -10,11 +10,11 @@ const SegmentedControl = ({ text1, text2, isTrue }: Props) => {
   return (
     <S.Wrapper>
       <S.LabelWrapper>
-        <div>{text1}</div>
-        <div>{text2}</div>
+        <S.Label>{text1}</S.Label>
+        <S.Label>{text2}</S.Label>
       </S.LabelWrapper>
       <S.Slider active={isTrue}>
-        <span>{isTrue ? text1 : text2}</span>
+        <S.SliderText>{isTrue ? text1 : text2}</S.SliderText>
       </S.Slider>
     </S.Wrapper>
   )

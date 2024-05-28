@@ -14,14 +14,14 @@ export const LabelWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 0.625rem;
-  position: absolute;
-  z-index: 1;
-  div {
-    width: 50%;
-    text-align: center;
-    color: #555;
-    font-size: 1rem;
-  }
+`
+
+export const Label = styled.div`
+  width: 7.5rem;
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+  font-weight: 700;
 `
 
 export const Slider = styled.div<{ active: boolean }>`
@@ -38,12 +38,12 @@ export const Slider = styled.div<{ active: boolean }>`
   justify-content: center;
   color: white;
   font-size: 1rem;
+  font-weight: 700;
   transition: left 0.3s;
-  z-index: 2;
+`
 
-  span {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-  }
+export const SliderText = styled.span`
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 `
