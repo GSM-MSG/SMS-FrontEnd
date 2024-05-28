@@ -6,7 +6,7 @@ export interface Props {
   text2: string
 }
 
-const ToggleButton = ({ text1, text2 }: Props) => {
+const SegmentedControl = ({ text1, text2 }: Props) => {
   const [isTrue, setIsTrue] = useState(true)
 
   const handleToggle = () => setIsTrue(!isTrue)
@@ -24,6 +24,6 @@ const ToggleButton = ({ text1, text2 }: Props) => {
   )
 }
 
-ToggleButton.displayName = 'ToggleButton'
+SegmentedControl.displayName = 'SegmentedControl'
 
-export default ToggleButton
+export default SegmentedControl
