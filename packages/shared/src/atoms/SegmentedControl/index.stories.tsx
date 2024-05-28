@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import SegmentedControl, { Props } from './index'
+import SegmentedControl from './index'
 
 const config: Meta<typeof SegmentedControl> = {
   title: 'SegmentedControl',
