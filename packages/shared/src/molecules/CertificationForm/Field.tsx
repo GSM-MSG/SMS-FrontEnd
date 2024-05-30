@@ -14,7 +14,7 @@ const Field = ({ label, children, ...props }: Props) => {
   return (
     <S.Field
       style={{
-        display: hidden ? 'none' : 'block',
+        display: hidden ? 'none' : 'grid',
         ...props.style,
       }}
       {...props}
