@@ -4,8 +4,7 @@ import { TeacherRegisterForm } from '@features/register/organisms'
 import RegisterLayout from '@layouts/RegisterLayout'
 
 const TeacherRegister = () => {
-  useLoggedIn({ redirectTo: '/' })
-
+  useLoggedIn({ redirectTo: '/', redirectToIfFound: '/' })
   return (
     <>
       <SEO title='선생님 회원가입' />
