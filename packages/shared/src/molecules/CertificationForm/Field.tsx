@@ -1,5 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, ReactNode, useContext } from 'react'
 import * as S from './style'
+import { Context } from './Context'
 
 interface Props
   extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -8,8 +9,16 @@ interface Props
 }
 
 const Field = ({ label, children, ...props }: Props) => {
+  const { hidden } = useContext(Context)
+
   return (
-    <S.Field {...props}>
+    <S.Field
+      style={{
+        display: hidden ? 'none' : 'block',
+        ...props.style,
+      }}
+      {...props}
+    >
       <S.Label>{label}</S.Label>
       {children}
     </S.Field>
