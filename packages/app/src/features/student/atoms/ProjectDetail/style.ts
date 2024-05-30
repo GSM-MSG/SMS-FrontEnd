@@ -16,8 +16,6 @@ export const Title = styled.h3`
   ${({ theme }) => theme.title1}
 `
 
-export const Project = styled.div``
-
 export const ProjectInfo = styled.div`
   display: flex;
   gap: 0.5rem;

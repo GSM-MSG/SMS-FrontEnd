@@ -11,7 +11,7 @@ export const SelectWrapper = styled.div`
   height: 3rem;
   padding: 0 1.25rem;
   background: var(--N10);
-  border: 1px solid transparent;
+  border: 0.0625rem solid transparent;
   border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@ export const SelectWrapper = styled.div`
   transition: 0.2s;
 
   :hover {
-    border: 1px solid var(--P1);
+    border: 0.0625rem solid var(--P1);
 
     color: var(--N30);
   }

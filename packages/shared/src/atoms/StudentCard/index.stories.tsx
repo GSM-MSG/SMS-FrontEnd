@@ -21,7 +21,7 @@ export const Primary: Story = {
       'sfasfd',
       'asfsaf',
       'asdfasf',
-      'asdfaf',
+      'asdfadf',
       'sadfasfsadfasfsf',
     ],
   },

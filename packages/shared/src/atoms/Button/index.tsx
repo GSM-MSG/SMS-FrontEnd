@@ -55,13 +55,13 @@ const WhiteButton = styled.button`
   width: 100%;
   outline: none;
   transition: 0.4s;
-  border: 1px solid var(--N20);
+  border: 0.0625rem solid var(--N20);
   background: var(--WHITE);
   color: var(--BLACK);
   ${(props) => props.theme.title2}
 
   &:active {
-    border: 1px solid var(--N30);
+    border: 0.0625rem solid var(--N30);
     background: var(--N10);
   }
 `

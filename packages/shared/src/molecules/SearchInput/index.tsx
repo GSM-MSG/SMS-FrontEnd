@@ -84,7 +84,7 @@ const SearchInput = ({
       <S.Wrapper>
         <Input
           placeholder='찾고 싶은 세부 스택 입력'
-          icon={<Search />}
+          leftIcon={<Search />}
           onChange={changeHandler}
           value={searchValue}
           onReset={() => setSearchValue('')}

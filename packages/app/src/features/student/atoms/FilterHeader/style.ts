@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
   padding: 1.5rem;
-  border-bottom: 1px solid var(--N20);
+  border-bottom: 0.0625rem solid var(--N20);
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;

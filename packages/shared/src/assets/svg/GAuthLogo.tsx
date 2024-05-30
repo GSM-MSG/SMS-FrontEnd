@@ -1,4 +1,4 @@
-const GauthLogo = () => (
+const GAuthLogo = () => (
   <svg
     width='16'
     height='18'
@@ -15,4 +15,4 @@ const GauthLogo = () => (
   </svg>
 )
 
-export default GauthLogo
+export default GAuthLogo

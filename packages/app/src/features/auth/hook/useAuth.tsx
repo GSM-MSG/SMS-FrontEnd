@@ -19,16 +19,16 @@ const useAuth = () => {
     if (!code) return
     ;(async () => {
       const res = await loadingWrap(login(code))
-
       if (typeof res === 'string') {
         loadingClose()
         return addToast('error', res)
       }
-
+      const redirectUrl =
+        res.role === 'ROLE_TEACHER' ? '/register/teacher' : '/register'
       setAccessExpires(res.accessTokenExp)
       setRefreshExpires(res.refreshTokenExp)
       addToast('success', '로그인에 성공했습니다')
-      await router.push(res.isExist ? '/' : '/register')
+      await router.push(res.isExist ? '/' : redirectUrl)
       loadingClose()
     })()
   }, [code])

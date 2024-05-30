@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 0px 6px rgba(27, 27, 31, 0.08);
+  box-shadow: 0 0 0.375rem rgba(27, 27, 31, 0.08);
   margin: 0 auto;
   position: sticky;
   top: 2.5rem;
@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     width: 100%;
     top: 0;
     border-radius: 0;
-    border-bottom: 1px solid var(--N10);
+    border-bottom: 0.0625rem solid var(--N10);
     box-shadow: 0 0 0 transparent;
   }
 `
@@ -58,7 +58,7 @@ export const UserInfoWrapper = styled.div`
   height: 2.5rem;
   padding: 0 0.25rem 0 0.5rem;
   border-radius: 2rem;
-  border: 1px solid var(--N10);
+  border: 0.0625rem solid var(--N10);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -79,7 +79,7 @@ export const UserInfoWrapperLink = styled(Link)`
   height: 2.5rem;
   padding: 0 0.25rem 0 0.5rem;
   border-radius: 2rem;
-  border: 1px solid var(--N10);
+  border: 0.0625rem solid var(--N10);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -137,7 +137,7 @@ export const DropdownItem = styled(Dropdown.Item)`
 
 export const Line = styled.hr`
   width: 80%;
-  height: 1px;
+  height: 0.0625rem;
   background: var(--N10);
   border: none;
   margin: 0 auto;

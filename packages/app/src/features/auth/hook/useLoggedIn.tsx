@@ -15,8 +15,16 @@ const useLoggedIn = ({ redirectTo, redirectToIfFound }: Props) => {
   useEffect(() => {
     if ((!redirectTo && isLoading) || (!redirectToIfFound && isLoading)) return
 
-    if (isSuccess && router.pathname === '/register' && !data.isExist) return
-    if (isSuccess && !data.isExist) router.push('/register')
+    if (
+      isSuccess &&
+      !data.isExist &&
+      ['/register', '/register/teacher'].includes(router.pathname)
+    )
+      return
+    if (isSuccess && !data.isExist) {
+      if (data.role === 'ROLE_TEACHER') router.push('/register/teacher')
+      else router.push('/register')
+    }
 
     if (isSuccess && redirectToIfFound) {
       router.push(redirectToIfFound)

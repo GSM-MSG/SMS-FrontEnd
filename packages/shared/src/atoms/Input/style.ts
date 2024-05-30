@@ -15,12 +15,12 @@ export const InputWrapper = styled.label<InputWrapperProps>`
   cursor: ${({ isDisabled }) => (isDisabled ? 'auto' : 'text')};
 
   :hover {
-    border: 1px solid
+    border: 0.0625rem solid
       ${({ isFocused }) => (isFocused ? 'var(--P2)' : 'var(--P1)')};
     ${({ isDisabled }) => (isDisabled ? 'border: 1px solid transparent' : '')}
   }
 
-  border: 1px solid
+  border: 0.0625rem solid
     ${({ isFocused, isDisabled }) =>
       isFocused && isDisabled ? 'var(--P2)' : 'transparent'};
 `
@@ -44,12 +44,19 @@ export const Label = styled.div`
   word-break: keep-all;
 `
 
-export const ResetButton = styled.button`
-  border: none;
-  border-radius: 0.3rem;
-  background: var(--N20);
+export const Icon = styled.div`
   width: 1.25rem;
   height: 1.25rem;
+
+  > div {
+    cursor: pointer;
+  }
+`
+
+export const ResetButton = styled.button`
+  border: none;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 `
 

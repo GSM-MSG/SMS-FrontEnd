@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 8.2.0
+          version: 9.1.2
 
       - run: pnpm i --frozen-lockfile
       - run: pnpm build:shared

@@ -19,7 +19,7 @@ const Wrapper = styled.div<{ isShow: boolean }>`
   border-radius: 0.5rem;
   transition: 0.2s;
   overflow-y: scroll;
-  box-shadow: 0px 4px 24px rgba(76, 75, 91, 0.12);
+  box-shadow: 0 0.25rem 1.5rem rgba(76, 75, 91, 0.12);
   z-index: 100;
 
   opacity: ${({ isShow }) => (isShow ? 1 : 0)};
