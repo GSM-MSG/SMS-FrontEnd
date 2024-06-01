@@ -51,9 +51,9 @@ const SegmentedControl = forwardRef<HTMLInputElement, Props>((props, ref) => {
   }
 
   return (
-    <S.Wrapper onClick={handleClick}>
+    <S.Wrapper>
       <input hidden ref={ref || inputRef} {...props} type='checkbox' />
-      <S.LabelWrapper>
+      <S.LabelWrapper onClick={handleClick}>
         <S.Label>{props.text1}</S.Label>
         <S.Label>{props.text2}</S.Label>
       </S.LabelWrapper>

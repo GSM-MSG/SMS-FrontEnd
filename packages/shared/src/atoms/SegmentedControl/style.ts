@@ -18,6 +18,7 @@ export const LabelWrapper = styled.div`
   margin: 0rem 0.25rem;
   height: calc(100% - 0.5rem);
   align-items: center;
+  cursor: pointer;
 `
 
 export const Label = styled.div`
@@ -44,6 +45,7 @@ export const Slider = styled.div<{ checked: boolean }>`
   font-size: 1rem;
   font-weight: 700;
   transition: left 0.3s;
+  cursor: auto;
 `
 
 export const SliderText = styled.span`
