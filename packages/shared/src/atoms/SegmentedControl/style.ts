@@ -7,13 +7,17 @@ export const Wrapper = styled.div`
   align-items: center;
   cursor: pointer;
   position: relative;
+  background-color: #f7f7f8;
+  border-radius: 0.5rem;
 `
 
 export const LabelWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 0.625rem;
+  margin: 0rem 0.25rem;
+  height: calc(100% - 0.5rem);
+  align-items: center;
 `
 
 export const Label = styled.div`
@@ -24,15 +28,15 @@ export const Label = styled.div`
   font-weight: 700;
 `
 
-export const Slider = styled.div<{ active: boolean }>`
-  width: 50%;
+export const Slider = styled.div<{ checked: boolean }>`
+  width: 7.5rem;
   height: calc(100% - 0.5rem);
   margin: 0.25rem;
   background: #0070f3;
   border-radius: 0.25rem;
   position: absolute;
   top: 0;
-  left: ${(props) => (props.active ? '0%' : '50%')};
+  left: ${({ checked }) => (checked ? 'calc(50% - 0.14rem)' : '0%')};
   display: flex;
   align-items: center;
   justify-content: center;
