@@ -60,7 +60,6 @@ const Header = ({ onFilter }: Props) => {
             </S.UserCircle>
 
             <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
-
               {/* <S.DropdownItem onClick={redirectGSMInfo}>
                 <Icon.Document color='var(--N50)' /> 인증제
               </S.DropdownItem> */}
