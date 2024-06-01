@@ -16,6 +16,9 @@ export const Title = styled.h2`
 
 export const FileList = styled.ul`
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `
 
 export const File = styled.li`
@@ -38,6 +41,8 @@ export const FileInfo = styled.div`
 export const Icon = styled.figure`
   width: 2.5rem;
   height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
   border-radius: 100%;
   background: #fff;
   display: flex;
@@ -47,6 +52,11 @@ export const Icon = styled.figure`
 
 export const FileName = styled.p`
   ${({ theme }) => theme.body1}
+  display: -webkit-box;
   color: var(--N50);
-  white-space: nowrap;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `
