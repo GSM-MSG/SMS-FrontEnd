@@ -2,6 +2,7 @@ import React, {
   DetailedHTMLProps,
   InputHTMLAttributes,
   forwardRef,
+  useId,
 } from 'react'
 
 import * as S from './style'
@@ -16,16 +17,11 @@ interface Props
 }
 
 const SegmentedControl = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const id = useId()
   return (
     <S.Wrapper>
-      <S.Input
-        hidden
-        ref={ref}
-        {...props}
-        type='checkbox'
-        id='SegmentedControl'
-      />
-      <S.LabelWrapper htmlFor='SegmentedControl'>
+      <S.Input hidden ref={ref} {...props} type='checkbox' id={id} />
+      <S.LabelWrapper htmlFor={id}>
         <S.Label>{props.text1}</S.Label>
         <S.Label>{props.text2}</S.Label>
       </S.LabelWrapper>
