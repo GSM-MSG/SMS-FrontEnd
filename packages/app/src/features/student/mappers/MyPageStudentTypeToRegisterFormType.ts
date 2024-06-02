@@ -6,7 +6,7 @@ const MyPageStudentTypeToRegisterFormType = (
 ): RegisterFormType => {
   return {
     ...data,
-    prizes: data.prizes.map((prize) => ({
+    prizes: data?.prizes.map((prize) => ({
       name: prize.name,
       kind: prize.type,
       date: prize.date,

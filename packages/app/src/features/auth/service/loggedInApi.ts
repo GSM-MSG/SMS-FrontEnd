@@ -1,4 +1,5 @@
 import { rtkApi } from '@api'
+import Role from '@/types/Role'
 
 interface Response {
   isExist: boolean

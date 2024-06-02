@@ -7,11 +7,6 @@ import { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const data = await profileService(ctx.req.cookies.accessToken)
-  if (!data)
-    return {
-      props: {},
-      redirect: { destination: '/login' },
-    }
 
   return {
     props: {
