@@ -6,5 +6,6 @@ export { default as MultiRangeSlider } from './MultiRangeSlider'
 export { default as MultiMonthPicker } from './MultiMonthPicker'
 export { default as FourImageInputs } from './FourImageInputs'
 export { default as DoubleInput } from './DoubleInput'
+export { default as CertificationForm } from './CertificationForm'
 
 export type { OptionsType } from './Select/type'
