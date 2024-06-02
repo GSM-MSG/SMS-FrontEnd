@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   border-radius: 0.5rem;
 `
 
-export const LabelWrapper = styled.div`
+export const LabelWrapper = styled.label`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -29,7 +29,23 @@ export const Label = styled.div`
   font-weight: 700;
 `
 
-export const Slider = styled.div<{ checked: boolean }>`
+export const Input = styled.input`
+  &:checked ~ .Slider {
+    left: calc(50% - 0.14rem);
+  }
+
+  &:checked ~ .Slider .text1,
+  &:not(:checked) ~ .Slider .text2 {
+    display: none;
+  }
+
+  &:checked ~ .Slider .text2,
+  &:not(:checked) ~ .Slider .text1 {
+    display: block;
+  }
+`
+
+export const Slider = styled.div`
   width: 7.5rem;
   height: calc(100% - 0.5rem);
   margin: 0.25rem;
@@ -37,7 +53,7 @@ export const Slider = styled.div<{ checked: boolean }>`
   border-radius: 0.25rem;
   position: absolute;
   top: 0;
-  left: ${({ checked }) => (checked ? 'calc(50% - 0.14rem)' : '0%')};
+  left: 0%;
   display: flex;
   align-items: center;
   justify-content: center;
