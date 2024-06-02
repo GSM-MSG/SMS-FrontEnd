@@ -19,7 +19,6 @@ const ProfileSharingModal = ({ toggleModal, studentId }: Props) => {
   const [profileShareData, setProfileShareData] = useState<ProfileShareData[]>(
     []
   )
-
   const handleBackgroundClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     toggleModal()
