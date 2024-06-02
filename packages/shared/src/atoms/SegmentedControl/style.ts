@@ -31,17 +31,17 @@ export const Label = styled.div`
 
 export const Input = styled.input`
   &:checked ~ .Slider {
-    left: calc(50% - 0.14rem);
+    left: 0%;
   }
 
   &:checked ~ .Slider .text1,
   &:not(:checked) ~ .Slider .text2 {
-    display: none;
+    display: block;
   }
 
   &:checked ~ .Slider .text2,
   &:not(:checked) ~ .Slider .text1 {
-    display: block;
+    display: none;
   }
 `
 
@@ -53,7 +53,7 @@ export const Slider = styled.div`
   border-radius: 0.25rem;
   position: absolute;
   top: 0;
-  left: 0%;
+  left: calc(50% - 0.14rem);
   display: flex;
   align-items: center;
   justify-content: center;
