@@ -2,13 +2,22 @@ import PrizesDetail from '@features/student/atoms/PrizesDetail'
 import ProfileDetail from '@features/student/atoms/ProfileDetail'
 import ProjectDetail from '@features/student/atoms/ProjectDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
+import { useState } from 'react'
+import ProfileSharingModal from '@features/student/molecules/ProfileSharingModal'
 import * as S from './style'
 
 interface Props {
   student: StudentDetail | null
+  studentId: string
 }
 
-const StudentDetail = ({ student }: Props) => {
+const StudentDetail = ({ student, studentId }: Props) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen)
+  }
+
   return (
     <S.Wrapper>
       <ProfileDetail
@@ -33,13 +42,15 @@ const StudentDetail = ({ student }: Props) => {
       />
       <PrizesDetail prizes={student?.prizes} />
       <ProjectDetail projects={student?.projects} />
+      <S.PortfolioWrapper>
+        {student?.portfolioUrl && (
+          <S.PortfolioButton href='/'>포트폴리오</S.PortfolioButton>
+        )}
+        <S.ShareButton onClick={toggleModal}>공유</S.ShareButton>
+      </S.PortfolioWrapper>
 
-      {student?.portfolioUrl && (
-        <S.PortfolioWrapper>
-          <S.PortfolioButton href={student?.portfolioUrl}>
-            포트폴리오
-          </S.PortfolioButton>
-        </S.PortfolioWrapper>
+      {isModalOpen && (
+        <ProfileSharingModal studentId={studentId} toggleModal={toggleModal} />
       )}
     </S.Wrapper>
   )

@@ -34,7 +34,7 @@ const StudentDetailModal = ({ student, studentId }: Props) => {
         {isLoading ? (
           <StudentDetailSkeleton />
         ) : (
-          <StudentDetail student={student || data} />
+          <StudentDetail studentId={studentId} student={student || data} />
         )}
       </S.Wrapper>
     </BlurPortal>
