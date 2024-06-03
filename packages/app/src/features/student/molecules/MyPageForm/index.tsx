@@ -65,6 +65,7 @@ const MyPageForm = ({ defaultValue }: Props) => {
         control={control}
         errors={errors}
       />
+      
       <LanguageInputs register={register} control={control} errors={errors} />
 
       <ProjectsInput
