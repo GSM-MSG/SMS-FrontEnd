@@ -88,7 +88,6 @@ const ProfileInputs = ({
       <InputColumn comment='포트폴리오'>
         <Input
           {...register('portfolioUrl', {
-            required: { value: true, message: '필수 값입니다' },
             pattern: {
               value: /^(https?:\/\/)/,
               message: 'url 형식이 올바르지 않습니다',
