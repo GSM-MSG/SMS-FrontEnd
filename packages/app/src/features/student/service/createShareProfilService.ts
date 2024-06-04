@@ -1,8 +1,8 @@
 import { axiosApi } from '@api'
 
-const createSheareProfilService = async (
-  studentId?: string,
-  periodDay?: number | undefined
+const createShareProfilService = async (
+  studentId: string,
+  periodDay: number
 ) => {
   try {
     const { data } = await axiosApi.post(`/server/student/link`, {
@@ -15,4 +15,4 @@ const createSheareProfilService = async (
   }
 }
 
-export default createSheareProfilService
+export default createShareProfilService

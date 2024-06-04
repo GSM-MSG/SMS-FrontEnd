@@ -8,8 +8,8 @@ interface ProfileShareData {
 
 interface Props {
   isLinkCreated: boolean
-  setPeriodDay: React.Dispatch<React.SetStateAction<number | undefined>>
-  periodDay: number | undefined
+  setPeriodDay: React.Dispatch<React.SetStateAction<number>>
+  periodDay: number
   profileShareData: ProfileShareData[]
 }
 

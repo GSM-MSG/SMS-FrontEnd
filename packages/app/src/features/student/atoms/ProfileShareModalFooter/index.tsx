@@ -1,11 +1,11 @@
 import React from 'react'
-import createSheareProfilService from '@features/student/service/createSheareProfilService'
+import createShareProfilService from '@features/student/service/createShareProfilService'
 import * as S from './style'
 
 interface Props {
   isLinkCreated: boolean
   setIsLinkCreated: (value: boolean) => void
-  periodDay: number | undefined
+  periodDay: number
   toggleModal: () => void
   studentId: string
   setProfileShareData: React.Dispatch<React.SetStateAction<ProfileShareData[]>> // 수정된 부분
@@ -28,7 +28,7 @@ const ProfileShareModalFooter = ({
       toggleModal()
     } else {
       setIsLinkCreated(true)
-      const res = await createSheareProfilService(studentId, periodDay)
+      const res = await createShareProfilService(studentId, periodDay)
       setProfileShareData(res)
     }
   }

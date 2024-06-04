@@ -14,7 +14,7 @@ interface ProfileShareData {
 }
 
 const ProfileSharingModal = ({ toggleModal, studentId }: Props) => {
-  const [periodDay, setPeriodDay] = useState<number | undefined>(5)
+  const [periodDay, setPeriodDay] = useState<number>(5)
   const [isLinkCreated, setIsLinkCreated] = useState(false)
   const [profileShareData, setProfileShareData] = useState<ProfileShareData[]>(
     []
