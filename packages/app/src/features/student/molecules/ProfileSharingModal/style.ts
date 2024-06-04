@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const ModalBackground = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -10,8 +10,7 @@ export const ModalBackground = styled.div`
   align-items: center;
   justify-content: center;
   background: var(--LIGHTBOX);
-  backdrop-filter: blur(20px);
-  overflow: hidden;
+  backdrop-filter: blur(0.25rem);
 `
 
 export const ModalContainer = styled.div`

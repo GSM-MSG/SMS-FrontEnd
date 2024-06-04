@@ -5,7 +5,7 @@ const createSheareProfilService = async (
   periodDay?: number | undefined
 ) => {
   try {
-    const { data } = await axiosApi.post(`/server/link`, {
+    const { data } = await axiosApi.post(`/server/student/link`, {
       studentId: studentId,
       periodDay: periodDay,
     })

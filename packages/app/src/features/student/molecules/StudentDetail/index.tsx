@@ -4,14 +4,16 @@ import ProjectDetail from '@features/student/atoms/ProjectDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
 import { useState } from 'react'
 import ProfileSharingModal from '@features/student/molecules/ProfileSharingModal'
+import { BlurPortal } from '@features/modal/portals'
 import * as S from './style'
 
 interface Props {
   student: StudentDetail | null
   studentId: string
+  role: string | undefined
 }
 
-const StudentDetail = ({ student, studentId }: Props) => {
+const StudentDetail = ({ student, studentId, role }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const toggleModal = () => {
@@ -46,11 +48,18 @@ const StudentDetail = ({ student, studentId }: Props) => {
         {student?.portfolioUrl && (
           <S.PortfolioButton href='/'>포트폴리오</S.PortfolioButton>
         )}
-        <S.ShareButton onClick={toggleModal}>공유</S.ShareButton>
+        {role === 'ROLE_TEACHER' && (
+          <S.ShareButton onClick={toggleModal}>공유</S.ShareButton>
+        )}
       </S.PortfolioWrapper>
 
       {isModalOpen && (
-        <ProfileSharingModal studentId={studentId} toggleModal={toggleModal} />
+        <BlurPortal isModalOpen={isModalOpen}>
+          <ProfileSharingModal
+            studentId={studentId}
+            toggleModal={toggleModal}
+          />
+        </BlurPortal>
       )}
     </S.Wrapper>
   )

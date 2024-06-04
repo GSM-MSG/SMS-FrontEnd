@@ -1,24 +1,43 @@
 import { usePortal } from '@features/modal/hooks'
 import ReactDOM from 'react-dom'
-import { cloneElement, ReactElement } from 'react'
+import { cloneElement, ReactElement, useEffect } from 'react'
 import * as S from './style'
 
 interface Props {
   children: ReactElement
+  isModalOpen?: boolean
 }
 
 /**
  * 배경은 blur로 되어 있음
  */
-const BlurPortal = ({ children }: Props) => {
+const BlurPortal = ({ children, isModalOpen }: Props) => {
   const portalValue = usePortal(true)
 
-  if (!portalValue) return <></>
+  useEffect(() => {
+    if (isModalOpen) {
+      const scrollY = window.scrollY
+      document.body.style.cssText = `
+        position: fixed;
+        top: -${scrollY}px;
+        width: 100%;
+      `
+
+      return () => {
+        document.body.style.cssText = ''
+        window.scrollTo(0, scrollY)
+      }
+    }
+  }, [isModalOpen])
+
+  if (!portalValue) return null
 
   const { onClick, onClose, portal } = portalValue
 
+  const handleClick = isModalOpen ? undefined : onClose
+
   return ReactDOM.createPortal(
-    <S.Wrapper onClick={onClose}>
+    <S.Wrapper onClick={handleClick}>
       {cloneElement(children, { onClick })}
     </S.Wrapper>,
     portal

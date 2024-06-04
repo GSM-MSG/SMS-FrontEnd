@@ -5,6 +5,7 @@ import { SEO } from '@features/global'
 import useStudentDetail from '@features/student/hooks/useStudentDetail'
 import * as Icon from '@sms/shared/src/icons'
 import StudentDetailSkeleton from '@features/student/molecules/StudentDetailSkeleton'
+import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import * as S from './style'
 
 interface Props {
@@ -15,6 +16,8 @@ interface Props {
 const StudentDetailModal = ({ student, studentId }: Props) => {
   const { data, isLoading } = useStudentDetail({ studentId })
   const { onClose } = useModal()
+
+  const { role } = useLoggedIn({})
 
   return (
     <BlurPortal>
@@ -34,7 +37,11 @@ const StudentDetailModal = ({ student, studentId }: Props) => {
         {isLoading ? (
           <StudentDetailSkeleton />
         ) : (
-          <StudentDetail studentId={studentId} student={student || data} />
+          <StudentDetail
+            role={role}
+            studentId={studentId}
+            student={student || data}
+          />
         )}
       </S.Wrapper>
     </BlurPortal>

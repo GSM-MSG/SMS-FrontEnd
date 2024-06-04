@@ -33,17 +33,21 @@ interface Props {
 const StudentDetailPage = ({ query, data }: Props) => {
   const router = useRouter()
   const { onShow } = useModal()
-  useStudentsParam({ query })
 
   useLoggedIn({})
 
+  useStudentsParam({ query })
+
   useEffect(() => {
-    if (!data) {
-      router.push('/', '/')
-      return
+    const fetchAccessService = async () => {
+      if (!data) {
+        router.push('/', '/')
+        return
+      }
+      onShow(<StudentDetailModal studentId='' student={data} />)
     }
 
-    onShow(<StudentDetailModal studentId='' student={data} />)
+    fetchAccessService()
   }, [])
 
   return (
