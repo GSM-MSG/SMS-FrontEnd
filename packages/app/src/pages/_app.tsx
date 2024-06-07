@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Provider } from 'react-redux'
 import GlobalLayout from '@layouts/GlobalLayout'
 import { ToastContainer } from '@features/toast'
@@ -9,18 +10,22 @@ import type { AppProps } from 'next/app'
 import '@sms/shared/src/style/index'
 import '@styles/font.css'
 
+const queryClient = new QueryClient()
+
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest)
   useAutoReissue()
 
   return (
     <Provider store={store}>
-      <GlobalLayout>
-        <ModalProvider>
-          <Component {...props.pageProps} />
-        </ModalProvider>
-        <ToastContainer />
-      </GlobalLayout>
+      <QueryClientProvider client={queryClient}>
+        <GlobalLayout>
+          <ModalProvider>
+            <Component {...props.pageProps} />
+          </ModalProvider>
+          <ToastContainer />
+        </GlobalLayout>
+      </QueryClientProvider>
     </Provider>
   )
 }
