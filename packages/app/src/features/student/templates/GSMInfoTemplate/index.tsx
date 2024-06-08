@@ -1,4 +1,3 @@
-import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { RegisterFormType } from '@features/register/type'
 import GSMInfoForm from '@features/student/molecules/GSMInfo'
 import StudentExitButton from '@features/student/atoms/StudentExitButton'
@@ -10,8 +9,6 @@ interface Props {
 }
 
 const GSMInfoTemplate = ({ defaultValue }: Props) => {
-  useLoggedIn({ redirectTo: '/login' })
-
   return (
     <S.Wrapper>
       <Header />
