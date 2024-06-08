@@ -8,7 +8,7 @@ interface Props {
   periodDay: number
   toggleModal: () => void
   studentId: string
-  setProfileShareData: React.Dispatch<React.SetStateAction<ProfileShareData[]>> // 수정된 부분
+  setProfileShareData: React.Dispatch<React.SetStateAction<ProfileShareData[]>>
 }
 
 interface ProfileShareData {
@@ -29,7 +29,9 @@ const ProfileShareModalFooter = ({
     } else {
       setIsLinkCreated(true)
       const res = await createShareProfilService(studentId, periodDay)
-      setProfileShareData(res)
+      if (res) {
+        setProfileShareData([res]) // 배열로 설정
+      }
     }
   }
 

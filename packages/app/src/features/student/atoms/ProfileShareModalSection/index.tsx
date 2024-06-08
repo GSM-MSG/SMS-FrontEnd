@@ -19,7 +19,10 @@ const ProfileShareModalSection = ({
   periodDay,
   profileShareData,
 }: Props) => {
-  const linkUrl = `https://sms.msg-team.com/student/link?token=${profileShareData}`
+  const linkUrl =
+    profileShareData.length > 0
+      ? `https://sms.msg-team.com/student/link?token=${profileShareData[0].token}`
+      : ''
   const linkRef = useRef<HTMLDivElement>(null)
 
   const copyLinkToClipboard = async () => {
@@ -44,7 +47,7 @@ const ProfileShareModalSection = ({
   return (
     <S.ModalSectionContainer>
       <S.ModalExpirationContainer>
-        {isLinkCreated ? (
+        {isLinkCreated && profileShareData.length > 0 ? (
           <S.ModalViewLinkContainer>
             <S.ModalViewLinkText ref={linkRef}>{linkUrl}</S.ModalViewLinkText>
             <S.ModalViewLinkCopy onClick={copyLinkToClipboard}>

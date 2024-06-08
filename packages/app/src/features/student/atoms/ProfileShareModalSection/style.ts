@@ -37,14 +37,19 @@ export const ModalViewLinkText = styled.p`
   line-height: 1.3125rem;
   letter-spacing: -0.002em;
   color: var(--N50);
+  max-width: calc(100% - 100px);
 `
 
 export const ModalViewLinkCopy = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.3125rem 1.25rem;
   border-radius: 3.5rem;
   border: 0.0625rem solid #2260ff;
   background-color: var(--WHITE);
   color: #2260ff;
+  overflow: hidden;
 
   font-family: Pretendard;
   font-size: 0.9375rem;

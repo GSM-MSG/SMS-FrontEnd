@@ -52,7 +52,6 @@ const StudentDetail = ({ student, studentId, role }: Props) => {
           <S.ShareButton onClick={toggleModal}>공유</S.ShareButton>
         )}
       </S.PortfolioWrapper>
-
       {isModalOpen && (
         <BlurPortal isModalOpen={isModalOpen}>
           <ProfileSharingModal
