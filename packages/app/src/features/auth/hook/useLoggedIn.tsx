@@ -5,7 +5,10 @@ interface Props {
   redirectToIfFound?: string
 }
 
-const useLoggedIn = ({}: Props) => {
+const useLoggedIn = ({
+  redirectToIfFound: _redirectToIfFound,
+  redirectTo: _redirectTo,
+}: Props) => {
   const { data, isSuccess } = loggedInApi.useLoggedInQuery()
   const [refetchLoggedIn] = loggedInApi.useRefetchLoggedInMutation()
 
