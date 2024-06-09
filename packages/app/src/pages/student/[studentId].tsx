@@ -19,7 +19,7 @@ const StudentDetailPage = () => {
       return
     }
 
-    onShow(<StudentDetailModal studentId={studentId} student={data} />)
+    onShow(<StudentDetailModal studentId={studentId} />)
   }, [])
 
   return (

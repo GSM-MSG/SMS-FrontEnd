@@ -19,7 +19,7 @@ const StudentList = () => {
 
   const onClick = (id: string) => {
     router.push('/', `/student/${id}`)
-    onShow(<StudentDetailModal studentId={id} student={null} />)
+    onShow(<StudentDetailModal studentId={id} />)
   }
 
   return (
