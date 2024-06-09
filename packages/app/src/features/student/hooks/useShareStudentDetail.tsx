@@ -6,12 +6,11 @@ interface Props {
 }
 
 const useShareStudentDetail = ({ token }: Props) => {
-  const { data, isLoading } = useQuery<StudentDetail>({
+  return useQuery<StudentDetail>({
     queryKey: [token],
     queryFn: () => ShareStudentDetailApi(token),
     enabled: !!token,
   })
-  return { data: data || null, isLoading }
 }
 
 export default useShareStudentDetail
