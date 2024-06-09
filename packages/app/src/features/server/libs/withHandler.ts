@@ -51,6 +51,7 @@ export default function withHandler<
         const { data } = await reissueService(refreshToken)
 
         accessToken = data.accessToken
+        refreshToken = data.refreshToken
         setAuthCookies(req, res, data)
       }
     } catch (e) {
