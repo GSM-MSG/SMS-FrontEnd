@@ -7,7 +7,7 @@ import useMyPage from '@features/student/hooks/useMyPage'
 
 // import useGSMInfo from '@features/student/hooks/useGSMInfo'
 import profileImgApi from '@features/auth/service/profileImgApi'
-import useLoggedIn from '@features/auth/hook/useLoggedIn'
+import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
 
 import * as S from './style'
 
@@ -21,7 +21,7 @@ const Header = ({ onFilter }: Props) => {
   const { redirectMyPage } = useMyPage()
   // const { redirectGSMInfo } = useGSMInfo()
   const [isShow, setIsShow] = useState<boolean>(false)
-  const { isSuccess } = useLoggedIn({})
+  const { data: loggedInData } = useLoggedInQuery()
   const { data } = profileImgApi.useProfileImgQuery()
 
   return (
@@ -36,7 +36,7 @@ const Header = ({ onFilter }: Props) => {
           </S.FilterWrapper>
         )}
 
-        {isSuccess ? (
+        {loggedInData?.isLoggedIn ? (
           <S.UserInfoWrapper onClick={() => setIsShow(true)}>
             <S.UserInfo>
               <Icon.Bars3 />

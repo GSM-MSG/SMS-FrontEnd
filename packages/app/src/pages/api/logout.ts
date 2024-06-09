@@ -8,7 +8,7 @@ export default withHandler({
   checkAccess: true,
   checkRefresh: true,
 
-  handler: async (req, res) => {
+  handler: async ({ req, res }) => {
     const access = req.cookies[Token.ACCESS_TOKEN]
     const refresh = req.cookies[Token.REFRESH_TOKEN]
     if (!access || !refresh) return
