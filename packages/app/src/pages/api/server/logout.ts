@@ -1,6 +1,6 @@
+import clearAuthCookies from '@features/auth/lib/clearAuthCookies'
 import { withHandler } from '@features/server/libs'
 import { logoutService } from '@features/server/services'
-import Token from '@lib/Token'
 import Cookies from 'cookies'
 
 export default withHandler({
@@ -11,12 +11,7 @@ export default withHandler({
     const response = await logoutService(accessToken, refreshToken)
     const cookies = new Cookies(req, res)
 
-    cookies.set(Token.ACCESS_TOKEN, '', {
-      expires: new Date(0),
-    })
-    cookies.set(Token.REFRESH_TOKEN, '', {
-      expires: new Date(0),
-    })
+    clearAuthCookies(cookies)
 
     res.status(response.status).json(response.data)
   },

@@ -6,6 +6,7 @@ import Token from '@lib/Token'
 import Cookies from 'cookies'
 import setAuthCookies from '@features/auth/lib/setAuthCookies'
 import { reissueService } from '@features/server/services'
+import clearAuthCookies from '@features/auth/lib/clearAuthCookies'
 
 type Method = 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT' | 'HEAD'
 
@@ -43,7 +44,7 @@ export default function withHandler<
 
     const cookies = Cookies(req, res)
     let accessToken = cookies.get(Token.ACCESS_TOKEN) as TokenType<Access>
-    const refreshToken = cookies.get(Token.REFRESH_TOKEN) as TokenType<Refresh>
+    let refreshToken = cookies.get(Token.REFRESH_TOKEN) as TokenType<Refresh>
 
     try {
       if (!accessToken && refreshToken) {
@@ -52,10 +53,16 @@ export default function withHandler<
         accessToken = data.accessToken
         setAuthCookies(req, res, data)
       }
+    } catch (e) {
+      clearAuthCookies(cookies)
+      accessToken = undefined as TokenType<Access>
+      refreshToken = undefined as TokenType<Refresh>
+    }
 
-      if ((checkAccess && !accessToken) || (checkRefresh && !refreshToken))
-        return res.status(401).json({ message: 'Unauthorized' })
+    if ((checkAccess && !accessToken) || (checkRefresh && !refreshToken))
+      return res.status(401).json({ message: 'Unauthorized' })
 
+    try {
       await handler({ req, res, accessToken, refreshToken })
     } catch (error) {
       if (!isAxiosError(error))
