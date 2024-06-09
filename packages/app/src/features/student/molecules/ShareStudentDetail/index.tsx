@@ -1,6 +1,6 @@
 import StudentDetail from '@features/student/molecules/StudentDetail'
 import StudentDetailSkeleton from '@features/student/molecules/StudentDetailSkeleton'
-import useShareStudentDetail from '@features/student/hooks/useShareStudentDetail'
+import useShareStudentDetailQuery from '@features/student/queries/useShareStudentDetailQuery'
 import * as S from './style'
 
 interface Props {
@@ -8,13 +8,13 @@ interface Props {
 }
 
 const ShareStudentDetail = ({ token }: Props) => {
-  const { data, isLoading } = useShareStudentDetail({ token })
+  const { data, isLoading } = useShareStudentDetailQuery({ token })
 
   return (
     <S.Wrapper>
       <S.Container>
         {!isLoading ? (
-          <StudentDetail student={data} />
+          <StudentDetail student={data as StudentDetail} />
         ) : (
           <StudentDetailSkeleton />
         )}

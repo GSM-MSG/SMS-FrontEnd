@@ -5,7 +5,7 @@ interface Props {
   token: string
 }
 
-const useShareStudentDetail = ({ token }: Props) => {
+const useShareStudentDetailQuery = ({ token }: Props) => {
   return useQuery<StudentDetail>({
     queryKey: [token],
     queryFn: () => ShareStudentDetailApi(token),
@@ -13,4 +13,4 @@ const useShareStudentDetail = ({ token }: Props) => {
   })
 }
 
-export default useShareStudentDetail
+export default useShareStudentDetailQuery
