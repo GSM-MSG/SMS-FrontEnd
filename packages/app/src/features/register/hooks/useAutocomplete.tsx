@@ -1,13 +1,13 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import autocompleteApi from '@features/register/services/autocompleteApi'
+import useTechStackListMutation from '@features/register/queries/useTechStackListMutation'
 
 /**
  * techStack input에서 사용될 hook입니다
  */
 const useAutocomplete = () => {
+  const { mutate, data } = useTechStackListMutation()
   const [stack, setStack] = useState<string>('')
   const [dropdownList, setDropdownList] = useState<string[]>([])
-  const [mutation] = autocompleteApi.useTechStackMutation()
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
     setStack(e.target.value)
@@ -17,10 +17,10 @@ const useAutocomplete = () => {
     if (!stack) return
 
     const delayFetch = setTimeout(async () => {
-      const res = await mutation(stack)
-      if ('error' in res) return
+      mutate(stack)
+      if (!data?.techStacks) return
 
-      setDropdownList([...res.data.techStacks])
+      setDropdownList([...data.techStacks])
     }, 300)
 
     return () => clearTimeout(delayFetch)

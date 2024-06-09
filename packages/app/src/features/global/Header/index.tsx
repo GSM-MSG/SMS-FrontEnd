@@ -4,10 +4,9 @@ import * as SVG from '@sms/shared/src/assets/svg'
 import * as Icon from '@sms/shared/src/icons'
 import useLogout from '@features/auth/hook/useLogout'
 import useMyPage from '@features/student/hooks/useMyPage'
-
-// import useGSMInfo from '@features/student/hooks/useGSMInfo'
-import profileImgApi from '@features/auth/service/profileImgApi'
+import useProfileImgQuery from '@features/auth/queries/useProfileImgQuery'
 import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
+// import useGSMInfo from '@features/student/hooks/useGSMInfo'
 
 import * as S from './style'
 
@@ -22,7 +21,7 @@ const Header = ({ onFilter }: Props) => {
   // const { redirectGSMInfo } = useGSMInfo()
   const [isShow, setIsShow] = useState<boolean>(false)
   const { data: loggedInData } = useLoggedInQuery()
-  const { data } = profileImgApi.useProfileImgQuery()
+  const { data } = useProfileImgQuery()
 
   return (
     <S.Wrapper>

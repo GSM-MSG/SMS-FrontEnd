@@ -4,7 +4,7 @@ import { MyPageStudentType } from '@features/student/types/MyPageStudentType'
 const profileService = async () => {
   try {
     const { data } = await axiosApi.get<MyPageStudentType>(
-      `server/user/profile`
+      `/api/server/user/profile`
     )
     return data
   } catch (e) {
