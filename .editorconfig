@@ -4,7 +4,7 @@ root = true
 # 모든 파일에 적용
 [*]
 end_of_line = lf
-insert_final_newline = false
+insert_final_newline = true
 charset = utf-8
 indent_size = 2
 indent_style = tab

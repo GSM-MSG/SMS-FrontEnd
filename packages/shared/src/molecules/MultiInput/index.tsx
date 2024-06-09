@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import {
   Control,
   FieldValues,
@@ -33,10 +32,6 @@ const MultiInput = ({
     name,
     control,
   })
-
-  useEffect(() => {
-    if (fields.length <= 0) append('')
-  }, [])
 
   return (
     <S.Wrapper>
