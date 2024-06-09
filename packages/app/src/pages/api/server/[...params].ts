@@ -1,20 +1,11 @@
 import serverApi from '@api/serverApi'
-import { reissueService } from '@features/server/services'
-import setAuthCookies from '@features/auth/lib/setAuthCookies'
 import { withHandler } from '@features/server/libs'
 
 export default withHandler({
   methods: ['GET', 'POST', 'DELETE', 'PATCH', 'PUT', 'HEAD'],
-  handler: async ({ req, res, accessToken, refreshToken }) => {
+  handler: async ({ req, res, accessToken }) => {
     const url = req.url?.replace('/api/server', '')
-    let access = accessToken
-
-    if (!access && refreshToken) {
-      const { data } = await reissueService(refreshToken)
-
-      access = data.accessToken
-      setAuthCookies(req, res, data)
-    }
+    const access = accessToken
 
     if (access) {
       const apiRes = await serverApi({

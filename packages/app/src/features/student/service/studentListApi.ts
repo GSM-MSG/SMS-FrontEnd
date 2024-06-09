@@ -15,13 +15,10 @@ const studentListApi = async (
   accessToken?: string | null
 ): Promise<ResponseType> => {
   try {
-    const { data } = await axiosApi.get<Response>(
-      `${accessToken !== null ? process.env.SERVER_URL : '/server'}/student`,
-      {
-        params,
-        headers: { Authorization: accessToken && `Bearer ${accessToken}` },
-      }
-    )
+    const { data } = await axiosApi.get<Response>('/api/server/student', {
+      params,
+      headers: { Authorization: accessToken && `Bearer ${accessToken}` },
+    })
     return {
       isError: false,
       data,

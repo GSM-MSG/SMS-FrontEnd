@@ -4,6 +4,8 @@ import errors from '@features/server/services/errors'
 import { NextApiRequest, NextApiResponse } from 'next'
 import Token from '@lib/Token'
 import Cookies from 'cookies'
+import setAuthCookies from '@features/auth/lib/setAuthCookies'
+import { reissueService } from '@features/server/services'
 
 type Method = 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT' | 'HEAD'
 
@@ -40,13 +42,20 @@ export default function withHandler<
       return res.status(405).end()
 
     const cookies = Cookies(req, res)
-    const accessToken = cookies.get(Token.ACCESS_TOKEN) as TokenType<Access>
+    let accessToken = cookies.get(Token.ACCESS_TOKEN) as TokenType<Access>
     const refreshToken = cookies.get(Token.REFRESH_TOKEN) as TokenType<Refresh>
 
-    if ((checkAccess && !accessToken) || (checkRefresh && !refreshToken))
-      return res.status(401).json({ message: 'Unauthorized' })
-
     try {
+      if (!accessToken && refreshToken) {
+        const { data } = await reissueService(refreshToken)
+
+        accessToken = data.accessToken
+        setAuthCookies(req, res, data)
+      }
+
+      if ((checkAccess && !accessToken) || (checkRefresh && !refreshToken))
+        return res.status(401).json({ message: 'Unauthorized' })
+
       await handler({ req, res, accessToken, refreshToken })
     } catch (error) {
       if (!isAxiosError(error))
