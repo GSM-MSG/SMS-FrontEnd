@@ -12,7 +12,10 @@ const useStudentListQuery = () => {
     queryKey: ['student-list', studentParam],
     initialPageParam: 1,
     queryFn: ({ pageParam }) =>
-      studentListApi({ ...studentParam, page: pageParam }, null),
+      studentListApi(
+        { ...studentParam.param, page: pageParam, size: studentParam.size },
+        null
+      ),
     getNextPageParam: (lastPage) => {
       if (!lastPage.data) return
 
