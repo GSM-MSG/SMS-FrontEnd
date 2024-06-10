@@ -1,7 +1,6 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-import Search from '../../icons/Search'
-import File from '../../icons/File'
+import * as Icon from '../../icons'
 import Input from './index'
 
 const config: Meta<typeof Input> = {
@@ -16,7 +15,7 @@ type Story = StoryObj<typeof Input>
 
 export const Primary: Story = {
   args: {
-    leftIcon: <Search />,
-    rightIcon: <File />,
+    leftIcon: <Icon.Search />,
+    rightIcon: <Icon.Folder />,
   },
 }

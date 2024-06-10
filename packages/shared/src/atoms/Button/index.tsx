@@ -29,6 +29,7 @@ const Wrapper = styled.button`
   outline: none;
   transition: 0.2s;
   border: none;
+  white-space: nowrap;
   ${(props) => props.theme.title2}
   background: var(--P2);
   color: var(--WHITE);
@@ -55,6 +56,7 @@ const WhiteButton = styled.button`
   width: 100%;
   outline: none;
   transition: 0.4s;
+  white-space: nowrap;
   border: 0.0625rem solid var(--N20);
   background: var(--WHITE);
   color: var(--BLACK);
