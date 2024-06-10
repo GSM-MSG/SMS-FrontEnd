@@ -4,7 +4,8 @@ import * as SVG from '@sms/shared/src/assets/svg'
 import * as Icon from '@sms/shared/src/icons'
 import useLogout from '@features/auth/hook/useLogout'
 import useMyPage from '@features/student/hooks/useMyPage'
-import useGSMInfo from '@features/student/hooks/useGSMInfo'
+
+// import useGSMInfo from '@features/student/hooks/useGSMInfo'
 import profileImgApi from '@features/auth/service/profileImgApi'
 import useLoggedIn from '@features/auth/hook/useLoggedIn'
 
@@ -18,7 +19,7 @@ interface Props {
 const Header = ({ onFilter }: Props) => {
   const { onLogout } = useLogout()
   const { redirectMyPage } = useMyPage()
-  const { redirectGSMInfo } = useGSMInfo()
+  // const { redirectGSMInfo } = useGSMInfo()
   const [isShow, setIsShow] = useState<boolean>(false)
   const { isSuccess } = useLoggedIn({})
   const { data } = profileImgApi.useProfileImgQuery()
@@ -59,9 +60,9 @@ const Header = ({ onFilter }: Props) => {
             </S.UserCircle>
 
             <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
-              <S.DropdownItem onClick={redirectGSMInfo}>
+              {/* <S.DropdownItem onClick={redirectGSMInfo}>
                 <Icon.Document color='var(--N50)' /> 인증제
-              </S.DropdownItem>
+              </S.DropdownItem> */}
 
               <S.DropdownItem onClick={redirectMyPage}>
                 <Icon.Person color='var(--N50)' /> 마이페이지

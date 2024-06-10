@@ -7,5 +7,6 @@ export { default as MultiMonthPicker } from './MultiMonthPicker'
 export { default as FourImageInputs } from './FourImageInputs'
 export { default as DoubleInput } from './DoubleInput'
 export { default as CertificationForm } from './CertificationForm'
+export { default as DownloadList } from './DownloadList'
 
 export type { OptionsType } from './Select/type'
