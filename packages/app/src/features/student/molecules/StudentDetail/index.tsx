@@ -5,7 +5,7 @@ import StudentInfo from '@features/student/atoms/StudentInfo'
 import * as S from './style'
 
 interface Props {
-  student: StudentDetail
+  student: StudentDetail | null
 }
 
 const StudentDetail = ({ student }: Props) => {
