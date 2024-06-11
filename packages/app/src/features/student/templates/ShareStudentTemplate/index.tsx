@@ -2,7 +2,7 @@ import ShareStudentDetail from '@features/student/molecules/ShareStudentDetail'
 import * as S from './style'
 
 interface Props {
-  token: any
+  token: string | string[] | undefined
 }
 
 const ShareStudentsTemplate = ({ token }: Props) => {

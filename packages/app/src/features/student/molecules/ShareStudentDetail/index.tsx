@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import * as S from './style'
 
 interface Props {
-  token: any
+  token: string | string[] | undefined
 }
 
 const ShareStudentDetail = ({ token }: Props) => {
@@ -18,7 +18,9 @@ const ShareStudentDetail = ({ token }: Props) => {
     }
   }, [token, router])
 
-  const { data, isLoading } = useShareStudentDetailQuery({ token })
+  const { data, isLoading } = useShareStudentDetailQuery({
+    token: token as string,
+  })
 
   return (
     <S.Wrapper>
