@@ -24,11 +24,6 @@ const ProfileSharingModal = ({ toggleModal, studentId }: Props) => {
     toggleModal()
   }
 
-  const handleBackgroundClick = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    toggleModal()
-  }
-
   return (
     <S.ModalBackground onClick={handleBackgroundClick}>
       <S.ModalContainer onClick={(e) => e.stopPropagation()}>
