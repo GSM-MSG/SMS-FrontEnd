@@ -5,23 +5,20 @@ import * as S from './style'
 
 interface Props {
   children: ReactElement
-  isModalOpen?: boolean
 }
 
 /**
  * 배경은 blur로 되어 있음
  */
-const BlurPortal = ({ children, isModalOpen }: Props) => {
+const BlurPortal = ({ children }: Props) => {
   const portalValue = usePortal(true)
 
-  if (!portalValue) return null
+  if (!portalValue) return <></>
 
   const { onClick, onClose, portal } = portalValue
 
-  const handleClick = isModalOpen ? undefined : onClose
-
   return ReactDOM.createPortal(
-    <S.Wrapper onClick={handleClick}>
+    <S.Wrapper onClick={onClose}>
       {cloneElement(children, { onClick })}
     </S.Wrapper>,
     portal

@@ -1,8 +1,8 @@
+import React, { useState } from 'react'
 import PrizesDetail from '@features/student/atoms/PrizesDetail'
 import ProfileDetail from '@features/student/atoms/ProfileDetail'
 import ProjectDetail from '@features/student/atoms/ProjectDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
-import { useState } from 'react'
 import ProfileSharingModal from '@features/student/molecules/ProfileSharingModal'
 import { BlurPortal } from '@features/modal/portals'
 import * as S from './style'
@@ -48,12 +48,12 @@ const StudentDetail = ({ student, studentId, role }: Props) => {
         {student?.portfolioUrl && (
           <S.PortfolioButton href='/'>포트폴리오</S.PortfolioButton>
         )}
-        {role === 'ROLE_TEACHER' && (
+        {role === 'ROLE_TEACHER/ROLE_HOMEROOM' && (
           <S.ShareButton onClick={toggleModal}>공유</S.ShareButton>
         )}
       </S.PortfolioWrapper>
       {isModalOpen && (
-        <BlurPortal isModalOpen={isModalOpen}>
+        <BlurPortal>
           <ProfileSharingModal
             studentId={studentId}
             toggleModal={toggleModal}
