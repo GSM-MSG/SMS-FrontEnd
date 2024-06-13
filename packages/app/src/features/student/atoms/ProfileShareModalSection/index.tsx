@@ -13,6 +13,15 @@ interface Props {
   profileShareData: ProfileShareData[]
 }
 
+const expirationOptions = [
+  { value: '5', label: '5일' },
+  { value: '10', label: '10일' },
+  { value: '15', label: '15일' },
+  { value: '20', label: '20일' },
+  { value: '25', label: '25일' },
+  { value: '30', label: '30일' },
+]
+
 const ProfileShareModalSection = ({
   isLinkCreated,
   setPeriodDay,
@@ -34,15 +43,6 @@ const ProfileShareModalSection = ({
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPeriodDay(parseInt(event.target.value))
   }
-
-  const expirationOptions = [
-    { value: '5', label: '5일' },
-    { value: '10', label: '10일' },
-    { value: '15', label: '15일' },
-    { value: '20', label: '20일' },
-    { value: '25', label: '25일' },
-    { value: '30', label: '30일' },
-  ]
 
   return (
     <S.ModalSectionContainer>
