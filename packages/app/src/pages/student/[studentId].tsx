@@ -39,15 +39,12 @@ const StudentDetailPage = ({ query, data }: Props) => {
   useStudentsParam({ query })
 
   useEffect(() => {
-    const fetchAccessService = async () => {
-      if (!data) {
-        router.push('/', '/')
-        return
-      }
-      onShow(<StudentDetailModal studentId='' student={data} />)
+    if (!data) {
+      router.push('/', '/')
+      return
     }
 
-    fetchAccessService()
+    onShow(<StudentDetailModal studentId='' student={data} />)
   }, [])
 
   return (
