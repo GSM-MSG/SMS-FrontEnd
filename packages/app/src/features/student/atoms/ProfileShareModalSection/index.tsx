@@ -1,5 +1,4 @@
 import { Radio } from '@sms/shared'
-import { useRef } from 'react'
 import * as S from './style'
 
 interface ProfileShareData {
@@ -32,10 +31,9 @@ const ProfileShareModalSection = ({
     profileShareData.length > 0
       ? `https://sms.msg-team.com/student/link?token=${profileShareData[0].token}`
       : ''
-  const linkRef = useRef<HTMLDivElement>(null)
 
   const copyLinkToClipboard = async () => {
-    if (linkRef.current) {
+    if (isLinkCreated && profileShareData.length > 0) {
       await navigator.clipboard.writeText(linkUrl)
     }
   }
@@ -49,7 +47,7 @@ const ProfileShareModalSection = ({
       <S.ModalExpirationContainer>
         {isLinkCreated && profileShareData.length > 0 ? (
           <S.ModalViewLinkContainer>
-            <S.ModalViewLinkText ref={linkRef}>{linkUrl}</S.ModalViewLinkText>
+            <S.ModalViewLinkText>{linkUrl}</S.ModalViewLinkText>
             <S.ModalViewLinkCopy onClick={copyLinkToClipboard}>
               복사
             </S.ModalViewLinkCopy>
