@@ -5,21 +5,18 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as S from './style'
 
-interface Props {
-  token: string | string[] | undefined
-}
-
-const ShareStudentDetail = ({ token }: Props) => {
+const ShareStudentDetail = () => {
+  const { query } = useRouter()
   const router = useRouter()
 
   useEffect(() => {
-    if (typeof token === 'undefined') {
+    if (typeof query === 'undefined') {
       router.push('/404')
     }
-  }, [token, router])
+  }, [query, router])
 
   const { data, isLoading } = useShareStudentDetailQuery({
-    token: token as string,
+    token: query.token as string,
   })
 
   return (
