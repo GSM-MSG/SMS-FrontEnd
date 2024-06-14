@@ -3,16 +3,16 @@ import StudentDetailSkeleton from '@features/student/molecules/StudentDetailSkel
 import useShareStudentDetailQuery from '@features/student/queries/useShareStudentDetailQuery'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { AxiosError } from 'axios'
 import * as S from './style'
-
 const ShareStudentDetail = () => {
   const { query, push } = useRouter()
-  const { data, isLoading, isError } = useShareStudentDetailQuery({
+  const { data, isLoading, isError, error } = useShareStudentDetailQuery({
     token: query.token as string,
   })
 
   useEffect(() => {
-    if (isError) {
+    if (isError && (error as AxiosError).response?.status === 404) {
       push('/404')
     }
   }, [isError])
