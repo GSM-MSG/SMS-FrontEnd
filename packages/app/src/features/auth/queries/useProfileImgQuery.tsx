@@ -5,6 +5,8 @@ const useProfileImgQuery = () => {
   return useQuery({
     queryKey: ['profileImg'],
     queryFn: () => profileImgService(),
+    gcTime: 1000 * 60 * 60,
+    staleTime: 1000 * 60 * 60,
   })
 }
 
