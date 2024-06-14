@@ -6,14 +6,12 @@ import { useRouter } from 'next/router'
 import * as S from './style'
 
 const ShareStudentDetail = () => {
-  const { query } = useRouter()
-  const router = useRouter()
-
+  const { query, push } = useRouter()
   useEffect(() => {
     if (typeof query === 'undefined') {
-      router.push('/404')
+      push('/404')
     }
-  }, [query, router])
+  }, [query])
 
   const { data, isLoading } = useShareStudentDetailQuery({
     token: query.token as string,
