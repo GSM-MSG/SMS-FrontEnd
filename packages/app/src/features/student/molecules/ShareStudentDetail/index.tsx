@@ -7,15 +7,15 @@ import * as S from './style'
 
 const ShareStudentDetail = () => {
   const { query, push } = useRouter()
-  useEffect(() => {
-    if (typeof query === 'undefined') {
-      push('/404')
-    }
-  }, [query])
-
-  const { data, isLoading } = useShareStudentDetailQuery({
+  const { data, isLoading, isError } = useShareStudentDetailQuery({
     token: query.token as string,
   })
+
+  useEffect(() => {
+    if (isError) {
+      push('/404')
+    }
+  }, [isError])
 
   return (
     <S.Wrapper>
