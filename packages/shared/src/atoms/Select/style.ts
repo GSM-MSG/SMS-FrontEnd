@@ -14,6 +14,7 @@ export const SelectTrigger = styled.div`
   align-items: center;
   border: 0.0625rem solid transparent;
   transition: all 0.2s;
+  outline: none;
 
   :hover {
     border-color: var(--P2);
