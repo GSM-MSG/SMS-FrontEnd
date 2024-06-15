@@ -43,3 +43,9 @@ export const Label = styled.label`
   white-space: nowrap;
   color: var(--N40);
 `
+
+export const FieldContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`

@@ -18,6 +18,9 @@ export const Primary = () => {
       </CertificationForm.Header>
       <CertificationForm.Field label='Test Field'>
         <Input placeholder='Text' />
+        <Input placeholder='Text' />
+        <Input placeholder='Text' />
+        <Input placeholder='Text' />
       </CertificationForm.Field>
       <CertificationForm.Field label='Test Field'>
         <Input placeholder='Text' />
