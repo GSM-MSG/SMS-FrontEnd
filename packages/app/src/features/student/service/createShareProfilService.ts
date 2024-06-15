@@ -1,8 +1,8 @@
 import { axiosApi } from '@api'
 
 const createShareProfilService = async (
-  studentId: string,
-  periodDay: number
+  periodDay: number,
+  studentId?: string
 ) => {
   try {
     const { data } = await axiosApi.post(`/server/student/link`, {

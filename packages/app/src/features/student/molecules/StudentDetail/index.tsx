@@ -9,8 +9,8 @@ import * as S from './style'
 
 interface Props {
   student: StudentDetail | null
-  studentId: string
-  role: string | undefined
+  studentId?: string
+  role?: string | undefined
 }
 
 const StudentDetail = ({ student, studentId, role }: Props) => {

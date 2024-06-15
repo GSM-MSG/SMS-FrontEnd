@@ -6,7 +6,7 @@ import * as S from './style'
 
 interface Props {
   toggleModal: () => void
-  studentId: string
+  studentId?: string
 }
 
 interface ProfileShareData {
