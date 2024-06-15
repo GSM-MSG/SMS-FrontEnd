@@ -1,71 +1,33 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  width: 15.75rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  background-color: #f7f7f8;
-  border-radius: 0.5rem;
-`
-
-export const LabelWrapper = styled.label`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0rem 0.25rem;
-  height: calc(100% - 0.5rem);
-  align-items: center;
-  cursor: pointer;
+  max-width: 15.75rem;
+  height: 3rem;
+  background-color: var(--N10);
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `
 
-export const Label = styled.div`
-  width: 7.5rem;
-  text-align: center;
+export const Label = styled.label`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #555;
   font-size: 1rem;
   font-weight: 700;
+  cursor: pointer;
 `
 
 export const Input = styled.input`
-  &:checked ~ .Slider {
-    left: 0%;
+  &:checked + label {
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    box-shadow: inset 0 0 0 0.25rem transparent;
+    background-clip: content-box;
+    background-color: var(--P2);
   }
-
-  &:checked ~ .Slider .text1,
-  &:not(:checked) ~ .Slider .text2 {
-    display: block;
-  }
-
-  &:checked ~ .Slider .text2,
-  &:not(:checked) ~ .Slider .text1 {
-    display: none;
-  }
-`
-
-export const Slider = styled.div`
-  width: 7.5rem;
-  height: calc(100% - 0.5rem);
-  margin: 0.25rem;
-  background: #0070f3;
-  border-radius: 0.25rem;
-  position: absolute;
-  top: 0;
-  left: calc(50% - 0.14rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1rem;
-  font-weight: 700;
-  transition: left 0.3s;
-  cursor: auto;
-`
-
-export const SliderText = styled.span`
-  display: inline-block;
-  width: 100%;
-  text-align: center;
 `

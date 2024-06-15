@@ -4,11 +4,7 @@ import SegmentedControl from './index'
 
 const config: Meta<typeof SegmentedControl> = {
   title: 'SegmentedControl',
-  component: SegmentedControl,
-  args: {
-    text1: 'True',
-    text2: 'False',
-  },
+  args: {},
 }
 
 export default config
@@ -16,15 +12,13 @@ export default config
 type Story = StoryObj<typeof SegmentedControl>
 
 export const Primary: Story = {
-  render: (args) => {
+  render: () => {
     return (
-      <div>
-        <SegmentedControl text1={args.text1} text2={args.text2} />
-      </div>
+      <SegmentedControl.Root>
+        <SegmentedControl.Option value='hi'>hi</SegmentedControl.Option>
+        <SegmentedControl.Option value='hello'>hello</SegmentedControl.Option>
+      </SegmentedControl.Root>
     )
   },
-  args: {
-    text1: 'True',
-    text2: 'False',
-  },
+  args: {},
 }
