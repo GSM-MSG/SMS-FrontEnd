@@ -20,7 +20,7 @@ const Field = ({ label, children, ...props }: Props) => {
       {...props}
     >
       <S.Label>{label}</S.Label>
-      {children}
+      <S.FieldContent>{children}</S.FieldContent>
     </S.Field>
   )
 }
