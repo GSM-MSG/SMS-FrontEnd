@@ -1,7 +1,14 @@
 import { z } from 'zod'
 import Role from '@/types/Role'
 
-const RoleSchema = z.enum([Role.ROLE_STUDENT, Role.ROLE_TEACHER])
+const RoleSchema = z.enum([
+  Role.ROLE_STUDENT,
+  Role.ROLE_TEACHER,
+  Role.ROLE_DIRECTOR,
+  Role.ROLE_HOMEROOM,
+  Role.ROLE_PRINCIPAL,
+  Role.ROLE_DEPUTY_PRINCIPAL,
+])
 
 export const successDto = z.object({
   isLoggedIn: z.literal(true),

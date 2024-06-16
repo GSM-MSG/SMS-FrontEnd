@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
 
   @media (max-width: 34rem) {
     padding: 1.25rem 1.5rem;

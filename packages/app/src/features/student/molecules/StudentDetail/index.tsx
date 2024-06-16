@@ -1,14 +1,27 @@
+import React, { useState } from 'react'
 import PrizesDetail from '@features/student/atoms/PrizesDetail'
 import ProfileDetail from '@features/student/atoms/ProfileDetail'
 import ProjectDetail from '@features/student/atoms/ProjectDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
+import ProfileSharingModal from '@features/student/molecules/ProfileSharingModal'
+import { BlurPortal } from '@features/modal/portals'
+import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
 import * as S from './style'
+import Role from '@/types/Role'
 
 interface Props {
   student: StudentDetail | null
+  studentId?: string
 }
 
-const StudentDetail = ({ student }: Props) => {
+const StudentDetail = ({ student, studentId }: Props) => {
+  const { data } = useLoggedInQuery()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen)
+  }
+
   return (
     <S.Wrapper>
       <ProfileDetail
@@ -33,13 +46,21 @@ const StudentDetail = ({ student }: Props) => {
       />
       <PrizesDetail prizes={student?.prizes} />
       <ProjectDetail projects={student?.projects} />
-
-      {student?.portfolioUrl && (
-        <S.PortfolioWrapper>
-          <S.PortfolioButton href={student?.portfolioUrl}>
-            포트폴리오
-          </S.PortfolioButton>
-        </S.PortfolioWrapper>
+      <S.PortfolioWrapper>
+        {student?.portfolioUrl && (
+          <S.PortfolioButton href='/'>포트폴리오</S.PortfolioButton>
+        )}
+        {data?.isLoggedIn && data.role === Role.ROLE_HOMEROOM && (
+          <S.ShareButton onClick={toggleModal}>공유</S.ShareButton>
+        )}
+      </S.PortfolioWrapper>
+      {isModalOpen && (
+        <BlurPortal>
+          <ProfileSharingModal
+            studentId={studentId}
+            toggleModal={toggleModal}
+          />
+        </BlurPortal>
       )}
     </S.Wrapper>
   )

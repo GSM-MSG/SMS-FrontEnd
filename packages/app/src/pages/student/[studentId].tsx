@@ -13,6 +13,8 @@ const StudentDetailPage = () => {
   const { studentId } = router.query
   const { data } = useStudentDetailQuery({ studentId })
 
+  useStudentsParam({ query })
+
   useEffect(() => {
     if (!data || typeof studentId !== 'string') {
       router.push('/', '/')
