@@ -33,9 +33,10 @@ interface Props {
 const StudentDetailPage = ({ query, data }: Props) => {
   const router = useRouter()
   const { onShow } = useModal()
-  useStudentsParam({ query })
 
   useLoggedIn({})
+
+  useStudentsParam({ query })
 
   useEffect(() => {
     if (!data) {
