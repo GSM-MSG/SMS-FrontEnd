@@ -1,13 +1,12 @@
-import {
-  Button,
-  CertificationForm,
-  DownloadList,
-  Input,
-  SegmentedControl,
-} from '@sms/shared'
+import { Button, CertificationForm, DownloadList } from '@sms/shared'
 import { AuthenticationFormResDto } from '@features/student/dtos/res/AuthenticationFromResDto'
 import { saveAs } from 'file-saver'
 import { AuthenticationFormTestData } from '@features/student/data/AuthenticationFormTestData'
+import { FormProvider, useForm } from 'react-hook-form'
+import AuthenticationField from '@features/student/molecules/AuthenticationField'
+import AuthenticationArrayField from '@features/student/molecules/AuthenticationArrayField'
+import ResToAuthenticationForm from '@features/student/lib/ResToAuthenticationForm'
+import { AuthenticationFormDto } from '@features/student/dtos/form/AuthenticationFormDto'
 import * as S from './style'
 
 interface Props {
@@ -16,50 +15,60 @@ interface Props {
 
 const AuthenticationForm = ({ data }: Props) => {
   data = AuthenticationFormTestData
+  const methods = useForm<AuthenticationFormDto>({
+    defaultValues: ResToAuthenticationForm(data),
+  })
+
+  const onSubmit = methods.handleSubmit(() => {})
+
   return (
-    <S.Wrapper>
-      <DownloadList>
-        {data?.files.map((file) => (
-          <DownloadList.File
-            key={file.name}
-            filename={file.name}
-            onClick={() => saveAs(file.url)}
-          />
-        ))}
-      </DownloadList>
-
-      {data?.contents.map((content) => (
-        <CertificationForm key={content.title}>
-          <CertificationForm.Header>
-            <CertificationForm.Title>{content.title}</CertificationForm.Title>
-          </CertificationForm.Header>
-
-          {content.sections.map((section) => (
-            <CertificationForm.Field
-              key={section.sectionId}
-              label={section.sectionName}
-            >
-              {section.fields.map((field) => {
-                if (field.sectionType === 'BOOLEAN')
-                  return (
-                    <SegmentedControl
-                      key={field.fieldId}
-                      text1={field.values?.[0].value ?? ''}
-                      text2={field.values?.[1].value ?? ''}
-                    />
-                  )
-
-                return <Input key={field.fieldId} placeholder={field.example} />
-              })}
-            </CertificationForm.Field>
+    <FormProvider {...methods}>
+      <S.Wrapper onSubmit={onSubmit}>
+        <DownloadList>
+          {data?.files.map((file) => (
+            <DownloadList.File
+              key={file.name}
+              filename={file.name}
+              onClick={() => saveAs(file.url)}
+            />
           ))}
-        </CertificationForm>
-      ))}
+        </DownloadList>
 
-      <S.Bottom>
-        <Button type='submit'>저장</Button>
-      </S.Bottom>
-    </S.Wrapper>
+        {data?.contents.map((content, contentIndex) => (
+          <CertificationForm key={content.title}>
+            <CertificationForm.Header>
+              <CertificationForm.Title>{content.title}</CertificationForm.Title>
+            </CertificationForm.Header>
+
+            {content.sections.map((section, sectionIndex) => {
+              if (section.maxCount > 1) {
+                return (
+                  <AuthenticationArrayField
+                    key={section.sectionId}
+                    section={section}
+                    contentIndex={contentIndex}
+                    sectionIndex={sectionIndex}
+                  />
+                )
+              }
+
+              return (
+                <AuthenticationField
+                  key={section.sectionId}
+                  section={section}
+                  contentIndex={contentIndex}
+                  sectionIndex={sectionIndex}
+                />
+              )
+            })}
+          </CertificationForm>
+        ))}
+
+        <S.Bottom>
+          <Button type='submit'>저장</Button>
+        </S.Bottom>
+      </S.Wrapper>
+    </FormProvider>
   )
 }
 

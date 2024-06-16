@@ -1,7 +1,7 @@
 import Header from '@features/global/Header'
 import { useQuery } from '@tanstack/react-query'
 import fetchAuthenticationForm from '@features/student/service/fetchAuthenticationForm'
-import { NotFound } from '@features/global'
+// import { NotFound } from '@features/global'
 import AuthenticationForm from '@features/student/organisms/AuthenticationForm'
 import { AuthenticationFormResDto } from '@features/student/dtos/res/AuthenticationFromResDto'
 import * as S from './style'

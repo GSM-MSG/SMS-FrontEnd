@@ -1,13 +1,5 @@
 import { z } from 'zod'
-
-export const SectionTypeSchema = z.enum([
-  'SELECT_VALUE',
-  'BOOLEAN',
-  'TEXT',
-  'NUMBER',
-  'FILE',
-])
-export type SectionType = z.infer<typeof SectionTypeSchema>
+import { FieldTypeSchema } from '@features/student/dtos/SectionTypeSchema'
 
 export const ValueSchema = z.object({
   selectId: z.string(),
@@ -23,7 +15,7 @@ export type File = z.infer<typeof FileSchema>
 
 export const FieldSchema = z.object({
   fieldId: z.string(),
-  sectionType: SectionTypeSchema,
+  fieldType: FieldTypeSchema,
   scoreDescription: z.string(),
   values: z.array(ValueSchema).nullable(),
   example: z.string(),
