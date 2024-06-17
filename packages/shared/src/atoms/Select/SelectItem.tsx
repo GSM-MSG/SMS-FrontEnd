@@ -15,6 +15,7 @@ export const SelectItem = ({ children, value, name }: Props) => {
     onValueChange,
     onOpenChange,
     onLabelChange,
+    onBlur,
     disabled,
     defaultValue,
   } = useContext(Context)
@@ -41,6 +42,7 @@ export const SelectItem = ({ children, value, name }: Props) => {
         checked={value === innerValue}
         id={id}
         onClick={handleClick}
+        onBlur={onBlur}
       />
       <S.SelectItem htmlFor={id}>{children}</S.SelectItem>
     </>

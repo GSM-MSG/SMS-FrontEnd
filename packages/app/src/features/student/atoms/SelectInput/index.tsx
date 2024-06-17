@@ -1,5 +1,5 @@
 import { NewSelect } from '@sms/shared'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 import type { Field } from '@features/student/dtos/res/AuthenticationFromResDto'
 
 interface Props {
@@ -8,24 +8,33 @@ interface Props {
 }
 
 const SelectInput = ({ field, name }: Props) => {
-  const { register } = useFormContext()
+  const { control } = useFormContext()
 
   return (
-    <NewSelect.Root {...register(name)}>
-      <NewSelect.SelectTrigger>
-        <NewSelect.SelectValue placeholder={field.example} />
-      </NewSelect.SelectTrigger>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { onChange, value, onBlur } }) => (
+        <NewSelect.Root onValueChange={onChange} value={value} onBlur={onBlur}>
+          <NewSelect.SelectTrigger>
+            <NewSelect.SelectValue placeholder={field.example} />
+          </NewSelect.SelectTrigger>
 
-      <NewSelect.SelectContent>
-        {
-          field.values?.map((value) => (
-            <NewSelect.SelectItem key={value.selectId} value={value.selectId}>
-              {value.value}
-            </NewSelect.SelectItem>
-          )) as []
-        }
-      </NewSelect.SelectContent>
-    </NewSelect.Root>
+          <NewSelect.SelectContent>
+            {
+              field.values?.map((value) => (
+                <NewSelect.SelectItem
+                  key={value.selectId}
+                  value={value.selectId}
+                >
+                  {value.value}
+                </NewSelect.SelectItem>
+              )) as []
+            }
+          </NewSelect.SelectContent>
+        </NewSelect.Root>
+      )}
+    />
   )
 }
 

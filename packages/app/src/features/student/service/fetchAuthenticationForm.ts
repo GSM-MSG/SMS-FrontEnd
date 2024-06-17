@@ -7,7 +7,7 @@ import {
 const fetchAuthenticationForm = async (uuid: string) => {
   try {
     const { data } = await axiosApi.get<AuthenticationFormResDto>(
-      `/server/authentication/form/${uuid}`
+      `/api/server/authentication/form/${uuid}`
     )
 
     return AuthenticationFormResDtoSchema.parse(data)

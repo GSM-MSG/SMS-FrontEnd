@@ -9,6 +9,7 @@ export interface InitialValue {
   onOpenChange: (open: boolean) => void
   label?: string
   onLabelChange: (label: string) => void
+  onBlur?: () => void
   name?: string
   disabled?: boolean
   required?: boolean
