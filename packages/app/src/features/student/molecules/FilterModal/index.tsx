@@ -11,9 +11,9 @@ import {
 import RangeSliderSection from '@features/student/atoms/RangeSliderSection'
 import useStudentsFilter from '@features/student/hooks/useStudentsFilter'
 import { useAutocomplete } from '@features/register/hooks'
-import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import MajorListSection from '@features/student/atoms/MajorListSection'
 
+import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
 import * as S from './style'
 
 const FilterModal = () => {
@@ -28,7 +28,8 @@ const FilterModal = () => {
     onClickMajor,
   } = useStudentsFilter()
   const { onChange, dropdownList } = useAutocomplete()
-  const { role } = useLoggedIn({})
+  const { data } = useLoggedInQuery()
+  const role = data?.isLoggedIn && data.role
 
   return (
     <ModalPortal>

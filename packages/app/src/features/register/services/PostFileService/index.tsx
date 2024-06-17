@@ -7,7 +7,7 @@ const PostFileService = async (file: File, isImage: boolean) => {
 
   try {
     const { data } = await axiosApi.post<Response>(
-      `/server/file${isImage ? '/image' : ''}`,
+      `/api/server/file${isImage ? '/image' : ''}`,
       formData,
       {
         headers: { 'Content-Type': 'multipart/form-data' },
