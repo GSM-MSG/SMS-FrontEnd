@@ -7,6 +7,9 @@ import AuthenticationField from '@features/student/molecules/AuthenticationField
 import AuthenticationArrayField from '@features/student/molecules/AuthenticationArrayField'
 import ResToAuthenticationForm from '@features/student/lib/ResToAuthenticationForm'
 import { AuthenticationFormDto } from '@features/student/dtos/form/AuthenticationFormDto'
+import usePostAuthenticationFormMutation from '@features/student/queries/usePostAuthenticationFormMutation'
+import formToAuthenticationFormReq from '@features/student/lib/formToAuthenticationFormReq'
+import { useRouter } from 'next/router'
 import * as S from './style'
 
 interface Props {
@@ -15,11 +18,20 @@ interface Props {
 
 const AuthenticationForm = ({ data }: Props) => {
   data = AuthenticationFormTestData
+  const router = useRouter()
+  const { mutate } = usePostAuthenticationFormMutation({
+    onSuccess: () => {
+      router.push('/')
+    },
+  })
+
   const methods = useForm<AuthenticationFormDto>({
     defaultValues: ResToAuthenticationForm(data),
   })
 
-  const onSubmit = methods.handleSubmit(() => {})
+  const onSubmit = methods.handleSubmit(async (data) => {
+    mutate({ uuid: '', data: formToAuthenticationFormReq(data) })
+  })
 
   return (
     <FormProvider {...methods}>
