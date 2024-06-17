@@ -15,11 +15,6 @@ const StudentDetailModal = ({ studentId }: Props) => {
   const { data, isLoading } = useStudentDetailQuery({ studentId })
   const { onClose } = useModal()
 
-  if (!isLoading && !data) {
-    onClose()
-    return null
-  }
-
   return (
     <BlurPortal>
       <S.Wrapper onClick={(e) => e.stopPropagation()}>

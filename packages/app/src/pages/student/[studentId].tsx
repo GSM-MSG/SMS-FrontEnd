@@ -11,15 +11,15 @@ const StudentDetailPage = () => {
   const { onShow } = useModal()
 
   const { studentId } = router.query
-  const { data } = useStudentDetailQuery({ studentId })
+  const { data, isFetched } = useStudentDetailQuery({ studentId })
 
   useEffect(() => {
-    if (!data || typeof studentId !== 'string') {
+    if ((!data || typeof studentId !== 'string') && isFetched) {
       router.push('/', '/')
       return
     }
 
-    onShow(<StudentDetailModal studentId={studentId} />)
+    onShow(<StudentDetailModal studentId={studentId as string} />)
   }, [])
 
   return (
