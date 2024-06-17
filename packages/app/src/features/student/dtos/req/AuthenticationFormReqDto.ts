@@ -3,7 +3,7 @@ import { FieldTypeSchema } from '@features/student/dtos/SectionTypeSchema'
 
 export const ObjectElementSchema = z.object({
   fieldId: z.string(),
-  sectionType: FieldTypeSchema,
+  fieldType: FieldTypeSchema,
   value: z.string().optional(),
   selectId: z.string().optional(),
 })
