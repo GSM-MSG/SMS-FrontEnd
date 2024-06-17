@@ -5,7 +5,7 @@ import errors from '@features/auth/errors'
 
 const login = async (code: string) => {
   try {
-    const { data } = await axiosApi.post<TokenResponse>('/api/login', {
+    const { data } = await axiosApi.post<TokenResponse>('/api/server/login', {
       code,
     })
 

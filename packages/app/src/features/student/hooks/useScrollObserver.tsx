@@ -1,47 +1,35 @@
-import { RootState } from '@store'
 import { useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
-import useStudent from './useStudent'
 
-const useScrollObserver = () => {
-  const observe = useRef<HTMLDivElement>(null)
-  const { studentParam } = useSelector((state: RootState) => ({
-    studentParam: state.studentParam,
-  }))
-  const { refetchStudents } = useStudent()
+type Callback = () => void | Promise<void>
+
+interface Props {
+  callback: Callback
+  threshold?: number
+}
+
+const useScrollObserver = ({ callback, threshold = 0.1 }: Props) => {
+  const element = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!observe.current || studentParam.isError || !studentParam.isReady)
-      return
+    if (!element.current) return
 
     const observer = new IntersectionObserver(
-      (e) => {
-        if (
-          !e[0].isIntersecting ||
-          studentParam.nextStop ||
-          studentParam.isLoading
-        )
-          return
-
-        refetchStudents({
-          page: studentParam.page,
-          size: studentParam.size,
-          ...studentParam.param,
+      (entries) => {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting) await callback()
         })
       },
-      { threshold: 0 }
+      {
+        threshold,
+      }
     )
-    observer.observe(observe.current)
+
+    observer.observe(element.current)
 
     return () => observer.disconnect()
-  }, [
-    observe.current,
-    studentParam.nextStop,
-    studentParam.isLoading,
-    studentParam.isReady,
-  ])
+  }, [element, callback])
 
-  return { observe }
+  return { element }
 }
 
 export default useScrollObserver

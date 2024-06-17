@@ -5,15 +5,17 @@ import ProjectDetail from '@features/student/atoms/ProjectDetail'
 import StudentInfo from '@features/student/atoms/StudentInfo'
 import ProfileSharingModal from '@features/student/molecules/ProfileSharingModal'
 import { BlurPortal } from '@features/modal/portals'
+import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
 import * as S from './style'
+import Role from '@/types/Role'
 
 interface Props {
   student: StudentDetail | null
   studentId?: string
-  role?: string | undefined
 }
 
-const StudentDetail = ({ student, studentId, role }: Props) => {
+const StudentDetail = ({ student, studentId }: Props) => {
+  const { data } = useLoggedInQuery()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const toggleModal = () => {
@@ -48,7 +50,7 @@ const StudentDetail = ({ student, studentId, role }: Props) => {
         {student?.portfolioUrl && (
           <S.PortfolioButton href='/'>포트폴리오</S.PortfolioButton>
         )}
-        {role === 'ROLE_TEACHER/ROLE_HOMEROOM' && (
+        {data?.isLoggedIn && data.role === Role.ROLE_HOMEROOM && (
           <S.ShareButton onClick={toggleModal}>공유</S.ShareButton>
         )}
       </S.PortfolioWrapper>

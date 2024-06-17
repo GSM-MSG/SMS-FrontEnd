@@ -5,8 +5,10 @@ import { actions } from '@features/student/stores'
 import ParamsFilter from '@lib/ParamsFilter'
 import { useModal } from '@features/modal/hooks'
 import toQueryString from '@features/student/lib/toQueryString'
+import { useRouter } from 'next/router'
 
 const useStudentsFilter = () => {
+  const router = useRouter()
   const dispatch = useDispatch()
   const { param } = useSelector((state: RootState) => ({
     param: state.studentParam.param,
@@ -34,7 +36,7 @@ const useStudentsFilter = () => {
     dispatch(actions.setParam(form))
     ParamsFilter(form)
 
-    location.href = toQueryString(ParamsFilter(form))
+    router.push('/', toQueryString(ParamsFilter(form)))
     onClose()
   })
 

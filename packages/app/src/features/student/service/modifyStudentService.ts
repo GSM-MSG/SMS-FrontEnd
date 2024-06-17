@@ -5,7 +5,7 @@ import errors from './errors'
 
 const modifyStudentService = async (data: RegisterFormType) => {
   try {
-    await axiosApi.put('/server/student', {
+    await axiosApi.put('/api/server/student', {
       ...data,
       prizes: data.prizes.map((prize) => ({
         name: prize.name,

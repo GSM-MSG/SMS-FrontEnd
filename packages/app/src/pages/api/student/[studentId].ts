@@ -5,7 +5,7 @@ import { withHandler } from '@features/server/libs'
 export default withHandler({
   methods: ['GET'],
 
-  handler: async (req, res) => {
+  handler: async ({ req, res }) => {
     const studentId = req.query.studentId
     if (!studentId)
       return res.status(400).json({ message: 'id를 찾을 수 없습니다' })

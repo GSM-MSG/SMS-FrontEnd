@@ -1,13 +1,10 @@
 import { axiosApi } from '@api'
 import { MyPageStudentType } from '@features/student/types/MyPageStudentType'
 
-const profileService = async (accessToken?: string) => {
+const profileService = async () => {
   try {
     const { data } = await axiosApi.get<MyPageStudentType>(
-      `${process.env.SERVER_URL}/user/profile`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
+      `/api/server/user/profile`
     )
     return data
   } catch (e) {

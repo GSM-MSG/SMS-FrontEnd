@@ -9,6 +9,7 @@ const useShareStudentDetailQuery = ({ token }: Props) => {
   return useQuery<StudentDetail>({
     queryKey: [token],
     queryFn: () => ShareStudentDetailApi(token),
+    retry: 0,
   })
 }
 

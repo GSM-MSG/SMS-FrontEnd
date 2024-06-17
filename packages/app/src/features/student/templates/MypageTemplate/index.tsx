@@ -1,4 +1,3 @@
-import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import { RegisterFormType } from '@features/register/type'
 import MyPageForm from '@features/student/molecules/MyPageForm'
 import StudentExitButton from '@features/student/atoms/StudentExitButton'
@@ -10,8 +9,6 @@ interface Props {
 }
 
 const MypageTemplate = ({ defaultValue }: Props) => {
-  useLoggedIn({ redirectTo: '/login' })
-
   return (
     <S.Wrapper>
       <Header />

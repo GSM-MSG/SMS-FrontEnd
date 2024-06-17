@@ -9,7 +9,7 @@ const PostTeacherRegisterService = async (form: TeacherRegisterFormType) => {
   }
   try {
     await axiosApi.post(
-      `/server/teacher/${TeacherType}`,
+      `/api/server/teacher/${TeacherType}`,
       TeacherType === 'homeroom' ? teacherForm : null
     )
 

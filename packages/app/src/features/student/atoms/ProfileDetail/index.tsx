@@ -33,7 +33,7 @@ const ProfileDetail = ({
 
         <S.Name>{name?.replace('**', '소금')}</S.Name>
 
-        {grade && classNum && number && department && (
+        {!!grade && !!classNum && !!number && !!department && (
           <S.SchoolInfo>
             {grade}학년 {classNum}반 {number}번 • {DepartmentData[department]}
           </S.SchoolInfo>

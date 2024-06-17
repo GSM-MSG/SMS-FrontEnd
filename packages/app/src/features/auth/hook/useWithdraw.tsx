@@ -4,13 +4,11 @@ import { useToast } from '@features/toast'
 import { useDialog } from '@hooks'
 import { useDispatch } from 'react-redux'
 import { actions } from '@features/student/stores'
-import useLoggedIn from './useLoggedIn'
 
 const useWithdraw = () => {
   const { dialog } = useDialog()
   const { addToast } = useToast()
   const dispatch = useDispatch()
-  const { refetchLoggedIn } = useLoggedIn({})
   const router = useRouter()
 
   const onWithdraw = async () => {
@@ -29,7 +27,6 @@ const useWithdraw = () => {
     dispatch(actions.resetPage())
     dispatch(actions.resetStudents())
     router.push('/')
-    refetchLoggedIn()
   }
 
   return { onWithdraw }
