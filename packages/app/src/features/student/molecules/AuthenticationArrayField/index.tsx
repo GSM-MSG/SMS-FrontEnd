@@ -1,6 +1,6 @@
 import { CertificationForm } from '@sms/shared'
 import { Section } from '@features/student/dtos/res/AuthenticationFromResDto'
-import { useFieldArray, useFormContext } from 'react-hook-form'
+import { useFieldArray, useFormContext, Controller } from 'react-hook-form'
 import TextInput from '@features/student/atoms/TextInput'
 import ArrayController from '@features/student/atoms/ArrayController'
 import { Fragment } from 'react'
@@ -48,7 +48,7 @@ const AuthenticationArrayField = ({
                 <BooleanInput
                   key={field.fieldId}
                   field={field}
-                  name={`${name}.value`}
+                  name={`${name}.selectId`}
                 />
               )
 
@@ -80,7 +80,20 @@ const AuthenticationArrayField = ({
               )
 
             if (field.fieldType === 'FILE')
-              return <FileUpload key={field.fieldId} />
+              return (
+                <Controller
+                  name={`${name}.value`}
+                  control={control}
+                  key={field.fieldId}
+                  render={({ field: { name, onChange, onBlur } }) => (
+                    <FileUpload
+                      name={name}
+                      onChange={onChange}
+                      onBlur={onBlur}
+                    />
+                  )}
+                />
+              )
 
             return null
           })}

@@ -1,3 +1,4 @@
+import { Controller, useFormContext } from 'react-hook-form'
 import { CertificationForm } from '@sms/shared'
 import BooleanInput from '@features/student/atoms/BooleanInput'
 import FileUpload from '@features/student/atoms/FileUpload'
@@ -17,6 +18,8 @@ const AuthenticationField = ({
   sectionIndex,
   contentIndex,
 }: Props) => {
+  const { control } = useFormContext()
+
   return (
     <CertificationForm.Field label={section.sectionName}>
       {section.fields.map((field, fieldIndex) => {
@@ -59,7 +62,16 @@ const AuthenticationField = ({
           )
 
         if (field.fieldType === 'FILE')
-          return <FileUpload key={field.fieldId} />
+          return (
+            <Controller
+              name={`${name}.value`}
+              control={control}
+              key={field.fieldId}
+              render={({ field: { name, onChange, onBlur } }) => (
+                <FileUpload name={name} onChange={onChange} onBlur={onBlur} />
+              )}
+            />
+          )
 
         return null
       })}
