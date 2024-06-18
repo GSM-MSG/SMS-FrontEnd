@@ -1,4 +1,4 @@
-import { CertificationForm } from '@sms/shared'
+import { CertificationForm, Chip } from '@sms/shared'
 import { Section } from '@features/student/dtos/res/AuthenticationFromResDto'
 import { useFieldArray, useFormContext, Controller } from 'react-hook-form'
 import TextInput from '@features/student/atoms/TextInput'
@@ -98,11 +98,16 @@ const AuthenticationArrayField = ({
             return null
           })}
           <ArrayController
+            disableAdd={section.maxCount <= fields.length}
             onAddClick={() => append(arrayDefaultValue)}
             onRemoveClick={() => remove(arrayIndex)}
           />
         </Fragment>
       ))}
+
+      {fields.length <= 0 && (
+        <Chip onClick={() => append(arrayDefaultValue)}>추가</Chip>
+      )}
     </CertificationForm.Field>
   )
 }

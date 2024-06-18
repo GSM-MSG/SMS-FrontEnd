@@ -5,21 +5,19 @@ interface Props {
   onAddClick?: () => void
   onRemoveClick?: () => void
   disableAdd?: boolean
-  disableRemove?: boolean
 }
 
-const ArrayController = ({
-  onAddClick,
-  onRemoveClick,
-  disableAdd,
-  disableRemove,
-}: Props) => {
+const ArrayController = ({ onAddClick, onRemoveClick, disableAdd }: Props) => {
   return (
     <S.Wrapper>
-      <Chip hidden={disableAdd} onClick={onAddClick}>
+      <Chip
+        disabled={disableAdd}
+        style={{ opacity: disableAdd ? 0 : undefined }}
+        onClick={onAddClick}
+      >
         추가
       </Chip>
-      <DeleteButton disabled={disableRemove} onClick={onRemoveClick} />
+      <DeleteButton onClick={onRemoveClick} />
     </S.Wrapper>
   )
 }
