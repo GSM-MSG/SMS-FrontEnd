@@ -30,7 +30,7 @@ const AuthenticationField = ({
             <BooleanInput
               key={field.fieldId}
               field={field}
-              name={`${name}.value`}
+              name={`${name}.selectId`}
             />
           )
 

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { FieldTypeSchema } from '@features/student/dtos/SectionTypeSchema'
+import { FieldTypeSchema } from '@features/student/dtos/common/SectionTypeSchema'
 
 export const ObjectElementSchema = z.object({
   fieldId: z.string(),

@@ -14,8 +14,8 @@ const formToAuthenticationFormReq = (
       objects: section.fields.reduce((prev, curr) => {
         const field = curr.map((field) => ({
           fieldId: field.fieldId,
-          value: field.value,
-          selectId: field.selectId,
+          value: 'value' in field ? field.value : undefined,
+          selectId: 'selectId' in field ? field.selectId : undefined,
           fieldType: field.fieldType,
         }))
 

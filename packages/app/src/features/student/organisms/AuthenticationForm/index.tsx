@@ -6,10 +6,14 @@ import { FormProvider, useForm } from 'react-hook-form'
 import AuthenticationField from '@features/student/molecules/AuthenticationField'
 import AuthenticationArrayField from '@features/student/molecules/AuthenticationArrayField'
 import ResToAuthenticationForm from '@features/student/lib/ResToAuthenticationForm'
-import { AuthenticationFormDto } from '@features/student/dtos/form/AuthenticationFormDto'
+import {
+  AuthenticationFormDto,
+  AuthenticationFormDtoSchema,
+} from '@features/student/dtos/form/AuthenticationFormDto'
 import usePostAuthenticationFormMutation from '@features/student/queries/usePostAuthenticationFormMutation'
 import formToAuthenticationFormReq from '@features/student/lib/formToAuthenticationFormReq'
 import { useRouter } from 'next/router'
+import { zodResolver } from '@hookform/resolvers/zod'
 import * as S from './style'
 
 interface Props {
@@ -27,6 +31,7 @@ const AuthenticationForm = ({ data }: Props) => {
 
   const methods = useForm<AuthenticationFormDto>({
     defaultValues: ResToAuthenticationForm(data),
+    resolver: zodResolver(AuthenticationFormDtoSchema),
   })
 
   const onSubmit = methods.handleSubmit(async (data) => {
