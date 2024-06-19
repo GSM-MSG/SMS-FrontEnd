@@ -1,16 +1,16 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-import ErrorMessage from './index'
+import ErrorWrapper from './index'
 
-const config: Meta<typeof ErrorMessage> = {
-  title: 'ErrorMessage',
-  component: ErrorMessage,
+const config: Meta<typeof ErrorWrapper> = {
+  title: 'ErrorWrapper',
+  component: ErrorWrapper,
   args: {},
 }
 
 export default config
 
-type Story = StoryObj<typeof ErrorMessage>
+type Story = StoryObj<typeof ErrorWrapper>
 
 export const Primary: Story = {
   args: {

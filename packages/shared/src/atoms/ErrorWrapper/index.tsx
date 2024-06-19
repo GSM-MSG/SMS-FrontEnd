@@ -1,12 +1,12 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 import * as S from './style'
 
 interface Props
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  error?: string
+  error?: ReactNode
 }
 
-const ErrorMessage = ({ error, children, ...props }: Props) => {
+const ErrorWrapper = ({ error, children, ...props }: Props) => {
   return (
     <div {...props}>
       {children}
@@ -15,4 +15,4 @@ const ErrorMessage = ({ error, children, ...props }: Props) => {
   )
 }
 
-export default ErrorMessage
+export default ErrorWrapper
