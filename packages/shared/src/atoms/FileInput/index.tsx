@@ -13,23 +13,24 @@ interface Props
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
+  onChange?: (
+    e: ChangeEvent<HTMLInputElement>
+  ) => string | undefined | Promise<string | undefined>
+  placeholder?: string
   error?: string
 }
 
 const FileInput = forwardRef<HTMLInputElement, Props>(
-  ({ error, onChange, ...props }, ref) => {
-    const [filename, setFilename] = useState('')
+  ({ error, onChange, placeholder, ...props }, ref) => {
+    const [filename, setFilename] = useState<string>()
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0]
-      if (!file) return
-      if (onChange) onChange(e)
-      setFilename(file.name)
+    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+      if (onChange) setFilename(await onChange(e))
     }
 
     return (
       <div>
-        <S.FileInput>
+        <S.FileInput tabIndex={0}>
           <input
             type='file'
             hidden
@@ -37,7 +38,7 @@ const FileInput = forwardRef<HTMLInputElement, Props>(
             ref={ref}
             {...props}
           />
-          <S.FileName>{filename}</S.FileName>
+          <S.FileName>{filename ?? placeholder}</S.FileName>
 
           <Icon.Folder />
         </S.FileInput>
