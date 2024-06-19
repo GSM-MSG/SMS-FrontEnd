@@ -2,18 +2,10 @@ import { Button, CertificationForm, DownloadList } from '@sms/shared'
 import { AuthenticationFormResDto } from '@features/student/dtos/res/AuthenticationFromResDto'
 import { saveAs } from 'file-saver'
 import { AuthenticationFormTestData } from '@features/student/data/AuthenticationFormTestData'
-import { FormProvider, useForm } from 'react-hook-form'
+import { FormProvider } from 'react-hook-form'
 import AuthenticationField from '@features/student/molecules/AuthenticationField'
 import AuthenticationArrayField from '@features/student/molecules/AuthenticationArrayField'
-import ResToAuthenticationForm from '@features/student/lib/ResToAuthenticationForm'
-import {
-  AuthenticationFormDto,
-  AuthenticationFormDtoSchema,
-} from '@features/student/dtos/form/AuthenticationFormDto'
-import usePostAuthenticationFormMutation from '@features/student/queries/usePostAuthenticationFormMutation'
-import formToAuthenticationFormReq from '@features/student/lib/formToAuthenticationFormReq'
-import { useRouter } from 'next/router'
-import { zodResolver } from '@hookform/resolvers/zod'
+import useAuthenticationForm from '@features/student/hooks/useAuthenticationForm'
 import * as S from './style'
 
 interface Props {
@@ -22,34 +14,22 @@ interface Props {
 
 const AuthenticationForm = ({ data }: Props) => {
   data = AuthenticationFormTestData
-  const router = useRouter()
-  const { mutate } = usePostAuthenticationFormMutation({
-    onSuccess: () => {
-      router.push('/')
-    },
-  })
-
-  const methods = useForm<AuthenticationFormDto>({
-    defaultValues: ResToAuthenticationForm(data),
-    resolver: zodResolver(AuthenticationFormDtoSchema),
-  })
-
-  const onSubmit = methods.handleSubmit(async (data) => {
-    mutate({ uuid: '', data: formToAuthenticationFormReq(data) })
-  })
+  const { methods, onSubmit } = useAuthenticationForm({ data })
 
   return (
     <FormProvider {...methods}>
       <S.Wrapper onSubmit={onSubmit}>
-        <DownloadList>
-          {data?.files.map((file) => (
-            <DownloadList.File
-              key={file.name}
-              filename={file.name}
-              onClick={() => saveAs(file.url)}
-            />
-          ))}
-        </DownloadList>
+        {!!data.files.length && (
+          <DownloadList>
+            {data?.files.map((file) => (
+              <DownloadList.File
+                key={file.name}
+                filename={file.name}
+                onClick={() => saveAs(file.url)}
+              />
+            ))}
+          </DownloadList>
+        )}
 
         {data?.contents.map((content, contentIndex) => (
           <CertificationForm key={content.title}>
