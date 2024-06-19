@@ -4,7 +4,11 @@ import FileInput from './index'
 const config: Meta<typeof FileInput> = {
   title: 'FileInput',
   component: FileInput,
-  args: { error: 'Error' },
+  args: {
+    error: 'Error',
+    placeholder: 'Placeholder',
+    onChange: (e) => e.target.files?.[0]?.name,
+  },
 }
 
 export default config
