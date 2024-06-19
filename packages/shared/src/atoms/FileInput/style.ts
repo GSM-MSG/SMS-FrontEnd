@@ -10,12 +10,15 @@ export const FileInput = styled.label`
   background: var(--N10);
   transition: 0.2s;
   cursor: pointer;
+  border: 0.0625rem solid transparent;
 
   :hover {
-    border: 0.0625rem solid;
+    border-color: var(--P2);
   }
 
-  border: 0.0625rem solid transparent;
+  :focus {
+    border-color: var(--P2);
+  }
 `
 
 export const FileName = styled.p`
