@@ -9,16 +9,22 @@ interface Props {
 }
 
 const FileUpload = ({ name, onChange, onBlur }: Props) => {
-  const { mutate } = usePostFileMutation({
+  const { mutateAsync } = usePostFileMutation({
     onSuccess: (data) => {
       onChange(data)
     },
   })
 
-  const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  const onUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
-    if (!file) return
-    mutate({ file, isImage: file.type.includes('image') })
+    if (!file) return undefined
+
+    try {
+      await mutateAsync({ file, isImage: file.type.includes('image') })
+      return file.name
+    } catch (e) {
+      return undefined
+    }
   }
 
   return <FileInput name={name} onChange={onUpload} onBlur={onBlur} />
