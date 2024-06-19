@@ -30,7 +30,7 @@ const FileInput = forwardRef<HTMLInputElement, Props>(
 
     return (
       <div>
-        <S.FileInput>
+        <S.FileInput tabIndex={0}>
           <input
             type='file'
             hidden

@@ -11,6 +11,7 @@ export const FileInput = styled.label`
   transition: 0.2s;
   cursor: pointer;
   border: 0.0625rem solid transparent;
+  outline: none;
 
   :hover {
     border-color: var(--P2);
