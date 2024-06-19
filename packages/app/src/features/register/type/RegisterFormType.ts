@@ -4,7 +4,9 @@ interface RegisterFormType {
   profileImgUrl: string
   introduce: string
   stuNum: string
-  portfolioUrl: string
+  portfolioType: 'URL' | 'PDF'
+  portfolioUrl?: string
+  portfolioFile?: File
   contactEmail: string
   formOfEmployment: FormOfEmployment // 희망 고용 형태
   gsmAuthenticationScore: number // 인증제 점수
