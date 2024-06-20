@@ -6,7 +6,9 @@ import { useSelector } from 'react-redux'
 import * as S from './style'
 
 const ToastContainer = () => {
-  const { toast } = useSelector((state: RootState) => ({ toast: state.toast }))
+  const toast = useSelector((state: RootState) => {
+    return state.toast
+  })
 
   return (
     <S.Wrapper>
