@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.4.2",
     "@reduxjs/toolkit": "^1.9.3",
     "@sms/shared": "workspace:*",

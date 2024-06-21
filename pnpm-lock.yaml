@@ -95,6 +95,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.10.6
         version: 11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.2.0))(@types/react@18.3.3)(react@18.2.0)
+      '@hookform/error-message':
+        specifier: ^2.0.1
+        version: 2.0.1(react-dom@18.2.0(react@18.2.0))(react-hook-form@7.52.0(react@18.2.0))(react@18.2.0)
       '@hookform/resolvers':
         specifier: ^3.4.2
         version: 3.6.0(react-hook-form@7.52.0(react@18.2.0))
@@ -124,7 +127,7 @@ importers:
         version: 5.12.2
       next:
         specifier: 13.3.0
-        version: 13.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 13.3.0(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -1192,6 +1195,13 @@ packages:
 
   '@floating-ui/utils@0.2.2':
     resolution: {integrity: sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==}
+
+  '@hookform/error-message@2.0.1':
+    resolution: {integrity: sha512-U410sAr92xgxT1idlu9WWOVjndxLdgPUHEB8Schr27C9eh7/xUnITWpCMF93s+lGiG++D4JnbSnrb5A21AdSNg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+      react-hook-form: ^7.0.0
 
   '@hookform/resolvers@3.6.0':
     resolution: {integrity: sha512-UBcpyOX3+RR+dNnqBd0lchXpoL8p4xC21XP8H6Meb8uve5Br1GCnmg0PcBoKKqPKgGu9GHQ/oygcmPrQhetwqw==}
@@ -7589,6 +7599,12 @@ snapshots:
 
   '@floating-ui/utils@0.2.2': {}
 
+  '@hookform/error-message@2.0.1(react-dom@18.2.0(react@18.2.0))(react-hook-form@7.52.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-hook-form: 7.52.0(react@18.2.0)
+
   '@hookform/resolvers@3.6.0(react-hook-form@7.52.0(react@18.2.0))':
     dependencies:
       react-hook-form: 7.52.0(react@18.2.0)
@@ -11930,30 +11946,6 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@13.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      '@next/env': 13.3.0
-      '@swc/helpers': 0.4.14
-      busboy: 1.6.0
-      caniuse-lite: 1.0.30001636
-      postcss: 8.4.14
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(react@18.2.0)
-    optionalDependencies:
-      '@next/swc-darwin-arm64': 13.3.0
-      '@next/swc-darwin-x64': 13.3.0
-      '@next/swc-linux-arm64-gnu': 13.3.0
-      '@next/swc-linux-arm64-musl': 13.3.0
-      '@next/swc-linux-x64-gnu': 13.3.0
-      '@next/swc-linux-x64-musl': 13.3.0
-      '@next/swc-win32-arm64-msvc': 13.3.0
-      '@next/swc-win32-ia32-msvc': 13.3.0
-      '@next/swc-win32-x64-msvc': 13.3.0
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
@@ -13135,11 +13127,6 @@ snapshots:
       react: 18.2.0
     optionalDependencies:
       '@babel/core': 7.24.7
-
-  styled-jsx@5.1.1(react@18.2.0):
-    dependencies:
-      client-only: 0.0.1
-      react: 18.2.0
 
   stylis@4.2.0: {}
 

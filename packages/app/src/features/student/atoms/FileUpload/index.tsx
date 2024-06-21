@@ -1,6 +1,9 @@
 import usePostFileMutation from '@features/register/queries/usePostFileMutation'
 import { FileInput } from '@sms/shared'
 import { ChangeEvent } from 'react'
+import ErrorWrapper from '@sms/shared/src/atoms/ErrorWrapper'
+import { ErrorMessage } from '@hookform/error-message'
+import { useFormContext } from 'react-hook-form'
 
 interface Props {
   name: string
@@ -9,6 +12,10 @@ interface Props {
 }
 
 const FileUpload = ({ name, onChange, onBlur }: Props) => {
+  const {
+    formState: { errors },
+  } = useFormContext()
+
   const { mutateAsync } = usePostFileMutation({
     onSuccess: (data) => {
       onChange(data)
@@ -27,7 +34,11 @@ const FileUpload = ({ name, onChange, onBlur }: Props) => {
     }
   }
 
-  return <FileInput name={name} onChange={onUpload} onBlur={onBlur} />
+  return (
+    <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
+      <FileInput name={name} onChange={onUpload} onBlur={onBlur} />
+    </ErrorWrapper>
+  )
 }
 
 export default FileUpload
