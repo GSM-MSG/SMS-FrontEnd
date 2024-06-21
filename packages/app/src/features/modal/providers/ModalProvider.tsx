@@ -7,10 +7,12 @@ interface Props {
 }
 
 const ModalProvider = ({ children }: Props) => {
-  const { modalElement, props } = useSelector((state: RootState) => ({
-    modalElement: state.modal.element,
-    props: state.modal.props,
-  }))
+  const modalElement = useSelector((state: RootState) => {
+    return state.modal.element
+  })
+  const props = useSelector((state: RootState) => {
+    return state.modal.props
+  })
 
   return (
     <>

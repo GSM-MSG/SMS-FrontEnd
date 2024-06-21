@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux'
 import studentListApi from '@features/student/service/studentListApi'
 
 const useStudentListQuery = () => {
-  const { studentParam } = useSelector((state: RootState) => ({
-    studentParam: state.studentParam,
-  }))
+  const studentParam = useSelector((state: RootState) => {
+    return state.studentParam
+  })
 
   return useInfiniteQuery({
     queryKey: ['student-list', studentParam],
