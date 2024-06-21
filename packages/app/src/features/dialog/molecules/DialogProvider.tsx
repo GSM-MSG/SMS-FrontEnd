@@ -6,9 +6,9 @@ import Portal from '@features/dialog/atoms/Portal'
 
 const DialogProvider = () => {
   const dispatch = useDispatch()
-  const { dialog } = useSelector((state: RootState) => ({
-    dialog: state.dialog,
-  }))
+  const dialog = useSelector((state: RootState) => {
+    return state.dialog
+  })
 
   const onClose = () => {
     dialog.emitter.emit('dialog', false)
