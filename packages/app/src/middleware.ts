@@ -9,7 +9,6 @@ const protectedRoutes = [
   { path: '/mypage', roles: [Role.ROLE_STUDENT] },
   { path: '/register', roles: [Role.ROLE_STUDENT] },
   { path: '/register/teacher', roles: [Role.ROLE_TEACHER] },
-  { path: '/gsminfo', roles: [Role.ROLE_STUDENT] },
 ]
 
 export const middleware = (req: NextRequest) => {
