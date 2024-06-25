@@ -46,8 +46,11 @@ const MyPageForm = ({ defaultValue }: Props) => {
       <PortfolioInputs
         control={control}
         register={register}
-        watch={watch}
         errors={errors}
+        setValue={setValue}
+        watch={watch}
+        setError={setError}
+        resetField={resetField}
       />
       <SchoolInputs
         resetField={resetField}
