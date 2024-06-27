@@ -1,4 +1,4 @@
-import { Button, CertificationForm, DownloadList } from '@sms/shared'
+import { CertificationForm, DownloadList } from '@sms/shared'
 import { AuthenticationFormResDto } from '@features/student/dtos/res/AuthenticationFromResDto'
 import { saveAs } from 'file-saver'
 import { AuthenticationFormTestData } from '@features/student/data/AuthenticationFormTestData'
@@ -62,7 +62,7 @@ const AuthenticationForm = ({ data }: Props) => {
         ))}
 
         <S.Bottom>
-          <Button type='submit'>저장</Button>
+          <S.SubmitButton type='submit'>저장</S.SubmitButton>
         </S.Bottom>
       </S.Wrapper>
     </FormProvider>

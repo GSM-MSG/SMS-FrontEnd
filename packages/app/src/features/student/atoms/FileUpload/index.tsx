@@ -4,14 +4,16 @@ import { ChangeEvent } from 'react'
 import ErrorWrapper from '@sms/shared/src/atoms/ErrorWrapper'
 import { ErrorMessage } from '@hookform/error-message'
 import { useFormContext } from 'react-hook-form'
+import type { Field } from '@features/student/dtos/res/AuthenticationFromResDto'
 
 interface Props {
   name: string
+  field: Field
   onChange: (value?: string) => void
   onBlur?: () => void
 }
 
-const FileUpload = ({ name, onChange, onBlur }: Props) => {
+const FileUpload = ({ name, field, onChange, onBlur }: Props) => {
   const {
     formState: { errors },
   } = useFormContext()
@@ -36,7 +38,12 @@ const FileUpload = ({ name, onChange, onBlur }: Props) => {
 
   return (
     <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
-      <FileInput name={name} onChange={onUpload} onBlur={onBlur} />
+      <FileInput
+        name={name}
+        placeholder={field.example}
+        onChange={onUpload}
+        onBlur={onBlur}
+      />
     </ErrorWrapper>
   )
 }

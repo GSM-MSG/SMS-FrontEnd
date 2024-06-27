@@ -68,7 +68,12 @@ const AuthenticationField = ({
               control={control}
               key={field.fieldId}
               render={({ field: { name, onChange, onBlur } }) => (
-                <FileUpload name={name} onChange={onChange} onBlur={onBlur} />
+                <FileUpload
+                  name={name}
+                  field={field}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
               )}
             />
           )

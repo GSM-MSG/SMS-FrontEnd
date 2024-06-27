@@ -88,6 +88,7 @@ const AuthenticationArrayField = ({
                   render={({ field: { name, onChange, onBlur } }) => (
                     <FileUpload
                       name={name}
+                      field={field}
                       onChange={onChange}
                       onBlur={onBlur}
                     />

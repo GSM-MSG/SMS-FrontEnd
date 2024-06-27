@@ -30,6 +30,10 @@ export const File = styled.li`
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+
+  button {
+    ${({ theme }) => theme.body1}
+  }
 `
 
 export const FileInfo = styled.div`

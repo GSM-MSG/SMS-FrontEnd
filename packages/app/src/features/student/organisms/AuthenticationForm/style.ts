@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Button } from '@sms/shared'
 
 export const Wrapper = styled.form`
   max-width: 44rem;
@@ -7,13 +8,19 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-
-  button {
-    ${({ theme }) => theme.body1}
-  }
 `
 
 export const Bottom = styled.footer`
-  display: grid;
-  grid-template-columns: 11rem;
+  @media (max-width: 41.5rem) {
+    padding: 0 1.25rem;
+  }
+`
+
+export const SubmitButton = styled(Button)`
+  ${({ theme }) => theme.body1}
+  width: 11rem;
+
+  @media (max-width: 41.5rem) {
+    width: 100%;
+  }
 `

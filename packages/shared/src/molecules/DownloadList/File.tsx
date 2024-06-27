@@ -19,7 +19,12 @@ const File = ({ filename, onClick, ...props }: Props) => {
         <S.FileName>{filename}</S.FileName>
       </S.FileInfo>
 
-      <Button theme='white' onClick={onClick} style={{ width: 'min-content' }}>
+      <Button
+        type='button'
+        theme='white'
+        onClick={onClick}
+        style={{ width: 'min-content' }}
+      >
         다운로드
       </Button>
     </S.File>
