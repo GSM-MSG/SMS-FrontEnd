@@ -16,127 +16,181 @@ export const AuthenticationFormTestData: AuthenticationFormResDto = {
       title: '전공 영역',
       sections: [
         {
-          sectionId: '3ef0c164-jjiowfjeofoiweegoir430b-4afa-9785-8f5ca7b1decf',
-          sectionName: 'TOPCIT',
-          maxCount: 1,
-          fields: [
-            {
-              fieldId: 'iopuj;e1b05d28-7caa-416a-9c6e-d6ad1b2bb887',
-              fieldType: 'TEXT',
-              scoreDescription: '취득 점수 * 3.3',
-              values: null,
-              example: '200점',
-            },
-          ],
-        },
-        {
-          sectionId: '7gjeroigod9bffc8-caa0-4b65-9465-7f79da375e48',
-          sectionName: '교내 대회 및 교육 참가',
-          maxCount: 4,
-          fields: [
-            {
-              fieldId: '3a73757b-jltylr35cb-45de-875b-78da8b41970c',
-              fieldType: 'FILE',
-              scoreDescription:
-                'GSM Festival, 교내해커톤 대회, 전공동아리 발표 대회',
-              values: null,
-              example: '1회당 50점',
-            },
-            {
-              fieldId: '89990ad2-0jljijed1-4f0f-8e6d-fa33bb4e4b5b',
-              fieldType: 'FILE',
-              scoreDescription: '전공특강(방과후)',
-              values: null,
-              example: '1회당 5점 최대 4회',
-            },
-            {
-              fieldId: 'oirjd18a109a-377f-4392-ad32-4d3823c8974c',
-              fieldType: 'FILE',
-              scoreDescription: '전공 관련 방과 후 학교 이수',
-              values: null,
-              example: '1회당 15점 최대 2회',
-            },
-          ],
-        },
-        {
-          sectionId: 'a272304aijgoe0o98-6832-485f-b6ea-e7fa964fe075',
-          sectionName: '교육 대회 및 교육 참가',
-          maxCount: 8,
-          fields: [
-            {
-              fieldId: 'eweuor523b1c3-3887-4206-a05f-8a8456aed5b6',
-              fieldType: 'FILE',
-              scoreDescription:
-                '공문을 통한 전공분야 대회, 전공 분야 대회 개별 참여, 연합해커톤, 전공 관련 교육프로그램(특강,연수,세미나)',
-              values: null,
-              example: '1회당 25점 최대 8회 참여',
-            },
-          ],
-        },
-        {
-          sectionId: 'ahrpjokib4a7327-0d95-4ed5-af03-c9da3fa98f68',
-          sectionName: '자격증',
-          maxCount: 6,
-          fields: [
-            {
-              fieldId: 'lili7ad9e408-d7ca-49a4-a1d7-a2c599c27bd0',
-              fieldType: 'TEXT',
-              scoreDescription: '자격증 1개당 50점',
-              values: null,
-              example: '리눅스 마스터 2급',
-            },
-          ],
-        },
-        {
-          sectionId: 'aba2519djhoitrorij-370d-4f89-a007-8f0a0f0f90a8',
-          sectionName: '수상경력',
-          maxCount: 6,
-          fields: [
-            {
-              fieldId: 'Ne02li536e1-e575-4176-928d-a116327e9f21',
-              fieldType: 'TEXT',
-              scoreDescription: '1개당 50점',
-              values: null,
-              example: 'GSM Festival 우수상',
-            },
-          ],
-        },
-        {
-          sectionId: 'fjoighejoigjroe08dee6-2374-4df6-b67a-cc2ea2faa3cb',
+          sectionId: '87e93344-51cc-4bdb-b8d7-2fa98825a0dc',
           sectionName: '동아리',
           maxCount: 2,
-          fields: [
+          groups: [
             {
-              fieldId: 'jljoic8098cdb-4345-43b0-84c0-cdf64c986369',
-              fieldType: 'BOOLEAN',
-              scoreDescription: '1학기',
-              values: [
+              groupId: '13ba9e66-3c2b-4d3e-8866-a5276625913b',
+              maxScore: 50.0,
+              fields: [
                 {
-                  selectId: '6dda88a2-08b8-44e3-8d01-9e5508bda8a7',
-                  value: '참여하지않음',
-                },
-                {
-                  selectId: '7bb94d18-272a-4129-9606-74d7ff40d227',
-                  value: '참여',
+                  fieldId: '010c1aea-e068-4a16-b0d6-88bb9fefd0ba',
+                  fieldType: 'BOOLEAN',
+                  scoreDescription: '1학기',
+                  values: [
+                    {
+                      selectId: '62fbfa75-a7a0-4630-9b58-5c723a14aefd',
+                      value: '참여',
+                    },
+                    {
+                      selectId: 'f8c1c2c2-6ac8-4d8b-bb43-975de4a2cc50',
+                      value: '참여하지않음',
+                    },
+                  ],
+                  example: '맛소금',
                 },
               ],
-              example: '맛소금',
             },
             {
-              fieldId: 'ej;opij2263b02-d5c2-46ec-a887-c076f9f62790',
-              fieldType: 'BOOLEAN',
-              scoreDescription: '2학기',
-              values: [
+              groupId: 'cf21c2d5-1b45-4e00-b2e3-2b09db5e321b',
+              maxScore: 50.0,
+              fields: [
                 {
-                  selectId: 'd04e1af6-3ad3-40d4-9008-cfa71ad87b91',
-                  value: '참여하지않음',
-                },
-                {
-                  selectId: 'f86ad107-ae88-4d73-bb60-3a805b4f836d',
-                  value: '참여',
+                  fieldId: '6f8c4973-e39a-454a-83f5-5f9c56b68613',
+                  fieldType: 'BOOLEAN',
+                  scoreDescription: '2학기',
+                  values: [
+                    {
+                      selectId: '6653c84d-a0d1-485a-bc8e-72dc9b178aef',
+                      value: '참여하지않음',
+                    },
+                    {
+                      selectId: 'a6bb42a3-3b5e-4a6b-99d1-a8408c25c22e',
+                      value: '참여',
+                    },
+                  ],
+                  example: '깨소금',
                 },
               ],
-              example: '깨소금',
+            },
+          ],
+        },
+        {
+          sectionId: '98f77a90-bcc4-4281-958f-006bf52fbd88',
+          sectionName: '교육 대회 및 교육 참가',
+          maxCount: 8,
+          groups: [
+            {
+              groupId: 'ae7b7554-f7bd-4d92-a220-d20b0aecf16b',
+              maxScore: 200.0,
+              fields: [
+                {
+                  fieldId: '0fce58f3-02d8-430e-9043-f6119a7fef73',
+                  fieldType: 'FILE',
+                  scoreDescription:
+                    '공문을 통한 전공분야 대회, 전공 분야 대회 개별 참여, 연합해커톤, 전공 관련 교육프로그램(특강,연수,세미나)',
+                  values: null,
+                  example: '1회당 25점 최대 8회 참여',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionId: '9e071a51-f1b5-4950-a823-9dbeedba54e9',
+          sectionName: '교내 대회 및 교육 참가',
+          maxCount: 4,
+          groups: [
+            {
+              groupId: '5bda6f63-766a-46ff-89d9-1da3114e759a',
+              maxScore: 200.0,
+              fields: [
+                {
+                  fieldId: 'a777e365-7094-473f-9458-2c9b3b13d41a',
+                  fieldType: 'FILE',
+                  scoreDescription:
+                    'GSM Festival, 교내해커톤 대회, 전공동아리 발표 대회',
+                  values: null,
+                  example: '1회당 50점',
+                },
+              ],
+            },
+            {
+              groupId: 'd35d5cbd-d78d-45de-ad1e-4c37c5b7c768',
+              maxScore: 30.0,
+              fields: [
+                {
+                  fieldId: '9820a048-972a-4eb4-ad2b-e970226e118f',
+                  fieldType: 'FILE',
+                  scoreDescription: '전공 관련 방과 후 학교 이수',
+                  values: null,
+                  example: '1회당 15점 최대 2회',
+                },
+              ],
+            },
+            {
+              groupId: 'e4c45a4e-ba28-45c0-8308-07a4816b3804',
+              maxScore: 20.0,
+              fields: [
+                {
+                  fieldId: '2ac5ce90-baf6-45b2-87b7-1ae75b24f6be',
+                  fieldType: 'FILE',
+                  scoreDescription: '전공특강(방과후)',
+                  values: null,
+                  example: '1회당 5점 최대 4회',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionId: 'cbb711b5-92c0-4da0-882c-4003df25fc63',
+          sectionName: '수상경력',
+          maxCount: 6,
+          groups: [
+            {
+              groupId: 'b4fae8ef-1ccb-42ef-a210-8c424ab72328',
+              maxScore: 50.0,
+              fields: [
+                {
+                  fieldId: '95188dd9-3ef1-41d7-96c6-398a15a73321',
+                  fieldType: 'TEXT',
+                  scoreDescription: '1개당 50점',
+                  values: null,
+                  example: 'GSM Festival 우수상',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionId: 'cf8554a8-2fbe-42f2-9339-9197787ba3d9',
+          sectionName: '자격증',
+          maxCount: 6,
+          groups: [
+            {
+              groupId: 'deaf5910-a7eb-4760-9c34-6649472dc43a',
+              maxScore: 50.0,
+              fields: [
+                {
+                  fieldId: '3b88aead-da5f-4adc-b14f-c4e1db88c8e5',
+                  fieldType: 'TEXT',
+                  scoreDescription: '자격증 1개당 50점',
+                  values: null,
+                  example: '리눅스 마스터 2급',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionId: 'd6fe861b-587d-49ba-8c80-1c977c05c049',
+          sectionName: 'TOPCIT',
+          maxCount: 1,
+          groups: [
+            {
+              groupId: 'dc64118b-6daf-418b-ad1c-c9d8be56d3af',
+              maxScore: 660.0,
+              fields: [
+                {
+                  fieldId: '061be17d-2ae0-485d-8154-e1918eb2409d',
+                  fieldType: 'TEXT',
+                  scoreDescription: '취득 점수 * 3.3',
+                  values: null,
+                  example: '200점',
+                },
+              ],
             },
           ],
         },
@@ -146,66 +200,77 @@ export const AuthenticationFormTestData: AuthenticationFormResDto = {
       title: '외국어 영역',
       sections: [
         {
-          sectionId:
-            'fjgeorigjeroigj3b206bf-iojerogijeoe062-46ec-b785-a9ce0b19d947',
+          sectionId: 'ff7c0bf6-e111-4fbf-a66f-a3a054874a40',
           sectionName: '공인인증시험',
           maxCount: 1,
-          fields: [
+          groups: [
             {
-              fieldId: '0sdfsdf333a0c0-a53c-429b-8629-dbe7e34f877a',
-              fieldType: 'BOOLEAN',
-              scoreDescription: '토익사관학교 참여 100점',
-              values: [
+              groupId: 'a8d19d36-a101-4901-a37f-6ca0cb5f4767',
+              maxScore: 500.0,
+              fields: [
                 {
-                  selectId: '5f358c88-a860-4788-80aa-c87ea31fd4c1',
-                  value: '참여하지않음',
-                },
-                {
-                  selectId: 'caf031fe-4cc9-4928-9171-e424dc68e906',
-                  value: '참여',
+                  fieldId: '8b223858-a5be-4a2e-8142-49d83c6ca564',
+                  fieldType: 'SELECT',
+                  scoreDescription: '0~500점',
+                  values: [
+                    {
+                      selectId: '2dd49b56-c17e-4e90-87b5-f51ae618cfaf',
+                      value: 'TOEIC Speaking',
+                    },
+                    {
+                      selectId: '3bb9d285-4a52-47c8-b351-deefcee112ed',
+                      value: 'CPT',
+                    },
+                    {
+                      selectId: '40a36338-7414-49b0-9d7b-bb3b40db2e79',
+                      value: 'TOEFL',
+                    },
+                    {
+                      selectId: '46d42d25-9621-431c-806e-3bafbc161947',
+                      value: 'JPT',
+                    },
+                    {
+                      selectId: '9fe5b3d7-6b55-4ae8-b0c4-1bb10620f5d9',
+                      value: 'TOEIC',
+                    },
+                    {
+                      selectId: 'b665e806-9e53-46ac-8467-ba6ec3488956',
+                      value: 'OPIC',
+                    },
+                    {
+                      selectId: 'c568d195-150f-47e5-9637-aee901d52e88',
+                      value: 'HSK',
+                    },
+                    {
+                      selectId: 'd4470ade-5b56-4481-bd34-62268c61cecb',
+                      value: 'TEPS',
+                    },
+                  ],
+                  example: '최대 500점 세부기준 참고',
                 },
               ],
-              example: '100점',
             },
             {
-              fieldId: 'sdfsdf93ee5b0f-e8c7-437a-86fd-41c8457dcad8',
-              fieldType: 'SELECT',
-              scoreDescription: '0~500점',
-              values: [
+              groupId: 'd3317a85-e255-407e-aac4-7779b3670ed7',
+              maxScore: 100.0,
+              fields: [
                 {
-                  selectId: '3d8113a7-1d0b-4201-962b-a276692770a7',
-                  value: 'TOEFL',
-                },
-                {
-                  selectId: '49eb4833-37ca-45f8-a3c1-e3f47cec407e',
-                  value: 'TOEIC',
-                },
-                {
-                  selectId: '55a48ade-21c1-4bd1-8ec1-19d3e9146694',
-                  value: 'TEPS',
-                },
-                {
-                  selectId: '9b95f751-6e18-4c76-b56a-d2fb8312d2de',
-                  value: 'HSK',
-                },
-                {
-                  selectId: 'cc60b9fa-9b4e-4360-b47d-bf542d53dc08',
-                  value: 'TOEIC Speaking',
-                },
-                {
-                  selectId: 'e01b3378-89da-458d-98c4-bac2deeec8f1',
-                  value: 'CPT',
-                },
-                {
-                  selectId: 'e9503f83-67d0-4e6b-b663-a3198b9eb727',
-                  value: 'OPIC',
-                },
-                {
-                  selectId: 'eed46c8b-3c65-4d6d-9cf1-024ba20d7f64',
-                  value: 'JPT',
+                  fieldId: '6f3b39eb-84ed-408b-bc46-5a209e530447',
+                  fieldType: 'BOOLEAN',
+                  scoreDescription: '토익사관학교 참여 100점',
+                  values: [
+                    {
+                      selectId: '4c86f938-53df-4179-a9f4-070af29e9c07',
+                      value: '참여',
+                    },
+                    {
+                      selectId: 'b2223a89-c40e-4e47-9535-ec072656bfbe',
+                      value: '참여하지않음',
+                    },
+                  ],
+                  example: '100점',
                 },
               ],
-              example: '최대 500점 세부기준 참고',
             },
           ],
         },
@@ -215,139 +280,173 @@ export const AuthenticationFormTestData: AuthenticationFormResDto = {
       title: '인문 인성 영역',
       sections: [
         {
-          sectionId: '4jgoerigjeorgjo4187e96-1799-4f1c-b25b-b7bfbba21595',
-          sectionName: '봉사',
-          maxCount: 2,
-          fields: [
-            {
-              fieldId: '2c7bsdfscdff-c6c3-460d-9b8f-db6a3fe930ce',
-              fieldType: 'TEXT',
-              scoreDescription: '봉사동아리(에너지지킴이 등)',
-              values: null,
-              example: '학기당 50점 최대 100점',
-            },
-            {
-              fieldId: '7sdf0745be2-019c-4e08-afda-f526b7f27611',
-              fieldType: 'TEXT',
-              scoreDescription: '봉사활동(교육과정의 봉사활동 제외)',
-              values: null,
-              example: '20시간',
-            },
-          ],
-        },
-        {
-          sectionId: '4jgoegreojgeoi4671bc2-eebe-414c-8af7-ded0693cbb88',
+          sectionId: '1f2ee616-3c68-4218-81ac-a7af785e3c05',
           sectionName: '수상경력',
           maxCount: 4,
-          fields: [
+          groups: [
             {
-              fieldId: 'b4f75a9d-d52e-497e-855b-b9667b3631b8',
-              fieldType: 'TEXT',
-              scoreDescription: '1회당 50점 최대 4회',
-              values: null,
-              example: '인성영역관련수상',
-            },
-          ],
-        },
-        {
-          sectionId: 'joghoioiehi62e73871-0181-4f0f-9f9f-49043f40316b',
-          sectionName: '독서활동',
-          maxCount: 1,
-          fields: [
-            {
-              fieldId: '918a9a70-f18a-4asd87-b2cf-f8a8201296e4',
-              fieldType: 'SELECT',
-              scoreDescription: '1회당 50점 최대 4회',
-              values: [
+              groupId: 'bc5d431d-1a8b-4952-a78a-84c49b1dbf7f',
+              maxScore: 200.0,
+              fields: [
                 {
-                  selectId: '6c7389be-99da-438a-8cab-36619d04728b',
-                  value: '거북이코스',
-                },
-                {
-                  selectId: 'd60f8879-a438-43f3-a7e1-8cddf053a26c',
-                  value: '악어코스',
-                },
-                {
-                  selectId: 'f126df8d-4bd4-4231-8b0f-4fa164bd3a03',
-                  value: '토끼코스 이상',
+                  fieldId: '6e0c94ce-a972-4439-b438-c282bd0eda95',
+                  fieldType: 'TEXT',
+                  scoreDescription: '1회당 50점 최대 4회',
+                  values: null,
+                  example: '인성영역관련수상',
                 },
               ],
-              example: '인성영역관련수상',
-            },
-            {
-              fieldId: 'd2dcec48-49b7-4f22-bebe-2253ecab5aa2',
-              fieldType: 'FILE',
-              scoreDescription: '전공서적 및 일반서적(양식작성 후 등록)',
-              values: null,
-              example: '학교지정도서 권장',
             },
           ],
         },
         {
-          sectionId: '9gjieooirj026fb9e-3fce-4b52-ba4b-7a51ae9f2619',
+          sectionId: '372c5004-6f5f-40ec-a073-606bb19055cf',
           sectionName: '활동영역',
           maxCount: 8,
-          fields: [
+          groups: [
             {
-              fieldId: 'fsdf7399ad3-b282-4af7-8a34-18424cdc83e3',
-              fieldType: 'TEXT',
-              scoreDescription:
-                '회사정보 탐색 및 취업준비를 위한 자기주도적 활동,단축 마라톤, 교내스포츠리그, 교육감배 학교 스포츠 클럽 대회 참여 등 체육활동, 기타 문화혜술 관련 활동 등에 참여하고 활동일지를 작성한 경우 1회당 25점 최대 8회',
-              values: null,
-              example: '회사정보 탐색 및 취업준비를 위한 자기주도적 활동',
+              groupId: '6ed67f03-b631-4702-85c9-310061116b87',
+              maxScore: 200.0,
+              fields: [
+                {
+                  fieldId: 'baa1a927-5116-48e7-b56e-d57aa7a12ae9',
+                  fieldType: 'TEXT',
+                  scoreDescription:
+                    '회사정보 탐색 및 취업준비를 위한 자기주도적 활동, 단축 마라톤, 교내스포츠리그, 교육감배 학교 스포츠 클럽 대회 참여 등 체육활동, 기타 문화예술 관련 활동 등에 참여하고 활동일지를 작성한 경우 1회당 25점 최대 8회',
+                  values: null,
+                  example: '회사정보 탐색 및 취업준비를 위한 자기주도적 활동',
+                },
+              ],
             },
           ],
         },
         {
-          sectionId: '9gjieooirj026fb9numbere-3fce-4b52-ba4b-7a51ae9f2619',
-          sectionName: '일단 숫자 넣으셈',
-          maxCount: 8,
-          fields: [
+          sectionId: '4e6ac752-abf8-4e61-bd64-4e76809df003',
+          sectionName: '독서활동',
+          maxCount: 1,
+          groups: [
             {
-              fieldId: 'fsdf7399awfoijwo3-b282-4af7-8a34-18424cdc83e3',
-              fieldType: 'NUMBER',
-              scoreDescription: '일단 숫자 넣으셈',
-              values: null,
-              example: '숫자숫자숫자',
+              groupId: '7476d434-11ee-4ca6-9318-1226ca594709',
+              maxScore: 50.0,
+              fields: [
+                {
+                  fieldId: 'b49fe75e-f59d-45c8-8a78-2c75cb7b2e3b',
+                  fieldType: 'FILE',
+                  scoreDescription: '전공서적 및 일반서적(양식작성 후 등록)',
+                  values: null,
+                  example: '학교지정도서 권장',
+                },
+              ],
+            },
+            {
+              groupId: 'f77045e8-79e0-46cb-b0da-546e23014cb2',
+              maxScore: 200.0,
+              fields: [
+                {
+                  fieldId: 'd4db405b-b5ca-4d54-a344-292a8882b453',
+                  fieldType: 'SELECT',
+                  scoreDescription: '1회당 50점 최대 4회',
+                  values: [
+                    {
+                      selectId: '8e4854a3-3344-4496-b723-170b6a7097ed',
+                      value: '거북이코스',
+                    },
+                    {
+                      selectId: '9fb468f3-93b2-45a8-82ed-02e7e08ee108',
+                      value: '토끼코스 이상',
+                    },
+                    {
+                      selectId: 'fa449433-d9ef-43ed-9a67-87a84eb10a81',
+                      value: '악어코스',
+                    },
+                  ],
+                  example: '인성영역관련수상',
+                },
+              ],
             },
           ],
         },
         {
-          sectionId: '93483dacsjoigejoeigr-b668-415b-b775-383a9b84f7cf',
+          sectionId: '81e7be8c-9143-44e4-965e-1c9e379252d0',
+          sectionName: '봉사',
+          maxCount: 2,
+          groups: [
+            {
+              groupId: '16facd35-9d2e-4190-a70e-a1f5c37c4f3b',
+              maxScore: 100.0,
+              fields: [
+                {
+                  fieldId: 'a77765d1-b5ff-4f70-95b3-505a9ea82276',
+                  fieldType: 'TEXT',
+                  scoreDescription: '봉사동아리(에너지지킴이 등)',
+                  values: null,
+                  example: '학기당 50점 최대 100점',
+                },
+              ],
+            },
+            {
+              groupId: 'c49fc7e8-97f3-4810-a997-935ed7d59297',
+              maxScore: 50.0,
+              fields: [
+                {
+                  fieldId: 'aab4e19c-7faf-4146-9a94-8b74d6a85fc0',
+                  fieldType: 'TEXT',
+                  scoreDescription: '봉사활동(교육과정의 봉사활동 제외)',
+                  values: null,
+                  example: '20시간',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionId: 'ce28247a-e315-431a-b0c3-a5cf8802978e',
           sectionName: '자격증 취득',
           maxCount: 1,
-          fields: [
+          groups: [
             {
-              fieldId: '1sdfefb77f0-ea89-4de3-8a7b-c12f725066f7',
-              fieldType: 'BOOLEAN',
-              scoreDescription: '한자 자격증 4급 이상',
-              values: [
+              groupId: '2382f1f8-881e-4c80-b5ef-ae7596484b8d',
+              maxScore: 50.0,
+              fields: [
                 {
-                  selectId: '92d7e0b6-2cdd-4c22-a244-1b44659ab0ea',
-                  value: '4급 이하',
-                },
-                {
-                  selectId: 'c3d9dbda-c79d-45b3-b44a-ef815c952f63',
-                  value: '4급 이상',
+                  fieldId: '6d183697-7e6e-40ed-8266-0ae843632a10',
+                  fieldType: 'BOOLEAN',
+                  scoreDescription: '한자 자격증 4급 이상',
+                  values: [
+                    {
+                      selectId: '080fd8e5-ab3a-47c3-8921-0f28ff6723c8',
+                      value: '4급 이상',
+                    },
+                    {
+                      selectId: 'aecb6d1a-b5d7-4054-a19b-d6765dbdd0a2',
+                      value: '4급 이하',
+                    },
+                  ],
+                  example: '4급 이상 50점',
                 },
               ],
-              example: '4급 이상 50점',
             },
             {
-              fieldId: '3e10f3c2-sdf6902-44e4-9f13-75bc9c7fe75c',
-              fieldType: 'BOOLEAN',
-              scoreDescription: '한국사 3급 이상 50점',
-              values: [
+              groupId: '92c28e46-b331-4935-8456-2f782b0a49a9',
+              maxScore: 50.0,
+              fields: [
                 {
-                  selectId: '0eacd79d-013d-4542-8e85-8926ae979628',
-                  value: '3급 이상',
-                },
-                {
-                  selectId: 'de71246e-ba7a-4ed6-ae2e-7e0ee2a537fb',
-                  value: '3급 이하',
+                  fieldId: '9c0c9592-33e2-40c5-9cf4-795aad6037d8',
+                  fieldType: 'BOOLEAN',
+                  scoreDescription: '한국사 3급 이상 50점',
+                  values: [
+                    {
+                      selectId: '982a731a-ec47-4561-8084-ee5711aca97a',
+                      value: '3급 이하',
+                    },
+                    {
+                      selectId: 'e646880c-8c4d-4aec-b88c-d04b5845cd81',
+                      value: '3급 이상',
+                    },
+                  ],
+                  example: '3급 이상 50점',
                 },
               ],
-              example: '3급 이상 50점',
             },
           ],
         },

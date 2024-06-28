@@ -6,7 +6,6 @@ import { FormProvider } from 'react-hook-form'
 import AuthenticationField from '@features/student/molecules/AuthenticationField'
 import AuthenticationArrayField from '@features/student/molecules/AuthenticationArrayField'
 import useAuthenticationForm from '@features/student/hooks/useAuthenticationForm'
-import { Fragment } from 'react'
 import * as S from './style'
 
 interface Props {
@@ -20,7 +19,7 @@ const AuthenticationForm = ({ data }: Props) => {
   return (
     <FormProvider {...methods}>
       <S.Wrapper onSubmit={onSubmit}>
-        {!!data?.files.length && (
+        {!!data.files.length && (
           <DownloadList>
             {data?.files.map((file) => (
               <DownloadList.File
@@ -38,26 +37,12 @@ const AuthenticationForm = ({ data }: Props) => {
               <CertificationForm.Title>{content.title}</CertificationForm.Title>
             </CertificationForm.Header>
 
-            {content.sections.map((section, sectionIndex) => (
-              <Fragment key={section.sectionId}>
-                {section.groups.map((group, groupIndex) => {
-                  if (section.maxCount > 1) {
-                    return (
-                      <AuthenticationArrayField
-                        key={group.groupId}
-                        group={group}
-                        maxCount={section.maxCount}
-                        sectionName={section.sectionName}
-                        contentIndex={contentIndex}
-                        sectionIndex={sectionIndex}
-                        groupIndex={groupIndex}
-                      />
-                    )
-                  }
-
+            {content.sections.map((section, sectionIndex) =>
+              section.groups.map((group, groupIndex) => {
+                if (section.maxCount > 1) {
                   return (
-                    <AuthenticationField
-                      key={group.groupId}
+                    <AuthenticationArrayField
+                      key={section.sectionId}
                       group={group}
                       sectionName={section.sectionName}
                       contentIndex={contentIndex}
@@ -65,9 +50,18 @@ const AuthenticationForm = ({ data }: Props) => {
                       groupIndex={groupIndex}
                     />
                   )
-                })}
-              </Fragment>
-            ))}
+                }
+
+                return (
+                  <AuthenticationField
+                    key={section.sectionId}
+                    section={section}
+                    contentIndex={contentIndex}
+                    sectionIndex={sectionIndex}
+                  />
+                )
+              })
+            )}
           </CertificationForm>
         ))}
 

@@ -1,5 +1,5 @@
 import { CertificationForm, Chip } from '@sms/shared'
-import { Section } from '@features/student/dtos/res/AuthenticationFromResDto'
+import { Group } from '@features/student/dtos/res/AuthenticationFromResDto'
 import { useFieldArray, useFormContext, Controller } from 'react-hook-form'
 import TextInput from '@features/student/atoms/TextInput'
 import ArrayController from '@features/student/atoms/ArrayController'
@@ -8,40 +8,47 @@ import BooleanInput from '@features/student/atoms/BooleanInput'
 import NumberInput from '@features/student/atoms/NumberInput'
 import SelectInput from '@features/student/atoms/SelectInput'
 import FileUpload from '@features/student/atoms/FileUpload'
+import { Field } from '@features/student/dtos/form/AuthenticationFormDto'
 
 interface Props {
-  section: Section
+  group: Group
+  maxCount: number
+  sectionName: string
   sectionIndex: number
   contentIndex: number
+  groupIndex: number
 }
 
 const AuthenticationArrayField = ({
-  section,
+  group,
+  maxCount,
+  sectionName,
   sectionIndex,
   contentIndex,
+  groupIndex,
 }: Props) => {
   const { control } = useFormContext()
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: `contents.${contentIndex}.sections.${sectionIndex}.fields`,
+    name: `contents.${contentIndex}.sections.${sectionIndex}.groups.${groupIndex}.fields`,
   })
 
-  const arrayDefaultValue = [
-    section.fields.map((field) => ({
+  const arrayDefaultValue: Field[][] = [
+    group.fields.map((field) => ({
       fieldId: field.fieldId,
       fieldType: field.fieldType,
+      selectId: '',
       value: '',
-      selectId: undefined,
     })),
   ]
 
   return (
-    <CertificationForm.Field label={section.sectionName}>
+    <CertificationForm.Field label={sectionName}>
       {fields.map((arrayField, arrayIndex) => (
         <Fragment key={arrayField.id}>
-          {section.fields.map((field, fieldIndex) => {
-            const name = `contents.${contentIndex}.sections.${sectionIndex}.fields.${arrayIndex}.${fieldIndex}`
+          {group.fields.map((field, fieldIndex) => {
+            const name = `contents.${contentIndex}.sections.${sectionIndex}.groups.${groupIndex}.fields.${arrayIndex}.${fieldIndex}`
 
             if (field.fieldType === 'BOOLEAN')
               return (
@@ -99,7 +106,7 @@ const AuthenticationArrayField = ({
             return null
           })}
           <ArrayController
-            disableAdd={section.maxCount <= fields.length}
+            disableAdd={maxCount <= fields.length}
             onAddClick={() => append(arrayDefaultValue)}
             onRemoveClick={() => remove(arrayIndex)}
           />

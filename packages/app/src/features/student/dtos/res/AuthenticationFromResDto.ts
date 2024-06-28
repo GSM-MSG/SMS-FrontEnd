@@ -22,11 +22,18 @@ export const FieldSchema = z.object({
 })
 export type Field = z.infer<typeof FieldSchema>
 
+export const GroupSchema = z.object({
+  groupId: z.string(),
+  maxScore: z.number(),
+  fields: z.array(FieldSchema),
+})
+export type Group = z.infer<typeof GroupSchema>
+
 export const SectionSchema = z.object({
   sectionId: z.string(),
   sectionName: z.string(),
   maxCount: z.number(),
-  fields: z.array(FieldSchema),
+  groups: z.array(GroupSchema),
 })
 export type Section = z.infer<typeof SectionSchema>
 

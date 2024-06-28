@@ -10,6 +10,7 @@ export const ValueFieldSchema = z.object({
   ]),
   value: z.string().min(1, { message: '값을 입력해주세요' }),
 })
+export type ValueFieldType = z.infer<typeof ValueFieldSchema>
 
 export const SelectIdFieldSchema = z.object({
   fieldId: z.string(),
@@ -19,13 +20,20 @@ export const SelectIdFieldSchema = z.object({
   ]),
   selectId: z.string().min(1, { message: '값을 입력해주세요' }),
 })
+export type SelectIdField = z.infer<typeof SelectIdFieldSchema>
 
 export const FieldSchema = z.union([ValueFieldSchema, SelectIdFieldSchema])
 export type Field = z.infer<typeof FieldSchema>
 
+export const GroupSchema = z.object({
+  groupId: z.string(),
+  fields: z.array(z.array(FieldSchema)),
+})
+export type Group = z.infer<typeof GroupSchema>
+
 export const SectionSchema = z.object({
   sectionId: z.string(),
-  fields: z.array(z.array(FieldSchema)),
+  groups: z.array(GroupSchema),
 })
 export type Section = z.infer<typeof SectionSchema>
 

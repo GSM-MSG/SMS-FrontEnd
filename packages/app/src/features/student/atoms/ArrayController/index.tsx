@@ -17,7 +17,7 @@ const ArrayController = ({ onAddClick, onRemoveClick, disableAdd }: Props) => {
       >
         추가
       </Chip>
-      <DeleteButton onClick={onRemoveClick} />
+      <DeleteButton type='button' onClick={onRemoveClick} />
     </S.Wrapper>
   )
 }

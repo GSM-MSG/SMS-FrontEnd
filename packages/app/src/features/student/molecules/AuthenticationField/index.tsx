@@ -5,25 +5,29 @@ import FileUpload from '@features/student/atoms/FileUpload'
 import TextInput from '@features/student/atoms/TextInput'
 import NumberInput from '@features/student/atoms/NumberInput'
 import SelectInput from '@features/student/atoms/SelectInput'
-import { Section } from '@features/student/dtos/res/AuthenticationFromResDto'
+import { Group } from '@features/student/dtos/res/AuthenticationFromResDto'
 
 interface Props {
-  section: Section
+  group: Group
+  sectionName: string
   sectionIndex: number
   contentIndex: number
+  groupIndex: number
 }
 
 const AuthenticationField = ({
-  section,
+  group,
+  sectionName,
   sectionIndex,
   contentIndex,
+  groupIndex,
 }: Props) => {
   const { control } = useFormContext()
 
   return (
-    <CertificationForm.Field label={section.sectionName}>
-      {section.fields.map((field, fieldIndex) => {
-        const name = `contents.${contentIndex}.sections.${sectionIndex}.fields.0.${fieldIndex}`
+    <CertificationForm.Field label={sectionName}>
+      {group.fields.map((field, fieldIndex) => {
+        const name = `contents.${contentIndex}.sections.${sectionIndex}.groups.${groupIndex}.fields.${fieldIndex}.0`
 
         if (field.fieldType === 'BOOLEAN')
           return (
