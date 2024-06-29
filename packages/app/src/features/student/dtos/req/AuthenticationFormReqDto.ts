@@ -1,12 +1,28 @@
 import { z } from 'zod'
 import { FieldTypeSchema } from '@features/student/dtos/common/SectionTypeSchema'
 
-export const FieldSchema = z.object({
+export const ValueFieldSchema = z.object({
   fieldId: z.string(),
-  fieldType: FieldTypeSchema,
-  value: z.string(),
-  selectId: z.string(),
+  fieldType: z.enum([
+    FieldTypeSchema.enum.TEXT,
+    FieldTypeSchema.enum.FILE,
+    FieldTypeSchema.enum.NUMBER,
+  ]),
+  value: z.string().min(1, { message: '값을 입력해주세요' }),
 })
+export type ValueFieldType = z.infer<typeof ValueFieldSchema>
+
+export const SelectIdFieldSchema = z.object({
+  fieldId: z.string(),
+  fieldType: z.enum([
+    FieldTypeSchema.enum.SELECT,
+    FieldTypeSchema.enum.BOOLEAN,
+  ]),
+  selectId: z.string().min(1, { message: '값을 입력해주세요' }),
+})
+export type SelectIdField = z.infer<typeof SelectIdFieldSchema>
+
+export const FieldSchema = z.union([ValueFieldSchema, SelectIdFieldSchema])
 export type Field = z.infer<typeof FieldSchema>
 
 export const ObjectElementSchema = z.object({
