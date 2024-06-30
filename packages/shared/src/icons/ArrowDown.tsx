@@ -1,4 +1,8 @@
-const ArrowDown = () => (
+interface Props {
+  fill?: string
+}
+
+const ArrowDown = ({ fill = 'black' }: Props) => (
   <svg
     width='24'
     height='24'
@@ -8,7 +12,7 @@ const ArrowDown = () => (
   >
     <path
       d='M6 9.5L12 15.5L18 9.5'
-      stroke='black'
+      stroke={fill}
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
