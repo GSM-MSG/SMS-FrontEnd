@@ -5,7 +5,7 @@ const useAuthenticationFormQuery = () => {
   return useQuery({
     queryKey: ['authentication-form'],
     queryFn: () =>
-      fetchAuthenticationForm('bc3933a-44be-49b4-a6e7-2ecfd3f6c30a'),
+      fetchAuthenticationForm('54030dd1-0f3b-498a-b644-747769dfdca2'),
     refetchOnWindowFocus: false,
   })
 }

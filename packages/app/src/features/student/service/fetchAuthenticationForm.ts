@@ -10,7 +10,9 @@ const fetchAuthenticationForm = async (uuid: string) => {
       `/api/server/authentication/form/${uuid}`
     )
 
-    return AuthenticationFormResDtoSchema.parse(data)
+    const { data: result } = AuthenticationFormResDtoSchema.safeParse(data)
+
+    return result
   } catch (e) {
     return null
   }

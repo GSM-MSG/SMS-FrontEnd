@@ -1,7 +1,6 @@
 import { CertificationForm, DownloadList } from '@sms/shared'
 import { AuthenticationFormResDto } from '@features/student/dtos/res/AuthenticationFromResDto'
 import { saveAs } from 'file-saver'
-import { AuthenticationFormTestData } from '@features/student/data/AuthenticationFormTestData'
 import { FormProvider } from 'react-hook-form'
 import AuthenticationField from '@features/student/molecules/AuthenticationField'
 import AuthenticationArrayField from '@features/student/molecules/AuthenticationArrayField'
@@ -14,8 +13,7 @@ interface Props {
 }
 
 const AuthenticationForm = ({ data }: Props) => {
-  data = AuthenticationFormTestData
-  const { methods, onSubmit } = useAuthenticationForm({ data })
+  const { methods, onSubmit, isPending } = useAuthenticationForm({ data })
 
   return (
     <FormProvider {...methods}>
@@ -72,7 +70,9 @@ const AuthenticationForm = ({ data }: Props) => {
         ))}
 
         <S.Bottom>
-          <S.SubmitButton type='submit'>저장</S.SubmitButton>
+          <S.SubmitButton disabled={isPending} type='submit'>
+            저장
+          </S.SubmitButton>
         </S.Bottom>
       </S.Wrapper>
     </FormProvider>
