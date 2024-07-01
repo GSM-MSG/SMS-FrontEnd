@@ -63,8 +63,11 @@ const PortfolioInputs = ({
           <FileInput
             {...register('portfolioFile')}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              PDFUpload(e)
-              return e.target.files[0].name as string
+              if (e.target.files && e.target.files[0]) {
+                PDFUpload(e)
+                return e.target.files[0].name as string
+              }
+              return ''
             }}
             placeholder={
               watch('portfolioFileUrl')

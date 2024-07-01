@@ -20,7 +20,7 @@ const usePDFUpload = ({ setError }: Props) => {
     if (!e.target.files || !e.target.files[0]) return
 
     const file = e.target.files[0]
-
+    
     const data = await loadingWrap(PutPDFService(file), true)
 
     if (!data) return showErrorMessage('파일 업로드에 실패했습니다')
