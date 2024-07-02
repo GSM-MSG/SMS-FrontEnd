@@ -9,7 +9,7 @@ interface Props {
   studentList: Content[]
 }
 
-const StudentList = ({ studentList }: Props) => {
+const StudentList = () => {
   const { onShow } = useModal()
 
   return (
@@ -24,9 +24,10 @@ const StudentList = ({ studentList }: Props) => {
       </S.HeadLine>
 
       <S.StudentList>
-        {studentList.map((student) => (
-          <StudentColumn key={student.id} student={student} />
-        ))}
+        <StudentColumn />
+        <StudentColumn />
+        <StudentColumn />
+        <StudentColumn />
       </S.StudentList>
     </S.Wrapper>
   )
