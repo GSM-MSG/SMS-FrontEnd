@@ -27,7 +27,7 @@ const AuthenticationField = ({
   return (
     <CertificationForm.Field label={sectionName}>
       {group.fields.map((field, fieldIndex) => {
-        const name = `contents.${contentIndex}.sections.${sectionIndex}.groups.${groupIndex}.fields.${fieldIndex}.0`
+        const name = `contents.${contentIndex}.sections.${sectionIndex}.groups.${groupIndex}.fields.0.${fieldIndex}`
 
         if (field.fieldType === 'BOOLEAN')
           return (
