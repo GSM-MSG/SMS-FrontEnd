@@ -34,6 +34,8 @@ const StudentColumn = ({ student }: Props) => {
           <S.ProfileImage
             src={student.profileImgUrl}
             alt='student profile image'
+            width={48}
+            height={48}
           />
         ) : (
           <S.ProfileBg>

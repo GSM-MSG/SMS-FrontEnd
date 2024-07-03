@@ -12,6 +12,7 @@ export const Wrapper = styled(Link)`
   width: 100%;
   padding: 1rem;
   cursor: pointer;
+  text-decoration: none;
 `
 
 export const Profile = styled.div`
@@ -38,6 +39,7 @@ export const ProfileBg = styled.div`
 
 export const Name = styled.p`
   ${({ theme }) => theme.title2}
+  color: black;
 `
 
 export const Status = styled.p`

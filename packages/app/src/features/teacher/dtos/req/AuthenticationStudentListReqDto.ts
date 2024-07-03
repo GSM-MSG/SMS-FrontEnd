@@ -10,7 +10,7 @@ export const AuthenticationStudentType = z.enum([
 export const AuthenticationStudentListReqDtoSchema = z.object({
   page: z.number(),
   size: z.number(),
-  type: AuthenticationStudentType,
+  type: AuthenticationStudentType.optional(),
 })
 export type AuthenticationStudentListReqDto = z.infer<
   typeof AuthenticationStudentListReqDtoSchema
