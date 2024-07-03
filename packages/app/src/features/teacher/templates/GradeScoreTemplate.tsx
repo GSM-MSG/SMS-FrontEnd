@@ -1,9 +1,16 @@
 import Header from '@features/global/Header'
 import StudentScore from '@features/teacher/organisms/StudentScore'
 import GradeScoreForm from '@features/teacher/organisms/GradeScoreForm'
+import studentAuthenticationInfoQuery from '@features/teacher/queries/studentAuthenticationInfoQuery'
+import { useRouter } from 'next/router'
 import * as S from './style'
 
 const GradeScoreTemplate = () => {
+  const { query } = useRouter()
+  studentAuthenticationInfoQuery({
+    markingBoardId: Array.isArray(query.id) ? undefined : query.id,
+  })
+
   return (
     <S.Wrapper>
       <Header />
