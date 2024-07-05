@@ -3,7 +3,7 @@ import { StudentAuthenticationInfoResDto } from '@features/teacher/dtos/res/Stud
 
 const fetchStudentAuthenticationInfo = async (markingBoardId: string) => {
   const { data } = await axiosApi<StudentAuthenticationInfoResDto>(
-    `/api/server/authentication/form/${markingBoardId}`
+    `/api/server/authentication/${markingBoardId}/form`
   )
 
   return data

@@ -16,10 +16,15 @@ export const ValueSchema = z.object({
 })
 export type Value = z.infer<typeof ValueSchema>
 
-export const FieldSchema = z.object({
-  setId: z.number(),
-  values: z.array(ValueSchema),
-})
+export const FieldSchema = z
+  .object({
+    setId: z.number(),
+    values: z.array(ValueSchema),
+  })
+  .transform((value) => ({
+    ...value,
+    isCircle: !!value.values.find((value) => value.fieldType === 'FILE'),
+  }))
 export type Field = z.infer<typeof FieldSchema>
 
 export const GroupSchema = z.object({

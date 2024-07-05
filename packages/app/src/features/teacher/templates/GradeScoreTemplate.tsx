@@ -7,7 +7,7 @@ import * as S from './style'
 
 const GradeScoreTemplate = () => {
   const { query } = useRouter()
-  studentAuthenticationInfoQuery({
+  const { data } = studentAuthenticationInfoQuery({
     markingBoardId: Array.isArray(query.id) ? undefined : query.id,
   })
 
@@ -16,9 +16,9 @@ const GradeScoreTemplate = () => {
       <Header />
 
       <S.GradeScoreFormWrapper>
-        <S.Title>변찬우학생 인증제</S.Title>
+        <S.Title>{data?.title}</S.Title>
         <S.FormWrapper>
-          <StudentScore />
+          <StudentScore contents={data?.content ?? []} />
 
           <GradeScoreForm />
         </S.FormWrapper>

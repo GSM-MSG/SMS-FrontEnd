@@ -4,11 +4,18 @@ export const Wrapper = styled.div`
   width: 100%;
 `
 
-export const Title = styled.h2`
-  ${({ theme }) => theme.headline3}
-  margin-bottom: 1.25rem;
+export const ValueList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 `
 
-export const ScoreForm = styled.form`
-  width: 20.5rem;
+export const FieldValue = styled.span`
+  ${({ theme }) => theme.title2}
+  padding: 0.5rem 1rem;
+  border-radius: 4.5rem;
+  border: 1px solid #000000;
+  width: min-content;
+  height: min-content;
+  white-space: pre;
 `
