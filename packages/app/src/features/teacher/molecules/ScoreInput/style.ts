@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 `
 
 export const Title = styled.h3`
@@ -25,7 +26,6 @@ export const ArrowIcon = styled.label`
   display: inline;
   width: 1.5rem;
   height: 1.5rem;
-  cursor: pointer;
 `
 
 export const Content = styled.div`

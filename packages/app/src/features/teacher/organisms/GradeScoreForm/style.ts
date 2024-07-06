@@ -28,6 +28,12 @@ export const Hr = styled.hr`
   margin: 1.5rem 0;
 `
 
+export const ScoreContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`
+
 export const Footer = styled.footer`
   display: flex;
   justify-content: space-between;

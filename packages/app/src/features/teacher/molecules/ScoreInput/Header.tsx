@@ -12,13 +12,15 @@ const Header = ({ children, score }: Props) => {
   const { isHidden, setIsHidden } = useContext(Context)
 
   return (
-    <S.Header style={{ color: isHidden ? 'var(--N30)' : 'black' }}>
+    <S.Header
+      style={{ color: isHidden ? 'var(--N30)' : 'black' }}
+      onClick={() => setIsHidden(!isHidden)}
+    >
       <S.Title>{children}</S.Title>
 
       <S.HeaderRight>
         <S.Title>{score !== null ? `${score ?? 0}점` : '반려'}</S.Title>
         <S.ArrowIcon
-          onClick={() => setIsHidden(!isHidden)}
           style={{
             transform: isHidden ? 'rotate(90deg)' : 'rotate(0)',
           }}

@@ -20,7 +20,7 @@ const GradeScoreTemplate = () => {
         <S.FormWrapper>
           <StudentScore contents={data?.content ?? []} />
 
-          <GradeScoreForm />
+          {data && <GradeScoreForm data={data} />}
         </S.FormWrapper>
       </S.GradeScoreFormWrapper>
     </S.Wrapper>

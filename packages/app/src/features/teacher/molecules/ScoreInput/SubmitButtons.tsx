@@ -19,10 +19,10 @@ const SubmitButtons = ({ children, onReject, onAccept }: Props) => {
       ) : (
         <>
           <Button type='button' theme='white' onClick={onReject}>
-            반려
+            이전
           </Button>
           <Button type='button' onClick={onAccept}>
-            승인
+            다음
           </Button>
         </>
       )}
