@@ -12,7 +12,7 @@ export const ValueList = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
 
-  &:nth-child(2n) {
+  &:nth-of-type(2n) {
     border-top: 1px solid var(--N20);
     padding-top: 1rem;
     margin-top: 1rem;

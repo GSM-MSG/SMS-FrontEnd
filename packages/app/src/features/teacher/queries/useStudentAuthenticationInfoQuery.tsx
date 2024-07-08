@@ -5,7 +5,7 @@ interface Param {
   markingBoardId?: string
 }
 
-const studentAuthenticationInfoQuery = ({ markingBoardId }: Param) => {
+const useStudentAuthenticationInfoQuery = ({ markingBoardId }: Param) => {
   return useQuery({
     queryKey: ['student', 'authenticationInfo'],
     queryFn: () => fetchStudentAuthenticationInfo(markingBoardId as string),
@@ -13,4 +13,4 @@ const studentAuthenticationInfoQuery = ({ markingBoardId }: Param) => {
   })
 }
 
-export default studentAuthenticationInfoQuery
+export default useStudentAuthenticationInfoQuery

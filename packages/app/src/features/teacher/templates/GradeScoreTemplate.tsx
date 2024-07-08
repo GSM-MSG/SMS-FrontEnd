@@ -1,7 +1,7 @@
 import Header from '@features/global/Header'
 import StudentScore from '@features/teacher/organisms/StudentScore'
 import GradeScoreForm from '@features/teacher/organisms/GradeScoreForm'
-import studentAuthenticationInfoQuery from '@features/teacher/queries/studentAuthenticationInfoQuery'
+import useStudentAuthenticationInfoQuery from '@features/teacher/queries/useStudentAuthenticationInfoQuery'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { setMaxFocus } from '@features/teacher/stores/gradeAuthenticationSlice'
@@ -10,8 +10,9 @@ import * as S from './style'
 const GradeScoreTemplate = () => {
   const dispatch = useDispatch()
   const { query } = useRouter()
-  const { data } = studentAuthenticationInfoQuery({
-    markingBoardId: Array.isArray(query.id) ? undefined : query.id,
+  const markingBoardId = Array.isArray(query.id) ? undefined : query.id
+  const { data } = useStudentAuthenticationInfoQuery({
+    markingBoardId,
   })
 
   if (data?.content?.length) dispatch(setMaxFocus(data.content.length - 1))
@@ -25,7 +26,9 @@ const GradeScoreTemplate = () => {
         <S.FormWrapper>
           <StudentScore contents={data?.content ?? []} />
 
-          {data && <GradeScoreForm data={data} />}
+          {data && (
+            <GradeScoreForm markingBoardId={markingBoardId} data={data} />
+          )}
         </S.FormWrapper>
       </S.GradeScoreFormWrapper>
     </S.Wrapper>

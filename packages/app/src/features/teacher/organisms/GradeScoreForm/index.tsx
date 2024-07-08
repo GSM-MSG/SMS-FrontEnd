@@ -13,19 +13,30 @@ import {
   nextFocus,
   prevFocus,
 } from '@features/teacher/stores/gradeAuthenticationSlice'
+import useGradeAuthenticationInfoMutation from '@features/teacher/queries/useGradeAuthenticationInfoMutation'
+import formToStudentAuthenticationInfoReq from '@features/teacher/libs/formToStudentAuthenticationInfoReq'
 import * as S from './style'
 
 interface Props {
   data?: StudentAuthenticationInfoResDto
+  markingBoardId?: string
 }
 
-const GradeScoreForm = ({ data }: Props) => {
+const GradeScoreForm = ({ data, markingBoardId }: Props) => {
+  const { mutate } = useGradeAuthenticationInfoMutation()
   const { handleSubmit, register, watch } =
     useForm<StudentAuthenticationFormDto>({
       defaultValues: data,
       resolver: zodResolver(StudentAuthenticationFormDtoSchema),
     })
-  const onSubmit = handleSubmit((data) => console.log(data))
+
+  const onSubmit = handleSubmit((data) => {
+    if (!markingBoardId) return
+    mutate({
+      id: markingBoardId,
+      form: formToStudentAuthenticationInfoReq(data),
+    })
+  })
 
   const focus = useSelector(
     (state: RootState) => state.gradeAuthentication.focus

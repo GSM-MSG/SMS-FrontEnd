@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const ContentSchema = z.object({
-  setId: z.number(),
+  setId: z.string(),
   score: z.number(),
 })
 export type Content = z.infer<typeof ContentSchema>
