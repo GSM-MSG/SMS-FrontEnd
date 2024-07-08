@@ -1,10 +1,9 @@
 import { ReissueResponse } from '@features/auth/type/TokenResponse'
 import Token from '@lib/Token'
-import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 import { NextApiRequest, NextApiResponse } from 'next'
 import Cookies from 'cookies'
 
-const cookieOption = (expires: string): Partial<ResponseCookie> => ({
+const cookieOption = (expires: string): Partial<Cookies.SetOption> => ({
   secure: process.env.NODE_ENV === 'production',
   httpOnly: true,
   expires: new Date(expires),
