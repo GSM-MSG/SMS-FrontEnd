@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const ValueSchema = z.object({
   fieldId: z.string().optional(),
-  score: z.number(),
+  score: z.number().optional(),
 })
 export type Value = z.infer<typeof ValueSchema>
 

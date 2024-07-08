@@ -20,11 +20,12 @@ interface Props {
 }
 
 const GradeScoreForm = ({ data }: Props) => {
-  const { handleSubmit, register } = useForm<StudentAuthenticationFormDto>({
-    defaultValues: data,
-    resolver: zodResolver(StudentAuthenticationFormDtoSchema),
-  })
-  const onSubmit = handleSubmit(() => {})
+  const { handleSubmit, register, watch } =
+    useForm<StudentAuthenticationFormDto>({
+      defaultValues: data,
+      resolver: zodResolver(StudentAuthenticationFormDtoSchema),
+    })
+  const onSubmit = handleSubmit((data) => console.log(data))
 
   const focus = useSelector(
     (state: RootState) => state.gradeAuthentication.focus
@@ -40,13 +41,26 @@ const GradeScoreForm = ({ data }: Props) => {
       <S.ScoreContent>
         {data?.content.map((content, contentIndex) => (
           <ScoreInput key={content.areaId} isHidden={focus !== contentIndex}>
-            <ScoreInput.Header score={70}>
+            <ScoreInput.Header
+              score={watch(`content.${contentIndex}`).sections.reduce(
+                (prev, curr) => {
+                  return (prev += curr.groups.reduce((prev, curr) => {
+                    return (prev += curr.fields.reduce((prev, curr) => {
+                      return (prev += curr.values.reduce((prev, curr) => {
+                        return (prev += curr.score || 0)
+                      }, 0))
+                    }, 0))
+                  }, 0))
+                },
+                0
+              )}
+            >
               {content.areaTitle}
             </ScoreInput.Header>
             {content.sections.map((section, sectionIndex) =>
               section.groups.map((group, groupIndex) =>
                 group.fields.map((field, fieldIndex) => (
-                  <ScoreInput.Content key={field.setId}>
+                  <ScoreInput.Content key={`${field.setId}-${fieldIndex}`}>
                     {field.values.map((value, valueIndex) => (
                       <Input
                         key={value.fieldId}
@@ -78,7 +92,20 @@ const GradeScoreForm = ({ data }: Props) => {
       <S.Footer>
         <S.Total>합계</S.Total>
 
-        <S.Score>80점</S.Score>
+        <S.Score>
+          {watch().content.reduce((prev, curr) => {
+            return (prev += curr?.sections.reduce((prev, curr) => {
+              return (prev += curr.groups.reduce((prev, curr) => {
+                return (prev += curr.fields.reduce((prev, curr) => {
+                  return (prev += curr.values.reduce((prev, curr) => {
+                    return (prev += curr.score || 0)
+                  }, 0))
+                }, 0))
+              }, 0))
+            }, 0))
+          }, 0)}
+          점
+        </S.Score>
       </S.Footer>
 
       <Button type='submit'>제출</Button>
