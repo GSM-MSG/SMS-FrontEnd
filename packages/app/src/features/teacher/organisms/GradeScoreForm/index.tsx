@@ -7,6 +7,12 @@ import {
   StudentAuthenticationFormDto,
   StudentAuthenticationFormDtoSchema,
 } from '@features/teacher/dtos/form/StudentAuthenticationFormDto'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@store'
+import {
+  nextFocus,
+  prevFocus,
+} from '@features/teacher/stores/gradeAuthenticationSlice'
 import * as S from './style'
 
 interface Props {
@@ -20,6 +26,11 @@ const GradeScoreForm = ({ data }: Props) => {
   })
   const onSubmit = handleSubmit(() => {})
 
+  const focus = useSelector(
+    (state: RootState) => state.gradeAuthentication.focus
+  )
+  const dispatch = useDispatch()
+
   return (
     <S.Wrapper onSubmit={onSubmit}>
       <S.Title>채점 항목</S.Title>
@@ -28,7 +39,7 @@ const GradeScoreForm = ({ data }: Props) => {
 
       <S.ScoreContent>
         {data?.content.map((content, contentIndex) => (
-          <ScoreInput key={content.areaId}>
+          <ScoreInput key={content.areaId} isHidden={focus !== contentIndex}>
             <ScoreInput.Header score={70}>
               {content.areaTitle}
             </ScoreInput.Header>
@@ -54,7 +65,10 @@ const GradeScoreForm = ({ data }: Props) => {
                 ))
               )
             )}
-            <ScoreInput.SubmitButtons />
+            <ScoreInput.SubmitButtons
+              onNext={() => dispatch(nextFocus())}
+              onPrev={() => dispatch(prevFocus())}
+            />
           </ScoreInput>
         ))}
       </S.ScoreContent>

@@ -5,11 +5,11 @@ import { Context } from './Context'
 
 interface Props {
   children?: ReactNode | ReactNode[]
-  onReject?: () => void
-  onAccept?: () => void
+  onPrev?: () => void
+  onNext?: () => void
 }
 
-const SubmitButtons = ({ children, onReject, onAccept }: Props) => {
+const SubmitButtons = ({ children, onPrev, onNext }: Props) => {
   const { isHidden } = useContext(Context)
 
   return (
@@ -18,10 +18,10 @@ const SubmitButtons = ({ children, onReject, onAccept }: Props) => {
         children
       ) : (
         <>
-          <Button type='button' theme='white' onClick={onReject}>
+          <Button type='button' theme='white' onClick={onPrev}>
             이전
           </Button>
-          <Button type='button' onClick={onAccept}>
+          <Button type='button' onClick={onNext}>
             다음
           </Button>
         </>
