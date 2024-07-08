@@ -11,17 +11,7 @@ const formToStudentAuthenticationInfoReq = (
     const sections = curr.sections.reduce((prev, curr) => {
       const groups = curr.groups.reduce((prev, curr) => {
         const fields = curr.fields.reduce((prev, curr) => {
-          const scores = curr.values.reduce((prev, curr) => {
-            prev.push(curr.score ?? 0)
-            return prev
-          }, [] as number[])
-
-          const values = scores.map((score) => ({
-            setId: curr.setId,
-            score,
-          }))
-
-          return [...prev, ...values]
+          return [...prev, { setId: curr.setId, score: curr.score ?? 0 }]
         }, [] as Content[])
 
         return [...prev, ...fields]

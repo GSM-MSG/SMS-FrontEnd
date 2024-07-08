@@ -8,7 +8,7 @@ const postGradeAuthenticationInfo = async ({
   id: string
   form: StudentAuthenticationInfoReqDtoSchema
 }) => {
-  await axiosApi.post(`/authentication/grading/${id}`, form)
+  await axiosApi.post(`/api/server/authentication/grading/${id}`, form)
 }
 
 export default postGradeAuthenticationInfo

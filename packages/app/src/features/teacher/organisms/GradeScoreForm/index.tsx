@@ -57,9 +57,7 @@ const GradeScoreForm = ({ data, markingBoardId }: Props) => {
                 (prev, curr) => {
                   return (prev += curr.groups.reduce((prev, curr) => {
                     return (prev += curr.fields.reduce((prev, curr) => {
-                      return (prev += curr.values.reduce((prev, curr) => {
-                        return (prev += curr.score || 0)
-                      }, 0))
+                      return (prev += curr.score || 0)
                     }, 0))
                   }, 0))
                 },
@@ -72,20 +70,17 @@ const GradeScoreForm = ({ data, markingBoardId }: Props) => {
               section.groups.map((group, groupIndex) =>
                 group.fields.map((field, fieldIndex) => (
                   <ScoreInput.Content key={`${field.setId}-${fieldIndex}`}>
-                    {field.values.map((value, valueIndex) => (
-                      <Input
-                        key={value.fieldId}
-                        type='number'
-                        placeholder='점수 입력'
-                        {...register(
-                          `content.${contentIndex}.sections.${sectionIndex}.groups.${groupIndex}.fields.${fieldIndex}.values.${valueIndex}.score`,
-                          {
-                            valueAsNumber: true,
-                            max: group.maxScore,
-                          }
-                        )}
-                      />
-                    ))}
+                    <Input
+                      type='number'
+                      placeholder='점수 입력'
+                      {...register(
+                        `content.${contentIndex}.sections.${sectionIndex}.groups.${groupIndex}.fields.${fieldIndex}.score`,
+                        {
+                          valueAsNumber: true,
+                          max: group.maxScore,
+                        }
+                      )}
+                    />
                   </ScoreInput.Content>
                 ))
               )
@@ -108,9 +103,7 @@ const GradeScoreForm = ({ data, markingBoardId }: Props) => {
             return (prev += curr?.sections.reduce((prev, curr) => {
               return (prev += curr.groups.reduce((prev, curr) => {
                 return (prev += curr.fields.reduce((prev, curr) => {
-                  return (prev += curr.values.reduce((prev, curr) => {
-                    return (prev += curr.score || 0)
-                  }, 0))
+                  return (prev += curr.score || 0)
                 }, 0))
               }, 0))
             }, 0))

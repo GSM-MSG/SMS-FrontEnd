@@ -28,7 +28,9 @@ const StudentScore = ({ contents }: Props) => {
                 <S.ValueList key={group.groupId} className='hello world'>
                   {group.fields.map((field, fieldIndex) => (
                     <Fragment key={`${field.setId}-${fieldIndex}`}>
-                      {field.isCircle ? (
+                      {!field.values.find(
+                        (value) => value.fieldType === 'FILE'
+                      ) ? (
                         <S.FieldValue>
                           {field.values.map((value) => value.value).join(' : ')}
                         </S.FieldValue>
