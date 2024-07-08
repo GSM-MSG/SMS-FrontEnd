@@ -19,7 +19,7 @@ const NumberInput = ({ field, name }: Props) => {
     <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
       <Input
         {...register(name, {})}
-        placeholder={field.example}
+        placeholder={field.placeholder}
         type='number'
         onWheel={(e) => {
           e.currentTarget.blur()

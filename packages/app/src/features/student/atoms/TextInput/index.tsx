@@ -17,7 +17,7 @@ const TextInput = ({ field, name }: Props) => {
 
   return (
     <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
-      <Input {...register(name)} placeholder={field.example} />
+      <Input {...register(name)} placeholder={field.placeholder} />
     </ErrorWrapper>
   )
 }

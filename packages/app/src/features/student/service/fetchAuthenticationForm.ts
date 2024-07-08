@@ -4,10 +4,10 @@ import {
   AuthenticationFormResDtoSchema,
 } from '@features/student/dtos/res/AuthenticationFromResDto'
 
-const fetchAuthenticationForm = async (uuid: string) => {
+const fetchAuthenticationForm = async () => {
   try {
     const { data } = await axiosApi.get<AuthenticationFormResDto>(
-      `/api/server/authentication/form/${uuid}`
+      `/api/server/authentication/form`
     )
 
     const { data: result } = AuthenticationFormResDtoSchema.safeParse(data)

@@ -4,8 +4,7 @@ import fetchAuthenticationForm from '@features/student/service/fetchAuthenticati
 const useAuthenticationFormQuery = () => {
   return useQuery({
     queryKey: ['authentication-form'],
-    queryFn: () =>
-      fetchAuthenticationForm('54030dd1-0f3b-498a-b644-747769dfdca2'),
+    queryFn: fetchAuthenticationForm,
     refetchOnWindowFocus: false,
   })
 }

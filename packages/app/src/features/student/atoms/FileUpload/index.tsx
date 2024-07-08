@@ -40,7 +40,7 @@ const FileUpload = ({ name, field, onChange, onBlur }: Props) => {
     <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
       <FileInput
         name={name}
-        placeholder={field.example}
+        placeholder={field.placeholder}
         onChange={onUpload}
         onBlur={onBlur}
       />
