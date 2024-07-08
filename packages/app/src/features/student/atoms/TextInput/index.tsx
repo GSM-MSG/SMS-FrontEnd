@@ -1,6 +1,5 @@
-import { Input } from '@sms/shared'
+import { DescriptionWrapper, Input, ErrorWrapper } from '@sms/shared'
 import { useFormContext } from 'react-hook-form'
-import ErrorWrapper from '@sms/shared/src/atoms/ErrorWrapper'
 import { ErrorMessage } from '@hookform/error-message'
 import type { Field } from '@features/student/dtos/res/AuthenticationFromResDto'
 
@@ -16,9 +15,11 @@ const TextInput = ({ field, name }: Props) => {
   } = useFormContext()
 
   return (
-    <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
-      <Input {...register(name)} placeholder={field.placeholder} />
-    </ErrorWrapper>
+    <DescriptionWrapper description={field.scoreDescription}>
+      <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
+        <Input {...register(name)} placeholder={field.placeholder} />
+      </ErrorWrapper>
+    </DescriptionWrapper>
   )
 }
 

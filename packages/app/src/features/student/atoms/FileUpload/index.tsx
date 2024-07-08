@@ -1,7 +1,6 @@
 import usePostFileMutation from '@features/register/queries/usePostFileMutation'
-import { FileInput } from '@sms/shared'
+import { DescriptionWrapper, FileInput, ErrorWrapper } from '@sms/shared'
 import { ChangeEvent } from 'react'
-import ErrorWrapper from '@sms/shared/src/atoms/ErrorWrapper'
 import { ErrorMessage } from '@hookform/error-message'
 import { useFormContext } from 'react-hook-form'
 import type { Field } from '@features/student/dtos/res/AuthenticationFromResDto'
@@ -37,14 +36,16 @@ const FileUpload = ({ name, field, onChange, onBlur }: Props) => {
   }
 
   return (
-    <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
-      <FileInput
-        name={name}
-        placeholder={field.placeholder}
-        onChange={onUpload}
-        onBlur={onBlur}
-      />
-    </ErrorWrapper>
+    <DescriptionWrapper description={field.scoreDescription}>
+      <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
+        <FileInput
+          name={name}
+          placeholder={field.placeholder}
+          onChange={onUpload}
+          onBlur={onBlur}
+        />
+      </ErrorWrapper>
+    </DescriptionWrapper>
   )
 }
 
