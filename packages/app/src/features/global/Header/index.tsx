@@ -7,6 +7,7 @@ import useMyPage from '@features/student/hooks/useMyPage'
 import useProfileImgQuery from '@features/auth/queries/useProfileImgQuery'
 import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
 import useAuthenticationRedirect from '@features/student/hooks/useAuthenticationRedirect'
+import Role from 'types/Role'
 
 import * as S from './style'
 
@@ -65,11 +66,15 @@ const Header = ({ onFilter }: Props) => {
 
               <S.Line />
 
-              <S.DropdownItem onClick={redirectAuthentication}>
-                <Icon.Bag color='var(--N50)' /> 인증제
-              </S.DropdownItem>
+              {loggedInData.role === Role.ROLE_STUDENT && (
+                <>
+                  <S.DropdownItem onClick={redirectAuthentication}>
+                    <Icon.Bag color='var(--N50)' /> 인증제
+                  </S.DropdownItem>
 
-              <S.Line />
+                  <S.Line />
+                </>
+              )}
 
               <S.DropdownItem onClick={onLogout}>
                 <Icon.Out color='var(--N50)' /> 로그아웃
