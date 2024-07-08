@@ -24,8 +24,8 @@ const StudentList = ({ studentList }: Props) => {
       </S.HeadLine>
 
       <S.StudentList>
-        {studentList.map((student) => (
-          <StudentColumn key={student.id} student={student} />
+        {studentList.map((student, idx) => (
+          <StudentColumn key={`${student.id}-${idx}`} student={student} />
         ))}
       </S.StudentList>
     </S.Wrapper>

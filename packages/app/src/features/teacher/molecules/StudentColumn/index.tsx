@@ -28,7 +28,11 @@ const StatusValue = {
 
 const StudentColumn = ({ student }: Props) => {
   return (
-    <S.Wrapper href={`/teacher/grade/${student.id}`}>
+    <S.Wrapper
+      href={
+        student.type === 'UNDER_REVIEW' ? `/teacher/student/${student.id}` : '#'
+      }
+    >
       <S.Profile>
         {student.profileImgUrl ? (
           <S.ProfileImage
