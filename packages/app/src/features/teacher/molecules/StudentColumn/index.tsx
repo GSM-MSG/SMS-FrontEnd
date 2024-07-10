@@ -52,7 +52,7 @@ const StudentColumn = ({ student }: Props) => {
 
       <S.Status style={{ color: StatusValue[student.type].color }}>
         {StatusValue[student.type].value === '채점 완료'
-          ? student.totalScore
+          ? `${student.totalScore}점`
           : StatusValue[student.type].value}
       </S.Status>
     </S.Wrapper>
