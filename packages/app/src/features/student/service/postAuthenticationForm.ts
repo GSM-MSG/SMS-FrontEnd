@@ -7,7 +7,11 @@ export interface Param {
 }
 
 const postAuthenticationForm = async ({ uuid, data }: Param) => {
-  await axiosApi.post(`/api/server/authentication/submit/${uuid}`, data)
+  await axiosApi.post(`/api/server/authentication/submit`, data, {
+    params: {
+      uuid,
+    },
+  })
 }
 
 export default postAuthenticationForm
