@@ -6,7 +6,7 @@ import AuthenticationResultTemplate from '@features/student/templates/Authentica
 const AuthenticationFormPage = () => {
   const { data } = useAuthenticationVerify()
 
-  if (data?.markingBoardType === 'COMPLETED')
+  if (data?.markingBoardType !== 'NOT_SUBMITTED')
     return <AuthenticationResultTemplate data={data} />
 
   return (

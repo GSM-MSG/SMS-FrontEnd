@@ -44,3 +44,8 @@ export const Description = styled.p`
   ${({ theme }) => theme.body2}
   color: var(--N40);
 `
+
+export const Pending = styled.h4`
+  ${({ theme }) => theme.title2}
+  color: var(--N40);
+`
