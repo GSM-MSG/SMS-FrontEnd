@@ -36,16 +36,16 @@ export const Field = styled.section`
   align-items: start;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  gap: 1rem;
 `
 
 export const Label = styled.label`
   ${({ theme }) => theme.body1}
-  white-space: nowrap;
+  word-break: keep-all;
   color: var(--N40);
 `
 
 export const FieldContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 `
