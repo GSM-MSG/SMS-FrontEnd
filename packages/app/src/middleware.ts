@@ -28,12 +28,6 @@ export const middleware = (req: NextRequest) => {
   const url = req.nextUrl.clone()
   const role = getRole(accessToken || '')
 
-  // 회원가입을 하지 않은 선생님
-  if (role === Role.ROLE_TEACHER && pathname !== '/register/teacher') {
-    url.pathname = '/register/teacher'
-    return NextResponse.redirect(url)
-  }
-
   // 로그인이 됐을 때 접근 불가
   if (accessToken && notLoggedInRoute.includes(pathname)) {
     url.pathname = '/'
@@ -41,9 +35,9 @@ export const middleware = (req: NextRequest) => {
   }
 
   // 보호되는 pathname인지 검사
-  const route = protectedRoutes.find((route) => {
-    return RegExp(route.path).test(url.pathname)
-  })
+  const route = protectedRoutes.find((route) =>
+    RegExp(route.path).test(pathname)
+  )
   if (!route) return NextResponse.next()
 
   // 보호되는 pathname인데 accessToken이 없음
@@ -62,5 +56,12 @@ export const middleware = (req: NextRequest) => {
 }
 
 export const config = {
-  matcher: ['/mypage', '/register', '/register/teacher', '/gsminfo', '/login'],
+  matcher: [
+    '/mypage',
+    '/register',
+    '/register/teacher',
+    '/gsminfo',
+    '/login',
+    '/teacher/students',
+  ],
 }
