@@ -1,10 +1,9 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query'
-import postAuthenticationForm, {
-  Param,
-} from '@features/student/service/postAuthenticationForm'
+import postAuthenticationForm from '@features/student/service/postAuthenticationForm'
+import { AuthenticationFormReqDto } from '@features/student/dtos/req/AuthenticationFormReqDto'
 
 const usePostAuthenticationFormMutation = (
-  props: UseMutationOptions<unknown, Error, Param, unknown>
+  props: UseMutationOptions<unknown, Error, AuthenticationFormReqDto, unknown>
 ) => {
   return useMutation({
     mutationKey: ['post-authentication-form'],

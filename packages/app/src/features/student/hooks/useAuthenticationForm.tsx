@@ -28,10 +28,7 @@ const useAuthenticationForm = ({ data }: Props) => {
   })
 
   const onSubmit = methods.handleSubmit(async (data) => {
-    mutate({
-      uuid: '54030dd1-0f3b-498a-b644-747769dfdca2',
-      data: formToAuthenticationFormReq(data),
-    })
+    mutate(formToAuthenticationFormReq(data))
   })
 
   return { onSubmit, methods, isPending }
