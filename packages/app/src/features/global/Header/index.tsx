@@ -6,7 +6,8 @@ import useLogout from '@features/auth/hook/useLogout'
 import useMyPage from '@features/student/hooks/useMyPage'
 import useProfileImgQuery from '@features/auth/queries/useProfileImgQuery'
 import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
-// import useGSMInfo from '@features/student/hooks/useGSMInfo'
+import useAuthenticationRedirect from '@features/student/hooks/useAuthenticationRedirect'
+import Role from 'types/Role'
 
 import * as S from './style'
 
@@ -18,7 +19,7 @@ interface Props {
 const Header = ({ onFilter }: Props) => {
   const { onLogout } = useLogout()
   const { redirectMyPage } = useMyPage()
-  // const { redirectGSMInfo } = useGSMInfo()
+  const { redirectAuthentication } = useAuthenticationRedirect()
   const [isShow, setIsShow] = useState<boolean>(false)
   const { data: loggedInData } = useLoggedInQuery()
   const { data } = useProfileImgQuery()
@@ -59,15 +60,21 @@ const Header = ({ onFilter }: Props) => {
             </S.UserCircle>
 
             <S.DropdownMenu isShow={isShow} onClose={() => setIsShow(false)}>
-              {/* <S.DropdownItem onClick={redirectGSMInfo}>
-                <Icon.Document color='var(--N50)' /> 인증제
-              </S.DropdownItem> */}
-
               <S.DropdownItem onClick={redirectMyPage}>
                 <Icon.Person color='var(--N50)' /> 마이페이지
               </S.DropdownItem>
 
               <S.Line />
+
+              {loggedInData.role === Role.ROLE_STUDENT && (
+                <>
+                  <S.DropdownItem onClick={redirectAuthentication}>
+                    <Icon.Bag color='var(--N50)' /> 인증제
+                  </S.DropdownItem>
+
+                  <S.Line />
+                </>
+              )}
 
               <S.DropdownItem onClick={onLogout}>
                 <Icon.Out color='var(--N50)' /> 로그아웃
