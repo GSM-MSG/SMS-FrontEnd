@@ -10,6 +10,16 @@ const protectedRoutes = [
   { path: '/register', roles: [Role.ROLE_STUDENT] },
   { path: '/register/teacher', roles: [Role.ROLE_TEACHER] },
   { path: '/gsminfo', roles: [Role.ROLE_STUDENT] },
+  {
+    path: '/teacher/*',
+    roles: [
+      Role.ROLE_TEACHER,
+      Role.ROLE_DIRECTOR,
+      Role.ROLE_HOMEROOM,
+      Role.ROLE_PRINCIPAL,
+      Role.ROLE_DEPUTY_PRINCIPAL,
+    ],
+  },
 ]
 
 export const middleware = (req: NextRequest) => {
@@ -31,7 +41,9 @@ export const middleware = (req: NextRequest) => {
   }
 
   // 보호되는 pathname인지 검사
-  const route = protectedRoutes.find((route) => route.path === pathname)
+  const route = protectedRoutes.find((route) => {
+    return RegExp(route.path).test(url.pathname)
+  })
   if (!route) return NextResponse.next()
 
   // 보호되는 pathname인데 accessToken이 없음
