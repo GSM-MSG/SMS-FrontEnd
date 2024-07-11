@@ -1,4 +1,4 @@
-import { SMSLogo } from '@sms/shared'
+import { SVG } from '@sms/shared'
 import TeacherProfileInputs from '@features/register/molecules/TeacherProfileInputs'
 import { useTeacherRegister } from '@features/register/hooks'
 import * as S from './style'
@@ -8,7 +8,7 @@ const TeacherRegisterForm = () => {
   return (
     <S.Wrapper onSubmit={onSubmit}>
       <S.LogoWrapper>
-        <SMSLogo />
+        <SVG.SMSLogo />
       </S.LogoWrapper>
       <TeacherProfileInputs
         control={control}

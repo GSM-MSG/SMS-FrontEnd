@@ -10,9 +10,7 @@ import { useRouter } from 'next/router'
 const useStudentsFilter = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const { param } = useSelector((state: RootState) => ({
-    param: state.studentParam.param,
-  }))
+  const param = useSelector((state: RootState) => state.studentParam.param)
   const { onClose } = useModal()
   const { register, setValue, handleSubmit, getValues, watch, reset, control } =
     useForm<StudentParam>({
