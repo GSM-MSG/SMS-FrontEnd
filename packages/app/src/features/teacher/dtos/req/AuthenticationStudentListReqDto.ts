@@ -6,6 +6,9 @@ export const AuthenticationStudentType = z.enum([
   'UNDER_REVIEW',
   'COMPLETED',
 ])
+export type AuthenticationStudentType = z.infer<
+  typeof AuthenticationStudentType
+>
 
 export const AuthenticationStudentListReqDtoSchema = z.object({
   page: z.number(),

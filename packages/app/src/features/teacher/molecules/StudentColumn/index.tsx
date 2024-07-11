@@ -30,7 +30,14 @@ const StudentColumn = ({ student }: Props) => {
   return (
     <S.Wrapper
       href={
-        student.type === 'UNDER_REVIEW' ? `/teacher/student/${student.id}` : '#'
+        (
+          [
+            AuthenticationStudentType.enum.UNDER_REVIEW,
+            AuthenticationStudentType.enum.PENDING_REVIEW,
+          ] as AuthenticationStudentType[]
+        ).includes(student.type)
+          ? `/teacher/student/${student.id}`
+          : '#'
       }
     >
       <S.Profile>
