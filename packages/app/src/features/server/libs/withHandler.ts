@@ -66,6 +66,7 @@ export default function withHandler<
     try {
       await handler({ req, res, accessToken, refreshToken })
     } catch (error) {
+      console.error(error)
       if (!isAxiosError(error))
         return res.status(500).json({ message: ErrorMapper(error, errors) })
 
