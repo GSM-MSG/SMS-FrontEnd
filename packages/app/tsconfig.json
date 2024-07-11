@@ -2,9 +2,14 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./src",
+    "jsxImportSource": "@emotion/react",
     "paths": {
-      "@*": ["./*"],
-      "shared": ["./packages/shared"]
+      "@*": [
+        "./*"
+      ],
+      "shared": [
+        "./packages/shared"
+      ]
     }
   }
 }

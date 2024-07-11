@@ -3,6 +3,7 @@ import { dialogSlice } from '@features/dialog/stores'
 import { modalSlice } from '@features/modal/stores'
 import { studentListSlice, studentParamSlice } from '@features/student/stores'
 import { toastSlice } from '@features/toast/stores'
+import gradeAuthenticationSlice from '@features/teacher/stores/gradeAuthenticationSlice'
 
 const reducers = combineReducers({
   dialog: dialogSlice.reducer,
@@ -10,6 +11,7 @@ const reducers = combineReducers({
   modal: modalSlice.reducer,
   toast: toastSlice.reducer,
   studentList: studentListSlice.reducer,
+  gradeAuthentication: gradeAuthenticationSlice.reducer,
 })
 
 export type RootState = ReturnType<typeof reducers>
