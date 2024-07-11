@@ -11,12 +11,14 @@ const StudentDetailPortfolioPage = () => {
   const { data, isFetched } = useStudentDetailQuery({ studentId })
 
   useEffect(() => {
-    if ((!data || typeof studentId !== 'string') && isFetched) {
+    if (
+      (!data?.portfolioFileUrl || typeof studentId !== 'string') &&
+      isFetched
+    ) {
       router.push('/', '/')
       return
     }
   }, [])
-
   return (
     <>
       <SEO
@@ -24,7 +26,7 @@ const StudentDetailPortfolioPage = () => {
         description={data?.introduce}
         image={data?.profileImgUrl}
       />
-      <PortfolioTemplate />
+      <PortfolioTemplate portfolioFileUrl={data?.portfolioFileUrl} />
     </>
   )
 }

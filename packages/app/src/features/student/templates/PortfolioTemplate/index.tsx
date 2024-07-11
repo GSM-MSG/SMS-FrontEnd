@@ -1,10 +1,14 @@
 import PDFViewer from '@features/student/molecules/PDFViewer'
 import * as S from './style'
 
-const PortfolioTemplate = () => {
+interface Props {
+  portfolioFileUrl: string | undefined
+}
+
+const PortfolioTemplate = ({ portfolioFileUrl }: Props) => {
   return (
     <S.Wrapper>
-      <PDFViewer />
+      {portfolioFileUrl ? <PDFViewer pdfUrl={portfolioFileUrl} /> : null}
     </S.Wrapper>
   )
 }
