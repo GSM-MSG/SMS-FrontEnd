@@ -17,7 +17,10 @@ const TextInput = ({ field, name }: Props) => {
   return (
     <DescriptionWrapper description={field.scoreDescription}>
       <ErrorWrapper error={<ErrorMessage name={name} errors={errors} />}>
-        <Input {...register(name)} placeholder={field.placeholder} />
+        <Input
+          {...register(name)}
+          placeholder={field.placeholder ?? undefined}
+        />
       </ErrorWrapper>
     </DescriptionWrapper>
   )

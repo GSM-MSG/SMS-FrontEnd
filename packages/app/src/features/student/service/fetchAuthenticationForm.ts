@@ -1,8 +1,5 @@
 import { axiosApi } from '@api'
-import {
-  AuthenticationFormResDto,
-  AuthenticationFormResDtoSchema,
-} from '@features/student/dtos/res/AuthenticationFromResDto'
+import { AuthenticationFormResDto } from '@features/student/dtos/res/AuthenticationFromResDto'
 
 const fetchAuthenticationForm = async () => {
   try {
@@ -10,9 +7,7 @@ const fetchAuthenticationForm = async () => {
       `/api/server/authentication/form`
     )
 
-    const { data: result } = AuthenticationFormResDtoSchema.safeParse(data)
-
-    return result
+    return data
   } catch (e) {
     return null
   }
