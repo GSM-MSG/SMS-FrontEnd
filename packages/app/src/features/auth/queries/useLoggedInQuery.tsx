@@ -5,6 +5,8 @@ const useLoggedInQuery = () => {
   return useQuery({
     queryKey: ['loggedIn'],
     queryFn: () => loggedInService(),
+    staleTime: 60 * 1000,
+    gcTime: 60 * 1000,
   })
 }
 

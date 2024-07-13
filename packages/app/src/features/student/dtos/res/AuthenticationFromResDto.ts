@@ -18,7 +18,7 @@ export const FieldSchema = z.object({
   fieldType: FieldTypeSchema,
   scoreDescription: z.string(),
   values: z.array(ValueSchema).nullable(),
-  placeholder: z.string(),
+  placeholder: z.string().nullable(),
 })
 export type Field = z.infer<typeof FieldSchema>
 
