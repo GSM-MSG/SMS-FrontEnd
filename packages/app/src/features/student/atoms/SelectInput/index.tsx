@@ -27,7 +27,7 @@ const SelectInput = ({ field, name }: Props) => {
               onBlur={onBlur}
             >
               <NewSelect.SelectTrigger>
-                <NewSelect.SelectValue placeholder={field.placeholder} />
+                <NewSelect.SelectValue placeholder={field.placeholder ?? ''} />
               </NewSelect.SelectTrigger>
 
               <NewSelect.SelectContent>
