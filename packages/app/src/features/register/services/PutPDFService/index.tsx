@@ -5,13 +5,11 @@ const PutPDFService = async (file: File) => {
   formData.append('file', file)
 
   try {
-    const { data } = await axiosApi.put(`/api/server/student/pdf`, formData, {
+    await axiosApi.put(`/api/server/student/pdf`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
-
-    return data
   } catch (e) {
-    return
+    return null
   }
 }
 
