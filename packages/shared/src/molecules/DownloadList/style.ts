@@ -22,6 +22,7 @@ export const FileList = styled.ul`
 `
 
 export const File = styled.li`
+  width: 100%;
   padding: 0.75rem 1rem;
   background: var(--N10);
   border: 1px solid var(--N20);
@@ -30,6 +31,10 @@ export const File = styled.li`
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+
+  button {
+    ${({ theme }) => theme.body1}
+  }
 `
 
 export const FileInfo = styled.div`

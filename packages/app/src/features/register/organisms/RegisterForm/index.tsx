@@ -1,6 +1,6 @@
 import { ProfileInputs } from '@features/register/molecules'
 import { useRegister } from '@features/register/hooks'
-import { SMSLogo } from '@sms/shared'
+import { SVG } from '@sms/shared'
 import * as S from './style'
 
 const RegisterForm = () => {
@@ -19,7 +19,7 @@ const RegisterForm = () => {
   return (
     <S.Wrapper onSubmit={onSubmit}>
       <S.LogoWrapper>
-        <SMSLogo />
+        <SVG.SMSLogo />
       </S.LogoWrapper>
 
       <ProfileInputs

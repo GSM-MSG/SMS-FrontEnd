@@ -32,20 +32,25 @@ export const Title = styled.h3`
 `
 
 export const Field = styled.section`
-  display: flex;
-  align-items: start;
   display: grid;
+  align-items: start;
   grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+
+  @media (max-width: 30rem) {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 100%;
+    width: 100%;
+  }
 `
 
 export const Label = styled.label`
   ${({ theme }) => theme.body1}
-  white-space: nowrap;
+  word-break: keep-all;
   color: var(--N40);
 `
 
 export const FieldContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 `
