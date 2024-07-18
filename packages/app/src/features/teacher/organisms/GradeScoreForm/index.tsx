@@ -15,6 +15,8 @@ import {
 } from '@features/teacher/stores/gradeAuthenticationSlice'
 import useGradeAuthenticationInfoMutation from '@features/teacher/queries/useGradeAuthenticationInfoMutation'
 import formToStudentAuthenticationInfoReq from '@features/teacher/libs/formToStudentAuthenticationInfoReq'
+import { useRouter } from 'next/router'
+import useAuthenticationStudentListMutation from '@features/teacher/queries/useAuthenticationStudentListMutation'
 import * as S from './style'
 
 interface Props {
@@ -23,6 +25,8 @@ interface Props {
 }
 
 const GradeScoreForm = ({ data, markingBoardId }: Props) => {
+  const router = useRouter()
+  const mutateStudentList = useAuthenticationStudentListMutation()
   const { mutate } = useGradeAuthenticationInfoMutation()
   const { handleSubmit, register, watch } =
     useForm<StudentAuthenticationFormDto>({
@@ -36,6 +40,8 @@ const GradeScoreForm = ({ data, markingBoardId }: Props) => {
       id: markingBoardId,
       form: formToStudentAuthenticationInfoReq(data),
     })
+    mutateStudentList()
+    router.back()
   })
 
   const focus = useSelector(

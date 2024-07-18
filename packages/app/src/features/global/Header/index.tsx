@@ -7,6 +7,7 @@ import useMyPage from '@features/student/hooks/useMyPage'
 import useProfileImgQuery from '@features/auth/queries/useProfileImgQuery'
 import useLoggedInQuery from '@features/auth/queries/useLoggedInQuery'
 import useAuthenticationRedirect from '@features/student/hooks/useAuthenticationRedirect'
+import useStudentAuthenticationRedirect from '@features/student/hooks/useStudentAuthenticationRedirect'
 import Role from 'types/Role'
 
 import * as S from './style'
@@ -20,6 +21,7 @@ const Header = ({ onFilter }: Props) => {
   const { onLogout } = useLogout()
   const { redirectMyPage } = useMyPage()
   const { redirectAuthentication } = useAuthenticationRedirect()
+  const { redirectStudentAuthentication } = useStudentAuthenticationRedirect()
   const [isShow, setIsShow] = useState<boolean>(false)
   const { data: loggedInData } = useLoggedInQuery()
   const { data } = useProfileImgQuery()
@@ -70,6 +72,22 @@ const Header = ({ onFilter }: Props) => {
                 <>
                   <S.DropdownItem onClick={redirectAuthentication}>
                     <Icon.Bag color='var(--N50)' /> 인증제
+                  </S.DropdownItem>
+
+                  <S.Line />
+                </>
+              )}
+
+              {[
+                Role.ROLE_TEACHER,
+                Role.ROLE_DIRECTOR,
+                Role.ROLE_HOMEROOM,
+                Role.ROLE_PRINCIPAL,
+                Role.ROLE_DEPUTY_PRINCIPAL,
+              ].includes(loggedInData.role) && (
+                <>
+                  <S.DropdownItem onClick={redirectStudentAuthentication}>
+                    <Icon.Bag color='var(--N50)' /> 학생 인증제
                   </S.DropdownItem>
 
                   <S.Line />
