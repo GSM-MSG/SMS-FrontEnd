@@ -74,7 +74,7 @@ const StudentInfo = ({
               </S.TableColumn>
             )}
 
-            {regions?.length && (
+            {!!regions?.length && (
               <S.TableColumn>
                 <S.TableTitle>근무 희망 지역</S.TableTitle>
                 <S.TableValue>{regions?.join(', ')}</S.TableValue>
