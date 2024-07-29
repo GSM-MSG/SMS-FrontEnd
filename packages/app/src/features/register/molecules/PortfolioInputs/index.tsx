@@ -1,7 +1,6 @@
 import { ChangeEvent } from 'react'
 import { InputColumn, FormWrapper } from '@features/register/atoms'
-import { Input, Select, FileInput } from '@sms/shared'
-import { PortfolioList } from '@features/register/data'
+import { Input, NewSelect as Select, FileInput } from '@sms/shared'
 import {
   Control,
   FieldErrors,
@@ -26,7 +25,7 @@ const PortfolioInputs = ({
   register,
   errors,
   setError,
-  control,
+  setValue,
   watch,
   resetField,
 }: Props) => {
@@ -38,11 +37,24 @@ const PortfolioInputs = ({
       <InputColumn comment='포트폴리오 형식'>
         <Select
           name='portfolioType'
-          control={control}
-          register={register}
-          options={PortfolioList}
+          defaultOpen={false}
+          defaultValue={watch('portfolioType')}
           value={watch('portfolioType')}
-        />
+          onValueChange={(value) =>
+            setValue(
+              'portfolioType',
+              value as RegisterFormType['portfolioType']
+            )
+          }
+        >
+          <Select.SelectTrigger>
+            <Select.SelectValue placeholder='포트폴리오 형식' />
+          </Select.SelectTrigger>
+          <Select.SelectContent>
+            <Select.SelectItem value='URL'>URL 형식</Select.SelectItem>
+            <Select.SelectItem value='PDF'>PDF 파일</Select.SelectItem>
+          </Select.SelectContent>
+        </Select>
       </InputColumn>
       {watch('portfolioType') === 'URL' && (
         <InputColumn comment='URL'>
