@@ -32,18 +32,18 @@ const StudentInfo = ({
         <S.TableValue>{contactEmail}</S.TableValue>
       </S.Wrapper>
 
-      {gsmAuthenticationScore && (
+      {!!gsmAuthenticationScore && (
         <S.Wrapper>
           <S.Title>세부정보</S.Title>
           <S.RowTable>
-            {gsmAuthenticationScore && (
+            {!!gsmAuthenticationScore && (
               <S.TableColumn>
                 <S.TableTitle>인증제점수</S.TableTitle>
                 <S.TableValue>{gsmAuthenticationScore}</S.TableValue>
               </S.TableColumn>
             )}
 
-            {gsmAuthenticationScore && <S.TableLine />}
+            {!!gsmAuthenticationScore && <S.TableLine />}
 
             {militaryService && (
               <S.TableColumn>
@@ -74,7 +74,7 @@ const StudentInfo = ({
               </S.TableColumn>
             )}
 
-            {regions?.length && (
+            {!!regions?.length && (
               <S.TableColumn>
                 <S.TableTitle>근무 희망 지역</S.TableTitle>
                 <S.TableValue>{regions?.join(', ')}</S.TableValue>
