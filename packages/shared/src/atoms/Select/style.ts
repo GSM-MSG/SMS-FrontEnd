@@ -37,7 +37,7 @@ export const SelectContent = styled.div`
   top: calc(100% + 0.5rem);
   background: var(--WHITE);
   border-radius: 0.5rem;
-  box-shadow: -1 0.25rem 1.5rem rgba(76, 75, 91, 0.12);
+  box-shadow: 0 0.25rem 1.5rem rgba(76, 75, 91, 0.12);
   padding: 0.75rem;
   display: flex;
   flex-direction: column;

@@ -10,6 +10,7 @@ interface StudentDetail {
   introduce: string
   dreamBookFileUrl?: string
   portfolioUrl?: string // null 가능
+  portfolioFileUrl?: string
   grade?: number
   classNum?: number
   number?: number

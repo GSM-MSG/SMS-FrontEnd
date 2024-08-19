@@ -27,6 +27,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-pdf": "^8.0.2",
     "react-redux": "^8.0.5",
     "sharp": "^0.32.5",
     "zod": "^3.23.8"
@@ -42,6 +43,7 @@
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "cross-env": "^7.0.3",
+    "file-loader": "^6.2.0",
     "typescript": "^5.0.4"
   }
 }

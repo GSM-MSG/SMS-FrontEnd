@@ -14,7 +14,10 @@ const Mypage = () => {
     <>
       <SEO title='마이페이지' />
       <MypageTemplate
-        defaultValue={MyPageStudentTypeToRegisterFormType(data)}
+        defaultValue={MyPageStudentTypeToRegisterFormType({
+          ...data,
+          portfolioType: data.portfolioUrl ? 'URL' : 'PDF',
+        })}
       />
     </>
   )
