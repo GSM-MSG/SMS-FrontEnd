@@ -8,6 +8,7 @@ import {
   SchoolInputs,
   WorkingInputs,
 } from '@features/register/molecules'
+import PortfolioInputs from '@features/register/molecules/PortfolioInputs'
 import ProfileInputs from '@features/student/molecules/ProfileInputs'
 import { RegisterFormType } from '@features/register/type'
 import * as S from './style'
@@ -42,6 +43,15 @@ const MyPageForm = ({ defaultValue }: Props) => {
         setError={setError}
         clearErrors={clearErrors}
       />
+      <PortfolioInputs
+        control={control}
+        register={register}
+        errors={errors}
+        setValue={setValue}
+        watch={watch}
+        setError={setError}
+        resetField={resetField}
+      />
       <SchoolInputs
         resetField={resetField}
         register={register}
@@ -65,7 +75,7 @@ const MyPageForm = ({ defaultValue }: Props) => {
         control={control}
         errors={errors}
       />
-      
+
       <LanguageInputs register={register} control={control} errors={errors} />
 
       <ProjectsInput

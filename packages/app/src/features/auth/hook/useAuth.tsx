@@ -3,8 +3,6 @@ import env from '@lib/env'
 import { useEffect } from 'react'
 import login from '@features/auth/service/login'
 import { useToast } from '@features/toast'
-import useLocalStorage from '@features/global/hooks/useLocalStorage'
-import Token from '@lib/Token'
 import useLoading from '@features/modal/hooks/useLoading'
 
 const useAuth = () => {
@@ -12,8 +10,6 @@ const useAuth = () => {
   const code = router.query.code?.toString() || ''
   const { addToast } = useToast()
   const { loadingWrap, loadingClose } = useLoading()
-  const [_, setAccessExpires] = useLocalStorage(Token.ACCESS_TOKEN_EXP, '')
-  const [__, setRefreshExpires] = useLocalStorage(Token.REFRESH_TOKEN_EXP, '')
 
   useEffect(() => {
     if (!code) return
@@ -25,8 +21,6 @@ const useAuth = () => {
       }
       const redirectUrl =
         res.role === 'ROLE_TEACHER' ? '/register/teacher' : '/register'
-      setAccessExpires(res.accessTokenExp)
-      setRefreshExpires(res.refreshTokenExp)
       addToast('success', '로그인에 성공했습니다')
       await router.push(res.isExist ? '/' : redirectUrl)
       loadingClose()

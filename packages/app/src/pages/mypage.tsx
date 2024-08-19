@@ -1,35 +1,23 @@
-import { SEO } from '@features/global'
+import { NotFound, SEO } from '@features/global'
+import { LoadingPortal } from '@features/modal/portals'
 import { MyPageStudentTypeToRegisterFormType } from '@features/student/mappers'
-import profileService from '@features/student/service/profileService'
+import useStudentProfileQuery from '@features/student/queries/useStudentProfileQuery'
 import MypageTemplate from '@features/student/templates/MypageTemplate'
-import { MyPageStudentType } from '@features/student/types/MyPageStudentType'
-import { GetServerSideProps } from 'next'
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const data = await profileService(ctx.req.cookies.accessToken)
-  if (!data)
-    return {
-      props: {},
-      redirect: { destination: '/login' },
-    }
+const Mypage = () => {
+  const { data, isLoading } = useStudentProfileQuery()
 
-  return {
-    props: {
-      data,
-    },
-  }
-}
+  if (isLoading) return <LoadingPortal />
+  if (!data) return <NotFound />
 
-interface Props {
-  data: MyPageStudentType
-}
-
-const Mypage = ({ data }: Props) => {
   return (
     <>
       <SEO title='마이페이지' />
       <MypageTemplate
-        defaultValue={MyPageStudentTypeToRegisterFormType(data)}
+        defaultValue={MyPageStudentTypeToRegisterFormType({
+          ...data,
+          portfolioType: data.portfolioUrl ? 'URL' : 'PDF',
+        })}
       />
     </>
   )

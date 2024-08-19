@@ -1,12 +1,10 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.label`
-  width: 100%;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  border-radius: 0.25rem;
   color: var(--N30);
 `
 
@@ -62,5 +60,4 @@ export const Checkbox = styled.label`
 
 export const Label = styled.span`
   ${({ theme }) => theme.body2}
-  width: 100%;
 `

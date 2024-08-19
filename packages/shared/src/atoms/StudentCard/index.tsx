@@ -41,7 +41,7 @@ const StudentCard = ({
 
       <S.UserInfo>
         <div>
-          <S.Name>{name}</S.Name>
+          <S.Name>{name.replace('**', '소금')}</S.Name>
           <S.Stack>{major}</S.Stack>
         </div>
 

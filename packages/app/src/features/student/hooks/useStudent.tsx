@@ -28,12 +28,9 @@ const useStudent = () => {
     if (studentParam.nextStop) return
 
     dispatch(actions.setLoading(true))
-    const { data, isError, error } = await studentListApi(
-      {
-        ...params,
-      },
-      null
-    )
+    const { data, isError, error } = await studentListApi({
+      ...params,
+    })
     dispatch(actions.setLoading(false))
 
     if (isError) {

@@ -1,14 +1,14 @@
 import { OptionsType } from '@sms/shared'
-import autocompleteApi from '@features/register/services/autocompleteApi'
 import { useEffect } from 'react'
 import { useToast } from '@features/toast'
 import ErrorMapper from '@lib/ErrorMapper'
 import errors from '@features/student/service/errors'
 import { useDispatch } from 'react-redux'
 import { close } from '@features/modal/stores/modalSlice'
+import useMajorListQuery from '@features/register/queries/useMajorListQuery'
 
 const useMajorAutoComplete = () => {
-  const { data, isLoading, isError, error } = autocompleteApi.useMajorQuery()
+  const { data, isLoading, isError, error } = useMajorListQuery()
   const { addToast } = useToast()
   const dispatch = useDispatch()
 

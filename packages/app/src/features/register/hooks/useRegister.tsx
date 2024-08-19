@@ -5,14 +5,12 @@ import apiErrors from '@features/register/services/errors'
 import ErrorMapper from '@lib/ErrorMapper'
 import { useForm } from 'react-hook-form'
 import { PostStudentInfoService } from '@features/register/services'
-import useLoggedIn from '@features/auth/hook/useLoggedIn'
 import useLoading from '@features/modal/hooks/useLoading'
 
 const useRegister = () => {
   const { addToast } = useToast()
   const router = useRouter()
   const { loadingWrap, loadingClose } = useLoading()
-  const { refetchLoggedIn } = useLoggedIn({})
   const {
     register,
     control,
@@ -40,7 +38,6 @@ const useRegister = () => {
 
     loadingClose()
     addToast('success', '학생 정보 기입에 성공했습니다')
-    await refetchLoggedIn()
   })
 
   return {
