@@ -29,6 +29,7 @@ export default withHandler({
       data: formData,
       headers: {
         ...req.headers,
+        host: process.env.SERVER_URL?.replace('https://', ''),
         Authorization: `Bearer ${accessToken}`,
       },
     })
