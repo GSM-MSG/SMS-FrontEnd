@@ -9,6 +9,7 @@ export default withHandler({
 
     if (access) {
       const apiRes = await serverApi({
+        baseURL: process.env.SERVER_URL,
         url,
         method: req.method,
         data: ['GET', 'DELETE', 'HEAD'].includes(req.method || '')
@@ -16,6 +17,7 @@ export default withHandler({
           : req.body,
         headers: {
           ...req.headers,
+          host: process.env.SERVER_URL?.replace('https://', ''),
           Authorization: `Bearer ${access}`,
         },
       })
@@ -24,6 +26,7 @@ export default withHandler({
     }
 
     const apiRes = await serverApi({
+      baseURL: process.env.SERVER_URL,
       url,
       method: req.method,
       data: ['GET', 'DELETE', 'HEAD'].includes(req.method || '')
@@ -31,6 +34,7 @@ export default withHandler({
         : req.body,
       headers: {
         ...req.headers,
+        host: process.env.SERVER_URL?.replace('https://', ''),
       },
     })
 
